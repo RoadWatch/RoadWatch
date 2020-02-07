@@ -3,6 +3,7 @@ package com.codeup.demo.Controllers;
 import com.codeup.demo.Repos.Endorsements;
 import com.codeup.demo.Repos.Reports;
 import com.codeup.demo.Repos.Users;
+import com.codeup.demo.exception.UserException;
 import com.codeup.demo.models.Report;
 import com.codeup.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,9 +36,9 @@ public class ReportController {
     }
 
     @GetMapping(path = "/report/create")
-    public String createGet(Model model) {
+    public String createGet(Model model) throws UserException {
         User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", usersDoa.findById(cUser.getId()));
+        model.addAttribute("user", usersDoa.findById(cUser.getId()).orElseThrow(()-> new UserException()));
         model.addAttribute("report", new Report());
         return "report/create";
     }

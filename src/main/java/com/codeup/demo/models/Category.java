@@ -10,8 +10,8 @@ public class Category {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="reports_categories",
-            joinColumns={@JoinColumn(name="report_id")},
-            inverseJoinColumns={@JoinColumn(name="category_id")}
+            joinColumns={@JoinColumn(name="category_id")},
+            inverseJoinColumns={@JoinColumn(name="report_id")}
     )
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
