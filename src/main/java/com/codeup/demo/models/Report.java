@@ -14,14 +14,14 @@ import java.util.List;
 @Table(name = "reports")
 public class Report {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
     @NotBlank(message = "Zipcode is required")
     private int zipcode;
 
-    @Column()
+    @Column(name = "water_inches")
     private int waterInches;
 
     @Column(nullable = false, length = 150)
