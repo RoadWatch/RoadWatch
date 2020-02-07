@@ -2,6 +2,7 @@ package com.codeup.demo.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -30,8 +31,12 @@ public class User {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @OneToMany
-    @Column()
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "report")
+    private List<Report> reports;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "endorsment")
+    private List<Endorsment> endorsments;
+
 
     public User() {
     }
@@ -41,13 +46,15 @@ public class User {
             String email,
             String password,
             String firstName,
-            String lastName
+            String lastName,
+            List<Report> reports
     ){
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.reports = reports;
     }
 
     public User(
@@ -112,5 +119,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(List<Report> reports) {
+        this.reports = reports;
     }
 }
