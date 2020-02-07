@@ -27,9 +27,11 @@ public class Endorsement {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "user")
-    private User User;
+    @JoinColumn(name = "report_id")
+    private Report report;
 
+    public Endorsement() {
+    }
 
     public Endorsement(byte value) {
         this.value = value;
