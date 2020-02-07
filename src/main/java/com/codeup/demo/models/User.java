@@ -38,6 +38,7 @@ public class User {
     private List<Endorsement> endorsments;
 
 
+
     public User() {
     }
 
