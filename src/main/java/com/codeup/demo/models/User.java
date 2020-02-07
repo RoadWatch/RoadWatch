@@ -35,7 +35,7 @@ public class User {
     private List<Report> reports;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "endorsment")
-    private List<Endorsment> endorsments;
+    private List<Endorsement> endorsments;
 
 
     public User() {
