@@ -10,8 +10,14 @@ public class Endorsement {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private long user_id;
+
     @Column(nullable = false)
     private byte value;
+
 
     public Endorsement(byte value) {
         this.value = value;
