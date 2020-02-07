@@ -36,6 +36,10 @@ public class Report {
     @NotBlank(message = "Latitude is required")
     private String latitude;
 
+    @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
+    private List<Endorsement> endorsements;
+
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -176,5 +180,21 @@ public class Report {
 
     public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    public List<Endorsement> getEndorsements() {
+        return endorsements;
+    }
+
+    public void setEndorsements(List<Endorsement> endorsements) {
+        this.endorsements = endorsements;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
