@@ -7,12 +7,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "categories")
 public class Category {
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name="reports_categories",
-            joinColumns={@JoinColumn(name="category_id")},
-            inverseJoinColumns={@JoinColumn(name="report_id")}
-    )
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "catagories")
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
