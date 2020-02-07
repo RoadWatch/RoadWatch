@@ -1,5 +1,4 @@
-package com.codeup.demo.Repos.Users;
-
+package com.codeup.demo.Repos;
 
 import com.codeup.demo.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
