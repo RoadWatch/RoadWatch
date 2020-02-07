@@ -4,6 +4,7 @@ import com.codeup.demo.Repos.Endorsements;
 import com.codeup.demo.Repos.Reports;
 import com.codeup.demo.Repos.Users;
 import com.codeup.demo.models.Report;
+import com.codeup.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,19 +27,33 @@ public class ReportController {
         this.endorsementsDoa = endorsementsDoa;
     }
 
-    @GetMapping(path = "/INSERT PATH")
+    @GetMapping(path = "/report/all")
     public String index(Model model) {
         List<Report> reports = this.reportDoa.findAll();
         model.addAttribute("reports", reports);
-        return "INSERT VIEW";
+        return "report/all";
     }
 
-//    @PostMapping(path = "/posts/{id}/edit")
-//    public String editPost(@PathVariable String id, Model model, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
-//        Post old = pDoa.getOne(Long.parseLong(id));
-//        Post temp = new Post(old.getId(), title, body, old.getUser());
-//        pDoa.save(temp);
-//        model.addAttribute("post", pDoa.getOne(Long.parseLong(id)));
-//        return "posts/post-view";
-//    }
+    @GetMapping(path = "/report/create")
+    public String createGet(Model model) {
+        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", usersDoa.findById(cUser.getId()));
+        model.addAttribute("report", new Report());
+        return "report/create";
+    }
+
+    @PostMapping(path = "/report/{id}/edit")
+    public String editReport(Model model, @PathVariable String id, @RequestParam String zipcode, @RequestParam String waterInches, @RequestParam String longitude, @RequestParam String latitude, @RequestParam String description){
+        Report old = this.reportDoa.getOne(Long.parseLong(id));
+        Report temp = new Report(Integer.parseInt(zipcode), Integer.parseInt(waterInches), longitude, latitude, description, old.getUser());
+        reportDoa.save(temp);
+        model.addAttribute("report", reportDoa.getOne(Long.parseLong(id)));
+        return "report/view";
+    }
+
+    @PostMapping(path = "/report/{id}/delete")
+    public String delete(@PathVariable String id){
+        reportDoa.deleteById(Long.parseLong(id));
+        return "redirect:/report";
+    }
 }
