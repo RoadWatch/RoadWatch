@@ -18,14 +18,33 @@ public class Endorsement {
     @Column(nullable = false)
     private byte value;
 
+    @Column(nullable = false)
+    private String date;
 
-    public Endorsement(byte value) {
+    public Endorsement(byte value, String date) {
         this.value = value;
+        this.date = date;
     }
 
     public Endorsement(long id, byte value) {
         this.id = id;
         this.value = value;
+    }
+
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public long getId() {
