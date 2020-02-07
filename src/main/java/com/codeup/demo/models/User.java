@@ -59,6 +59,23 @@ public class User {
     }
 
     public User(
+            String username,
+            String email,
+            String password,
+            String firstName,
+            String lastName,
+            List<Report> reports,
+            List<Endorsement> endorsments
+    ){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.reports = reports;
+        this.endorsments = endorsments;
+    }
+    public User(
             long id,
             String username,
             String email,
@@ -72,6 +89,16 @@ public class User {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public User(User copy) {
+        this.username = copy.username;
+        this.email = copy.email;
+        this.password = copy.password;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.reports = copy.reports;
+        this.endorsments = copy.endorsments;
     }
 
     public long getId() {
