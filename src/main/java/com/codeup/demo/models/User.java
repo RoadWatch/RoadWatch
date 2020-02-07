@@ -31,13 +31,17 @@ public class User {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Report> reports;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Endorsement> endorsements;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> comments;
 
 
     public User() {
