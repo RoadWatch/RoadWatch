@@ -5,7 +5,22 @@
     <title>Navbar</title>
 </head>
 <body>
-
+<nav th:fragment="nav">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/map">Map</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/forum">Forum</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+</nav>
 
 
 </body>

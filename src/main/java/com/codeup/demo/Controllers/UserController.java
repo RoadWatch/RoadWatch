@@ -34,20 +34,20 @@ public class UserController {
         return "user/profile";
     }
     //! CREATE USER
-    @GetMapping("/user/create")
+    @GetMapping("/register")
     public String showCreateUser(Model model){
         model.addAttribute("user", new User());
         return "user/create";
     }
 
-    @PostMapping("/user/create")
+    @PostMapping("/register")
     public String createUser(
             @ModelAttribute User user
     ) {
         String hash = passwordEncoder.encode(user.getPassword());
-        user.setEmail(hash);
+        user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/user/" + user.getId();
+        return "redirect:/login";
     }
 
     //! EDIT USER PROFILE
