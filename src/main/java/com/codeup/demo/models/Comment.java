@@ -1,6 +1,7 @@
 package com.codeup.demo.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
@@ -9,11 +10,15 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private Long post_id;
+
     @Column(nullable = false)
     private Long user_id;
+
     @Column(nullable = false)
+    @NotBlank(message = "Body of comment is required")
     private String body;
 
     @ManyToOne
