@@ -1,0 +1,26 @@
+./mvnw package
+
+path: target/demo-0.0.1-SNAPSHOT.jar
+
+java -jar target/demo-0.0.1-SNAPSHOT.jar
+
+java -jar target/demo-0.0.1-SNAPSHOT.jar
+
+BUILD_COMMAND='./mvnw package'
+JAR_FILE=target/demo-0.0.1-SNAPSHOT.jar
+
+dserver db create --name road_watch --user amberjones
+
+dserver site create --domain bcrw.host --java --spring-boot --port 8081
+
+dserver credentials****
+
+ dserver upload --file src/main/resources/application.properties --destination /srv/bcrw.host/application.properties
+
+dserver run nano /srv/bcrw.host/application.properties
+
+dserver site info --domain=bcrw.host
+
+git remote add production amberjones@134.209.162.207:/srv/bcrw.host/repo.git
+
+
