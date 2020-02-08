@@ -1,6 +1,5 @@
-drop database road_conditions;
 show databases ;
-use road_conditions;
+use road_watch;
 show tables;
 
 describe users;
