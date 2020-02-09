@@ -15,7 +15,7 @@ public class User {
     @NotBlank(message = "Username is required")
     private String username;
 
-    @Column(nullable = false, unique = true, length = 50)
+    @Column(nullable = false, unique = true)
     @NotBlank(message = "Email is required")
     private String email;
 
@@ -97,13 +97,12 @@ public class User {
     }
 
     public User(User copy) {
-        this.username = copy.username;
-        this.email = copy.email;
-        this.password = copy.password;
-        this.firstName = copy.firstName;
-        this.lastName = copy.lastName;
-        this.reports = copy.reports;
-        this.endorsements = copy.endorsements;
+        id = copy.id;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        username = copy.username;
+        email = copy.email;
+        password = copy.password;
     }
 
     public long getId() {
@@ -160,5 +159,29 @@ public class User {
 
     public void setReports(List<Report> reports) {
         this.reports = reports;
+    }
+
+    public List<Endorsement> getEndorsements() {
+        return endorsements;
+    }
+
+    public void setEndorsements(List<Endorsement> endorsements) {
+        this.endorsements = endorsements;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Post> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Post> comments) {
+        this.comments = comments;
     }
 }
