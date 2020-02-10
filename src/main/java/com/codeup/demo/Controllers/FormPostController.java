@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 
 @Controller
 public class FormPostController {
@@ -27,13 +29,28 @@ public class FormPostController {
     //! Show forum view
     @GetMapping("/forum")
     public String showingForumView(Model model){
-        return "forum/index";
-//        System.out.println("forum");
-//        if(postSvc.isUserLoggedIn()){
-//            System.out.println("logged in");
-//            return "forum/index";
-//        }
-//        return "redirect:/register";
+        if(postSvc.isUserLoggedIn()){
+            User user = postSvc.getAuthUser();
+            model.addAttribute("userId", user.getId());
+            model.addAttribute("posts", postSvc.getReverseListOfPosts());
+            model.addAttribute("post", new Post());
+            return "forum/index";
+        }
+        return "redirect:/register";
+    }
+
+    //!POST A POST
+    @PostMapping("/forum/post")
+    public String createAPost(
+            @ModelAttribute Post post
+    ){
+        if(postSvc.isUserLoggedIn()){
+            User user = postSvc.getAuthUser();
+            post.setUser(user);
+            forumPostDao.save(post);
+            return "redirect:/forum";
+        }
+        return "redirect:/login";
     }
 
     // Individual form view
@@ -80,5 +97,5 @@ public class FormPostController {
         return "redirect:/forum";
     }
 
-//eiguwogj3   oi
+
 }

@@ -24,7 +24,7 @@
         </th:block>
         <th:block sec:authorize="isAuthenticated()">
             <li class="nav-item">
-                <form th:action="@{/logout}">
+                <form th:action="@{/logout}" method="post">
                     <button class="btn" type="submit">Logout</button>
                 </form>
             </li>

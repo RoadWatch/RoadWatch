@@ -48,15 +48,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
 //                allows anyone to see home and ads
                 .authorizeRequests()
-//                public
-                .antMatchers("/", "/map" )
+                .antMatchers("/", "/map")
                 .permitAll()
                 .and()
 //                protected routes
                 .authorizeRequests()
                 .antMatchers(
-//                        private
-                        "/user/{id}/edit","/forum"
+                        "/forum"
                 )
                 .authenticated()
         ;
