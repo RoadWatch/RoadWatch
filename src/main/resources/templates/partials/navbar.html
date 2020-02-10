@@ -6,20 +6,29 @@
     <title>Navbar</title>
 </head>
 <body>
-<nav th:fragment="nav">
-    <ul class="nav justify-content-end">
+
+<nav th:fragment="nav" id="navBar">
+    <div class="navCenter">
+      <ul class="nav justify-content-end">
+
+
+
         <li class="nav-item">
             <a class="nav-link active" href="/">Home</a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="/map">Map</a>
         </li>
+
+
+
         <li class="nav-item">
             <a class="nav-link" href="/forum">Forum</a>
         </li>
         <th:block sec:authorize="!isAuthenticated()">
             <li class="nav-item">
-                <a href="/login" class="btn">Login</a>
+                <a href="/login" class="btn" id="navLogin">Login</a>
             </li>
         </th:block>
         <th:block sec:authorize="isAuthenticated()">
@@ -31,9 +40,11 @@
         </th:block>
         
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
         </li>
     </ul>
+    </div>
+
 </nav>
 
 
