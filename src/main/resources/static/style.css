@@ -1,0 +1,46 @@
+body{
+    background-color: #D8D1C2;
+}
+
+.nav{
+    height: 150px;
+    width: auto;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #4152D0;
+    font-size: 30px;
+
+
+}
+
+
+#navBar{
+    color: #4152D0;
+    background-color: white;
+
+}
+
+.navCenter{
+    display: flex;
+    justify-content: center;
+    background-color: #4152D0;
+    margin-bottom: -30px;
+
+
+
+}
+
+.nav-item{
+
+
+}
+
+.nav-link{
+    color:white;
+
+}
+
+#navLogin{
+    color:white;
+    font-size: 30px;
+}
+
