@@ -24,10 +24,7 @@ public class FormPostController {
     @GetMapping("/forum")
     public String showingForumView(Model model){
         if(postSvc.isUserLoggedIn()){
-            User user = postSvc.getAuthUser();
-            Post post = new Post();
-            post.setUser(user);
-            model.addAttribute("post", post);
+            System.out.println("logged in");
             return "forum/index";
         }
         return "redirect:/register";
