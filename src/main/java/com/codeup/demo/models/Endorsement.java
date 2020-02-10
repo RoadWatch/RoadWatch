@@ -1,51 +1,53 @@
 package com.codeup.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.aspectj.lang.annotation.Before;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "endorsements")
 public class Endorsement {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private long user_id;
 
     @Column(nullable = false)
     private byte value;
 
     @Column(nullable = false)
-    private String date;
+    @JsonFormat(pattern = "mm-dd-yyyy")
+    private Date date;
 
-    public Endorsement(byte value, String date) {
-        this.value = value;
-        this.date = date;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "report_id")
+    private Report report;
+
+    public Endorsement() {
     }
+
+    public Endorsement(byte value) {
+        this.value = value;
+    }
+
 
     public Endorsement(long id, byte value) {
         this.id = id;
         this.value = value;
     }
 
-    public long getUser_id() {
-        return user_id;
+    @PrePersist
+    public void addTimeStamp(){
+        this.date = new Date();
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public long getId() {
         return id;
@@ -62,4 +64,21 @@ public class Endorsement {
     public void setValue(byte value) {
         this.value = value;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

@@ -14,14 +14,14 @@ import java.util.List;
 @Table(name = "reports")
 public class Report {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
     @NotBlank(message = "Zipcode is required")
     private int zipcode;
 
-    @Column()
+    @Column(name = "water_inches")
     private int waterInches;
 
     @Column(nullable = false, length = 150)
@@ -35,6 +35,10 @@ public class Report {
     @Column(nullable = false, length = 30)
     @NotBlank(message = "Latitude is required")
     private String latitude;
+
+    @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
+    private List<Endorsement> endorsements;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -176,5 +180,21 @@ public class Report {
 
     public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    public List<Endorsement> getEndorsements() {
+        return endorsements;
+    }
+
+    public void setEndorsements(List<Endorsement> endorsements) {
+        this.endorsements = endorsements;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }

@@ -2,17 +2,21 @@ package com.codeup.demo.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
 public class Category {
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "catagories")
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false, length = 50)
     private String name;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
+    private List<Report> reports;
 
     public Category(){}
 
@@ -39,6 +43,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(List<Report> reports) {
+        this.reports = reports;
     }
 }
 

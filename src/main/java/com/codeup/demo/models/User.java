@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "users")
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false, unique = true, length = 25)
@@ -31,12 +31,17 @@ public class User {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "report")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Report> reports;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "endorsment")
-    private List<Endorsement> endorsments;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Endorsement> endorsements;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> comments;
 
 
     public User() {
@@ -65,7 +70,7 @@ public class User {
             String firstName,
             String lastName,
             List<Report> reports,
-            List<Endorsement> endorsments
+            List<Endorsement> endorsements
     ){
         this.username = username;
         this.email = email;
@@ -73,7 +78,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.reports = reports;
-        this.endorsments = endorsments;
+        this.endorsements = endorsements;
     }
     public User(
             long id,
@@ -98,7 +103,7 @@ public class User {
         this.firstName = copy.firstName;
         this.lastName = copy.lastName;
         this.reports = copy.reports;
-        this.endorsments = copy.endorsments;
+        this.endorsements = copy.endorsements;
     }
 
     public long getId() {
