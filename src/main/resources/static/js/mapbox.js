@@ -3,9 +3,6 @@
 
 mapboxgl.accessToken = mapboxToken;
 
-
-
-
 var lowWaterPoints = [
     {
         "type": "FeatureCollection",
@@ -1717,9 +1714,6 @@ var lowWaterPoints = [
     }
 ];
 
-var nLat, nLong;
-nLat = 29.4241;
-nLong = -98.4936;
 
 // map centering on San antonio
 mapboxgl.accessToken = mapboxToken;
@@ -1751,11 +1745,13 @@ marker.on('dragend', function () {
     var lngLat = marker.getLngLat();
 });
 
+marker.on('dragend', onDragEnd);
+
+
 
 
 lowWaterPoints[0].features.forEach(function (point) {
     geocode(point.coordinates, mapboxToken).then(function (result) {
-
 
         var pops = new mapboxgl.Popup()
             .setLngLat(result)
@@ -1768,6 +1764,7 @@ lowWaterPoints[0].features.forEach(function (point) {
             .addTo(map);
         console.log(point.properties.Name);
     });
+
 
 
 
@@ -1789,7 +1786,6 @@ function geocode(search, token) {
         console.log(userInput);
         geocode(userInput, mapboxToken)
             .then(function (result) {
-                console.log(result);
                 marker.setLngLat(result);
                 map.flyTo({center: result});
             });

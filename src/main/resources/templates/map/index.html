@@ -9,17 +9,20 @@
             height: 400px;
         }
     </style>
-    <script src="js/jquery-2.2.4.js"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
     <head th:include="partials/header :: head">
     </head>
 <body>
-<nav th:include="partials/navbar :: nav"></nav>
+<div>
+    <nav th:include="partials/navbar :: nav"></nav>
+</div>
 <h1>Maps</h1>
 <div class="button"><input type="text" placeholder="Where to?"><button type="submit">Search</button></div>
 <div id="map">
-    <script src="js/keys.js"></script>
-    <script src="js/mapbox.js"></script>
 </div>
+<script src="/js/jquery-2.2.4.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="/js/keys.js"></script>
+<script src="/js/mapbox.js"></script>
+
 </body>
 </html>
