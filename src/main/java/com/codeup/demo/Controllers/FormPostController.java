@@ -23,12 +23,12 @@ public class FormPostController {
     //! Show forum view
     @GetMapping("/forum")
     public String showingForumView(Model model){
-        return "forum/index";
-//        System.out.println("forum");
-//        if(postSvc.isUserLoggedIn()){
-//            System.out.println("logged in");
-//            return "forum/index";
-//        }
-//        return "redirect:/register";
+//        return "forum/index";
+        System.out.println("forum");
+        if(postSvc.isUserLoggedIn()){
+            System.out.println("logged in");
+            return "forum/index";
+        }
+        return "redirect:/register";
     }
 }
