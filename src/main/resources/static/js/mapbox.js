@@ -53,7 +53,7 @@ restaurants.forEach(function (restaurant,index) {
             .addTo(map);
         console.log("This is " + index + " foods!");
     });
-});
+
 
 
 function geocode(search, token) {
@@ -79,4 +79,5 @@ function geocode(search, token) {
                 map.flyTo({center: result});
             });
     });
+});
 
