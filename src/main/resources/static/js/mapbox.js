@@ -4,16 +4,6 @@
 mapboxgl.accessToken = mapboxToken;
 
 
-// map centering on San antonio
-mapboxgl.accessToken = mapboxToken;
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/christopheraguirre210/ck2p39yeu1a061cks2xymzrtb',
-    zoom: 10,
-    center: [-98.4936, 29.4241]
-    // pitch: 45
-});
-
 
 
 var lowWaterPoints = [
@@ -1727,10 +1717,40 @@ var lowWaterPoints = [
     }
 ];
 
+var nLat, nLong;
+nLat = 29.4241;
+nLong = -98.4936;
+
+// map centering on San antonio
+mapboxgl.accessToken = mapboxToken;
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/christopheraguirre210/ck2p39yeu1a061cks2xymzrtb',
+    zoom: 10,
+    center: [-98.4936, 29.4241]
+    // pitch: 45
+});
+
 var markerOptions = {
     color: "#038f07",
     draggable: false
 };
+
+var marker = new mapboxgl.Marker(markerOptions)
+    .setLngLat([-98.4936, 29.4241])
+    .addTo(map);
+
+var coordinates = $('#coordinates');
+
+
+function onDragEnd(){
+    var lngLat = marker.getLngLat();
+
+}
+marker.on('dragend', function () {
+    var lngLat = marker.getLngLat();
+});
+
 
 
 lowWaterPoints[0].features.forEach(function (point) {
