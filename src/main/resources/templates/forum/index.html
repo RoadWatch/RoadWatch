@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:include="patials/header ::head">
+<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="partials/header :: head">
     <meta charset="UTF-8">
-    <title>Forum</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-<nav th:include="partials/navbar :: navbar"></nav>
-<div class="container-fluid">
-    <div class="jumbotron bg-red">Picture</div>
-    <div class="container">
-    
-    hello world
-    </div>
-</div>
-
+<nav th:include="partials/navbar :: nav"></nav>
+<h1>forum</h1>
 
 </body>
 </html>
