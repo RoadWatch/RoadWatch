@@ -13,19 +13,69 @@
 <h1>forum</h1>
 <hr>
 <div class="container">
-    <form>
+    <form  th:action="@{'/forum/post'}" method="post" th:object="${post}">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title">
+            <input type="text" class="form-control" id="title" th:field="*{title}">
             <small id="emailHelp" class="form-text text-muted">Name your post</small>
         </div>
         <div class="form-group">
             <label for="body">Body</label>
-            <input type="text" class="form-control" id="body">
+            <input type="text" class="form-control" id="body" th:field="*{body}">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <hr>
+    <th:block th:each="singlePost : ${posts}">
+        <div class="card">
+            <small th:text="${singlePost.title}"></small>
+            <div class="card-body" th:text="${singlePost.body}">
+                This is some text within a card body.
+            </div>
+<!--            dropdown-->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+<!--                    View comments-->
+                </button>
+                <div class="dropdown-menu">
+                    <th:block th:each="comment : ${singlePost.comments}">
+                        <a class="dropdown-item" href="#" th:text="${comment.body}">Action</a>
+                        <th:block th:if="${comment.user.id == userId}">
+<!--                            MODAL-->
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="${userId}">
+                                Edit
+                            </button>
+    
+                            <!-- Modal -->
+<!--                            <div class="modal fade" th:id="${userId}" tabindex="-1" role="dialog">-->
+<!--                                <div class="modal-dialog" role="document">-->
+<!--                                    <div class="modal-content">-->
+<!--                                        <div class="modal-header">-->
+<!--                                            <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>-->
+<!--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                                                <span aria-hidden="true">&times;</span>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        <div class="modal-body">-->
+<!--                                            <form action="">-->
+<!--                                                complete this form-->
+<!--                                            </form>-->
+<!--                                        </div>-->
+<!--                                        <div class="modal-footer">-->
+<!--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            END MODAL-->
+                        </th:block>
+                    </th:block>
+                </div>
+            </div>
+<!--            end-->
+        </div>
+    </th:block>
 </div>
 
 
