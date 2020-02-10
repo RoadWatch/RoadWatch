@@ -1,5 +1,4 @@
 show databases ;
-drop database road_watch;
 use road_watch;
 show tables;
 
