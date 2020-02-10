@@ -1,6 +1,7 @@
 package com.codeup.demo.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +13,15 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
+    @NotBlank(message = "Title is required")
     private String title;
 
     @Column(nullable = false, columnDefinition = "TEXT")
+    @NotBlank(message = "Body is required")
     private String body;
 
+    //!I'm not sure we need this
     @Column(nullable = false)
     private Long user_id;
 
@@ -57,7 +61,7 @@ public class Post {
         this.title = title;
         this.body = body;
     }
-
+    //! get top three comments
     public List<Comment> getTopComments(){
         List<Comment> topComments = new ArrayList<>();
         List<Comment> re = this.comments;
@@ -69,6 +73,12 @@ public class Post {
             return topComments;
         }
         return topComments;
+    }
+
+    //! add comment to list
+    public void addComment(Comment comment){
+        comments.add(comment);
+        System.out.println("comment added");
     }
 
     public void setUser(User user) {

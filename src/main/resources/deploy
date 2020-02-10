@@ -1,0 +1,21 @@
+target/demo-0.0.1-SNAPSHOT.jar
+
+java -jar target/demo-0.0.1-SNAPSHOT.jar
+
+BUILD_COMMAND='./mvnw package'
+JAR_FILE=target/demo-0.0.1-SNAPSHOT.jar
+
+dserver db create --name road_watch --user amberjones
+
+  Sudo Password: fCtHAlufRx8whW5MUJHL
+  DB Password:   0PN8W9quvwpFNi5fiv9O
+Db User blog_user: LcMQcNtCNAQlQzYRsdEG
+Db User amberjones: M1mVwyvrN8ySlYSfwoOd
+
+dserver site create --domain bcrw.host --java --spring-boot --port 8082
+
+dserver upload --file src/main/resources/application.properties --destination /srv/bcrw.host/application.properties
+
+dserver run nano /srv/bcrw.host/application.properties
+
+dserver site info --domain=bcrw.host
