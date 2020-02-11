@@ -1,5 +1,7 @@
 "use strict";
 
+var mapboxToken = mapBoxKey;
+
 
 mapboxgl.accessToken = mapboxToken;
 
