@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+
+
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
     <style>
         #map {
-            width: 100%;
+            position: center;
+            width: 800px;
             height: 400px;
+            z-index: 1000;
         }
     </style>
-    <head th:include="partials/header :: head">
-    </head>
+    <div th:replace="partials/header :: head">
+    </div>
+</head>
 <body>
 <div>
     <nav th:include="partials/navbar :: nav"></nav>
