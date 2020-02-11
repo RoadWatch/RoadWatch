@@ -10,9 +10,9 @@
 </head>
 <body>
 <nav th:include="partials/navbar :: nav"></nav>
+<div class="container">
 <h1>forum</h1>
 <hr>
-<div class="container">
     <form  th:action="@{'/forum/post'}" method="post" th:object="${post}">
         <div class="form-group">
             <label for="title">Title</label>
@@ -22,6 +22,8 @@
         <div class="form-group">
             <label for="body">Body</label>
             <input type="text" class="form-control" id="body" th:field="*{body}">
+            <small id="bodyFormHelp" class="form-text text-muted">Let us know whats going on...</small>
+
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -33,8 +35,8 @@
                 This is some text within a card body.
             </div>
             <div class="row">
-                <div class="col">
                     <!--            dropdown-->
+                    <th:block th:if="${singlePost.getComments().size() > 0}">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                         View Comments
@@ -49,18 +51,23 @@
                             </th:block>
                         </div>
                     </div>
+                    </th:block>
     
-                </div>
-                <div class="col">
 <!--                    //EDIT BUTTON-->
+                <th:block th:if="${singlePost.user.id == userId}" >
                     <button type="button" class="btn btn-secondary" data-toggle="modal"
                             data-target="#myModal" th:attrappend="data-target=${singlePost.id}">
                         Edit Post
                     </button>
+                    <!-- Delete trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#delete" th:attrappend="data-target=${singlePost.id}">
+                        Delete Post
+                    </button>
+                </th:block>
                 </div>
-                <div class="col"></div>
+            
 
-            </div>
             <!--EDIT Modal -->
             <div class="modal fade" id="myModal" role="dialog" th:attrappend="id=${singlePost.id}">
                 <div class="modal-dialog" role="document">
@@ -94,13 +101,38 @@
                     </div>
                 </div>
             </div>
-<!--            end edit form-->
+<!--           Delete end edit form-->
+            <!--DELETE Modal -->
+            <div class="modal fade" id="delete" tabindex="-1" role="dialog" th:attrappend="id=${singlePost.id}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="username" th:text="${singlePost.user.firstName}">
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{'/forum/post/delete/'+ ${singlePost.id}}" method="post">
+                                Delete Post?
+                                <button type="submit" class="btn btn-secondary" >Yes</button>
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
             
 <!--            end-->
         </div>
     </th:block>
 </div>
+
+<!--delete modal-->
 
 
 </body>
