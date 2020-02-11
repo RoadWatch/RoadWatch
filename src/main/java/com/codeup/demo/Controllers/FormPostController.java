@@ -40,6 +40,7 @@ public class FormPostController {
             model.addAttribute("posts", postSvc.getReverseListOfPosts());
             model.addAttribute("post", new Post());
             model.addAttribute("editPost", new Post());
+            model.addAttribute("comment", new Comment());
             return "forum/index";
         }
         return "redirect:/register";
