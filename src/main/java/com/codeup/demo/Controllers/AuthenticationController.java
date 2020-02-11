@@ -9,7 +9,6 @@ public class AuthenticationController {
     @GetMapping("/login")
     public String showLoginForm(){
         return "user/login";
-<<<<<<< HEAD
     }
     @GetMapping("/logout")
     public String sdfk(){
@@ -18,7 +17,5 @@ public class AuthenticationController {
     @PostMapping("/logout")
     public String shfk(){
         return "redirect:login";
-=======
->>>>>>> ea165c27961bb988de8584c41c902252939b503e
     }
 }

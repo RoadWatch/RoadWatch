@@ -1,6 +1,8 @@
 package com.codeup.demo.Controllers;
 
+import com.codeup.demo.Repos.ForumComment;
 import com.codeup.demo.Repos.ForumPost;
+import com.codeup.demo.models.Comment;
 import com.codeup.demo.models.Post;
 import com.codeup.demo.models.User;
 import com.codeup.demo.services.ForumPostSvc;
@@ -19,11 +21,12 @@ public class FormPostController {
 
     private ForumPost forumPostDao;
     private ForumPostSvc postSvc;
+    private ForumComment forumComment;
 
-
-    public FormPostController(ForumPost forumPostDao, ForumPostSvc postSvc) {
+    public FormPostController(ForumPost forumPostDao, ForumPostSvc postSvc, ForumComment forumComment) {
         this.forumPostDao = forumPostDao;
         this.postSvc = postSvc;
+        this.forumComment = forumComment;
     }
 
     //! Show forum view
@@ -82,20 +85,28 @@ public class FormPostController {
         return "forum/create";
     }
 
-    // Create form POST
-    @PostMapping("/forum/post")
-    public String post(@RequestParam("user_id") String userId , @RequestParam("title") String title, @RequestParam("body") String body){
-        Post temp = new Post(title, body, Long.parseLong(userId));
-        this.forumPostDao.save(temp);
-        return "redirect:/forum";
-    }
-
     // Delete form
     @PostMapping("/forum/{id}/delete")
-    public String del(Model model, @PathVariable String id){
-        model.addAttribute(this.forumPostDao.getOne(Long.parseLong(id)));
+    public String del(@PathVariable String id){
+        this.forumPostDao.deleteById(Long.parseLong(id));
         return "redirect:/forum";
     }
 
+    // Adding a reply on a forum post
+    @PostMapping("/forum/{id}/comment")
+    public String comment(@PathVariable String id, @RequestParam String body){
+        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Comment comment = new Comment(body, cUser, this.forumPostDao.getOne(Long.parseLong(id)));
+        this.forumComment.save(comment);
+        return "redirect:/forum/" + id;
+    }
+
+    // Deleting a reply on a forum post
+    @PostMapping("/forum/{id}/comment/{cid}")
+    public String commentDelete(@PathVariable String id, @PathVariable String cid){
+        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        this.forumComment.deleteById(Long.parseLong(cid));
+        return "redirect:/forum/" + id;
+    }
 
 }
