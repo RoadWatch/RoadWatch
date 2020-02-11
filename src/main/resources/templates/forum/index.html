@@ -34,33 +34,34 @@
             <div class="card-body" th:text="${singlePost.body}">
                 This is some text within a card body.
             </div>
-            <div class="row">
+            <div class="d-flex justify-content-around">
                     <!--            dropdown-->
-                    <th:block th:if="${singlePost.getComments().size() > 0}">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                        View Comments
+                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
+                                id="dropdownMenuButton"
+                                data-toggle="dropdown">
+                        Leave a comment
                         </button>
-                        <th:block th:if="${userId == singlePost.user.id}">
-            
-                        </th:block>
                         <div class="dropdown-menu">
+                            <form th:action="@{'/forum/comment/'+ ${post.id}}" method="post"
+                            th:object="${comment}">
+                                <input type="text" th:field="*{body}">
+                            </form>
                             <th:block th:each="comment : ${singlePost.comments}">
                                 <a class="dropdown-item" href="#" th:text="${comment.body}">Action</a>
                 
                             </th:block>
                         </div>
                     </div>
-                    </th:block>
     
 <!--                    //EDIT BUTTON-->
                 <th:block th:if="${singlePost.user.id == userId}" >
-                    <button type="button" class="btn btn-secondary" data-toggle="modal"
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal"
                             data-target="#myModal" th:attrappend="data-target=${singlePost.id}">
                         Edit Post
                     </button>
                     <!-- Delete trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal"
                             data-target="#delete" th:attrappend="data-target=${singlePost.id}">
                         Delete Post
                     </button>

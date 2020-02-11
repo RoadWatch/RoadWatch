@@ -24,3 +24,11 @@ dserver site info --domain=bcrw.host
 git remote add production amberjones@134.209.162.207:/srv/bcrw.host/repo.git
 
 
+//! Debug
+
+dserver db create --name road_db --user road_user
+
+road_user
+tmgWsOiqAjGfSwgEJkRX
+
+
