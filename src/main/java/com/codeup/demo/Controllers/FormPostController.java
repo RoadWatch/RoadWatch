@@ -75,5 +75,22 @@ public class FormPostController {
 
     }
 
+    //! DELETE POST
+    @PostMapping("/forum/post/delete/{id}")
+    public String deletePost(
+            @PathVariable long id
+    ) throws PostException {
+        if(postSvc.isUserLoggedIn()){
+            User user = postSvc.getAuthUser();
+            Post post = forumPostDao.findById(id)
+                    .orElseThrow(()-> new PostException());
+            if(user.getId() == post.getUser().getId()){
+                forumPostDao.delete(post);
+                return "redirect:/forum";
+            }
+        }
+        return "redirect:/login";
+    }
+
 
 }
