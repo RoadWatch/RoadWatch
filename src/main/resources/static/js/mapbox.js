@@ -1738,8 +1738,8 @@ var coordinates = $('#coordinates');
 
 function onDragEnd(){
     var lngLat = marker.getLngLat();
-
 }
+
 marker.on('dragend', function () {
     var lngLat = marker.getLngLat();
 });
@@ -1747,6 +1747,33 @@ marker.on('dragend', function () {
 marker.on('dragend', onDragEnd);
 
 
+for (let i = 0; i < lowWaterPoints[0].features.length; i++) {
+    geocode(lowWaterPoints[0].features[i].coordinates, mapboxToken).then(function (result) {
+        var pops = new mapboxgl.Popup()
+            .setLngLat(result)
+            .setHTML("<em><h2>"+lowWaterPoints[0].features[i].properties.Name+"</em></h2>")
+            .addTo(map);
+        var marker = new mapboxgl.Marker(markerOptions)
+            .setLngLat(result)
+            .setPopup(pops)
+            .togglePopup()
+            .addTo(map);
+        console.log(lowWaterPoints[0].features[i].properties.Name);
+    });
+    function geocode(search, token) {
+        var baseUrl = 'https://api.mapbox.com';
+        var endPoint = '/geocoding/v5/mapbox.places/';
+        return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+            .then(function(res) {
+                return res.json();
+                // to get all the data from the request, comment out the following three lines...
+            })
+            // .then(function(data) {
+            //     return data.features[0].center;
+            // });
+    }
+
+}
 
 
 lowWaterPoints[0].features.forEach(function (point) {
@@ -1763,8 +1790,6 @@ lowWaterPoints[0].features.forEach(function (point) {
             .addTo(map);
         console.log(point.properties.Name);
     });
-
-
 
 
 function geocode(search, token) {
@@ -1790,4 +1815,3 @@ function geocode(search, token) {
             });
     });
 });
-
