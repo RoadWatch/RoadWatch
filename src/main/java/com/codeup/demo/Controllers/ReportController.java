@@ -4,12 +4,14 @@ import com.codeup.demo.Repos.Endorsements;
 import com.codeup.demo.Repos.Reports;
 import com.codeup.demo.Repos.Users;
 import com.codeup.demo.exception.UserException;
+import com.codeup.demo.models.Endorsement;
 import com.codeup.demo.models.Report;
 import com.codeup.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 public class ReportController {
@@ -54,4 +56,13 @@ public class ReportController {
         reportDoa.deleteById(Long.parseLong(id));
         return "redirect:/report";
     }
+
+    @PostMapping(path = "/report/{id}/endorse")
+    public String endorse(Model model, @PathVariable String id, @RequestParam String value, @RequestParam Date date) throws UserException {
+        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Endorsement endorsement = new Endorsement(Byte.parseByte(value), date, cUser, this.reportDoa.getOne(Long.parseLong(id)));
+        this.endorsementsDoa.save(endorsement);
+        return "redirect:/report/{id}";
+    }
+
 }

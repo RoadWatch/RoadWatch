@@ -43,6 +43,15 @@ public class Endorsement {
         this.value = value;
     }
 
+    public Endorsement(byte value, Date date, User user, Report report) {
+        this.value = value;
+        this.date = date;
+        this.user = user;
+        this.report = report;
+    }
+
+
+
     @PrePersist
     public void addTimeStamp(){
         this.date = new Date();
