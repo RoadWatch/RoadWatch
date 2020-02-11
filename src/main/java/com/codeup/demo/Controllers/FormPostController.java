@@ -3,6 +3,7 @@ package com.codeup.demo.Controllers;
 import com.codeup.demo.Repos.ForumComment;
 import com.codeup.demo.Repos.ForumPost;
 import com.codeup.demo.models.Comment;
+import com.codeup.demo.exception.PostException;
 import com.codeup.demo.models.Post;
 import com.codeup.demo.models.User;
 import com.codeup.demo.services.ForumPostSvc;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -37,12 +39,13 @@ public class FormPostController {
             model.addAttribute("userId", user.getId());
             model.addAttribute("posts", postSvc.getReverseListOfPosts());
             model.addAttribute("post", new Post());
+            model.addAttribute("editPost", new Post());
             return "forum/index";
         }
         return "redirect:/register";
     }
 
-    //!POST A POST
+    //!CREATE A POST
     @PostMapping("/forum/post")
     public String createAPost(
             @ModelAttribute Post post
@@ -108,5 +111,27 @@ public class FormPostController {
         this.forumComment.deleteById(Long.parseLong(cid));
         return "redirect:/forum/" + id;
     }
+    //!EDIT A POST
+    @PostMapping("/forum/post/edit/{id}")
+    public String editPost(
+            @RequestParam String title,
+            @RequestParam String body,
+            @PathVariable long id
+    ) throws PostException {
+        if(postSvc.isUserLoggedIn()){
+            User user = postSvc.getAuthUser();
+            Post currentPost = forumPostDao.findById(id)
+                    .orElseThrow(()-> new PostException());
+            if(currentPost.getUser().getId() == user.getId()){
+                currentPost.setTitle(title);
+                currentPost.setBody(body);
+                forumPostDao.save(currentPost);
+                return "redirect:/forum";
+            }
+        }
+        return "redirect:/map";
+
+    }
+
 
 }

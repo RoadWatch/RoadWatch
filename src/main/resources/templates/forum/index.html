@@ -32,47 +32,71 @@
             <div class="card-body" th:text="${singlePost.body}">
                 This is some text within a card body.
             </div>
-<!--            dropdown-->
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-<!--                    View comments-->
-                </button>
-                <div class="dropdown-menu">
-                    <th:block th:each="comment : ${singlePost.comments}">
-                        <a class="dropdown-item" href="#" th:text="${comment.body}">Action</a>
-                        <th:block th:if="${comment.user.id == userId}">
-<!--                            MODAL-->
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="${userId}">
-                                Edit
-                            </button>
-    
-                            <!-- Modal -->
-<!--                            <div class="modal fade" th:id="${userId}" tabindex="-1" role="dialog">-->
-<!--                                <div class="modal-dialog" role="document">-->
-<!--                                    <div class="modal-content">-->
-<!--                                        <div class="modal-header">-->
-<!--                                            <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>-->
-<!--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                                <span aria-hidden="true">&times;</span>-->
-<!--                                            </button>-->
-<!--                                        </div>-->
-<!--                                        <div class="modal-body">-->
-<!--                                            <form action="">-->
-<!--                                                complete this form-->
-<!--                                            </form>-->
-<!--                                        </div>-->
-<!--                                        <div class="modal-footer">-->
-<!--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            END MODAL-->
+            <div class="row">
+                <div class="col">
+                    <!--            dropdown-->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                        View Comments
+                        </button>
+                        <th:block th:if="${userId == singlePost.user.id}">
+            
                         </th:block>
-                    </th:block>
+                        <div class="dropdown-menu">
+                            <th:block th:each="comment : ${singlePost.comments}">
+                                <a class="dropdown-item" href="#" th:text="${comment.body}">Action</a>
+                
+                            </th:block>
+                        </div>
+                    </div>
+    
+                </div>
+                <div class="col">
+<!--                    //EDIT BUTTON-->
+                    <button type="button" class="btn btn-secondary" data-toggle="modal"
+                            data-target="#myModal" th:attrappend="data-target=${singlePost.id}">
+                        Edit Post
+                    </button>
+                </div>
+                <div class="col"></div>
+
+            </div>
+            <!--EDIT Modal -->
+            <div class="modal fade" id="myModal" role="dialog" th:attrappend="id=${singlePost.id}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{'/forum/post/edit/'+ ${singlePost.id}}" method="post" >
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" id="edit-title"
+                                           th:value="${singlePost.title}" th:name="title">
+                                    <small id="titleHelp" class="form-text text-muted">Edit title</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-body">Body</label>
+                                    <input type="text" class="form-control" id="edit-body" th:name="body"
+                                    th:value="${singlePost.body}">
+                                    <small id="bodyHelp" class="form-text text-muted">Edit body</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+<!--            end edit form-->
+
+            
 <!--            end-->
         </div>
     </th:block>

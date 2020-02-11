@@ -3,19 +3,6 @@
 
 mapboxgl.accessToken = mapboxToken;
 
-
-// map centering on San antonio
-mapboxgl.accessToken = mapboxToken;
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/christopheraguirre210/ck2p39yeu1a061cks2xymzrtb',
-    zoom: 10,
-    center: [-98.4936, 29.4241]
-    // pitch: 45
-});
-
-
-
 var lowWaterPoints = [
     {
         "type": "FeatureCollection",
@@ -1727,15 +1714,44 @@ var lowWaterPoints = [
     }
 ];
 
+
+// map centering on San antonio
+mapboxgl.accessToken = mapboxToken;
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/christopheraguirre210/ck2p39yeu1a061cks2xymzrtb',
+    zoom: 10,
+    center: [-98.4936, 29.4241]
+    // pitch: 45
+});
+
 var markerOptions = {
     color: "#038f07",
     draggable: false
 };
 
+var marker = new mapboxgl.Marker(markerOptions)
+    .setLngLat([-98.4936, 29.4241])
+    .addTo(map);
+
+var coordinates = $('#coordinates');
+
+
+function onDragEnd(){
+    var lngLat = marker.getLngLat();
+
+}
+marker.on('dragend', function () {
+    var lngLat = marker.getLngLat();
+});
+
+marker.on('dragend', onDragEnd);
+
+
+
 
 lowWaterPoints[0].features.forEach(function (point) {
     geocode(point.coordinates, mapboxToken).then(function (result) {
-
 
         var pops = new mapboxgl.Popup()
             .setLngLat(result)
@@ -1748,6 +1764,7 @@ lowWaterPoints[0].features.forEach(function (point) {
             .addTo(map);
         console.log(point.properties.Name);
     });
+
 
 
 
@@ -1769,7 +1786,6 @@ function geocode(search, token) {
         console.log(userInput);
         geocode(userInput, mapboxToken)
             .then(function (result) {
-                console.log(result);
                 marker.setLngLat(result);
                 map.flyTo({center: result});
             });
