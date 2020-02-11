@@ -133,8 +133,7 @@ public class FormPostController {
 
     }
 
-<<<<<<< HEAD
-=======
+
     //! DELETE POST
     @PostMapping("/forum/post/delete/{id}")
     public String deletePost(
@@ -151,6 +150,5 @@ public class FormPostController {
         }
         return "redirect:/login";
     }
->>>>>>> 31c3855466808a5a60320b8de51730baf859c418
 
 }
