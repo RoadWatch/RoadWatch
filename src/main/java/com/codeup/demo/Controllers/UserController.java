@@ -67,7 +67,7 @@ public class UserController {
     @PostMapping("/user/{id}/edit")
     public String editUserProfile(
             @PathVariable long id,
-            @ModelAttribute User user
+            @ModelAttribute(name = "") User user
     ){
         userDao.save(user);
         return "redirect:/user/"+user.getId();

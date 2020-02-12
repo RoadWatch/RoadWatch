@@ -12,9 +12,6 @@ public class MapController {
 
     private Reports reports;
 
-    public MapController() {
-    }
-
     public MapController(Reports reports) {
         this.reports = reports;
     }
@@ -22,7 +19,9 @@ public class MapController {
     @GetMapping("/map")
     public String showMapPage(Model model){
         List<Report> userReports = reports.findAll();
-        model.addAttribute("userReports", userReports);
+        if (!(userReports.size() <= 0 || userReports == null)) {
+            model.addAttribute("userReports", userReports);
+        }
         return "map/index";
     }
 
