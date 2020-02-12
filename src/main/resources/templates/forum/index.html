@@ -59,10 +59,10 @@
                                 </button>
                             </form>
                             <th:block th:each="comment : ${singlePost.comments}">
-                                <div style="border: 1px solid lightslategrey; border-radius: 8px;">
+                                <div class="dropdown-item">
                                 <small>
-                                    <i class="fas fa-angle-double-right"></i>
-                                    <a class="dropdown-item" href="#" th:text="${comment.body}">Action</a>
+                                    &#9830;
+                                    <span th:text="${comment.body}">Action</span>
                                 </small>
 <!--                                !!!!EDIT COMMENT-->
 <!--                                END COMMENT EDIT MAYBE**-->
