@@ -131,9 +131,7 @@ public class FormPostController {
             }
         }
         return "redirect:/map";
-
     }
-
 
     //! DELETE POST
     @PostMapping("/forum/post/delete/{id}")

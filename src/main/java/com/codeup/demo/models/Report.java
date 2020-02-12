@@ -2,6 +2,7 @@ package com.codeup.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -57,6 +58,8 @@ public class Report {
     @JsonFormat(pattern = "mm-dd-yyyy")
     private Date dateEntered;
 
+    @Column(nullable = false)
+    @NotBlank
     @JsonFormat(pattern = "mm-dd-yyyy")
     private Date dateUpdated;
 
