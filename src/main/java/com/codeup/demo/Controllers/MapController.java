@@ -25,7 +25,7 @@ public class MapController {
 
     @GetMapping("/map")
     public String showMapPage(Model model){
-        System.out.println("speaachless: "+ enviromentSvc.getMapboxKey());
+//        System.out.println("speaachless: "+ enviromentSvc.getMapboxKey());
         return "map/index";
     }
 

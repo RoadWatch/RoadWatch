@@ -1,7 +1,9 @@
 "use strict";
 
 // mapboxgl.accessToken = mapboxToken;
+let key = document.querySelector("#apiKey").textContent
 mapboxgl.accessToken= document.querySelector("#apiKey").textContent
+console.log("Key: ", key)
 
 var lowWaterPoints = [
     {
@@ -1754,52 +1756,13 @@ for (let i = 0; i < lowWaterPoints[0].features.length - 1; i++) {
     points.push(lowWaterPoints[0].features[i]);
 }
 
-// for (let i = 0; i < points.length - 1 && i < 9; i++) {
-//     const temp = points[i].geometry.coordinates;
-//     // console.log(temp[0]);
-//     // console.log(temp[1]);
-//
-//     geocode(temp, mapboxToken).then(function (cords) {
-//         var pops = new mapboxgl.Popup()
-//             .setLngLat(cords)
-//             .setHTML("<em><h2>"+points[i].properties.Name+"</em></h2>")
-//             .addTo(map);
-//         var marker = new mapboxgl.Marker(markerOptions)
-//             .setLngLat(cords)
-//             .setPopup(pops)
-//             .togglePopup()
-//             .addTo(map);
-//         console.log(points[i].properties.Name);
-//     });
-//     function geocode(search, token) {
-//         var baseUrl = 'https://api.mapbox.com';
-//         var endPoint = '/geocoding/v5/mapbox.places/';
-//         return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-//             .then(function(res) {
-//                 return res.json();
-//                 // to get all the data from the request, comment out the following three lines...
-//             })
-//             .then(function(data) {
-//                 return data.features[0].center;
-//             });
-//     }
-//
-//     $("button").click(function () {
-//         var userInput = $("input").val();
-//         console.log(userInput);
-//         geocode(userInput, mapboxToken)
-//             .then(function (result) {
-//                 marker.setLngLat(result);
-//                 map.flyTo({center: result});
-//             });
-//     });
-// }
 
+for (let i = 0; i < points.length - 1 && i < 9; i++) {
+    const temp = points[i].geometry.coordinates;
+    // console.log(temp[0]);
+    // console.log(temp[1]);
 
-for (let i = 0; i < userReports.length - 1 && i < 9; i++) {
-    const cord = [userReports.longitude, userReports.latitude];
-
-    geocode(cord, mapboxToken).then(function (cords) {
+    geocode(temp, mapboxToken).then(function (cords) {
         var pops = new mapboxgl.Popup()
             .setLngLat(cords)
             .setHTML("<em><h2>"+points[i].properties.Name+"</em></h2>")
@@ -1834,6 +1797,48 @@ for (let i = 0; i < userReports.length - 1 && i < 9; i++) {
             });
     });
 }
+//! USER REPORTS
+// for (let i = 0; i < userReports.length - 1 && i < 9; i++) {
+//     const cord = [userReports.longitude, userReports.latitude];
+//
+//     geocode(cord, mapboxToken).then(function (cords) {
+//         var pops = new mapboxgl.Popup()
+//             .setLngLat(cords)
+//             .setHTML("<em><h2>"+points[i].properties.Name+"</em></h2>")
+//             .addTo(map);
+//         var marker = new mapboxgl.Marker(markerOptions)
+//             .setLngLat(cords)
+//             .setPopup(pops)
+//             .togglePopup()
+//             .addTo(map);
+//         console.log(points[i].properties.Name);
+//     });
+// //!
+//     function geocode(search, token) {
+//         var baseUrl = 'https://api.mapbox.com';
+//         var endPoint = '/geocoding/v5/mapbox.places/';
+//         return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+//             .then(function(res) {
+//                 return res.json();
+//                 // to get all the data from the request, comment out the following three lines...
+//             })
+//             .then(function(data) {
+//                 return data.features[0].center;
+//             });
+//     }
+//
+//     $("button").click(function () {
+//         var userInput = $("input").val();
+//         console.log(userInput);
+//         geocode(userInput, mapboxToken)
+//             .then(function (result) {
+//                 marker.setLngLat(result);
+//                 map.flyTo({center: result});
+//             });
+//     })
+// }
+
+//!
 
 
 
