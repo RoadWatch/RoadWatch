@@ -11,7 +11,7 @@ select * from posts;
 
 describe posts;
 
-
+SELECT * FROM roadwatch_db.reports;
 
 ##----Chris' database (I know it's wrong but whatevs)
 drop database spring_blog;
