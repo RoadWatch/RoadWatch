@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+<script src="https://kit.fontawesome.com/ca2faa0508.js"></script>
 <nav th:include="partials/navbar :: nav"></nav>
 <div class="container">
 <h1>forum</h1>
@@ -43,9 +44,16 @@
                         Leave a comment
                         </button>
                         <div class="dropdown-menu">
-                            <form th:action="@{'/forum/comment/'+ ${post.id}}" method="post"
+                            <form th:action="@{'/forum/comment/'+ ${singlePost.id}}" method="post"
                             th:object="${comment}">
-                                <input type="text" th:field="*{body}">
+                                <small id="commentHelp" class="form-text text-muted">Add to the discussion
+                                </small>
+                                <input type="text" th:field="*{body}"
+                                class="form-control" id="comment">
+                                <button type="submit" class="btn">
+                                    <small>Post</small>
+                                    <i class="fas fa-coffee"></i>
+                                </button>
                             </form>
                             <th:block th:each="comment : ${singlePost.comments}">
                                 <a class="dropdown-item" href="#" th:text="${comment.body}">Action</a>

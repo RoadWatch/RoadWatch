@@ -12,21 +12,15 @@ public class Comment {
     private Long id;
 
     @Column(nullable = false)
-    private Long post_id;
-
-    @Column(nullable = false)
-    private Long user_id;
-
-    @Column(nullable = false)
     @NotBlank(message = "Body of comment is required")
     private String body;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "user_id",  updatable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "post_id", insertable = false, updatable = false)
+    @JoinColumn(name = "post_id", updatable = false)
     private Post post;
 
     public Post getPost() {
@@ -43,18 +37,15 @@ public class Comment {
         this.body = body;
         this.user = user;
         this.post = post;
-        this.user_id = this.user.getId();
-        this.post_id = this.post.getId();
+
     }
 
     public Comment(Long user_id, String text) {
-        this.user_id = user_id;
         this.body = text;
     }
 
     public Comment(Long id, Long user_id, String text) {
         this.id = id;
-        this.user_id = user_id;
         this.body = text;
     }
 
@@ -74,15 +65,14 @@ public class Comment {
         return id;
     }
 
-    public Long getPost_id() {
-        return post_id;
-    }
-
-    public Long getUser_id() {
-        return user_id;
-    }
-
     public String getBody() {
         return body;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setIdToNull(){
+        this.id = null;
     }
 }

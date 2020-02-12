@@ -29,14 +29,15 @@ public class ForumCommentController {
             @ModelAttribute Comment comment,
             @PathVariable long id
             ) throws PostException {
+        comment.setIdToNull();
         if(forumCommentSvc.isUserLoggedIn()){
             User user = forumCommentSvc.getAuthUser();
             Post post = forumPostDao.findById(id)
                     .orElseThrow(()-> new PostException());
             comment.setUser(user);
             comment.setPost(post);
-            post.addComment(comment);
             forumCommentDao.save(comment);
+            post.addComment(comment);
             return "redirect:/forum";
 
         }
