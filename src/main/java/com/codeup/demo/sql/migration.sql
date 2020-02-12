@@ -1,13 +1,14 @@
-drop database road_conditions;
+drop database road_watch;
 
 show databases;
-use road_conditions;
+use road_watch;
 show tables;
 
 describe users;
 select * from users;
 
 select * from posts;
+select * from comments;
 
 describe posts;
 
