@@ -27,20 +27,44 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         <p>Edit</p>
     </button>
-
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">User information</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit User information</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action=""></form>
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-5">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input type="text" id="firstName" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="firstName">Update first name</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input type="text" id="lastName" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="lastName">Update last name</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-tag prefix grey-text"></i>
+                            <input type="text" id="username" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="username">Update Username</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <input type="email" id="email" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="email">Update Your email</label>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"data-dismiss="modal">Close</button>
