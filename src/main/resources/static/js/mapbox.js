@@ -1,7 +1,7 @@
 "use strict";
 
 // mapboxgl.accessToken = mapboxToken;
-let key = document.querySelector("#apiKey").textContent
+let key = document.querySelector("#apiKey")
 mapboxgl.accessToken= document.querySelector("#apiKey").textContent
 console.log("Key: ", key)
 
