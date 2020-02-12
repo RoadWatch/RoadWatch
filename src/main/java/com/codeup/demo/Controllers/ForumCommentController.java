@@ -23,7 +23,7 @@ public class ForumCommentController {
         this.forumPostDao = forumPostDao;
     }
 
-    //!POST COMMENT
+    //!CREATE COMMENT
     @PostMapping("/forum/comment/{id}")
     public String postComment(
             @ModelAttribute Comment comment,
@@ -43,4 +43,19 @@ public class ForumCommentController {
         }
         return "redirect:/login";
     }
+
+    //! DELETE COMMENT
+    @PostMapping("/comment/delete/{id}")
+    public String deleteComment(
+            @PathVariable long id
+    ) throws PostException {
+        if(forumCommentSvc.isUserLoggedIn()){
+            Comment comment = forumCommentDao.findById(id)
+                    .orElseThrow(()-> new PostException());
+            forumCommentDao.delete(comment);
+            return "redirect:/forum";
+        }
+        return "redirect:/login";
+    }
+
 }
