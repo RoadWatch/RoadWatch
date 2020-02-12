@@ -25,7 +25,10 @@ public class MapController {
 
     @GetMapping("/map")
     public String showMapPage(Model model){
-//        System.out.println("speaachless: "+ enviromentSvc.getMapboxKey());
+        List<Report> userReports = reports.findAll();
+        if (!(userReports.size() <= 0 || userReports == null)) {
+            model.addAttribute("userReports", userReports);
+        }
         return "map/index";
     }
 

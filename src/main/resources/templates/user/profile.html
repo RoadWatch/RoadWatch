@@ -40,30 +40,31 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-body mx-3">
-                        <div class="md-form mb-5">
-                            <i class="fas fa-user prefix grey-text"></i>
-                            <input type="text" id="firstName" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="firstName">Update first name</label>
-                        </div>
+                        <form th:action="'/user/'+${user.getId()}+'/edit'" method="POST" th:object="User">
+                            <div class="md-form mb-5">
+                                <i class="fas fa-user prefix grey-text"></i>
+                                <input type="text" id="firstName" class="form-control validate" th:value="${user.firstName}">
+                                <label data-error="wrong" data-success="right" for="firstName">Update first name</label>
+                            </div>
 
-                        <div class="md-form mb-5">
-                            <i class="fas fa-user prefix grey-text"></i>
-                            <input type="text" id="lastName" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="lastName">Update last name</label>
-                        </div>
+                            <div class="md-form mb-5">
+                                <i class="fas fa-user prefix grey-text"></i>
+                                <input type="text" id="lastName" class="form-control validate" th:value="${user.lastName}">
+                                <label data-error="wrong" data-success="right" for="lastName">Update last name</label>
+                            </div>
 
-                        <div class="md-form mb-5">
-                            <i class="fas fa-tag prefix grey-text"></i>
-                            <input type="text" id="username" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="username">Update Username</label>
-                        </div>
+                            <div class="md-form mb-5">
+                                <i class="fas fa-tag prefix grey-text"></i>
+                                <input type="text" id="username" class="form-control validate" th:value="${user.username}">
+                                <label data-error="wrong" data-success="right" for="username">Update Username</label>
+                            </div>
 
-                        <div class="md-form mb-5">
-                            <i class="fas fa-envelope prefix grey-text"></i>
-                            <input type="email" id="email" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="email">Update Your email</label>
-                        </div>
-
+                            <div class="md-form mb-5">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <input type="email" id="email" class="form-control validate" th:value="${user.email}">
+                                <label data-error="wrong" data-success="right" for="email">Update Your email</label>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="modal-footer">
