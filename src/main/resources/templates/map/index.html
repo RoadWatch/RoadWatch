@@ -10,7 +10,8 @@
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
-
+    <meta name="apiKey" th:content="${@environment.getProperty('app.token')}" id="apiKey"/>
+<!--    <meta name="apiKey" th:content="${}">-->
     <style>
         #map {
             position: center;

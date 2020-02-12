@@ -1,6 +1,7 @@
 "use strict";
 
-mapboxgl.accessToken = mapboxToken;
+// mapboxgl.accessToken = mapboxToken;
+mapboxgl.accessToken= document.querySelector("#apiKey").textContent
 
 var lowWaterPoints = [
     {

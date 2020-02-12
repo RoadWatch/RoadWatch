@@ -6,19 +6,23 @@ import javax.security.auth.callback.Callback;
 
 public class SearchSvc {
     private String query;
+    private String token;
 
-    public SearchSvc(String query) {
+    public SearchSvc(String query, String token) {
         this.query = query;
+        this.token = token;
+    }
+    public void executeSearch(){
+        MapboxGeocoding mapboxGeocoding =
+                MapboxGeocoding.builder()
+                        .accessToken(this.token)
+                        .query("codeup")
+                        .build();
+
+
     }
 
-//    String token = "pk.eyJ1IjoiYW1iZXJsb3Zlc2NhdHMxNCIsImEiOiJjazIyZ3J4b2wxdThhM2RsMmRxaGZxdWhzIn0" +
-//            ".uXec6Sexsl65YNbQ89Neng";
-//    MapboxGeocoding mapboxGeocoding =
-//            MapboxGeocoding.builder()
-//                    .accessToken()
-//                    .query("codeup")
-//                    .build();
-
-//    mapbo
-//    client.enqueue(new Callback<GeocoderResponse>)
 }
+
+
+
