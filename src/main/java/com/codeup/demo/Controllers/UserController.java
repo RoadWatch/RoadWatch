@@ -28,8 +28,10 @@ public class UserController {
             @PathVariable long id,
             Model model
     ) throws UserException {
+        System.out.println("ID: "+id);
         User user = userDao.findById(id)
                 .orElseThrow(()-> new UserException());
+        System.out.println(user.getFirstName());
         model.addAttribute("user", user);
         return "user/profile";
     }
@@ -65,7 +67,7 @@ public class UserController {
     @PostMapping("/user/{id}/edit")
     public String editUserProfile(
             @PathVariable long id,
-            @ModelAttribute User user
+            @ModelAttribute(name = "") User user
     ){
         userDao.save(user);
         return "redirect:/user/"+user.getId();

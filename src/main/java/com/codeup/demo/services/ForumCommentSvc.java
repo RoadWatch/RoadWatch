@@ -1,24 +1,22 @@
 package com.codeup.demo.services;
 
-import com.codeup.demo.Repos.ForumPost;
+import com.codeup.demo.Repos.ForumComment;
+import com.codeup.demo.models.Comment;
 import com.codeup.demo.models.Post;
 import com.codeup.demo.models.User;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Service
-public class ForumPostSvc {
-    private ForumPost postDao;
+public class ForumCommentSvc {
     private UserSvc userSvc;
+    private ForumComment commentDao;
 
-    public ForumPostSvc(ForumPost postDao, UserSvc userSvc) {
-        this.postDao = postDao;
+    public ForumCommentSvc(UserSvc userSvc, ForumComment commentDao) {
         this.userSvc = userSvc;
+        this.commentDao = commentDao;
     }
 
     public boolean isUserLoggedIn(){
@@ -37,12 +35,13 @@ public class ForumPostSvc {
         return userSvc.checkIfCurrentUserMatchesParam(authUser,paramUser);
     }
 
-    public List<Post> getReverseListOfPosts(){
-        List<Post> all = postDao.findAll();
-        List<Post> reverse = new ArrayList<>();
+    public List<Comment> getReverseListOfComments(){
+        List<Comment> all = commentDao.findAll();
+        List<Comment> reverse = new ArrayList<>();
         for (int i = all.size()-1; i >= 0 ; i--) {
             reverse.add(all.get(i));
         }
         return reverse;
     }
+
 }

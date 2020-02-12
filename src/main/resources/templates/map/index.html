@@ -1,25 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+
+
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
+    <meta name="apiKey" th:content="${@environment.getProperty('app.token')}" id="apiKey"/>
+<!--    <meta name="apiKey" th:content="${}">-->
     <style>
         #map {
-            width: 100%;
-            height: 100%;
+            position: center;
+            width: 800px;
+            height: 400px;
+            z-index: 1000;
         }
     </style>
-    <script src="js/jquery-2.2.4.js"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-    <head th:include="partials/header :: head">
-    </head>
+    <div th:replace="partials/header :: head"></div>
+</head>
 <body>
-<nav th:include="partials/navbar :: nav"></nav>
-<h1>Maps</h1>
-<div class="button"><input type="text" placeholder="Where to?"><button type="submit">Search</button></div>
-<div id="map">
-    <script src="js/keys.js"></script>
-    <script src="js/mapbox.js"></script>
+<div>
+    <nav th:include="partials/navbar :: nav"></nav>
 </div>
+<h1>Maps</h1>
+<div class="button">
+    <th:block sec:authorize="isAuthenticated()">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#report">
+            Make a report
+        </button>
+    
+        <!-- Modal -->
+        <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Report an incident</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{'/report/add'}" method="post">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <small id="emailHelp" class="form-text text-muted">Address, area or zipcod</small>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+    <input type="text" placeholder="Where to?">
+    <button type="submit">Search</button>
+</div>
+<!--MAPBOX ID-->
+<div id="map"></div>
+
+<script src="/js/jquery-2.2.4.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="/js/keys.js"></script>
+<script src="/js/mapbox.js"></script>
+
 </body>
 </html>

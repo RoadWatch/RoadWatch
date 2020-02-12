@@ -20,6 +20,12 @@
     </properties>
 
     <dependencies>
+<!--        GEOCODE-->
+        <dependency>
+            <groupId>com.mapbox.mapboxsdk</groupId>
+            <artifactId>mapbox-sdk-services</artifactId>
+            <version>5.0.0</version>
+        </dependency>
         <!--		testing-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
