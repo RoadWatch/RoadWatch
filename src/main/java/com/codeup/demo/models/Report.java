@@ -1,6 +1,8 @@
 package com.codeup.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,11 +40,13 @@ public class Report {
     private String latitude;
 
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Endorsement> endorsements;
 
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -51,6 +55,7 @@ public class Report {
             joinColumns = {@JoinColumn(name = "report_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
+    @JsonBackReference
     private List<Category> categories = new ArrayList<>();
 
     @Column(nullable = false)

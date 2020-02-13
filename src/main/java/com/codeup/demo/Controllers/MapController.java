@@ -29,18 +29,24 @@ public class MapController {
     }
 
 
-//    public MapController(Reports reportsDao) {
-//        this.reportsDao = reportsDao;
-//    }
+    @GetMapping("/map/json")
+    public @ResponseBody List<Report> mapJSON(){
+        return reportsDao.findAll();
+    }
 
     @GetMapping("/map")
-    public String showMapPage(Model model){
-        List<Report> userReports = reportsDao.findAll();
-        if (userReports != null) {
-            model.addAttribute("userReports", userReports);
-        }
+    public String showMapPage(){
         return "map/index";
     }
+
+//    @GetMapping("/map")
+//    public String showMapPage(Model model){
+//        List<Report> userReports = reportsDao.findAll();
+//        if (userReports != null) {
+//            model.addAttribute("userReports", userReports);
+//        }
+//        return "map/index";
+//    }
 
     @PostMapping("/report/add")
     public String addReport(
