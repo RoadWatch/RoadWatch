@@ -1755,44 +1755,43 @@ for (let i = 0; i < lowWaterPoints[0].features.length - 1; i++) {
     points.push(lowWaterPoints[0].features[i]);
 }
 
+for (let i = 0; i < points.length - 1 && i < 9; i++) {
+    const temp = points[i].geometry.coordinates;
+    geocode(temp, mapboxToken).then(function (cords) {
+        var pops = new mapboxgl.Popup()
+            .setLngLat(cords)
+            .setHTML("<em><h2>"+points[i].properties.Name+"</em></h2>")
+            .addTo(map);
+        var marker = new mapboxgl.Marker(markerOptions)
+            .setLngLat(cords)
+            .setPopup(pops)
+            .togglePopup()
+            .addTo(map);
+        console.log(points[i].properties.Name);
+    });
+    function geocode(search, token) {
+        var baseUrl = 'https://api.mapbox.com';
+        var endPoint = '/geocoding/v5/mapbox.places/';
+        return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+            .then(function(res) {
+                return res.json();
+                // to get all the data from the request, comment out the following three lines...
+            })
+            .then(function(data) {
+                return data.features[0].center;
+            });
+    }
 
-// for (let i = 0; i < points.length - 1 && i < 9; i++) {
-//     const temp = points[i].geometry.coordinates;
-//     geocode(temp, mapboxToken).then(function (cords) {
-//         var pops = new mapboxgl.Popup()
-//             .setLngLat(cords)
-//             .setHTML("<em><h2>"+points[i].properties.Name+"</em></h2>")
-//             .addTo(map);
-//         var marker = new mapboxgl.Marker(markerOptions)
-//             .setLngLat(cords)
-//             .setPopup(pops)
-//             .togglePopup()
-//             .addTo(map);
-//         console.log(points[i].properties.Name);
-//     });
-//     function geocode(search, token) {
-//         var baseUrl = 'https://api.mapbox.com';
-//         var endPoint = '/geocoding/v5/mapbox.places/';
-//         return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-//             .then(function(res) {
-//                 return res.json();
-//                 // to get all the data from the request, comment out the following three lines...
-//             })
-//             .then(function(data) {
-//                 return data.features[0].center;
-//             });
-//     }
-//
-//     $("button").click(function () {
-//         var userInput = $("input").val();
-//         console.log(userInput);
-//         geocode(userInput, mapboxToken)
-//             .then(function (result) {
-//                 marker.setLngLat(result);
-//                 map.flyTo({center: result});
-//             });
-//     });
-// }
+    $("button").click(function () {
+        var userInput = $("input").val();
+        console.log(userInput);
+        geocode(userInput, mapboxToken)
+            .then(function (result) {
+                marker.setLngLat(result);
+                map.flyTo({center: result});
+            });
+    });
+}
 
 //! USER REPORTS
 let userReports;
@@ -1836,46 +1835,3 @@ request.done(function (reports) {
         })
     }
 });
-
-
-// if (userReports.length <= 0) {
-//     for (let i = 0; i < userReports.length - 1 && i < 9; i++) {
-//         const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
-//
-//         geocode(cord, mapboxToken).then(function (cords) {
-//             var pops = new mapboxgl.Popup()
-//                 .setLngLat(cords)
-//                 .setHTML("<em><h2>" + userReports[i].description + "</em></h2>")
-//                 .addTo(map);
-//             var marker = new mapboxgl.Marker(markerOptions)
-//                 .setLngLat(cords)
-//                 .setPopup(pops)
-//                 .togglePopup()
-//                 .addTo(map);
-//             console.log(userReports[i].description);
-//         });
-//
-//         function geocode(search, token) {
-//             var baseUrl = 'https://api.mapbox.com';
-//             var endPoint = '/geocoding/v5/mapbox.places/';
-//             return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-//                 .then(function (res) {
-//                     return res.json();
-//                     // to get all the data from the request, comment out the following three lines...
-//                 })
-//                 .then(function (data) {
-//                     return data.features[0].center;
-//                 });
-//         }
-//
-//         $("button").click(function () {
-//             var userInput = $("input").val();
-//             console.log(userInput);
-//             geocode(userInput, mapboxToken)
-//                 .then(function (result) {
-//                     marker.setLngLat(result);
-//                     map.flyTo({center: result});
-//                 });
-//         })
-//     }
-// }
