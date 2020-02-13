@@ -49,8 +49,9 @@
                     <div class="modal-body">
                         <form th:action="@{'/report/add'}" method="post">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <label for="query">Email address</label>
+                                <input type="text" class="form-control" id="query"
+                                name="query">
                                 <small id="emailHelp" class="form-text text-muted">Address, area or zipcod</small>
                             </div>
                         </form>

@@ -12,17 +12,14 @@ import retrofit2.Response;
 import java.util.List;
 @Service
 public class SearchSvc {
-    private String query;
-    private String token;
 
-    public SearchSvc(String query, String token) {
-        this.query = query;
-        this.token = token;
-    }
-    public void executeSearch(){
+    public SearchSvc() {}
+    public void executeSearch(
+            String query, String token
+    ){
         MapboxGeocoding mapboxGeocoding =
                 MapboxGeocoding.builder()
-                        .accessToken(this.token)
+                        .accessToken(token)
                         .query("codeup")
                         .build();
         mapboxGeocoding.enqueueCall(new Callback<GeocodingResponse>() {
@@ -30,8 +27,10 @@ public class SearchSvc {
             public void onResponse(Call<GeocodingResponse> call, Response<GeocodingResponse> response) {
                 List<CarmenFeature> results = response.body().features();
                 if(results.size() > 0){
-                    Point center = results.get(0).center();
-                    System.out.println("CENTER"+center);
+                    List<Double> center = results.get(0).center().coordinates();
+                    Double firstPoint = center.get(0);
+                    System.out.println("FIRSTPOINT"+firstPoint);
+
                 }
             }
 
