@@ -23,9 +23,14 @@ public class MapController {
         this.reportsDao = reportsDao;
     }
 
+
+//    public MapController(Reports reportsDao) {
+//        this.reportsDao = reportsDao;
+//    }
+
     @GetMapping("/map")
     public String showMapPage(Model model){
-        List<Report> userReports = reports.findAll();
+        List<Report> userReports = reportsDao.findAll();
         if (!(userReports.size() <= 0 || userReports == null)) {
             model.addAttribute("userReports", userReports);
         }
