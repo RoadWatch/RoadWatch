@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
 //                allows anyone to see home and ads
                 .authorizeRequests()
-                .antMatchers("/", "/map")
+                .antMatchers("/", "/map", "user/{id}/edit")
                 .permitAll()
                 .and()
 //                protected routes

@@ -38,11 +38,11 @@
                     </div>
                     <div class="modal-body">
                         <div class="modal-body mx-3">
-                            <form th:action="${'/user/' +  user.id + '/edit'}" method="POST">
+                            <form th:action="${'/user/' +  user.id +'/edit'}" th:method="POST" th:object="${user}">
                                 <div class="md-form mb-5">
                                     <i class="fas fa-user prefix grey-text"></i>
                                     <input type="text" id="firstName" class="form-control validate"
-                                           th:value="${user.firstName}" th:name="firstName">
+                                           th:value="${user.firstName}" th:field="*{firstName}">
                                     <label data-error="wrong" data-success="right" for="firstName">Update first
                                         name</label>
                                 </div>
@@ -50,7 +50,7 @@
                                 <div class="md-form mb-5">
                                     <i class="fas fa-user prefix grey-text"></i>
                                     <input type="text" id="lastName" class="form-control validate"
-                                           th:value="${user.lastName}" th:name="lastName">
+                                           th:value="${user.lastName}" th:field="*{lastName}">
                                     <label data-error="wrong" data-success="right" for="lastName">Update last
                                         name</label>
                                 </div>
@@ -58,7 +58,7 @@
                                 <div class="md-form mb-5">
                                     <i class="fas fa-tag prefix grey-text"></i>
                                     <input type="text" id="username" class="form-control validate"
-                                           th:value="${user.username}" th:name="username">
+                                           th:value="${user.username}" th:field="*{username}">
                                     <label data-error="wrong" data-success="right" for="username">Update
                                         Username</label>
                                 </div>
@@ -66,16 +66,25 @@
                                 <div class="md-form mb-5">
                                     <i class="fas fa-envelope prefix grey-text"></i>
                                     <input type="email" id="email" class="form-control validate"
-                                           th:value="${user.email}" th:name="email">
+                                           th:value="${user.email}" th:field="*{email}">
                                     <label data-error="wrong" data-success="right" for="email">Update Your email</label>
+                                </div>
+
+                                <div class="md-form mb-5">
+                                    <i class="prefix grey-text"></i>
+                                    <input type="hidden" id="password" class="form-control validate"
+                                           th:value="${user.getPassword()}" th:field="*{password}">
+                                    <label data-error="wrong" data-success="right" for="password"></label>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="sumbit" class="btn btn-primary">Save changes</button>
-                    </div>
+
                 </div>
             </div>
 

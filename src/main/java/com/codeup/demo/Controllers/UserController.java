@@ -56,23 +56,24 @@ public class UserController {
 
     //! EDIT USER PROFILE
 
+    @GetMapping("/user/{id}/edit")
+    public String editUserInfo(Model model, @PathVariable long id){
+        model.addAttribute("user", new User());
+        return "/user/{id}/edit";
+    }
+
     @PostMapping("/user/{id}/edit")
     public String editUserProfile(
             @PathVariable long id,
-            Model model,
-            @RequestParam (name = "firstName") String firstName,
-            @RequestParam (name = "lastName") String lastName,
-            @RequestParam (name = "username") String username,
-            @RequestParam (name = "email") String email,
-            @ModelAttribute(name = "") User user
+            @ModelAttribute User user
     ){
         if(userSvc.isUserLoggedIn()){
-        User user1 = userSvc.getAuthUser();
-        user1.setFirstName("firstName");
-        user1.setLastName("LastName");
-        user1.setUsername("username");
-        user1.setEmail("email");
-        userDao.save(user1);
+            //User user = new User();
+            //user.setPassword(userSvc.getAuthUser().getPassword());
+            System.out.println(userSvc.getAuthUser().getPassword());
+            System.out.println(user.getId());
+//            userSvc.getAuthUser().getPassword();
+            userDao.save(user);
         return "redirect:/user/"+user.getId();
         }
         return "redirect:/login";
