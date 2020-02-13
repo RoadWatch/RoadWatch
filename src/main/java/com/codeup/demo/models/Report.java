@@ -71,6 +71,14 @@ public class Report {
 
     public Report() {
     }
+    //! This constructor is used for creating a report in the geocode
+    public Report(
+            int waterInches,
+            String description
+    ){
+        this.waterInches = waterInches;
+        this.description = description;
+    }
 
     public Report(
             int zipcode,
@@ -204,5 +212,27 @@ public class Report {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public void addCategory(Category category){
+        categories.add(category);
+        System.out.println("category added");
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "id=" + id +
+                ", zipcode=" + zipcode +
+                ", waterInches=" + waterInches +
+                ", description='" + description + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", endorsements=" + endorsements +
+                ", user=" + user +
+                ", categories=" + categories +
+                ", dateEntered=" + dateEntered +
+                ", dateUpdated=" + dateUpdated +
+                '}';
     }
 }

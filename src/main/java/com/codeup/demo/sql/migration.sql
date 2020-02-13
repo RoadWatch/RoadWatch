@@ -29,8 +29,13 @@ show tables;
 select * from users;
 
 describe categories;
+insert into categories (name)
+values
+       ('Construction'),('Animals'), ('Highway'), ('Residential');
 
+
+select * from categories;
 describe reports;
-
+select * from reports;
 
 ##----
