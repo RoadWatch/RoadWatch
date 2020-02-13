@@ -75,8 +75,9 @@ public class GeocodeSvc {
         report.setLongitude(lng.toString());
         report.setLatitude(lat.toString());
         report.setUser(user);
-        System.out.println(report.toString());
         reportsDao.save(report);
+        System.out.println(report.toString());
+        System.out.println(report.getUser().getFirstName());
     }
 
     private boolean checkIfZipcodeIsDigits(String zipcode){

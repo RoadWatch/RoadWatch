@@ -19,7 +19,6 @@ public class Report {
     private long id;
 
     @Column(nullable = false)
-    @NotBlank(message = "Zipcode is required")
     private int zipcode;
 
     @Column(name = "water_inches")
@@ -54,12 +53,10 @@ public class Report {
     private List<Category> categories = new ArrayList<>();
 
     @Column(nullable = false)
-    @NotBlank
     @JsonFormat(pattern = "mm-dd-yyyy")
     private Date dateEntered;
 
-    @Column(nullable = false)
-    @NotBlank
+    @Column()
     @JsonFormat(pattern = "mm-dd-yyyy")
     private Date dateUpdated;
 
@@ -73,6 +70,7 @@ public class Report {
     ){
         this.waterInches = waterInches;
         this.description = description;
+        this.dateEntered = new Date();
     }
 
     public Report(
@@ -90,6 +88,7 @@ public class Report {
         this.latitude = latitude;
         this.description = description;
         this.user = user;
+        this.dateEntered = new Date();
     }
 
     public Report(
@@ -108,6 +107,7 @@ public class Report {
         this.latitude = latitude;
         this.description = description;
         this.user = user;
+        this.dateEntered = new Date();
     }
 
 
@@ -213,6 +213,8 @@ public class Report {
         categories.add(category);
         System.out.println("category added");
     }
+
+
 
     @Override
     public String toString() {

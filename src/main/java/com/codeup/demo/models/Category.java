@@ -52,5 +52,7 @@ public class Category {
     public void setReports(List<Report> reports) {
         this.reports = reports;
     }
+
+
 }
 
