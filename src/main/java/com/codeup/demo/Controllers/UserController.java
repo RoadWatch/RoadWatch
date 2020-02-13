@@ -2,24 +2,26 @@ package com.codeup.demo.Controllers;
 
 import com.codeup.demo.Repos.Users;
 import com.codeup.demo.exception.UserException;
+import com.codeup.demo.models.Post;
 import com.codeup.demo.models.User;
+import com.codeup.demo.services.UserSvc;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
 
     private Users userDao;
     private PasswordEncoder passwordEncoder;
+    private UserSvc userSvc;
 
-    public UserController(Users userDao, PasswordEncoder passwordEncoder) {
+    public UserController(Users userDao, PasswordEncoder passwordEncoder, UserSvc userSvc) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.userSvc = userSvc;
     }
 
     //! USER PROFILE, get by id
@@ -53,24 +55,27 @@ public class UserController {
     }
 
     //! EDIT USER PROFILE
-    @GetMapping("/user/{id}/edit")
-    public String showEditUserPage(
-            @PathVariable long id,
-            Model model
-    ) throws UserException {
-        User user = userDao.findById(id)
-                .orElseThrow(()-> new UserException());
-        model.addAttribute("user", user);
-        return "user/edit";
-    }
 
     @PostMapping("/user/{id}/edit")
     public String editUserProfile(
             @PathVariable long id,
+            Model model,
+            @RequestParam (name = "firstName") String firstName,
+            @RequestParam (name = "lastName") String lastName,
+            @RequestParam (name = "username") String username,
+            @RequestParam (name = "email") String email,
             @ModelAttribute(name = "") User user
     ){
-        userDao.save(user);
+        if(userSvc.isUserLoggedIn()){
+        User user1 = userSvc.getAuthUser();
+        user1.setFirstName("firstName");
+        user1.setLastName("LastName");
+        user1.setUsername("username");
+        user1.setEmail("email");
+        userDao.save(user1);
         return "redirect:/user/"+user.getId();
+        }
+        return "redirect:/login";
     }
 
     //! DELETE USER
