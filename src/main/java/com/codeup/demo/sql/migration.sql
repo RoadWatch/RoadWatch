@@ -43,7 +43,6 @@ values
 select * from categories;
 describe reports;
 
-truncate table;
 select * from report_category;
 select * from reports;
 
