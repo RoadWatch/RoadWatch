@@ -39,13 +39,11 @@ public class Report {
     private String latitude;
 
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
-    @JsonBackReference
     private List<Endorsement> endorsements;
 
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -54,7 +52,6 @@ public class Report {
             joinColumns = {@JoinColumn(name = "report_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
-    @JsonBackReference
     private List<Category> categories = new ArrayList<>();
 
     @Column(nullable = false)
