@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,21 +35,14 @@ public class MapController {
     }
 
 
-//    public MapController(Reports reportsDao) {
-//        this.reportsDao = reportsDao;
-//    }
+    @GetMapping("/map/json")
+    public @ResponseBody
+    List<Report> mapJSON(){
+        return reportsDao.findAll();
+    }
 
     @GetMapping("/map")
-    public String showMapPage(Model model){
-
-        List<Category> categories = categoriesDao.findAll();
-        model.addAttribute("categories", categories);
-
-        List<Report> userReports = reportsDao.findAll();
-        if (userReports != null) {
-            model.addAttribute("userReports", userReports);
-        }
-
+    public String showMapPage(){
         return "map/index";
     }
 

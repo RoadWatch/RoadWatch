@@ -1,5 +1,7 @@
 package com.codeup.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Category {
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
+    @JsonManagedReference
     private List<Report> reports;
 
     public Category(){}

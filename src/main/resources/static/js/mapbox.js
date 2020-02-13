@@ -1755,12 +1755,8 @@ for (let i = 0; i < lowWaterPoints[0].features.length - 1; i++) {
     points.push(lowWaterPoints[0].features[i]);
 }
 
-
 for (let i = 0; i < points.length - 1 && i < 9; i++) {
     const temp = points[i].geometry.coordinates;
-    // console.log(temp[0]);
-    // console.log(temp[1]);
-
     geocode(temp, mapboxToken).then(function (cords) {
         var pops = new mapboxgl.Popup()
             .setLngLat(cords)
@@ -1796,24 +1792,26 @@ for (let i = 0; i < points.length - 1 && i < 9; i++) {
             });
     });
 }
-//! USER REPORTS
-if (userReports !== null || userReports.length <= 0) {
-    for (let i = 0; i < userReports.length - 1 && i < 9; i++) {
-        const cord = [userReports.longitude, userReports.latitude];
 
+//! USER REPORTS
+let userReports;
+var request = $.ajax({'url': '/map/json'});
+request.done(function (reports) {
+    userReports = reports;
+    for (let i = 0; i < userReports.length && i < 9; i++) {
+        const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
         geocode(cord, mapboxToken).then(function (cords) {
             var pops = new mapboxgl.Popup()
                 .setLngLat(cords)
-                .setHTML("<em><h2>" + points[i].properties.Name + "</em></h2>")
+                .setHTML("<em><h2>" + userReports[i].description + "</em></h2>")
                 .addTo(map);
             var marker = new mapboxgl.Marker(markerOptions)
                 .setLngLat(cords)
                 .setPopup(pops)
                 .togglePopup()
                 .addTo(map);
-            console.log(points[i].properties.Name);
+            console.log(userReports[i].description);
         });
-
         function geocode(search, token) {
             var baseUrl = 'https://api.mapbox.com';
             var endPoint = '/geocoding/v5/mapbox.places/';
@@ -1826,7 +1824,6 @@ if (userReports !== null || userReports.length <= 0) {
                     return data.features[0].center;
                 });
         }
-
         $("button").click(function () {
             var userInput = $("input").val();
             console.log(userInput);
@@ -1837,4 +1834,4 @@ if (userReports !== null || userReports.length <= 0) {
                 });
         })
     }
-}
+});
