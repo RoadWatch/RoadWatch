@@ -29,6 +29,11 @@
 </div>
 <h1>Maps</h1>
 <div class="button">
+    <th:block sec:authorize="!isAuthenticated()">
+        <a href="/register" class="btn btn-primary">
+            Make a report
+        </a>
+    </th:block>
     <th:block sec:authorize="isAuthenticated()">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#report">
@@ -100,6 +105,25 @@
 </div>
 <!--MAPBOX ID-->
 <div id="map"></div>
+
+<!--BEGGINING OF CARDS-->
+<th:block th:each="report : ${reports}">
+    <div class="d-flex justify-content-around">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"
+                 th:text="${report.zipcode}">Card title</h5>
+                <p class="card-text" th:text="${report.description}">Some quick example text to build on the card title and make
+                    up the
+                    bulk of
+                    the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</th:block>
 
 <!--<script src="/js/jquery-2.2.4.js"></script>-->
 <script

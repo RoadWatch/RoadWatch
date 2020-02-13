@@ -55,7 +55,14 @@ public class MapController {
     @GetMapping("/map")
     public String showMapPage(Model model){
         List<Category> categories = categoriesDao.findAll();
+        List<Report> reports = reportsDao.findAll();
+
+        for (Report report : reports) {
+            System.out.println(report.getDateEntered());
+        }
+
         model.addAttribute("categories", categories);
+        model.addAttribute("reports", reports);
         return "map/index";
     }
 
