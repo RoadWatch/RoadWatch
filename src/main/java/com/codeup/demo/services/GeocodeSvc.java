@@ -1,6 +1,7 @@
 package com.codeup.demo.services;
 
 import com.codeup.demo.Repos.Reports;
+import com.codeup.demo.models.Category;
 import com.codeup.demo.models.Report;
 import com.codeup.demo.models.User;
 import com.mapbox.api.geocoding.v5.MapboxGeocoding;
@@ -45,8 +46,6 @@ public class GeocodeSvc {
                   List<Double> coordinates = results.get(0).center().coordinates();
                   String zipcode = response.body().features().get(0).context().get(1).text();
                   createReport(coordinates,zipcode, user, report);
-//                    System.out.println("Cords: "+coordinates.toString());
-//                    String carmen = response.body().features().get(0).toString();
                 }
             }
 
@@ -66,7 +65,6 @@ public class GeocodeSvc {
     ){
         int zipcode = checkIfZipcodeIsDigits(zip) ?
                 Integer.parseInt(zip) : 78205;
-        System.out.println("ziip: "+ zipcode);
         Double lng = coords.get(0);
         Double lat = coords.get(1);
 
@@ -74,10 +72,12 @@ public class GeocodeSvc {
         report.setZipcode(zipcode);
         report.setLongitude(lng.toString());
         report.setLatitude(lat.toString());
-        report.setUser(user);
+
+        List<Category> categories = report.getCategories();
+        for (Category category : categories) {
+            System.out.println(category.getName());
+        }
         reportsDao.save(report);
-        System.out.println(report.toString());
-        System.out.println(report.getUser().getFirstName());
     }
 
     private boolean checkIfZipcodeIsDigits(String zipcode){

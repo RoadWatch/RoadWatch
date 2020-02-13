@@ -13,6 +13,8 @@ select * from comments;
 describe posts;
 
 SELECT * FROM roadwatch_db.reports;
+select * from categories;
+truncate table categories;
 
 insert into categories (name)
 values ('Flooding'),
@@ -40,6 +42,9 @@ values
 
 select * from categories;
 describe reports;
+
+truncate table;
+select * from report_category;
 select * from reports;
 
 ##----
