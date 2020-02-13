@@ -66,14 +66,16 @@ public class GeocodeSvc {
     ){
         int zipcode = checkIfZipcodeIsDigits(zip) ?
                 Integer.parseInt(zip) : 78205;
+        System.out.println("ziip: "+ zipcode);
         Double lng = coords.get(0);
         Double lat = coords.get(1);
 
         //update report
         report.setZipcode(zipcode);
         report.setLongitude(lng.toString());
-        report.setLatitude(coords.get(1).toString());
+        report.setLatitude(lat.toString());
         report.setUser(user);
+        System.out.println(report.toString());
         reportsDao.save(report);
     }
 

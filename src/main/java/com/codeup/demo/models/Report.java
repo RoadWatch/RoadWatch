@@ -208,4 +208,26 @@ public class Report {
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
+
+    public void addCategory(Category category){
+        categories.add(category);
+        System.out.println("category added");
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "id=" + id +
+                ", zipcode=" + zipcode +
+                ", waterInches=" + waterInches +
+                ", description='" + description + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", endorsements=" + endorsements +
+                ", user=" + user +
+                ", categories=" + categories +
+                ", dateEntered=" + dateEntered +
+                ", dateUpdated=" + dateUpdated +
+                '}';
+    }
 }
