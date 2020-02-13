@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -40,17 +39,16 @@ public class MapController {
     @GetMapping("/map/json")
     public @ResponseBody List<Report> mapJSON(){
         List<Report> all = reportsDao.findAll();
-        return all;
-//        List<Report> temp = new ArrayList<>();
-//        Date date = new Date();
-//        long day = 1000 * 60 * 60 * 24;
-//        Date expire = new Date(date.getTime() - (2 * day));
-//        for (int i = 0; i < all.size(); i++) {
-//            if (all.get(i).getDateEntered().compareTo(expire) > 0){
-//                temp.add(all.get(i));
-//            }
-//        }
-//        return temp;
+        List<Report> temp = new ArrayList<>();
+        Date date = new Date();
+        long day = 1000 * 60 * 60 * 24;
+        Date expire = new Date(date.getTime() - (2 * day));
+        for (int i = 0; i < all.size(); i++) {
+            if (all.get(i).getDateEntered().compareTo(expire) > 0){
+                temp.add(all.get(i));
+            }
+        }
+        return temp;
     }
 
     @GetMapping("/map")
