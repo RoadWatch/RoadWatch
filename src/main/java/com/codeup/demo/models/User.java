@@ -1,5 +1,9 @@
 package com.codeup.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
@@ -21,6 +25,7 @@ public class User {
 
     @Column(nullable = false, length = 200)
     @NotBlank(message = "Password is required")
+    @JsonIgnore
     private String password;
 
     @Column(nullable = false, length = 50)
@@ -32,15 +37,19 @@ public class User {
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
     private List<Report> reports;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
     private List<Endorsement> endorsements;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
     private List<Post> posts;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
     private List<Post> comments;
 
 
