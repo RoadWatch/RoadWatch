@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -52,7 +53,9 @@ public class MapController {
     }
 
     @GetMapping("/map")
-    public String showMapPage(){
+    public String showMapPage(Model model){
+        List<Category> categories = categoriesDao.findAll();
+        model.addAttribute("categories", categories);
         return "map/index";
     }
 
@@ -68,14 +71,23 @@ public class MapController {
             Report report = new Report(waterLevel, description);
 
             //add categories to report
-            List<String> categoriesAsList = Arrays.asList(primitiveCategories);
-            List<Category> allCategories = categoriesDao.findAll();
-            for (int i = 0; i < allCategories.size(); i++) {
-                String name = allCategories.get(i).getName();
-                if(categoriesAsList.contains(name)){
-                    report.addCategory(allCategories.get(i));
+            List<Category> categories = categoriesDao.findAll();
+            List<String> primitive = Arrays.asList(primitiveCategories);
+            List<Category> join = new ArrayList<>();
+            for (int i = 0; i < categories.size(); i++) {
+                String catName = categories.get(i).getName();
+                if(primitive.contains(catName)){
+                    join.add(categories.get(i));
                 }
             }
+
+            report.setCategories(join);
+            report.setUser(user);
+
+            //!test
+            report.setLatitude("lattt");
+            report.setLongitude("longg");
+            reportsDao.save(report);
 
             String token = enviromentSvc.getMapboxKey();
             geocodeSvc.executeSearch(query, token, user, report);
@@ -86,5 +98,23 @@ public class MapController {
 
     }
 
+
+    @GetMapping("/test")
+    @ResponseBody
+    public String testing(){
+        Report report = new Report();
+        report.setWaterInches(0);
+        report.setDescription("test desc");
+        report.setZipcode(12345);
+        report.setLatitude("lat");
+        report.setLongitude("long");
+        report.setCategories(categoriesDao.findAll());
+
+        User user = userSvc.getAuthUser();
+        report.setUser(user);
+        reportsDao.save(report);
+        return "test";
+
+    }
 }
 
