@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EnviromentSvc {
 //    @Autowired
-//    private Environment env;
+    private Environment env;
 
     @Value("${app.token}")
     private String mapboxToken;

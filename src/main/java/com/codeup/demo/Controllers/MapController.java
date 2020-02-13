@@ -33,14 +33,22 @@ public class MapController {
         this.categoriesDao = categoriesDao;
     }
 
+
+//    public MapController(Reports reportsDao) {
+//        this.reportsDao = reportsDao;
+//    }
+
     @GetMapping("/map")
     public String showMapPage(Model model){
+
         List<Category> categories = categoriesDao.findAll();
         model.addAttribute("categories", categories);
-//        List<Report> userReports = reports.findAll();
-//        if (!(userReports.size() <= 0 || userReports == null)) {
-//            model.addAttribute("userReports", userReports);
-//        }
+
+        List<Report> userReports = reportsDao.findAll();
+        if (userReports != null) {
+            model.addAttribute("userReports", userReports);
+        }
+
         return "map/index";
     }
 
