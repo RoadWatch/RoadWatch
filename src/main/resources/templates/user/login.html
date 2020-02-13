@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:include="partials/header :: head">
+
     <meta charset="UTF-8">
     <title>login</title>
-</head>
 <body>
+<nav th:include="partials/navbar :: nav"></nav>
+
 <div th:if="${param.error}">
     <h2 class="red"> Invalid Username or Password</h2>
 </div>
-temporary login form to test security
+<!--temporary login form to test security-->
 
 <form th:action="@{/login}" method="post">
     <input type="text" name="username" placeholder="username">
