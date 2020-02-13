@@ -2,8 +2,7 @@
 
 // mapboxgl.accessToken = mapboxToken;
 let key = document.querySelector("#apiKey").content
-mapboxgl.accessToken= key
-console.log("Key: ", key)
+let mapboxToken = key
 
 var lowWaterPoints = [
     {
