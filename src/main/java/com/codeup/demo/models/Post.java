@@ -1,5 +1,8 @@
 package com.codeup.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -27,9 +30,11 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JsonManagedReference
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    @JsonBackReference
     private List<Comment> comments;
 
     public Post(){}
