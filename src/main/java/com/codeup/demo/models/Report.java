@@ -21,7 +21,6 @@ public class Report {
     private long id;
 
     @Column(nullable = false)
-    @NotBlank(message = "Zipcode is required")
     private int zipcode;
 
     @Column(name = "water_inches")
@@ -40,13 +39,11 @@ public class Report {
     private String latitude;
 
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
-    @JsonBackReference
     private List<Endorsement> endorsements;
 
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -55,16 +52,13 @@ public class Report {
             joinColumns = {@JoinColumn(name = "report_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
-    @JsonBackReference
     private List<Category> categories = new ArrayList<>();
 
     @Column(nullable = false)
-    @NotBlank
     @JsonFormat(pattern = "mm-dd-yyyy")
     private Date dateEntered;
 
-    @Column(nullable = false)
-    @NotBlank
+    @Column()
     @JsonFormat(pattern = "mm-dd-yyyy")
     private Date dateUpdated;
 
@@ -78,6 +72,7 @@ public class Report {
     ){
         this.waterInches = waterInches;
         this.description = description;
+        this.dateEntered = new Date();
     }
 
     public Report(
@@ -95,6 +90,7 @@ public class Report {
         this.latitude = latitude;
         this.description = description;
         this.user = user;
+        this.dateEntered = new Date();
     }
 
     public Report(
@@ -113,6 +109,7 @@ public class Report {
         this.latitude = latitude;
         this.description = description;
         this.user = user;
+        this.dateEntered = new Date();
     }
 
 
@@ -218,6 +215,8 @@ public class Report {
         categories.add(category);
         System.out.println("category added");
     }
+
+
 
     @Override
     public String toString() {

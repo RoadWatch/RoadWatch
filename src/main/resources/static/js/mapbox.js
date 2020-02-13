@@ -1719,7 +1719,8 @@ var lowWaterPoints = [
 
 
 // map centering on San antonio
-mapboxgl.accessToken = mapboxToken;
+mapboxgl.accessToken = key
+
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',

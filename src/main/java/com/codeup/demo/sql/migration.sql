@@ -15,10 +15,14 @@ describe posts;
 SELECT * FROM roadwatch_db.reports;
 
 insert into categories (name)
-values ('flooded'),
-       ('construction'),
-       ('obstruction'),
-       ('animal');
+values ('Flooding'),
+       ('Construction'),
+       ('Debris'),
+       ('Animals'),
+       ('Downtown'),
+       ('Highway'),
+       ('Residential'),
+       ('Rural');
 
 ##----Chris' database (I know it's wrong but whatevs)
 drop database spring_blog;

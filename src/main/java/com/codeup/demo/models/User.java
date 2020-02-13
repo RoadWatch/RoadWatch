@@ -56,6 +56,13 @@ public class User {
     public User() {
     }
 
+    public User(@NotBlank(message = "Username is required") String username, @NotBlank(message = "Email is required") String email, @NotBlank(message = "First name is required") String firstName, @NotBlank(message = "Last name is required") String lastName) {
+        this.username = username;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public User(
             String username,
             String email,
@@ -193,4 +200,6 @@ public class User {
     public void setComments(List<Post> comments) {
         this.comments = comments;
     }
+
+
 }
