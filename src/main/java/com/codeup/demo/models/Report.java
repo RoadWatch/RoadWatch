@@ -66,6 +66,14 @@ public class Report {
 
     public Report() {
     }
+    //! This constructor is used for creating a report in the geocode
+    public Report(
+            int waterInches,
+            String description
+    ){
+        this.waterInches = waterInches;
+        this.description = description;
+    }
 
     public Report(
             int zipcode,
