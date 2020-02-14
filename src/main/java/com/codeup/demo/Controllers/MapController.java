@@ -73,6 +73,12 @@ public class MapController {
     public String showMapPage(Model model){
         List<Category> categories = categoriesDao.findAll();
         List<Report> reports = reportsDao.findAll();
+
+        for (Report report : reports) {
+            System.out.println(report.getDateEntered());
+        }
+
+        model.addAttribute("categories", categories);
         List<Report> activeReports = new ArrayList<>();
         model.addAttribute("categories", categories);
         for (Report report : reports) {
@@ -85,6 +91,7 @@ public class MapController {
             }
             else activeReports.add(report);
         }
+
         model.addAttribute("reports", activeReports);
         return "map/index";
     }
@@ -113,6 +120,7 @@ public class MapController {
                 }
             }
 
+
             report.setCategories(join);
             report.setUser(user);
 
@@ -126,6 +134,7 @@ public class MapController {
             geocodeSvc.executeSearch(query, token, user, report);
 
             //! FILE FUNCTION
+            System.out.println("UPLOADED FILE: "+ uploadedFile);
             reportSvc.saveFile(uploadedFile, report);
             System.out.println("finished");
 

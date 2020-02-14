@@ -14,6 +14,7 @@
 
     <h1 id="navHead">BCRW</h1>
 
+    <hr id="navLine">
 
     <div class="navCenter">
 
@@ -21,9 +22,11 @@
             <img id="navLogo" src="images/tracking.png">
         </div>
 
-    <div id="navLinkCenter">
-      <ul class="nav justify-content-end">
 
+    <div id="navLinkCenter">
+
+      <ul class="nav">
+<!--          <ul class="nav justify-content-end">-->
         <li class="nav-item">
             <a class="nav-link active" href="/">Home</a>
         </li>
@@ -45,7 +48,7 @@
         <th:block sec:authorize="isAuthenticated()">
             <li class="nav-item">
                 <form th:action="@{/logout}" method="post">
-                    <button class="btn" type="submit">Logout</button>
+                    <button class="btn" type="submit" id="navLogout">Logout</button>
                 </form>
             </li>
         </th:block>
