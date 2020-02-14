@@ -38,9 +38,12 @@ public class Report {
     @NotBlank(message = "Latitude is required")
     private String latitude;
 
+    @Transient
+    private Integer rating;
+
+
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
     private List<Endorsement> endorsements = new ArrayList<>();
-
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -62,7 +65,6 @@ public class Report {
     @Column()
     @JsonFormat(pattern = "mm-dd-yyyy")
     private Date dateUpdated;
-
 
     public Report() {
     }
@@ -112,7 +114,6 @@ public class Report {
         this.user = user;
         this.dateEntered = new Date();
     }
-
 
     @PrePersist
     public void init(){
@@ -216,10 +217,33 @@ public class Report {
         categories.add(category);
         System.out.println("category added");
     }
-//    public void setIdToNull(){
-//        this.id = null;
-//    }
 
+    // Returns rating and if null will use makeRating() to generate one.
+    public int getRating(){
+        if (this.rating == null){
+            this.makeRating();
+        }
+        return this.getRating();
+    }
+
+    // Sets rating based on endorsements, returns 0 if null or no endorsements are available
+    private int makeRating(){
+        int rating = 0;
+        if (!(this.endorsements == null || this.endorsements.size() <= 0)) {
+            for (int i = 0; i < this.endorsements.size(); i++) {
+                rating += this.endorsements.get(i).getValue();
+            }
+        }
+        this.rating = rating;
+        return rating;
+    }
+
+    public void setRating(){
+        makeRating();
+    }
+    public void setRating(int n){
+        this.rating = n;
+    }
 
 
     @Override
