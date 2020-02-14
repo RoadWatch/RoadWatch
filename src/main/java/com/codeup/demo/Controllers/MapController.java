@@ -39,13 +39,16 @@ public class MapController {
     // DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
     @GetMapping("/map/json")
     public @ResponseBody List<Report> mapJSON(){
+        int daysOld = 2; /* expiration day on reports */
+        int downVoteMax = 2; /* amount of times a report has to be down-voted before it is no longer shown */
         List<Report> all = reportsDao.findAll();
         List<Report> temp = new ArrayList<>();
         Date date = new Date();
         long day = 1000 * 60 * 60 * 24;
-        Date expire = new Date(date.getTime() - (2 * day));
+        Date expire = new Date(date.getTime() - (daysOld * day));
+        // Filters reports out of what is shown to users
         for (int i = 0; i < all.size(); i++) {
-            if (all.get(i).getDateEntered().compareTo(expire) > 0){
+            if (all.get(i).getDateEntered().compareTo(expire) > 0 || all.get(i).getRating() > downVoteMax){
                 temp.add(all.get(i));
             }
         }
