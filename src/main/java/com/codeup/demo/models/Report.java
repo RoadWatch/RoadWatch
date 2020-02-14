@@ -41,6 +41,8 @@ public class Report {
     @Transient
     private Integer rating;
 
+    @Column(length = 200)
+    private String query;
 
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
     private List<Endorsement> endorsements = new ArrayList<>();
@@ -59,7 +61,7 @@ public class Report {
     private List<Category> categories = new ArrayList<>();
 
     @Column(nullable = false)
-    @JsonFormat(pattern = "mm-dd-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING ,pattern = "mm-dd-yyyy")
     private Date dateEntered;
 
     @Column()
@@ -244,7 +246,13 @@ public class Report {
     public void setRating(int n){
         this.rating = n;
     }
+    public String getQuery() {
+        return query;
+    }
 
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
     @Override
     public String toString() {
