@@ -47,7 +47,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form th:action="@{'/report/add'}" method="post">
+                        <form th:action="@{'/report/add'}" method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="file">Upload file</label>
+                                <input type="file" class="form-control" id="file"
+                                       name="file">
+                                <small id="fileHelp" class="form-text text-muted">Snap a photo of the incident</small>
+                            </div>
                             <div class="form-group">
                                 <label for="query">Location</label>
                                 <input type="text" class="form-control" id="query"
@@ -100,6 +107,11 @@
 </div>
 <!--MAPBOX ID-->
 <div id="map"></div>
+
+<!--//CARDS WITH REPORTS-->
+
+
+
 
 <!--<script src="/js/jquery-2.2.4.js"></script>-->
 <script
