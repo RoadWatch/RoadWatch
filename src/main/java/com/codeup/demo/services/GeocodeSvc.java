@@ -29,12 +29,14 @@ public class GeocodeSvc {
     public void executeSearch(
             String query, String token, User user, Report report
     ){
+// !       Center of map [-98.4936, 29.4241]
         List<Double> functionLevelCoordinates = new ArrayList<>();
         String functionLevelZipcode;
         MapboxGeocoding mapboxGeocoding =
                 MapboxGeocoding.builder()
                         .accessToken(token)
                         .query(query)
+                        .proximity(Point.fromLngLat(-98.4936,29.4241))
                         .build();
 
         mapboxGeocoding.enqueueCall(new Callback<GeocodingResponse>() {

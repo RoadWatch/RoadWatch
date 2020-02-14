@@ -55,7 +55,11 @@ public class MapController {
     @GetMapping("/map")
     public String showMapPage(Model model){
         List<Category> categories = categoriesDao.findAll();
+        List<Report> reports = reportsDao.findAll();
         model.addAttribute("categories", categories);
+        for (Report report : reports) {
+            System.out.println("date: "+ report.getDateEntered());
+        }
         return "map/index";
     }
 
@@ -85,6 +89,7 @@ public class MapController {
             report.setUser(user);
 
             //!test
+            report.setQuery(query);
             report.setLatitude("lattt");
             report.setLongitude("longg");
             reportsDao.save(report);
