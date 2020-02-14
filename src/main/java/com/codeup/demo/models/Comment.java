@@ -1,5 +1,7 @@
 package com.codeup.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -17,10 +19,12 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "user_id",  updatable = false)
+    @JsonManagedReference
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "post_id", updatable = false)
+    @JsonManagedReference
     private Post post;
 
     public Post getPost() {

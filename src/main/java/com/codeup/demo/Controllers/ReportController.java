@@ -64,5 +64,13 @@ public class ReportController {
         this.endorsementsDoa.save(endorsement);
         return "redirect:/report/{id}";
     }
+    @PostMapping(path = "/report/{id}/endorse/{val}")
+    public String endorse(Model model, @PathVariable String id, @PathVariable String value) throws UserException {
+        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Date date = new Date();
+        Endorsement endorsement = new Endorsement(Byte.parseByte(value), date, cUser, this.reportDoa.getOne(Long.parseLong(id)));
+        this.endorsementsDoa.save(endorsement);
+        return "redirect:/map";
+    }
 
 }

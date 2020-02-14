@@ -1,9 +1,8 @@
 "use strict";
 
 // mapboxgl.accessToken = mapboxToken;
-let key = document.querySelector("#apiKey")
-mapboxgl.accessToken= document.querySelector("#apiKey").textContent
-console.log("Key: ", key)
+let key = document.querySelector("#apiKey").content;
+// let mapboxToken = key;
 
 var lowWaterPoints = [
     {
@@ -1720,7 +1719,8 @@ var lowWaterPoints = [
 
 
 // map centering on San antonio
-mapboxgl.accessToken = mapboxToken;
+mapboxgl.accessToken = key
+
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
@@ -1731,6 +1731,10 @@ var map = new mapboxgl.Map({
 
 var markerOptions = {
     color: "#038f07",
+    draggable: false
+};
+var markerOptionsUser = {
+    color: "blue",
     draggable: false
 };
 
@@ -1756,12 +1760,8 @@ for (let i = 0; i < lowWaterPoints[0].features.length - 1; i++) {
     points.push(lowWaterPoints[0].features[i]);
 }
 
-
 for (let i = 0; i < points.length - 1 && i < 9; i++) {
     const temp = points[i].geometry.coordinates;
-    // console.log(temp[0]);
-    // console.log(temp[1]);
-
     geocode(temp, mapboxToken).then(function (cords) {
         var pops = new mapboxgl.Popup()
             .setLngLat(cords)
@@ -1797,85 +1797,49 @@ for (let i = 0; i < points.length - 1 && i < 9; i++) {
             });
     });
 }
+
 //! USER REPORTS
-// for (let i = 0; i < userReports.length - 1 && i < 9; i++) {
-//     const cord = [userReports.longitude, userReports.latitude];
-//
-//     geocode(cord, mapboxToken).then(function (cords) {
-//         var pops = new mapboxgl.Popup()
-//             .setLngLat(cords)
-//             .setHTML("<em><h2>"+points[i].properties.Name+"</em></h2>")
-//             .addTo(map);
-//         var marker = new mapboxgl.Marker(markerOptions)
-//             .setLngLat(cords)
-//             .setPopup(pops)
-//             .togglePopup()
-//             .addTo(map);
-//         console.log(points[i].properties.Name);
-//     });
-// //!
-//     function geocode(search, token) {
-//         var baseUrl = 'https://api.mapbox.com';
-//         var endPoint = '/geocoding/v5/mapbox.places/';
-//         return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-//             .then(function(res) {
-//                 return res.json();
-//                 // to get all the data from the request, comment out the following three lines...
-//             })
-//             .then(function(data) {
-//                 return data.features[0].center;
-//             });
-//     }
-//
-//     $("button").click(function () {
-//         var userInput = $("input").val();
-//         console.log(userInput);
-//         geocode(userInput, mapboxToken)
-//             .then(function (result) {
-//                 marker.setLngLat(result);
-//                 map.flyTo({center: result});
-//             });
-//     })
-// }
-
-//!
-
-
-
-// lowWaterPoints[0].features.forEach(function (point) {
-//     geocode(point.coordinates, mapboxToken).then(function (result) {
-//
-//         var pops = new mapboxgl.Popup()
-//             .setLngLat(result)
-//             .setHTML("<em><h2>"+point.properties.Name+"</em></h2>")
-//             .addTo(map);
-//         var marker = new mapboxgl.Marker(markerOptions)
-//             .setLngLat(result)
-//             .setPopup(pops)
-//             .togglePopup()
-//             .addTo(map);
-//         console.log(point.properties.Name);
-//     });
-//
-//     function geocode(search, token) {
-//         var baseUrl = 'https://api.mapbox.com';
-//         var endPoint = '/geocoding/v5/mapbox.places/';
-//         return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-//             .then(function(res) {
-//                 return res.json();
-//                 // to get all the data from the request, comment out the following three lines...
-//             }).then(function(data) {
-//                 return data.features[0].center;
-//             });
-//     }
-//
-//     $("button").click(function () {
-//         var userInput = $("input").val();
-//         console.log(userInput);
-//         geocode(userInput, mapboxToken)
-//             .then(function (result) {
-//                 marker.setLngLat(result);
-//                 map.flyTo({center: result});
-//             });
-//     });
-// });
+let userReports;
+var request = $.ajax({'url': '/map/json'});
+request.done(function (reports) {
+    userReports = reports;
+    for (let i = 0; i < userReports.length && i < 9; i++) {
+        const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
+        geocode(cord, mapboxToken).then(function (cords) {
+            const html = "<em><h2>" + userReports[i].description + "</em></h2>" +
+                "<form th:action='report/"+ userReports[i].id +"endorse/1'"+" method='post'><button type='submit'>Still there</button></form>" +
+                "<form th:action='report/"+ userReports[i].id +"endorse/-1'"+" method='post'><button type='submit'>Not there</button></form>";
+            var pops = new mapboxgl.Popup()
+                .setLngLat(cords)
+                .setHTML(html)
+                .addTo(map);
+            var marker = new mapboxgl.Marker(markerOptionsUser)
+                .setLngLat(cords)
+                .setPopup(pops)
+                .togglePopup()
+                .addTo(map);
+            console.log(userReports[i].description);
+        });
+        function geocode(search, token) {
+            var baseUrl = 'https://api.mapbox.com';
+            var endPoint = '/geocoding/v5/mapbox.places/';
+            return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                .then(function (res) {
+                    return res.json();
+                    // to get all the data from the request, comment out the following three lines...
+                })
+                .then(function (data) {
+                    return data.features[0].center;
+                });
+        }
+        $("button").click(function () {
+            var userInput = $("input").val();
+            console.log(userInput);
+            geocode(userInput, mapboxToken)
+                .then(function (result) {
+                    marker.setLngLat(result);
+                    map.flyTo({center: result});
+                });
+        })
+    }
+});

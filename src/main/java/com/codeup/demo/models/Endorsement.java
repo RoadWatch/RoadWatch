@@ -1,6 +1,7 @@
 package com.codeup.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.aspectj.lang.annotation.Before;
 
 import javax.persistence.*;
@@ -24,10 +25,12 @@ public class Endorsement {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "report_id")
+    @JsonManagedReference
     private Report report;
 
     public Endorsement() {

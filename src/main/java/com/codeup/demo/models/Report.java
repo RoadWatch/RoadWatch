@@ -1,6 +1,8 @@
 package com.codeup.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,7 +21,6 @@ public class Report {
     private long id;
 
     @Column(nullable = false)
-    @NotBlank(message = "Zipcode is required")
     private int zipcode;
 
     @Column(name = "water_inches")
@@ -37,34 +38,49 @@ public class Report {
     @NotBlank(message = "Latitude is required")
     private String latitude;
 
-    @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
-    private List<Endorsement> endorsements;
+    @Transient
+    private Integer rating;
 
+    @Column(length = 200)
+    private String query;
+
+    @Column(name = "file_path")
+    private String filePath;
+
+    @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
+    private List<Endorsement> endorsements = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "reportCategory",
             joinColumns = {@JoinColumn(name = "report_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
+    @JsonBackReference
     private List<Category> categories = new ArrayList<>();
 
     @Column(nullable = false)
-    @NotBlank
-    @JsonFormat(pattern = "mm-dd-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING ,pattern = "mm-dd-yyyy")
     private Date dateEntered;
 
-    @Column(nullable = false)
-    @NotBlank
+    @Column()
     @JsonFormat(pattern = "mm-dd-yyyy")
     private Date dateUpdated;
 
-
     public Report() {
+    }
+    //! This constructor is used for creating a report in the geocode
+    public Report(
+            int waterInches,
+            String description
+    ){
+        this.waterInches = waterInches;
+        this.description = description;
+        this.dateEntered = new Date();
     }
 
     public Report(
@@ -82,6 +98,7 @@ public class Report {
         this.latitude = latitude;
         this.description = description;
         this.user = user;
+        this.dateEntered = new Date();
     }
 
     public Report(
@@ -100,8 +117,8 @@ public class Report {
         this.latitude = latitude;
         this.description = description;
         this.user = user;
+        this.dateEntered = new Date();
     }
-
 
     @PrePersist
     public void init(){
@@ -199,5 +216,69 @@ public class Report {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public void addCategory(Category category){
+        categories.add(category);
+        System.out.println("category added");
+    }
+
+    // Returns rating and if null will use makeRating() to generate one.
+    public int getRating(){
+        if (this.rating == null){
+            return this.makeRating();
+        }
+        return this.getRating();
+    }
+
+    // Sets rating based on endorsements, returns 0 if null or no endorsements are available
+    private int makeRating(){
+        int rating = 0;
+        if ( !(this.endorsements == null || this.endorsements.size() == 0) ) {
+            for (int i = 0; i < this.endorsements.size(); i++) {
+                rating += this.endorsements.get(i).getValue();
+            }
+        }
+        this.rating = rating;
+        return rating;
+    }
+
+    public void setRating(){
+        makeRating();
+    }
+    public void setRating(int n) {
+        this.rating = n;
+    }
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "id=" + id +
+                ", zipcode=" + zipcode +
+                ", waterInches=" + waterInches +
+                ", description='" + description + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", endorsements=" + endorsements +
+                ", user=" + user +
+                ", categories=" + categories +
+                ", dateEntered=" + dateEntered +
+                ", dateUpdated=" + dateUpdated +
+                '}';
     }
 }

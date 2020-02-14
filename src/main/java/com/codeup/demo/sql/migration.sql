@@ -12,13 +12,23 @@ select * from comments;
 
 describe posts;
 
+
 SELECT * FROM road_watch.reports;
 
+SELECT * FROM roadwatch_db.reports;
+select * from categories;
+truncate table categories;
+
+
 insert into categories (name)
-values ('flooded'),
-       ('construction'),
-       ('obstruction'),
-       ('animal');
+values ('Flooding'),
+       ('Construction'),
+       ('Debris'),
+       ('Animals'),
+       ('Downtown'),
+       ('Highway'),
+       ('Residential'),
+       ('Rural');
 
 ##----Chris' database (I know it's wrong but whatevs)
 drop database spring_blog;
@@ -29,8 +39,15 @@ show tables;
 select * from users;
 
 describe categories;
+insert into categories (name)
+values
+       ('Construction'),('Animals'), ('Highway'), ('Residential');
 
+
+select * from categories;
 describe reports;
 
+select * from report_category;
+select * from reports;
 
 ##----

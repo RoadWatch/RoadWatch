@@ -7,16 +7,77 @@
 
 <body>
 <nav th:include="partials/navbar :: nav"></nav>
-
-this is a temporary register form, meant for testing spring security
-<form th:action="@{/register}" method="post" th:object="${user}">
-    <input type="text" th:field="*{firstName}" placeholder="First Name">
-    <input type="text" th:field="*{lastName}" placeholder="Last Name">
-    <input type="text" th:field="*{username}" placeholder="username">
-    <input type="email" th:field="*{email}" placeholder="email">
-    <input type="password" th:field="*{password}" placeholder="password">
-    <input type="submit">
-</form>
-
+<div class="container">
+<!--    <form th:action="@{/register}" method="post" th:object="${user}" class="text-center">-->
+<!--        <div class="form-content">-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="text" th:field="*{firstName}" class="form-control" placeholder="First Name *"-->
+<!--                               value=""/>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name *" value=""/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="text" th:field="*{username}" class="form-control" placeholder="Username *" value=""/>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="text" th:field="*{email}" class="form-control" placeholder="Email *" value=""/>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="text" th:field="*{password}" class="form-control" placeholder="Password *" value=""/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <input type="submit" class="btn btn-info">-->
+<!--        </div>-->
+<!--    </form>-->
+    <form th:action="@{/register}" method="post" th:object="${user}">
+        <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" th:field="*{firstName}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" th:field="*{lastName}" class="form-control" placeholder="Enter Last Name">
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" th:field="*{username}" class="form-control" placeholder="Enter Username">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" th:field="*{email}" class="form-control" placeholder="Enter Email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" th:field="*{password}" class="form-control" placeholder="Enter Password">
+        </div>
+        <input type="submit" class="btn btn-info">
+    </form>
+<!--    <div class="card" style="background-color: rgba(0,0,0,.1)">-->
+<!--        <div class="card-header">-->
+<!--            <h1 class="text-center">Register Here</h1>-->
+<!--            <div class="card-body">-->
+<!--                <form th:action="@{/register}" method="post" th:object="${user}" class="form-group text-center">-->
+<!--                    <input type="text" th:field="*{firstName}" placeholder="First Name" class="text-center"-->
+<!--                           style="width: 20em;"><br>-->
+<!--                    <input type="text" th:field="*{lastName}" placeholder="Last Name" class="text-center"-->
+<!--                           style="width: 20em;"><br>-->
+<!--                    <input type="text" th:field="*{username}" placeholder="username" class="text-center"-->
+<!--                           style="width: 20em;"><br>-->
+<!--                    <input type="email" th:field="*{email}" placeholder="email" class="text-center"-->
+<!--                           style="width: 20em;"><br>-->
+<!--                    <input type="password" th:field="*{password}" placeholder="password" class="text-center"-->
+<!--                           style="width: 20em;"><br>-->
+<!--                    <input type="submit" class="btn btn-info">-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
 </body>
 </html>

@@ -1,7 +1,10 @@
 package com.codeup.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +19,8 @@ public class Category {
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
-    private List<Report> reports;
+    @JsonManagedReference
+    private List<Report> reports = new ArrayList<>();
 
     public Category(){}
 
@@ -52,5 +56,12 @@ public class Category {
     public void setReports(List<Report> reports) {
         this.reports = reports;
     }
+
+    public void addReport(Report report){
+        reports.add(report);
+        System.out.println("Report added.");
+    }
+
+
 }
 
