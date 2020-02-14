@@ -25,34 +25,28 @@ public class ReportSvc {
         this.reportsDao = reportsDao;
     }
 
-    public void saveFile(
+    public boolean saveFile(
             MultipartFile uploadedFile,
             Report report
     ){
-        if(uploadedFile != null)
-            saveFileHelper(uploadedFile, report);
-        else             report.setFilePath("https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg");
-    }
-
-    public void saveFileHelper(
-            MultipartFile uploadedFile,
-            Report report
-    ){
+        boolean successfulUpload = true;
         String filename = uploadedFile.getOriginalFilename();
         String filepath = Paths.get(uploadPath, filename).toString();
         File destinationFile = new File(filepath);
-
+        System.out.println("FILE NAME: "+ filename);
+        System.out.println("FILE PATH: "+ filepath);
+        System.out.println("destination path: "+ destinationFile);
         try {
             uploadedFile.transferTo(destinationFile);
-            report.setFilePath(destinationFile.toString());
-            System.out.println("upload successful");
+            String pathWithImage = "images/"+filename;
+            System.out.println("SAVING PATH: "+pathWithImage);
+            report.setFilePath(pathWithImage);
 
         } catch(IOException ex) {
             System.out.printf("ERROR: %s\n", ex);
             System.out.println("File NOT uploaded");
-            System.out.println("upload fail");
+            successfulUpload = false;
         }
+        return successfulUpload;
     }
-
-
 }
