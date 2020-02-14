@@ -15,7 +15,7 @@ describe posts;
 
 SELECT * FROM road_watch.reports;
 
-SELECT * FROM roadwatch_db.reports;
+SELECT * FROM road_watch.reports;
 select * from categories;
 truncate table categories;
 
@@ -31,23 +31,23 @@ values ('Flooding'),
        ('Rural');
 
 ##----Chris' database (I know it's wrong but whatevs)
-drop database spring_blog;
-
-use spring_blog;
-show tables;
-
-select * from users;
-
-describe categories;
-insert into categories (name)
-values
-       ('Construction'),('Animals'), ('Highway'), ('Residential');
-
-
-select * from categories;
-describe reports;
-
-select * from report_category;
-select * from reports;
+# drop database spring_blog;
+#
+# use spring_blog;
+# show tables;
+#
+# select * from users;
+#
+# describe categories;
+# insert into categories (name)
+# values
+#        ('Construction'),('Animals'), ('Highway'), ('Residential');
+#
+#
+# select * from categories;
+# describe reports;
+#
+# select * from report_category;
+# select * from reports;
 
 ##----
