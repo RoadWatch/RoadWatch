@@ -58,19 +58,11 @@ public class ReportController {
     }
 
     @PostMapping(path = "/report/{id}/endorse")
-    public String endorse(Model model, @PathVariable String id, @RequestParam String value, @RequestParam Date date) throws UserException {
+    public String endorse(Model model, @PathVariable String id, @RequestParam String value, @RequestParam Date date){
         User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Endorsement endorsement = new Endorsement(Byte.parseByte(value), date, cUser, this.reportDoa.getOne(Long.parseLong(id)));
         this.endorsementsDoa.save(endorsement);
         return "redirect:/report/{id}";
-    }
-    @PostMapping(path = "/report/{id}/endorse/{val}")
-    public String endorse(Model model, @PathVariable String id, @PathVariable String value) throws UserException {
-        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Date date = new Date();
-        Endorsement endorsement = new Endorsement(Byte.parseByte(value), date, cUser, this.reportDoa.getOne(Long.parseLong(id)));
-        this.endorsementsDoa.save(endorsement);
-        return "redirect:/map";
     }
 
 }
