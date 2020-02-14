@@ -41,10 +41,10 @@ public class ReportSvc {
             String pathWithImage = "images/"+filename;
             System.out.println("SAVING PATH: "+pathWithImage);
             //! FOR DEV
-//            report.setFilePath(pathWithImage);
+            report.setFilePath(pathWithImage);
 
             //! FOR PRODUCTION
-            report.setFilePath(filepath);
+//            report.setFilePath(filepath);
 
         } catch(IOException ex) {
             System.out.printf("ERROR: %s\n", ex);
