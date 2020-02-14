@@ -7,16 +7,27 @@
 
 <body>
 <nav th:include="partials/navbar :: nav"></nav>
-
-this is a temporary register form, meant for testing spring security
-<form th:action="@{/register}" method="post" th:object="${user}">
-    <input type="text" th:field="*{firstName}" placeholder="First Name">
-    <input type="text" th:field="*{lastName}" placeholder="Last Name">
-    <input type="text" th:field="*{username}" placeholder="username">
-    <input type="email" th:field="*{email}" placeholder="email">
-    <input type="password" th:field="*{password}" placeholder="password">
-    <input type="submit">
-</form>
-
+<div class="container">
+    <div class="card" style="background-color: rgba(0,0,0,.1)">
+        <div class="card-header">
+            <h1 class="text-center">Register Here</h1>
+            <div class="card-body">
+                <form th:action="@{/register}" method="post" th:object="${user}" class="form-group text-center">
+                    <input type="text" th:field="*{firstName}" placeholder="First Name" class="text-center"
+                           style="width: 20em;"><br>
+                    <input type="text" th:field="*{lastName}" placeholder="Last Name" class="text-center"
+                           style="width: 20em;"><br>
+                    <input type="text" th:field="*{username}" placeholder="username" class="text-center"
+                           style="width: 20em;"><br>
+                    <input type="email" th:field="*{email}" placeholder="email" class="text-center"
+                           style="width: 20em;"><br>
+                    <input type="password" th:field="*{password}" placeholder="password" class="text-center"
+                           style="width: 20em;"><br>
+                    <input type="submit" class="btn btn-info">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
