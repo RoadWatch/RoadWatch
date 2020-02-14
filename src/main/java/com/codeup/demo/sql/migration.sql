@@ -12,7 +12,7 @@ select * from comments;
 
 describe posts;
 
-SELECT * FROM roadwatch_db.reports;
+SELECT * FROM road_watch.reports;
 
 insert into categories (name)
 values ('flooded'),
