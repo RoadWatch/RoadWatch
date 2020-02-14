@@ -1762,7 +1762,7 @@ for (let i = 0; i < lowWaterPoints[0].features.length - 1; i++) {
 
 for (let i = 0; i < points.length - 1 && i < 9; i++) {
     const temp = points[i].geometry.coordinates;
-    geocode(temp, mapboxToken).then(function (cords) {
+    geocode(temp, key).then(function (cords) {
         var pops = new mapboxgl.Popup()
             .setLngLat(cords)
             .setHTML("<em><h2>"+points[i].properties.Name+"</em></h2>")
@@ -1790,7 +1790,7 @@ for (let i = 0; i < points.length - 1 && i < 9; i++) {
     $("button").click(function () {
         var userInput = $("input").val();
         console.log(userInput);
-        geocode(userInput, mapboxToken)
+        geocode(userInput, key)
             .then(function (result) {
                 marker.setLngLat(result);
                 map.flyTo({center: result});
@@ -1805,7 +1805,7 @@ request.done(function (reports) {
     userReports = reports;
     for (let i = 0; i < userReports.length && i < 9; i++) {
         const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
-        geocode(cord, mapboxToken).then(function (cords) {
+        geocode(cord, key).then(function (cords) {
             const html = "<em><h2>" + userReports[i].description + "</em></h2>" +
                 "<form th:action='report/"+ userReports[i].id +"endorse/1'"+" method='post'><button type='submit'>Still there</button></form>" +
                 "<form th:action='report/"+ userReports[i].id +"endorse/-1'"+" method='post'><button type='submit'>Not there</button></form>";
@@ -1835,7 +1835,7 @@ request.done(function (reports) {
         $("button").click(function () {
             var userInput = $("input").val();
             console.log(userInput);
-            geocode(userInput, mapboxToken)
+            geocode(userInput, key)
                 .then(function (result) {
                     marker.setLngLat(result);
                     map.flyTo({center: result});
