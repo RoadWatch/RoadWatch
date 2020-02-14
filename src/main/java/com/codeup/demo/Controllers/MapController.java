@@ -66,14 +66,11 @@ public class MapController {
         List<Category> categories = categoriesDao.findAll();
         List<Report> reports = reportsDao.findAll();
 
-<<<<<<< HEAD
         for (Report report : reports) {
             System.out.println(report.getDateEntered());
         }
 
         model.addAttribute("categories", categories);
-        model.addAttribute("reports", reports);
-=======
         List<Report> activeReports = new ArrayList<>();
         model.addAttribute("categories", categories);
         for (Report report : reports) {
@@ -88,7 +85,6 @@ public class MapController {
         }
 
         model.addAttribute("reports", activeReports);
->>>>>>> 960e8245a6cea4e232d135117c8a71d5d36fbc7e
         return "map/index";
     }
 

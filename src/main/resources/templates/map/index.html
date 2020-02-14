@@ -113,32 +113,13 @@
 <!--MAPBOX ID-->
 <div id="map"></div>
 
-<<<<<<< HEAD
-<!--BEGGINING OF CARDS-->
-<th:block th:each="report : ${reports}">
-    <div class="d-flex justify-content-around">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"
-                 th:text="${report.zipcode}">Card title</h5>
-                <p class="card-text" th:text="${report.description}">Some quick example text to build on the card title and make
-                    up the
-                    bulk of
-                    the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-</th:block>
-=======
+
 <!--//CARDS WITH REPORTS-->
 <div class="row">
 <th:block th:each="report : ${reports}">
     <div class="card" style="width: 18rem;">
         <img
-                th:src="*{report.filePath != null}? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
                 class="card-img-top" alt="report_img">
         <div class="card-body">
             <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
@@ -148,9 +129,7 @@
     </div>
 </th:block>
 </div>
-/Users/amberjones/Desktop/Codeup/capstone/RoadWatch/target/classes/static/uploads
 
->>>>>>> 960e8245a6cea4e232d135117c8a71d5d36fbc7e
 
 <!--<script src="/js/jquery-2.2.4.js"></script>-->
 <script
