@@ -1733,6 +1733,10 @@ var markerOptions = {
     color: "#038f07",
     draggable: false
 };
+var markerOptionsUser = {
+    color: "blue",
+    draggable: false
+};
 
 var marker = new mapboxgl.Marker(markerOptions)
     .setLngLat([-98.4936, 29.4241])
@@ -1806,7 +1810,7 @@ request.done(function (reports) {
                 .setLngLat(cords)
                 .setHTML("<em><h2>" + userReports[i].description + "</em></h2>")
                 .addTo(map);
-            var marker = new mapboxgl.Marker(markerOptions)
+            var marker = new mapboxgl.Marker(markerOptionsUser)
                 .setLngLat(cords)
                 .setPopup(pops)
                 .togglePopup()

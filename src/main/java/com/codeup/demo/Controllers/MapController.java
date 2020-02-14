@@ -40,21 +40,22 @@ public class MapController {
     @GetMapping("/map/json")
     public @ResponseBody List<Report> mapJSON(){
         List<Report> all = reportsDao.findAll();
-        return all;
-//        List<Report> temp = new ArrayList<>();
-//        Date date = new Date();
-//        long day = 1000 * 60 * 60 * 24;
-//        Date expire = new Date(date.getTime() - (2 * day));
-//        for (int i = 0; i < all.size(); i++) {
-//            if (all.get(i).getDateEntered().compareTo(expire) > 0){
-//                temp.add(all.get(i));
-//            }
-//        }
-//        return temp;
+        List<Report> temp = new ArrayList<>();
+        Date date = new Date();
+        long day = 1000 * 60 * 60 * 24;
+        Date expire = new Date(date.getTime() - (2 * day));
+        for (int i = 0; i < all.size(); i++) {
+            if (all.get(i).getDateEntered().compareTo(expire) > 0){
+                temp.add(all.get(i));
+            }
+        }
+        return temp;
     }
 
     @GetMapping("/map")
-    public String showMapPage(){
+    public String showMapPage(Model model){
+        List<Category> categories = categoriesDao.findAll();
+        model.addAttribute("categories", categories);
         return "map/index";
     }
 
@@ -70,14 +71,23 @@ public class MapController {
             Report report = new Report(waterLevel, description);
 
             //add categories to report
-            List<String> categoriesAsList = Arrays.asList(primitiveCategories);
-            List<Category> allCategories = categoriesDao.findAll();
-            for (int i = 0; i < allCategories.size(); i++) {
-                String name = allCategories.get(i).getName();
-                if(categoriesAsList.contains(name)){
-                    report.addCategory(allCategories.get(i));
+            List<Category> categories = categoriesDao.findAll();
+            List<String> primitive = Arrays.asList(primitiveCategories);
+            List<Category> join = new ArrayList<>();
+            for (int i = 0; i < categories.size(); i++) {
+                String catName = categories.get(i).getName();
+                if(primitive.contains(catName)){
+                    join.add(categories.get(i));
                 }
             }
+
+            report.setCategories(join);
+            report.setUser(user);
+
+            //!test
+            report.setLatitude("lattt");
+            report.setLongitude("longg");
+            reportsDao.save(report);
 
             String token = enviromentSvc.getMapboxKey();
             geocodeSvc.executeSearch(query, token, user, report);
@@ -88,5 +98,23 @@ public class MapController {
 
     }
 
+
+    @GetMapping("/test")
+    @ResponseBody
+    public String testing(){
+        Report report = new Report();
+        report.setWaterInches(0);
+        report.setDescription("test desc");
+        report.setZipcode(12345);
+        report.setLatitude("lat");
+        report.setLongitude("long");
+        report.setCategories(categoriesDao.findAll());
+
+        User user = userSvc.getAuthUser();
+        report.setUser(user);
+        reportsDao.save(report);
+        return "test";
+
+    }
 }
 
