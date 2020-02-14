@@ -38,6 +38,9 @@ public class Report {
     @NotBlank(message = "Latitude is required")
     private String latitude;
 
+    @Column(length = 200)
+    private String query;
+
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
     private List<Endorsement> endorsements = new ArrayList<>();
 
@@ -56,7 +59,7 @@ public class Report {
     private List<Category> categories = new ArrayList<>();
 
     @Column(nullable = false)
-    @JsonFormat(pattern = "mm-dd-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING ,pattern = "mm-dd-yyyy")
     private Date dateEntered;
 
     @Column()
@@ -216,11 +219,14 @@ public class Report {
         categories.add(category);
         System.out.println("category added");
     }
-//    public void setIdToNull(){
-//        this.id = null;
-//    }
 
+    public String getQuery() {
+        return query;
+    }
 
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
     @Override
     public String toString() {
