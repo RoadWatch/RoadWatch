@@ -40,7 +40,11 @@ public class ReportSvc {
             uploadedFile.transferTo(destinationFile);
             String pathWithImage = "images/"+filename;
             System.out.println("SAVING PATH: "+pathWithImage);
-            report.setFilePath(pathWithImage);
+            //! FOR DEV
+//            report.setFilePath(pathWithImage);
+
+            //! FOR PRODUCTION
+            report.setFilePath(filepath);
 
         } catch(IOException ex) {
             System.out.printf("ERROR: %s\n", ex);
