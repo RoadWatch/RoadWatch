@@ -223,7 +223,7 @@ public class Report {
     // Returns rating and if null will use makeRating() to generate one.
     public int getRating(){
         if (this.rating == null){
-            this.makeRating();
+            return this.makeRating();
         }
         return this.getRating();
     }
@@ -231,7 +231,7 @@ public class Report {
     // Sets rating based on endorsements, returns 0 if null or no endorsements are available
     private int makeRating(){
         int rating = 0;
-        if (!(this.endorsements == null || this.endorsements.size() <= 0)) {
+        if ( !(this.endorsements == null || this.endorsements.size() == 0) ) {
             for (int i = 0; i < this.endorsements.size(); i++) {
                 rating += this.endorsements.get(i).getValue();
             }

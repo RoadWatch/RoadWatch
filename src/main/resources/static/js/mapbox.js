@@ -1806,9 +1806,12 @@ request.done(function (reports) {
     for (let i = 0; i < userReports.length && i < 9; i++) {
         const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
         geocode(cord, mapboxToken).then(function (cords) {
+            const html = "<em><h2>" + userReports[i].description + "</em></h2>" +
+                "<form th:action='report/"+ userReports[i].id +"endorse/1'"+" method='post'><button type='submit'>Still there</button></form>" +
+                "<form th:action='report/"+ userReports[i].id +"endorse/-1'"+" method='post'><button type='submit'>Not there</button></form>";
             var pops = new mapboxgl.Popup()
                 .setLngLat(cords)
-                .setHTML("<em><h2>" + userReports[i].description + "</em></h2>")
+                .setHTML(html)
                 .addTo(map);
             var marker = new mapboxgl.Marker(markerOptionsUser)
                 .setLngLat(cords)
