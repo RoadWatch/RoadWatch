@@ -2,15 +2,58 @@
 /*    background-image:url("images/matthew-lejune-IpvDhQjrewM-unsplash.jpg");*/
 /*}*/
 
+html{
+    overflow: auto;
+}
+
 body{
+
     background-color: #D8D1C2;
     background-image:url("images/matthew-lejune-IpvDhQjrewM-unsplash.jpg");
-    background-position: -1500px;
-    background-position-y: -5%;
+    background-position: -760px;
+    background-position-y: 1120%;
+    height: 2959px;
+    background-size: 1900px;
     /*background-repeat: no-repeat;*/
     /*margin-top: 150px ;*/
+    /*position: static;*/
+    /*background-attachment: fixed;*/
+    padding-bottom: 300px;
+
 
 }
+
+.about{
+
+}
+
+.aboutList {
+    list-style: none;
+    padding-left: 0;
+}
+.aboutList li {
+    position: relative;
+    padding-left: 20px;
+}
+.aboutList li:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-image: url('images/waves (1).png');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    top: 25%;
+    transform: translateY(-50%);
+    margin-left:-10px;
+}
+li{
+    margin-left: 30px;
+    margin-top: 20px;
+    color: white;
+}
+
 
 #backImg{
     margin-bottom: 200px;
@@ -18,24 +61,91 @@ body{
 
 
 #cautionBox{
-    height: 350px;
-    width: 350px;
+    height: 190px;
+    width: 190px;
     background-color:#FCEA1A;
     transform: rotate(50deg);
-    margin: 300px;
+    margin-top: 170px;
+    margin-left:90px;
     border-radius: 20px;
-    opacity: 80%;
+    opacity: 90%;
+    padding-top:15px;
+    padding-left: 15px;
+}
+
+#cautionBoxLine{
+    border: 3px solid #4152D0;
+    width:165px;
+    height: 165px;
+    transform: rotate(90deg);
+    border-radius:15px;
+    padding-top: 40px;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-right:10px;
+
+
+}
+
+#cautionFont1{
+    transform: rotate(220deg);
+    font-size:25px;
+    /*margin-bottom: 30px;*/
+    font-family: 'Ubuntu', sans-serif;
+    margin-right:10px;
+    margin-left: 60px;
+    margin-top: -5px;
+    color: #4152D0;
+
+
+}
+
+#cautionFont2{
+    transform: rotate(220deg);
+    font-size:25px;
+    /*margin-bottom: 30px;*/
+    font-family: 'Ubuntu', sans-serif;
+    margin-left:50px;
+    margin-right: 75px;
+    color: #4152D0;
+}
+
+#cautionFont3{
+    transform: rotate(220deg);
+    font-size:25px;
+    /*margin-bottom: 30px;*/
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: -30px;
+    margin-right:-15px;
+    color: #4152D0;
+
+
+}
+
+
+#line1{
+    border: 1px solid white;
+    color: white;
+    width: 300px;
+    margin-top: 90px;
+}
+
+#line2{
+    color:white;
+    width: 300px;
+    border: 1px solid white;
 }
 
 
 #loginBox{
     border: 2px solid white;
-    margin-top: 190px;
-    margin-left: 250px;
-    height: 500px;
-    width: 500px;
-    padding: 50px;
-
+    margin-top: 130px;
+    margin-left: 40px;
+    height: 280px;
+    width: 300px;
+    padding-top: -20px;
+    padding-right: 20px;
+    padding-left:20px;
 
 }
 
@@ -43,22 +153,22 @@ body{
 #loginCont{
     margin-left:120px;
     margin-top: 30px;
-    font-size: 20px;
+    /*font-size: 20px;*/
 }
 .loginFont{
-    font-size: 50px;
+    font-size: 20px;
 }
 
 #loginInputUser{
-    font-size: 30px;
+    font-size: 10px;
 }
 
 #loginInputPassword{
-    font-size: 30px;
+    font-size: 10px;
 }
 #loginLogo{
-    width:30px;
-    height: 30px
+    width:10px;
+    height: 10px
 }
 
 
@@ -67,7 +177,7 @@ body{
 
 #loginSubmit{
     background-color: #4152D0;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 }
 
 #loginReg{
@@ -76,13 +186,13 @@ body{
 }
 
 .loginSubReg{
-    border-radius: 15px;
-    width:200px;
-    height: 70px;
-    font-size: 30px;
+    border-radius: 5px;
+    width:150px;
+    height: 50px;
+    font-size: 20px;
     color: white;
-    margin-left:100px;
-    margin-top: 30px;
+    margin-left:50px;
+    /*margin-top: 10px;*/
     font-family: 'Ubuntu', sans-serif;
 
 
@@ -90,21 +200,27 @@ body{
 
 
 .nav{
-    height: 200px;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    height: 100px;
     width: auto;
     font-family: 'Ubuntu', sans-serif;
-    background-color: #4152D0;
-    font-size: 40px;
+    /*background-color: #4152D0;*/
+    font-size: 20px;
 
 
 
 }
 
 
+
+
+
 #navBar{
-    color: #4152D0;
-    background-color: white;
+    /*color: #4152D0;*/
+    /*background-color: white;*/
     position:relative;
+
 
 }
 
@@ -113,33 +229,36 @@ body{
     justify-content: center;
     background-color: #4152D0;
     margin-bottom: -30px ;
+    height: 105px;
+    /*width: auto;*/
+    /*margin-top: 50px;*/
 
-
+/*come back to me */
 
 }
 
 
 #navCircle{
-    width: 100px;
-    height:100px;
-    margin-left: -220px;
-    margin-top: 20px;
+    width: 50px;
+    height:50px;
+    margin-right: -20px;
+    margin-left: -25px;
+    margin-top: 15px;
     background-color: white;
     border-radius: 50%;
 }
 
 #navHead{
-    margin-left: 125px;
+    margin-left: 70px;
     margin-top: 30px;
     position:absolute;
-    font-size: 70px;
+    font-size: 30px;
     color:#FF7D4A;
     font-family: 'Titillium Web', sans-serif;
 
 }
 .nav-item{
-    margin-top: 140px;
-
+    margin-top: 50px;
 
 
 
@@ -147,25 +266,44 @@ body{
 
 .nav-link{
     color:white;
+    padding: 0px;
+    margin-top: 20px;
 
+    /*display: inline-block;*/
+    /*justify-content: center;*/
+
+}
+
+#navLine{
+    border: .5px solid #FF7D4A;
+    color: white;
+    width: 250px;
+    position: absolute;
+    margin-top: 65px;
+    margin-left:75px;
 
 }
 
 
 #navLinkCenter{
-   margin-left: 100px;
-   margin-bottom: 20px;
+   margin-left: -40px;
+   /*margin-bottom: 20px;*/
+   /* margin-top: 50px;*/
 }
 #navLogin{
     color:white;
-    font-size: 40px;
+    margin-top: 11px;
+    padding-left:0px;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #navLogo{
-    width:60px;
-    height:60px;
-    margin-left: 20px;
-    margin-top: 20px;
+    width:40px;
+    height:40px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: -5px;
 
 }
 
@@ -174,12 +312,14 @@ body{
     justify-content: center;
     /*margin-right: 80px;*/
     margin-left: -50px;
-    margin-top: 29px;
+    margin-right: 29px;
+    margin-top: 20px;
     width: 0;
     height: 0;
-    border-left: 540px solid transparent;
-    border-right: 540px solid transparent;
-    border-top: 100px solid #4152D0;
+    border-left: 240px solid transparent;
+    border-right: 240px solid transparent;
+    border-top: 50px solid #4152D0;
+
 
 }
 

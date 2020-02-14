@@ -52,7 +52,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form th:action="@{'/report/add'}" method="post">
+                        <form th:action="@{'/report/add'}" method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="file">Upload file</label>
+                                <input type="file" class="form-control" id="file"
+                                       name="file">
+                                <small id="fileHelp" class="form-text text-muted">Snap a photo of the incident</small>
+                            </div>
                             <div class="form-group">
                                 <label for="query">Location</label>
                                 <input type="text" class="form-control" id="query"
@@ -106,6 +113,7 @@
 <!--MAPBOX ID-->
 <div id="map"></div>
 
+<<<<<<< HEAD
 <!--BEGGINING OF CARDS-->
 <th:block th:each="report : ${reports}">
     <div class="d-flex justify-content-around">
@@ -124,6 +132,25 @@
         </div>
     </div>
 </th:block>
+=======
+<!--//CARDS WITH REPORTS-->
+<div class="row">
+<th:block th:each="report : ${reports}">
+    <div class="card" style="width: 18rem;">
+        <img
+                th:src="*{report.filePath != null}? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                class="card-img-top" alt="report_img">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+            <p class="card-text" th:text="${report.description}">Some quick example text</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</th:block>
+</div>
+/Users/amberjones/Desktop/Codeup/capstone/RoadWatch/target/classes/static/uploads
+
+>>>>>>> 960e8245a6cea4e232d135117c8a71d5d36fbc7e
 
 <!--<script src="/js/jquery-2.2.4.js"></script>-->
 <script
