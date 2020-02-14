@@ -7,13 +7,17 @@ import com.codeup.demo.models.Report;
 import com.codeup.demo.models.User;
 import com.codeup.demo.services.EnviromentSvc;
 import com.codeup.demo.services.GeocodeSvc;
+import com.codeup.demo.services.ReportSvc;
 import com.codeup.demo.services.UserSvc;
+import okhttp3.MultipartBody;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,13 +31,15 @@ public class MapController {
     private GeocodeSvc geocodeSvc;
     private UserSvc userSvc;
     private Categories categoriesDao;
+    private ReportSvc reportSvc;
 
-    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao) {
+    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc) {
         this.enviromentSvc = enviromentSvc;
         this.reportsDao = reportsDao;
         this.geocodeSvc = geocodeSvc;
         this.userSvc = userSvc;
         this.categoriesDao = categoriesDao;
+        this.reportSvc = reportSvc;
     }
 
     // DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
@@ -56,10 +62,19 @@ public class MapController {
     public String showMapPage(Model model){
         List<Category> categories = categoriesDao.findAll();
         List<Report> reports = reportsDao.findAll();
+        List<Report> activeReports = new ArrayList<>();
         model.addAttribute("categories", categories);
         for (Report report : reports) {
-            System.out.println("date: "+ report.getDateEntered());
+            Date date = new Date();
+            long day = 1000 * 60 * 60 * 24;
+            Date expire = new Date(date.getTime() - (2 * day));
+            if(report.getDateEntered().compareTo(expire) <= 0){
+                reportsDao.delete(report);
+                System.out.println("report deleted");
+            }
+            else activeReports.add(report);
         }
+        model.addAttribute("reports", activeReports);
         return "map/index";
     }
 
@@ -68,8 +83,10 @@ public class MapController {
             @RequestParam String query,
             @RequestParam int waterLevel,
             @RequestParam String description,
-            @RequestParam String[] primitiveCategories
+            @RequestParam String[] primitiveCategories,
+            @RequestParam(name = "file") MultipartFile uploadedFile
     ){
+
         if(userSvc.isUserLoggedIn()){
             User user = userSvc.getAuthUser();
             Report report = new Report(waterLevel, description);
@@ -96,6 +113,10 @@ public class MapController {
 
             String token = enviromentSvc.getMapboxKey();
             geocodeSvc.executeSearch(query, token, user, report);
+
+            //! FILE FUNCTION
+            reportSvc.saveFile(uploadedFile, report);
+            System.out.println("finished");
 
             return "redirect:/map";
         }

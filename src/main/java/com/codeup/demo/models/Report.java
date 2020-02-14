@@ -41,6 +41,9 @@ public class Report {
     @Column(length = 200)
     private String query;
 
+    @Column(name = "file_path")
+    private String filePath;
+
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
     private List<Endorsement> endorsements = new ArrayList<>();
 
@@ -226,6 +229,14 @@ public class Report {
 
     public void setQuery(String query) {
         this.query = query;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override
