@@ -27,17 +27,17 @@
 <div>
     <nav th:include="partials/navbar :: nav"></nav>
 </div>
-<h1>Maps</h1>
+
 <div class="button">
     <th:block sec:authorize="!isAuthenticated()">
         <a href="/register" class="btn btn-primary">
-            Make a report
+            <i class="fas fa-plus"></i>
         </a>
     </th:block>
     <th:block sec:authorize="isAuthenticated()">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#report">
-            Make a report
+            <i class="fas fa-plus"></i>
         </button>
     
         <!-- Modal -->
@@ -107,8 +107,14 @@
             </div>
         </div>
     </th:block>
-    <input type="text" placeholder="Where to?">
-    <button type="submit">Search</button>
+    <div class="row">
+    <h5 class="m-auto">Current conditions</h5>
+    </div>
+    <div class="row">
+        <input type="text" placeholder="Zipcode search" class="form-control col">
+        <button type="submit" class="btn btn-primary col">Search</button>
+    </div>
+
 </div>
 <!--MAPBOX ID-->
 <div id="map" style="width: 100vw !important;"></div>
