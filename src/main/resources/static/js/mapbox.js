@@ -1724,7 +1724,7 @@ mapboxgl.accessToken = key
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
-    zoom: 10,
+    zoom: 9,
     center: [-98.4936, 29.4241]
     // pitch: 45
 });
