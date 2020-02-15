@@ -30,24 +30,10 @@ values ('Flooding'),
        ('Residential'),
        ('Rural');
 
-##----Chris' database (I know it's wrong but whatevs)
-# drop database spring_blog;
-#
-# use spring_blog;
-# show tables;
-#
-# select * from users;
-#
-# describe categories;
-# insert into categories (name)
-# values
-#        ('Construction'),('Animals'), ('Highway'), ('Residential');
-#
-#
-# select * from categories;
-# describe reports;
-#
-# select * from report_category;
-# select * from reports;
+select * from categories;
+describe reports;
+
+select * from report_category;
+select * from reports;
 
 ##----

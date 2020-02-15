@@ -1807,8 +1807,9 @@ request.done(function (reports) {
         const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
         geocode(cord, key).then(function (cords) {
             const html = "<em><h2>" + userReports[i].description + "</em></h2>" +
-                "<form th:action='report/"+ userReports[i].id +"endorse/1'"+" method='post'><button type='submit'>Still there</button></form>" +
-                "<form th:action='report/"+ userReports[i].id +"endorse/-1'"+" method='post'><button type='submit'>Not there</button></form>";
+                //                /report/{id}/endorse/{val}
+                "<form th:action='@{/report/"+ userReports[i].id +"/endorse/map}'"+" method='post'><button type='submit' value='2' name='value'>Still there</button></form>" +
+                "<form th:action='@{/report/"+ userReports[i].id +"/endorse/map}'"+" method='post'><button type='submit' value='0' name='value'>Not there</button></form>";
             var pops = new mapboxgl.Popup()
                 .setLngLat(cords)
                 .setHTML(html)

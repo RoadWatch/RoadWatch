@@ -1,8 +1,10 @@
 package com.codeup.demo.Controllers;
 
 import com.codeup.demo.Repos.Categories;
+import com.codeup.demo.Repos.Endorsements;
 import com.codeup.demo.Repos.Reports;
 import com.codeup.demo.models.Category;
+import com.codeup.demo.models.Endorsement;
 import com.codeup.demo.models.Report;
 import com.codeup.demo.models.User;
 import com.codeup.demo.services.EnviromentSvc;
@@ -11,18 +13,13 @@ import com.codeup.demo.services.ReportSvc;
 import com.codeup.demo.services.UserSvc;
 import okhttp3.MultipartBody;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class MapController {
@@ -32,15 +29,26 @@ public class MapController {
     private UserSvc userSvc;
     private Categories categoriesDao;
     private ReportSvc reportSvc;
+    private Endorsements endorsementsDoa;
 
-    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc) {
+    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc, Endorsements endorsementsDoa) {
         this.enviromentSvc = enviromentSvc;
         this.reportsDao = reportsDao;
         this.geocodeSvc = geocodeSvc;
         this.userSvc = userSvc;
         this.categoriesDao = categoriesDao;
         this.reportSvc = reportSvc;
+        this.endorsementsDoa = endorsementsDoa;
     }
+
+    //    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc) {
+//        this.enviromentSvc = enviromentSvc;
+//        this.reportsDao = reportsDao;
+//        this.geocodeSvc = geocodeSvc;
+//        this.userSvc = userSvc;
+//        this.categoriesDao = categoriesDao;
+//        this.reportSvc = reportSvc;
+//    }
 
     // DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
     @GetMapping("/map/json")
@@ -136,6 +144,15 @@ public class MapController {
 
     }
 
+    @PostMapping(path = "/report/{id}/endorse/map")
+    public String endorse(@PathVariable String id, @RequestParam String value){
+        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(cUser.getUsername() +" " + cUser.getFirstName() + " " + cUser.getLastName());
+        Date date = new Date();
+        Endorsement endorsement = new Endorsement(Integer.parseInt(value) - 1, date, cUser, this.reportsDao.getOne(Long.parseLong(id)));
+        this.endorsementsDoa.save(endorsement);
+        return "redirect:/map";
+    }
 
     @GetMapping("/test")
     @ResponseBody
