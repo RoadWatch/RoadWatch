@@ -50,7 +50,7 @@ public class MapController {
 //        this.reportSvc = reportSvc;
 //    }
 
-    // DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
+    //! DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
     @GetMapping("/map/json")
     public @ResponseBody List<Report> mapJSON(){
         int daysOld = 2; /* expiration day on reports */
@@ -74,9 +74,6 @@ public class MapController {
         List<Category> categories = categoriesDao.findAll();
         List<Report> reports = reportsDao.findAll();
 
-        for (Report report : reports) {
-            System.out.println(report.getDateEntered());
-        }
 
         model.addAttribute("categories", categories);
         List<Report> activeReports = new ArrayList<>();

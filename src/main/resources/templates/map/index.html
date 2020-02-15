@@ -11,8 +11,8 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
     <meta name="apiKey" th:content="${@environment.getProperty('app.token')}" id="apiKey"/>
-<!--    <meta name="apiKey" id="apiKey" th:value="${@sys}">-->
-<!--    <meta name="apiKey" th:content="${}">-->
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
+
     <style>
         #map {
             position: center;
@@ -24,6 +24,7 @@
     <div th:replace="partials/header :: head"></div>
 </head>
 <body>
+<button id="test">test</button>
 <div>
     <nav th:include="partials/navbar :: nav"></nav>
 </div>
@@ -89,8 +90,11 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" th:value="${c.name}"
                                                id="defaultCheck1"
+                                               th:attrappend="id=${c.id}"
                                                th:name="primitiveCategories">
-                                        <label class="form-check-label" for="defaultCheck1" th:text="${c.name}">
+                                        <label class="form-check-label" for="defaultCheck1"
+                                               th:attrappend="for=${c.id}"
+                                               th:text="${c.name}">
                                         </label>
                                     </div>
                                 </th:block>
@@ -155,8 +159,12 @@
         crossorigin="anonymous"
 ></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="/js/data.js"></script>
 <script src="/js/keys.js"></script>
 <script src="/js/mapbox.js"></script>
+<script>
+
+</script>
 
 </body>
 </html>

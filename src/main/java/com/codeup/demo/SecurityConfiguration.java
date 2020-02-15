@@ -30,9 +30,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth
                 .userDetailsService(usersLoader) // How to find users by their username
                 .passwordEncoder(passwordEncoder()) // How to encode and verify passwords
+
+                // turn off post
+
         ;
     }
-
+    //    @Override
+//    protected void configure (HttpSecurity http) throws Exception {
+//        http
+//    }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -48,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
 //                allows anyone to see home and ads
                 .authorizeRequests()
-                .antMatchers("/", "/map", "user/{id}/edit", "/register")
+                .antMatchers("/", "/map", "user/{id}/edit", "/register", "/endorsement")
                 .permitAll()
                 .and()
 //                protected routes
@@ -57,6 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/forum"
                 )
                 .authenticated()
+
         ;
     }
 
