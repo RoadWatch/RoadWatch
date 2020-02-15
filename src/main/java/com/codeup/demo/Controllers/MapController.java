@@ -74,9 +74,6 @@ public class MapController {
         List<Category> categories = categoriesDao.findAll();
         List<Report> reports = reportsDao.findAll();
 
-        for (Report report : reports) {
-            System.out.println("path: " + report.getFilePath());
-        }
 
         model.addAttribute("categories", categories);
         List<Report> activeReports = new ArrayList<>();
