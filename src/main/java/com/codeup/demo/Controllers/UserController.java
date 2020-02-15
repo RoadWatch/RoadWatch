@@ -30,16 +30,17 @@ public class UserController {
             @PathVariable long id,
             Model model
     ) throws UserException {
-        System.out.println("ID: "+id);
+        System.out.println("ID: " + id);
         User user = userDao.findById(id)
-                .orElseThrow(()-> new UserException());
+                .orElseThrow(() -> new UserException());
         System.out.println(user.getFirstName());
         model.addAttribute("user", user);
         return "user/profile";
     }
+
     //! CREATE USER
     @GetMapping("/register")
-    public String showCreateUser(Model model){
+    public String showCreateUser(Model model) {
         model.addAttribute("user", new User());
         return "user/create";
     }
@@ -57,7 +58,7 @@ public class UserController {
     //! EDIT USER PROFILE
 
     @GetMapping("/user/{id}/edit")
-    public String editUserInfo(Model model, @PathVariable long id){
+    public String editUserInfo(Model model, @PathVariable long id) {
         model.addAttribute("user", new User());
         return "/user/{id}/edit";
     }
@@ -66,15 +67,12 @@ public class UserController {
     public String editUserProfile(
             @PathVariable long id,
             @ModelAttribute User user
-    ){
-        if(userSvc.isUserLoggedIn()){
-            //User user = new User();
-            //user.setPassword(userSvc.getAuthUser().getPassword());
+    ) {
+        if (userSvc.isUserLoggedIn()) {
             System.out.println(userSvc.getAuthUser().getPassword());
             System.out.println(user.getId());
-//            userSvc.getAuthUser().getPassword();
             userDao.save(user);
-        return "redirect:/user/"+user.getId();
+            return "redirect:/user/" + user.getId();
         }
         return "redirect:/login";
     }
@@ -82,14 +80,12 @@ public class UserController {
     //! DELETE USER
     @PostMapping("/user/{id}/delete")
     public String deleteUser(
-            @PathVariable long id
-    ) throws UserException {
-        User user = userDao.findById(id)
-                .orElseThrow(()-> new UserException());
-
+            @PathVariable long id,
+            @ModelAttribute User user) {
+        if (userSvc.isUserLoggedIn()) {
+            userDao.delete(user);
+            return "redirect:/register";
+        }
         return "redirect:/login";
-
     }
-
-
 }
