@@ -141,15 +141,15 @@ public class MapController {
 
     }
 
-    @PostMapping(path = "/report/{id}/endorse/map")
-    public String endorse(@PathVariable String id, @RequestParam String value){
-        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(cUser.getUsername() +" " + cUser.getFirstName() + " " + cUser.getLastName());
-        Date date = new Date();
-        Endorsement endorsement = new Endorsement(Integer.parseInt(value) - 1, date, cUser, this.reportsDao.getOne(Long.parseLong(id)));
-        this.endorsementsDoa.save(endorsement);
-        return "redirect:/map";
-    }
+//    @PostMapping(path = "/report/{id}/endorse/map")
+//    public String endorse(@PathVariable String id, @RequestParam String value){
+//        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        System.out.println(cUser.getUsername() +" " + cUser.getFirstName() + " " + cUser.getLastName());
+//        Date date = new Date();
+//        Endorsement endorsement = new Endorsement(Integer.parseInt(value) - 1, date, cUser, this.reportsDao.getOne(Long.parseLong(id)));
+//        this.endorsementsDoa.save(endorsement);
+//        return "redirect:/map";
+//    }
 
     @GetMapping("/test")
     @ResponseBody

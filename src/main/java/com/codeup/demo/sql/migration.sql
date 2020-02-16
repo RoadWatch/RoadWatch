@@ -36,5 +36,5 @@ describe reports;
 
 select * from report_category;
 select * from reports;
-
+select * from endorsements;
 ##----
