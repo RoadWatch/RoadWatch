@@ -7,6 +7,7 @@ show tables;
 describe users;
 select * from users;
 
+DELETE FROM users WHERE id = 2;
 select * from posts;
 select * from comments;
 
