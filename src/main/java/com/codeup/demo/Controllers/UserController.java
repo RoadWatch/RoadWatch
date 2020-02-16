@@ -83,7 +83,7 @@ public class UserController {
             @PathVariable long id,
             @ModelAttribute User user) {
         if (userSvc.isUserLoggedIn()) {
-            userDao.delete(user);
+            userDao.deleteById(id);
             return "redirect:/register";
         }
         return "redirect:/login";
