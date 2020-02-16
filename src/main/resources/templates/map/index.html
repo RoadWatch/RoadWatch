@@ -13,6 +13,7 @@
     <meta name="apiKey" th:content="${@environment.getProperty('app.token')}" id="apiKey"/>
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
 
+
     <style>
         #map {
             position: center;
@@ -24,7 +25,6 @@
     <div th:replace="partials/header :: head"></div>
 </head>
 <body>
-<button id="test">test</button>
 <div>
     <nav th:include="partials/navbar :: nav"></nav>
 </div>
