@@ -86,6 +86,6 @@ public class UserController {
             userDao.deleteById(id);
             return "redirect:/register";
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 }
