@@ -27,7 +27,7 @@
     </div>
     <div class="row">
 <!--<<<<<<< HEAD-->
-        <input type="text" placeholder="Zipcode Search" class="form-control col col-7" id="mapZipSearch">
+        <input type="text" placeholder="Zipcode Zoom" class="form-control col col-7" id="mapZipSearch">
 <!--=======-->
 <!--        <input type="text" placeholder="Zipcode search" class="form-control col col-7" id="zipcode-input">-->
 <!--&gt;>>>>>> 3a41b09bb1afc866774b34411a9c1216129e76af-->
@@ -126,10 +126,10 @@
 <div id="map" style="width: 100vw !important;"></div>
 
 <!--//SEARCH FOR CARDS-->
-<form th:action="@{/report/search}" method="post" class="row bg-warning">
+<form th:action="@{/report/search}" method="post" class="row ">
         <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
                placeholder="Search reports and categories">
-    <button type="submit" class="btn btn-primary col-3">Submit</button>
+    <button type="submit" class="btn " id="UserReportSearchButton">S</button>
 </form>
 <!--//CARDS WITH REPORTS-->
 <div id="card-wrapper">
