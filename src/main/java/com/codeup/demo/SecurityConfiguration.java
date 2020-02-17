@@ -30,6 +30,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth
                 .userDetailsService(usersLoader) // How to find users by their username
                 .passwordEncoder(passwordEncoder()) // How to encode and verify passwords
+
+                // turn off post
+
         ;
     }
 
@@ -44,11 +47,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
 //                on logout
                 .logout()
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/")
                 .and()
 //                allows anyone to see home and ads
                 .authorizeRequests()
-                .antMatchers("/", "/map", "user/{id}/edit")
+                .antMatchers(
+                        "/",
+                        "/map",
+                        "user/{id}/edit",
+                        "/register",
+                        "/endorsement",
+                        "/report/search")
                 .permitAll()
                 .and()
 //                protected routes
@@ -57,6 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/forum"
                 )
                 .authenticated()
+
         ;
     }
 

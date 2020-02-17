@@ -1,8 +1,10 @@
 package com.codeup.demo.Controllers;
 
 import com.codeup.demo.Repos.Categories;
+import com.codeup.demo.Repos.Endorsements;
 import com.codeup.demo.Repos.Reports;
 import com.codeup.demo.models.Category;
+import com.codeup.demo.models.Endorsement;
 import com.codeup.demo.models.Report;
 import com.codeup.demo.models.User;
 import com.codeup.demo.services.EnviromentSvc;
@@ -11,38 +13,46 @@ import com.codeup.demo.services.ReportSvc;
 import com.codeup.demo.services.UserSvc;
 import okhttp3.MultipartBody;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class MapController {
     private EnviromentSvc enviromentSvc;
     private Reports reportsDao;
+    private ReportSvc reportSvc;
     private GeocodeSvc geocodeSvc;
     private UserSvc userSvc;
     private Categories categoriesDao;
-    private ReportSvc reportSvc;
+    private Endorsements endorsementsDoa;
 
-    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc) {
+    private List<Report> queriedList = new ArrayList<>();
+
+    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc, Endorsements endorsementsDoa) {
         this.enviromentSvc = enviromentSvc;
         this.reportsDao = reportsDao;
         this.geocodeSvc = geocodeSvc;
         this.userSvc = userSvc;
         this.categoriesDao = categoriesDao;
         this.reportSvc = reportSvc;
+        this.endorsementsDoa = endorsementsDoa;
     }
 
-    // DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
+    //    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc) {
+//        this.enviromentSvc = enviromentSvc;
+//        this.reportsDao = reportsDao;
+//        this.geocodeSvc = geocodeSvc;
+//        this.userSvc = userSvc;
+//        this.categoriesDao = categoriesDao;
+//        this.reportSvc = reportSvc;
+//    }
+
+    //! DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
     @GetMapping("/map/json")
     public @ResponseBody List<Report> mapJSON(){
         int daysOld = 2; /* expiration day on reports */
@@ -61,11 +71,16 @@ public class MapController {
         return temp;
     }
 
+
+    //! GET
     @GetMapping("/map")
     public String showMapPage(Model model){
+
         List<Category> categories = categoriesDao.findAll();
         List<Report> reports = reportsDao.findAll();
 
+
+        model.addAttribute("categories", categories);
         List<Report> activeReports = new ArrayList<>();
         model.addAttribute("categories", categories);
         for (Report report : reports) {
@@ -79,9 +94,13 @@ public class MapController {
             else activeReports.add(report);
         }
 
+        System.out.println(queriedList.size());
+        model.addAttribute("queriedList", queriedList);
         model.addAttribute("reports", activeReports);
         return "map/index";
     }
+
+
 
     @PostMapping("/report/add")
     public String addReport(
@@ -129,6 +148,36 @@ public class MapController {
         }
         return "redirect:/login";
 
+    }
+
+    //! CARDS SEARCH CONTROLLER
+    @PostMapping("/report/search")
+    public String searchCards(
+            @RequestParam String searchQuery,
+            Model model
+    ){
+        this.queriedList.clear();
+        List<Report> reports = reportsDao.findAll();
+        List<Report> queried = new ArrayList<>();
+        for (Report report : reports) {
+            String categoryString = reportSvc.makeCategoriesOneLongString(report.getCategories()).toLowerCase();
+            String description = report.getDescription().toLowerCase();
+            String query = report.getQuery().toLowerCase();
+
+            if(
+                    description.matches("(.*)"+searchQuery+"(.*)") ||
+                            query.matches("(.*)"+searchQuery+"(.*)") ||
+                            categoryString.matches("(.*)"+searchQuery+"(.*)")
+            )
+            {
+                this.queriedList.add(report);
+                queried.add(report);
+            }
+        }
+//        System.out.println("in post: "+ queried.size());
+//        model.addAttribute("queriedList", queried);
+
+        return "redirect:/map?search=true";
     }
 
 

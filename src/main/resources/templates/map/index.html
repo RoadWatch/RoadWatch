@@ -5,125 +5,168 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
-
-
-
+    
+    
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
     <meta name="apiKey" th:content="${@environment.getProperty('app.token')}" id="apiKey"/>
-<!--    <meta name="apiKey" id="apiKey" th:value="${@sys}">-->
-<!--    <meta name="apiKey" th:content="${}">-->
-    <style>
-        #map {
-            position: center;
-            width: 800px;
-            height: 400px;
-            z-index: 1000;
-        }
-    </style>
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
+    <link rel="stylesheet" href="map.css">
     <div th:replace="partials/header :: head"></div>
 </head>
 <body>
 <div>
     <nav th:include="partials/navbar :: nav"></nav>
 </div>
-<h1>Maps</h1>
+
 <div class="button">
-    <th:block sec:authorize="isAuthenticated()">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#report">
-            Make a report
+    <div class="row" id="mapBox">
+    <h5 class="m-auto" id="mapHead">Current Conditions</h5>
+    </div>
+    <div class="row">
+        <input type="text" placeholder="Zipcode Search" class="form-control col col-7" id="mapZipSearch">
+        <button type="submit" class="btn btn-primary col"
+            style="margin-right: 5px !important;">
+            <i class="fas fa-search-location"></i>
         </button>
-    
-        <!-- Modal -->
-        <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Report an incident</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form th:action="@{'/report/add'}" method="post"
-                              enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="file">Upload file</label>
-                                <input type="file" class="form-control" id="file"
-                                       name="file">
-                                <small id="fileHelp" class="form-text text-muted">Snap a photo of the incident</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="query">Location</label>
-                                <input type="text" class="form-control" id="query"
-                                name="query">
-                                <small id="emailHelp" class="form-text text-muted">Address, area with city or
-                                    zipcode</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <input type="text" class="form-control" id="description"
-                                       name="description">
-                                <small id="descriptionHelp" class="form-text text-muted">Leave a brief
-                                    description of whats going on</small>
-                            </div>
+        
+<!--        // last column-->
+        <th:block sec:authorize="!isAuthenticated()">
+            <a href="/register" class="btn btn-primary col">
+                <i class="fas fa-plus"></i>
+            </a>
+        </th:block>
+        <th:block sec:authorize="isAuthenticated()">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary col" data-toggle="modal" data-target="#report">
+                <i class="fas fa-plus"></i>
+            </button>
+        
+            <!-- Modal -->
+            <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Report an incident</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{'/report/add'}" method="post"
+                                  enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="file">Upload file</label>
+                                    <input type="file" class="form-control" id="file"
+                                           name="file">
+                                    <small id="fileHelp" class="form-text text-muted">Snap a photo of the incident</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="query">Location</label>
+                                    <input type="text" class="form-control" id="query"
+                                           name="query">
+                                    <small id="emailHelp" class="form-text text-muted">Address, area with city or
+                                        zipcode</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" class="form-control" id="description"
+                                           name="description">
+                                    <small id="descriptionHelp" class="form-text text-muted">Leave a brief
+                                        description of whats going on</small>
+                                </div>
                                 <th:block th:each="c : ${categories}">
-                            <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" th:value="${c.name}"
-                                           id="defaultCheck1"
-                                           th:name="primitiveCategories">
-                                    <label class="form-check-label" for="defaultCheck1" th:text="${c.name}">
-                                    </label>
-                            </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" th:value="${c.name}"
+                                               id="defaultCheck1"
+                                               th:attrappend="id=${c.id}"
+                                               th:name="primitiveCategories">
+                                        <label class="form-check-label" for="defaultCheck1"
+                                               th:attrappend="for=${c.id}"
+                                               th:text="${c.name}">
+                                        </label>
+                                    </div>
                                 </th:block>
-                            <br>
-                            <div class="form-group">
-                                <label for="waterLevel">Water Level</label>
-                                <select class="form-control" id="waterLevel" name="waterLevel">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                                <small id="waterLevelHelp" class="form-text text-muted">If your incident
-                                    includes water please report level</small>
-                            </div>
-                            <input type="submit" class="btn btn-outline-primary">
-                        </form>
+                                <br>
+                                <div class="form-group">
+                                    <label for="waterLevel">Water Level</label>
+                                    <select class="form-control" id="waterLevel" name="waterLevel">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <small id="waterLevelHelp" class="form-text text-muted">If your incident
+                                        includes water please report level</small>
+                                </div>
+                                <input type="submit" class="btn btn-outline-primary">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            Bexar County Road Watch
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        Bexar County Road Watch
-                    </div>
+                </div>
+            </div>
+        </th:block>
+
+    </div>
+
+</div>
+<!--MAPBOX ID-->
+<div id="map" style="width: 100vw !important;"></div>
+
+<!--//SEARCH FOR CARDS-->
+<form th:action="@{/report/search}" method="post" class="row bg-warning">
+        <input type="text" class="form-control col-10" id="userReportSearch" name="searchQuery"
+               placeholder="Search reports">
+    <button type="submit" class="btn btn-primary col">Submit</button>
+</form>
+<!--//CARDS WITH REPORTS-->
+<div class="row">
+<!--    DEFAULT DISPLAY OF CARDS-->
+<th:block th:each="report : ${reports}" th:if="${param.search == null}">
+    <div class="card m-auto" id="report-card">
+        <img
+                th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                class="card-img-top" alt="report_img"
+                id="report-card-img">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+            <p class="card-text" th:text="${report.description}">Some quick example text</p>
+            <div class="d-flex justify-content-around">
+                <th:block th:each="category : ${report.categories}">
+                    <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</th:block>
+<!--    QUERIED SET OF CARDS-->
+    <th:block th:if="${param.search != null}" th:each="report : ${queriedList}">
+    
+        <div class="card m-auto" id="report-card-query">
+            <img
+                    th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                    class="card-img-top" alt="report_img"
+                    id="report-card-img-query">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+                <p class="card-text" th:text="${report.description}">Some quick example text</p>
+                <div class="d-flex justify-content-around">
+                    <th:block th:each="category : ${report.categories}">
+                        <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
+                    </th:block>
                 </div>
             </div>
         </div>
     </th:block>
-    <input type="text" placeholder="Where to?">
-    <button type="submit">Search</button>
 </div>
-<!--MAPBOX ID-->
-<div id="map"></div>
-
-<!--//CARDS WITH REPORTS-->
-<div class="row">
-<th:block th:each="report : ${reports}">
-    <div class="card" style="width: 18rem;">
-        <img
-                th:src="*{report.filePath != null}? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
-                class="card-img-top" alt="report_img">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
-            <p class="card-text" th:text="${report.description}">Some quick example text</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-</th:block>
-</div>
-/Users/amberjones/Desktop/Codeup/capstone/RoadWatch/target/classes/static/uploads
 
 
 <!--<script src="/js/jquery-2.2.4.js"></script>-->
@@ -133,8 +176,12 @@
         crossorigin="anonymous"
 ></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="/js/data.js"></script>
 <script src="/js/keys.js"></script>
 <script src="/js/mapbox.js"></script>
+<script>
+
+</script>
 
 </body>
 </html>

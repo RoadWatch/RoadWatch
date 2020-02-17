@@ -17,7 +17,7 @@ public class Endorsement {
     private long id;
 
     @Column(nullable = false)
-    private byte value;
+    private int value;
 
     @Column(nullable = false)
     @JsonFormat(pattern = "mm-dd-yyyy")
@@ -41,14 +41,13 @@ public class Endorsement {
     }
 
 
-    public Endorsement(long id, byte value) {
+    public Endorsement(long id, int value) {
         this.id = id;
         this.value = value;
     }
 
-    public Endorsement(byte value, Date date, User user, Report report) {
+    public Endorsement(int value, User user, Report report) {
         this.value = value;
-        this.date = date;
         this.user = user;
         this.report = report;
     }
@@ -69,11 +68,11 @@ public class Endorsement {
         this.id = id;
     }
 
-    public byte getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(byte value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
@@ -93,4 +92,11 @@ public class Endorsement {
         this.user = user;
     }
 
+    public Report getReport() {
+        return report;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
+    }
 }

@@ -30,6 +30,7 @@ body{
 .aboutList {
     list-style: none;
     padding-left: 0;
+    background-color: rgba(0,0,0,.5);
 }
 .aboutList li {
     position: relative;
@@ -198,6 +199,21 @@ li{
 
 }
 
+#mapBox{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+#mapZipSearch{
+    margin-bottom: 20px;
+}
+
+#mainRow{
+    display: flex;
+    justify-content: center;
+}
+
 #mainTitleContainer{
     display:  inline-block;
     justify-items: center;
@@ -220,6 +236,13 @@ li{
     font-size: 40px;
     font-family: 'Muli', sans-serif;
     color: white;
+}
+
+#mapHead{
+    font-family: 'Ubuntu', sans-serif;
+    color:white;
+    font-size: 30px;
+    margin-top: 30px;
 }
 
 
@@ -254,7 +277,7 @@ li{
     background-color: #4152D0;
     margin-bottom: -30px ;
     height: 105px;
-    /*width: auto;*/
+    width: auto;
     /*margin-top: 50px;*/
 
 /*come back to me */
@@ -353,6 +376,12 @@ li{
     border-top: 50px solid #4152D0;
 
 
+}
+
+
+
+
+.container{
 }
 
 
