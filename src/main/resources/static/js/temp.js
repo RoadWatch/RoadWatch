@@ -1,3 +1,4 @@
+//! Just incase the mapbox.js file gets messed up
 $(document).ready(function () {
     let key = document.querySelector("#apiKey").content
     mapboxgl.accessToken = key

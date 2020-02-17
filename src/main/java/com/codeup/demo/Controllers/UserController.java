@@ -25,14 +25,11 @@ public class UserController {
     }
 
     //! USER PROFILE, get by id
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/profile")
     public String showUserProfile(
-            @PathVariable long id,
             Model model
     ) throws UserException {
-        System.out.println("ID: " + id);
-        User user = userDao.findById(id)
-                .orElseThrow(() -> new UserException());
+        User user = userSvc.getAuthUser();
         System.out.println(user.getFirstName());
         model.addAttribute("user", user);
         return "user/profile";

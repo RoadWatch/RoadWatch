@@ -44,7 +44,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .defaultSuccessUrl("/map")
                 .permitAll()
+                .failureUrl("/?error")
                 .and()
+
 //                on logout
                 .logout()
                 .logoutSuccessUrl("/")
@@ -66,6 +68,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/forum"
                 )
                 .authenticated()
+
+
 
         ;
     }
