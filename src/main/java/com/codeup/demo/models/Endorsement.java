@@ -46,9 +46,8 @@ public class Endorsement {
         this.value = value;
     }
 
-    public Endorsement(int value, Date date, User user, Report report) {
+    public Endorsement(int value, User user, Report report) {
         this.value = value;
-        this.date = date;
         this.user = user;
         this.report = report;
     }
@@ -93,4 +92,11 @@ public class Endorsement {
         this.user = user;
     }
 
+    public Report getReport() {
+        return report;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
+    }
 }
