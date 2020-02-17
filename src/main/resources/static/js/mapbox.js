@@ -153,27 +153,3 @@ $(document).ready(function () {
     
 
 })
-
-//////////!! if these button functions are necessary, they need id's
-
-
-//! THIS BUTTON FUNCTION
-// $("button").click(function () {
-//     var userInput = $("input").val();
-//     geocode(userInput, key)
-//         .then(function (result) {
-//             marker.setLngLat(result);
-//             map.flyTo({center: result});
-//         });
-// })
-
-//! IM NOT SURE WHAT THIS BUTTON FUNCTION IS DOING
-// $("button").click(function () {
-//     var userInput = $("input").val();
-//     console.log(userInput);
-//     geocode(userInput, key)
-//         .then(function (result) {
-//             marker.setLngLat(result);
-//             map.flyTo({center: result});
-//         });
-// });
