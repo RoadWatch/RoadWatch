@@ -1,31 +1,31 @@
 $(document).ready(function () {
-    let key = document.querySelector("#apiKey").content
-    mapboxgl.accessToken = key
+    let key = document.querySelector("#apiKey").content;
+    mapboxgl.accessToken = key;
     
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         zoom: 9,
         center: [-98.4936, 29.4241]
-    })
+    });
     
     var markerOptions = {
         color: "#038f07",
         draggable: false
-    }
+    };
     var markerOptionsUser = {
         color: "blue",
         draggable: false
-    }
+    };
     
     var marker = new mapboxgl.Marker(markerOptions)
         .setLngLat([-98.4936, 29.4241])
-        .addTo(map)
+        .addTo(map);
     
     //!GEO CODE
     const geocode = (search, token) => {
-        let baseUrl = 'https://api.mapbox.com'
-        let endPoint = '/geocoding/v5/mapbox.places/'
+        let baseUrl = 'https://api.mapbox.com';
+        let endPoint = '/geocoding/v5/mapbox.places/';
         return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
             .then(function (res) {
                 return res.json()
@@ -34,32 +34,32 @@ $(document).ready(function () {
             .then(function (data) {
                 return data.features[0].center
             })
-    }
+    };
     
     //! ADD CITY DATA TO ARRAY
-    let points = []
+    let points = [];
     const addCityDataToArray = () => {
         for (let i = 0; i < lowWaterPoints[0].features.length - 1; i++) {
-            points.push(lowWaterPoints[0].features[i])
+            points.push(lowWaterPoints[0].features[i]);
         }
-    }
-    addCityDataToArray()
+    };
+    addCityDataToArray();
     
     
     //! SET CITY MARKERS
     
     const setCityMarkers = () => {
-        console.log("AA")
+        console.log("AA");
         for (let i = 0; i < points.length - 1 && i < 9; i++) {
             
-            const temp = points[i].geometry.coordinates
+            const temp = points[i].geometry.coordinates;
             
             geocode(temp, key)
                 .then(function (cords) {
                     let pops = new mapboxgl.Popup()
                         .setLngLat(cords)
                         .setHTML("<em><h2>" + points[i].properties.Name + "</em></h2>")
-                        .addTo(map)
+                        .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptions)
                         .setLngLat(cords)
                         .setPopup(pops)
@@ -68,16 +68,16 @@ $(document).ready(function () {
                 })
         }
         
-    }
-    setCityMarkers()
+    };
+    setCityMarkers();
 
 //!function to add click events
     const addClickEventForEndorsementPost = (arr) => {
-        console.log("hello: ", arr.length)
+        console.log("hello: ", arr.length);
        $.each(arr, function (i) {
-           console.log(arr[i])
+           console.log(arr[i]);
            $(document).on('click', `#${arr[i]}`, function () {
-               let idArray = arr[i].split('-')
+               let idArray = arr[i].split('-');
                let token = $("meta[name='_csrf']").attr("content");
                $.ajax({
                    url: `/endorsements/${idArray[1]}/${idArray[2]}`,
@@ -89,25 +89,25 @@ $(document).ready(function () {
                })
            })
         })
-    }
+    };
     
 
 
 //! USER REPORTS
     const fetchUserPoints = () => {
-        let userReports
-        let request = $.ajax({'url': '/map/json'})
+        let userReports;
+        let request = $.ajax({'url': '/map/json'});
         
         request.done(function (reports) {
-            let endorsementButtonIds = []
-            userReports = reports
+            let endorsementButtonIds = [];
+            userReports = reports;
             for (let i = 0; i < userReports.length && i < 9; i++) {
-                console.log("count")
+                console.log("count");
                 //push buttons with id's into array
-                endorsementButtonIds.push(`endorsement-${userReports[i].id}-1`)
-                endorsementButtonIds.push(`endorsement-${userReports[i].id}-2`)
+                endorsementButtonIds.push(`endorsement-${userReports[i].id}-1`);
+                endorsementButtonIds.push(`endorsement-${userReports[i].id}-2`);
                 
-                const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)]
+                const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
                 geocode(cord, key)
                     .then(function (cords) {
                     let html = `
@@ -118,11 +118,11 @@ $(document).ready(function () {
              <button id="endorsement-${userReports[i].id}-2"
              class="btn btn-outline-primary btn-sm">
              Incident cleared</button>
-            `
+            `;
                     let pops = new mapboxgl.Popup()
                         .setLngLat(cords)
                         .setHTML(html)
-                        .addTo(map)
+                        .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptionsUser)
                         .setLngLat(cords)
                         .setPopup(pops)
@@ -134,7 +134,7 @@ $(document).ready(function () {
             }
         addClickEventForEndorsementPost(endorsementButtonIds)
         })
-    }
+    };
     
     fetchUserPoints()
 
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
     
 
-})
+});
 
 //////////!! if these button functions are necessary, they need id's
 
@@ -152,10 +152,9 @@ $(document).ready(function () {
 //     var userInput = $("input").val();
 //     geocode(userInput, key)
 //         .then(function (result) {
-//             marker.setLngLat(result);
 //             map.flyTo({center: result});
 //         });
-// })
+// });
 
 //! IM NOT SURE WHAT THIS BUTTON FUNCTION IS DOING
 // $("button").click(function () {
