@@ -1,0 +1,19 @@
+#map {
+  position: center;
+  height: 400px;
+  z-index: 1000;
+}
+#report-card {
+  width: 18rem;
+  margin-bottom: 10px !important;
+}
+#report-card-img {
+  height: 200px;
+}
+#report-card-query {
+  width: 18rem;
+  margin-bottom: 10px !important;
+}
+#report-card-img-query {
+  height: 200px;
+}

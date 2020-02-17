@@ -49,7 +49,6 @@ $(document).ready(function () {
     //! SET CITY MARKERS
     
     const setCityMarkers = () => {
-        console.log("AA")
         for (let i = 0; i < points.length - 1 && i < 9; i++) {
             
             const temp = points[i].geometry.coordinates
@@ -73,9 +72,7 @@ $(document).ready(function () {
 
 //!function to add click events
     const addClickEventForEndorsementPost = (arr) => {
-        console.log("hello: ", arr.length)
        $.each(arr, function (i) {
-           console.log(arr[i])
            $(document).on('click', `#${arr[i]}`, function () {
                let idArray = arr[i].split('-')
                let token = $("meta[name='_csrf']").attr("content");
@@ -102,7 +99,6 @@ $(document).ready(function () {
             let endorsementButtonIds = []
             userReports = reports
             for (let i = 0; i < userReports.length && i < 9; i++) {
-                console.log("count")
                 //push buttons with id's into array
                 endorsementButtonIds.push(`endorsement-${userReports[i].id}-1`)
                 endorsementButtonIds.push(`endorsement-${userReports[i].id}-2`)
