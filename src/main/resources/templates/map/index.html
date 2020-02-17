@@ -123,11 +123,12 @@
 
 <!--//SEARCH FOR CARDS-->
 <form th:action="@{/report/search}" method="post" class="row bg-warning">
-        <input type="text" class="form-control col-10" id="userReportSearch" name="searchQuery"
-               placeholder="Search reports">
-    <button type="submit" class="btn btn-primary col">Submit</button>
+        <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
+               placeholder="Search reports and categories">
+    <button type="submit" class="btn btn-primary col-3">Submit</button>
 </form>
 <!--//CARDS WITH REPORTS-->
+<div id="card-wrapper">
 <div class="row">
 <!--    DEFAULT DISPLAY OF CARDS-->
 <th:block th:each="report : ${reports}" th:if="${param.search == null}">
@@ -167,6 +168,11 @@
         </div>
     </th:block>
 </div>
+</div>
+
+<footer th:include="partials/footer :: footer"
+        class="p-3 mb-2 text-white"
+        style="background: #4052D0"></footer>
 
 
 <!--<script src="/js/jquery-2.2.4.js"></script>-->

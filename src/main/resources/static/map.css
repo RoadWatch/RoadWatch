@@ -17,3 +17,7 @@
 #report-card-img-query {
   height: 200px;
 }
+#card-wrapper {
+  height: 840px;
+  overflow: scroll;
+}
