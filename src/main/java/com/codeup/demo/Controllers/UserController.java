@@ -52,7 +52,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     //! EDIT USER PROFILE
@@ -74,7 +74,7 @@ public class UserController {
             userDao.save(user);
             return "redirect:/user/" + user.getId();
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     //! DELETE USER
