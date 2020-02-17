@@ -26,15 +26,19 @@
     <h5 class="m-auto" id="mapHead">Current Conditions</h5>
     </div>
     <div class="row">
+<!--<<<<<<< HEAD-->
         <input type="text" placeholder="Zipcode Search" class="form-control col col-7" id="mapZipSearch">
-        <button type="submit" class="btn btn-primary col"
-            style="margin-right: 5px !important;">
-            <i class="fas fa-search-location"></i>
+<!--=======-->
+<!--        <input type="text" placeholder="Zipcode search" class="form-control col col-7" id="zipcode-input">-->
+<!--&gt;>>>>>> 3a41b09bb1afc866774b34411a9c1216129e76af-->
+        <button type="submit" class="btn btn col"
+            style="margin-right: 5px !important;" id="zipcode-button">
+            <i class="fas fa-search-location" id="zipcode-button-icon"></i>
         </button>
         
 <!--        // last column-->
         <th:block sec:authorize="!isAuthenticated()">
-            <a href="/register" class="btn btn-primary col">
+            <a href="/register" class="btn btn col" id="mapRegisterButton">
                 <i class="fas fa-plus"></i>
             </a>
         </th:block>
@@ -123,11 +127,12 @@
 
 <!--//SEARCH FOR CARDS-->
 <form th:action="@{/report/search}" method="post" class="row bg-warning">
-        <input type="text" class="form-control col-10" id="userReportSearch" name="searchQuery"
-               placeholder="Search reports">
-    <button type="submit" class="btn btn-primary col">Submit</button>
+        <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
+               placeholder="Search reports and categories">
+    <button type="submit" class="btn btn-primary col-3">Submit</button>
 </form>
 <!--//CARDS WITH REPORTS-->
+<div id="card-wrapper">
 <div class="row">
 <!--    DEFAULT DISPLAY OF CARDS-->
 <th:block th:each="report : ${reports}" th:if="${param.search == null}">
@@ -167,6 +172,11 @@
         </div>
     </th:block>
 </div>
+</div>
+
+<footer th:include="partials/footer :: footer"
+        class="p-3 mb-2 text-white"
+        style="background: #4052D0"></footer>
 
 
 <!--<script src="/js/jquery-2.2.4.js"></script>-->
