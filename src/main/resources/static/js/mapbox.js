@@ -91,8 +91,8 @@ $(document).ready(function () {
                    }
                })
            })
-        })
-    };
+        }
+    });
     
 
 
@@ -154,11 +154,12 @@ $(document).ready(function () {
         })
  
     
-    
 
     
 
-});
+    
+
+};
 
 //////////!! if these button functions are necessary, they need id's
 
