@@ -132,7 +132,6 @@
 <!--    DEFAULT DISPLAY OF CARDS-->
 <th:block th:each="report : ${reports}" th:if="${param.search == null}">
     <div class="card m-auto" id="report-card">
-        NULL
         <img
                 th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
                 class="card-img-top" alt="report_img"
@@ -149,10 +148,9 @@
     </div>
 </th:block>
 <!--    QUERIED SET OF CARDS-->
-    <th:block th:each="report : ${queriedList}" th:if="${param.search == true}">
- 
+    <th:block th:if="${param.search != null}" th:each="report : ${queriedList}">
+    
         <div class="card m-auto" id="report-card-query">
-            TRUE
             <img
                     th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
                     class="card-img-top" alt="report_img"

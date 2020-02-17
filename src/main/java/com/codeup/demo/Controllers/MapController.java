@@ -31,6 +31,8 @@ public class MapController {
     private Categories categoriesDao;
     private Endorsements endorsementsDoa;
 
+    private List<Report> queriedList = new ArrayList<>();
+
     public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc, Endorsements endorsementsDoa) {
         this.enviromentSvc = enviromentSvc;
         this.reportsDao = reportsDao;
@@ -92,8 +94,8 @@ public class MapController {
             else activeReports.add(report);
         }
 
-
-        model.addAttribute("queriedList", new ArrayList<>());
+        System.out.println(queriedList.size());
+        model.addAttribute("queriedList", queriedList);
         model.addAttribute("reports", activeReports);
         return "map/index";
     }
@@ -154,6 +156,7 @@ public class MapController {
             @RequestParam String searchQuery,
             Model model
     ){
+        this.queriedList.clear();
         List<Report> reports = reportsDao.findAll();
         List<Report> queried = new ArrayList<>();
         for (Report report : reports) {
@@ -167,11 +170,12 @@ public class MapController {
                             categoryString.matches("(.*)"+searchQuery+"(.*)")
             )
             {
+                this.queriedList.add(report);
                 queried.add(report);
             }
         }
-        System.out.println("in post: "+ queried.size());
-        model.addAttribute("queriedList", queried);
+//        System.out.println("in post: "+ queried.size());
+//        model.addAttribute("queriedList", queried);
 
         return "redirect:/map?search=true";
     }
