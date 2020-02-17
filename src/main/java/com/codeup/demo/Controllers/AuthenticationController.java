@@ -12,10 +12,10 @@ public class AuthenticationController {
     }
     @GetMapping("/logout")
     public String sdfk(){
-        return "redirect:login";
+        return "redirect:/";
     }
     @PostMapping("/logout")
     public String shfk(){
-        return "redirect:login";
+        return "redirect:/";
     }
 }
