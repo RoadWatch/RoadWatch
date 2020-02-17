@@ -139,6 +139,11 @@ $(document).ready(function () {
     };
     
     fetchUserPoints()
+    
+    //! SET ZIPCODE SEARCH
+    const zipCodeSearch = () => {
+    
+    }
 
     
 
