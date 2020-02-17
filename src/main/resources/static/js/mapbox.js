@@ -139,11 +139,21 @@ $(document).ready(function () {
     };
     
     fetchUserPoints()
-    
-    //! SET ZIPCODE SEARCH
-    const zipCodeSearch = () => {
-    
 
+    //! FLY TO FUNCTION
+        const flyToFunc = (search) => {
+            geocode(search, key)
+                .then(function (result) {
+                    map.flyTo({center: result})
+                })
+        }
+    
+        $(document).on('click', '#zipcode-button', function (e) {
+            let input = $('#zipcode-input')
+            flyToFunc(input.val())
+        })
+ 
+    
 
     
 
