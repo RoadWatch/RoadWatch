@@ -199,6 +199,12 @@ li{
 
 }
 
+
+#map{
+    border: 1px solid white;
+    /*margin: 5px;*/
+}
+
 #mapBox{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -407,6 +413,23 @@ li{
     color:white;
     font-size: 20px;
 
+
+}
+
+#UserReportSearchButton{
+    width: 50px;
+    height:40px;
+    background-color: #4152D0;
+    padding: 0px;
+    margin-left: 10px;
+    margin-top: 10px;
+    color:white;
+
+}
+
+#userReportSearch{
+    margin-top: 10px;
+    margin-left: 10px;
 
 }
 
