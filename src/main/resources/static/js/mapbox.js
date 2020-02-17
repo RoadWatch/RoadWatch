@@ -8,6 +8,8 @@ $(document).ready(function () {
         zoom: 9,
         center: [-98.4936, 29.4241]
     })
+
+    
     
     var markerOptions = {
         color: "#038f07",
@@ -21,6 +23,7 @@ $(document).ready(function () {
     var marker = new mapboxgl.Marker(markerOptions)
         .setLngLat([-98.4936, 29.4241])
         .addTo(map)
+    
     
     //!GEO CODE
     const geocode = (search, token) => {

@@ -26,11 +26,8 @@
     <h5 class="m-auto" id="mapHead">Current Conditions</h5>
     </div>
     <div class="row">
-<!--<<<<<<< HEAD-->
-        <input type="text" placeholder="Zipcode Search" class="form-control col col-7" id="mapZipSearch">
-<!--=======-->
-<!--        <input type="text" placeholder="Zipcode search" class="form-control col col-7" id="zipcode-input">-->
-<!--&gt;>>>>>> 3a41b09bb1afc866774b34411a9c1216129e76af-->
+
+    <input type="text" placeholder="Zipcode search" class="form-control col col-7" id="zipcode-input">
         <button type="submit" class="btn btn col"
             style="margin-right: 5px !important;" id="zipcode-button">
             <i class="fas fa-search-location" id="zipcode-button-icon"></i>
@@ -123,7 +120,15 @@
 
 </div>
 <!--MAPBOX ID-->
-<div id="map" style="width: 100vw !important;"></div>
+<div id="map" style="width: 100vw !important;">
+    <div id="legend" class="legend">
+        <h4>Population</h4>
+        <div><span style="background-color: #723122"></span>Bexar County Reports</div>
+        <div><span style="background-color: #A25626"></span>User Reports</div>
+    </div>
+</div>
+
+
 
 <!--//SEARCH FOR CARDS-->
 <form th:action="@{/report/search}" method="post" class="row bg-warning">
