@@ -5,23 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
-
-
-
+    
+    
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
     <meta name="apiKey" th:content="${@environment.getProperty('app.token')}" id="apiKey"/>
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
-
-
-    <style>
-        #map {
-            position: center;
-            width: 800px;
-            height: 400px;
-            z-index: 1000;
-        }
-    </style>
+    <link rel="stylesheet" href="map.css">
     <div th:replace="partials/header :: head"></div>
 </head>
 <body>
@@ -129,15 +121,22 @@
 <!--MAPBOX ID-->
 <div id="map" style="width: 100vw !important;"></div>
 
-
+<!--//SEARCH FOR CARDS-->
+<form th:action="@{/report/search}" method="post" class="row bg-warning">
+        <input type="text" class="form-control col-10" id="userReportSearch" name="searchQuery"
+               placeholder="Search reports">
+    <button type="submit" class="btn btn-primary col">Submit</button>
+</form>
 <!--//CARDS WITH REPORTS-->
 <div class="row">
-<th:block th:each="report : ${reports}">
-    <div class="card m-auto"
-         style="width: 18rem; margin-bottom: 10px !important;">
+<!--    DEFAULT DISPLAY OF CARDS-->
+<th:block th:each="report : ${reports}" th:if="${param.search == null}">
+    <div class="card m-auto" id="report-card">
+        NULL
         <img
                 th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
-                class="card-img-top" alt="report_img">
+                class="card-img-top" alt="report_img"
+                id="report-card-img">
         <div class="card-body">
             <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
             <p class="card-text" th:text="${report.description}">Some quick example text</p>
@@ -149,6 +148,26 @@
         </div>
     </div>
 </th:block>
+<!--    QUERIED SET OF CARDS-->
+    <th:block th:each="report : ${queriedList}" th:if="${param.search == true}">
+ 
+        <div class="card m-auto" id="report-card-query">
+            TRUE
+            <img
+                    th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                    class="card-img-top" alt="report_img"
+                    id="report-card-img-query">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+                <p class="card-text" th:text="${report.description}">Some quick example text</p>
+                <div class="d-flex justify-content-around">
+                    <th:block th:each="category : ${report.categories}">
+                        <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </th:block>
 </div>
 
 

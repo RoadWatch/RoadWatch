@@ -25,10 +25,10 @@ import java.util.*;
 public class MapController {
     private EnviromentSvc enviromentSvc;
     private Reports reportsDao;
+    private ReportSvc reportSvc;
     private GeocodeSvc geocodeSvc;
     private UserSvc userSvc;
     private Categories categoriesDao;
-    private ReportSvc reportSvc;
     private Endorsements endorsementsDoa;
 
     public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc, Endorsements endorsementsDoa) {
@@ -69,8 +69,11 @@ public class MapController {
         return temp;
     }
 
+
+    //! GET
     @GetMapping("/map")
     public String showMapPage(Model model){
+
         List<Category> categories = categoriesDao.findAll();
         List<Report> reports = reportsDao.findAll();
 
@@ -89,9 +92,13 @@ public class MapController {
             else activeReports.add(report);
         }
 
+
+        model.addAttribute("queriedList", new ArrayList<>());
         model.addAttribute("reports", activeReports);
         return "map/index";
     }
+
+
 
     @PostMapping("/report/add")
     public String addReport(
@@ -141,15 +148,34 @@ public class MapController {
 
     }
 
-//    @PostMapping(path = "/report/{id}/endorse/map")
-//    public String endorse(@PathVariable String id, @RequestParam String value){
-//        User cUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        System.out.println(cUser.getUsername() +" " + cUser.getFirstName() + " " + cUser.getLastName());
-//        Date date = new Date();
-//        Endorsement endorsement = new Endorsement(Integer.parseInt(value) - 1, date, cUser, this.reportsDao.getOne(Long.parseLong(id)));
-//        this.endorsementsDoa.save(endorsement);
-//        return "redirect:/map";
-//    }
+    //! CARDS SEARCH CONTROLLER
+    @PostMapping("/report/search")
+    public String searchCards(
+            @RequestParam String searchQuery,
+            Model model
+    ){
+        List<Report> reports = reportsDao.findAll();
+        List<Report> queried = new ArrayList<>();
+        for (Report report : reports) {
+            String categoryString = reportSvc.makeCategoriesOneLongString(report.getCategories()).toLowerCase();
+            String description = report.getDescription().toLowerCase();
+            String query = report.getQuery().toLowerCase();
+
+            if(
+                    description.matches("(.*)"+searchQuery+"(.*)") ||
+                            query.matches("(.*)"+searchQuery+"(.*)") ||
+                            categoryString.matches("(.*)"+searchQuery+"(.*)")
+            )
+            {
+                queried.add(report);
+            }
+        }
+        System.out.println("in post: "+ queried.size());
+        model.addAttribute("queriedList", queried);
+
+        return "redirect:/map?search=true";
+    }
+
 
     @GetMapping("/test")
     @ResponseBody
