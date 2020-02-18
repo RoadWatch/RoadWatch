@@ -24,12 +24,18 @@ $(document).ready(function () {
         .setLngLat([-98.4936, 29.4241])
         .addTo(map);
     
+    //max lat: (NB)  29.709881
+    //min lat: (pleasanton) 28.964410
     
+    //max long : (castroville) -98.871470
+    //min long: (seguin) -97.968540
+    
+    // format: minLong, minLat, maxLon, maxLng
     //!GEO CODE
     const geocode = (search, token) => {
         let baseUrl = 'https://api.mapbox.com';
         let endPoint = '/geocoding/v5/mapbox.places/';
-        return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+        return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json?proximity=-98.4936, 29.4241&' + 'access_token=' + token)
             .then(function (res) {
                 return res.json()
                 // to get all the data from the request, comment out the following three lines...
