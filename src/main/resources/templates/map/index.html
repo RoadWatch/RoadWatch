@@ -37,13 +37,13 @@
         
 <!--        // last column-->
         <th:block sec:authorize="!isAuthenticated()">
-            <a href="/register" class="btn btn col" id="mapRegisterButton">
+            <a href="/register" class="btn btn col mapRegisterButton" id="mapRegisterButton">
                 <i class="fas fa-plus"></i>
             </a>
         </th:block>
         <th:block sec:authorize="isAuthenticated()">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary col" data-toggle="modal" data-target="#report">
+            <button type="button" class="btn  col" data-toggle="modal" data-target="#report" id="mapRegisterButton">
                 <i class="fas fa-plus"></i>
             </button>
         
@@ -82,7 +82,7 @@
                                         description of incident</small>
                                 </div>
                                 <th:block th:each="c : ${categories}">
-                                    <div class="form-check">
+                                    <div class="form-check" id="modalCheckBox">
                                         <input class="form-check-input" type="checkbox" th:value="${c.name}"
                                                id="defaultCheck1"
                                                th:attrappend="id=${c.id}"
