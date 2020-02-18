@@ -57,7 +57,7 @@ public class FormPostController {
             forumPostDao.save(post);
             return "redirect:/forum";
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     // Individual form view
@@ -147,7 +147,7 @@ public class FormPostController {
                 return "redirect:/forum";
             }
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
 }

@@ -41,7 +41,7 @@ public class ForumCommentController {
             return "redirect:/forum";
 
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     //! DELETE COMMENT
@@ -55,7 +55,7 @@ public class ForumCommentController {
             forumCommentDao.delete(comment);
             return "redirect:/forum";
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
 }
