@@ -422,7 +422,7 @@ li{
 }
 .nav-item{
     margin-top: 50px;
-    width: auto;
+    /*width: auto;*/
 
 
 }
@@ -525,7 +525,7 @@ li{
     margin-left: 5px;
     margin-top: 10px;
     color:white;
-    width: 20px;
+    width: 5px;
     height:40px;
     font-size: 20px;
 
