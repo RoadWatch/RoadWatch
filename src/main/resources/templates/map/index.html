@@ -61,25 +61,25 @@
                         <div class="modal-body">
                             <form th:action="@{'/report/add'}" method="post"
                                   enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label for="file">Upload file</label>
+                                <div class="form-group" id="modalFontForm">
+                                    <label for="file" class="modal-body-font">Upload file<img src="images/upload.png" id="modalUploadLogo"></label>
                                     <input type="file" class="form-control" id="file"
                                            name="file">
-                                    <small id="fileHelp" class="form-text text-muted">Snap a photo of the incident</small>
+                                    <small id="fileHelp" class="form-text ">Snap a photo of the incident</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="query">Location</label>
+                                    <label for="query" class="modal-body-font">Location<img src="images/maps-and-flags.png"id="modalLocationLogo"></label>
                                     <input type="text" class="form-control" id="query"
                                            name="query">
-                                    <small id="emailHelp" class="form-text text-muted">Address, area with city or
+                                    <small id="emailHelp" class="form-text ">Address, area with city or
                                         zipcode</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="description">Description</label>
+                                    <label for="description" class="modal-body-font">Description<img src="images/edit.png" id= "modalDescribLogo"></label>
                                     <input type="text" class="form-control" id="description"
                                            name="description">
-                                    <small id="descriptionHelp" class="form-text text-muted">Leave a brief
-                                        description of whats going on</small>
+                                    <small id="descriptionHelp" class="form-text ">Brief
+                                        description of incident</small>
                                 </div>
                                 <th:block th:each="c : ${categories}">
                                     <div class="form-check">
@@ -94,8 +94,8 @@
                                     </div>
                                 </th:block>
                                 <br>
-                                <div class="form-group">
-                                    <label for="waterLevel">Water Level</label>
+                                <div class="form-group" id="modalWater">
+                                    <label for="waterLevel" class="modal-body-font">Water Level <img src="images/tide.png" id="modalWaterLogo"></label>
                                     <select class="form-control" id="waterLevel" name="waterLevel">
                                         <option value="0">0</option>
                                         <option value="1">1</option>
@@ -104,14 +104,21 @@
                                         <option value="4">4</option>
                                         <option value="5">5</option>
                                     </select>
-                                    <small id="waterLevelHelp" class="form-text text-muted">If your incident
+                                    <small id="waterLevelHelp" class="form-text ">If your incident
                                         includes water please report level</small>
                                 </div>
-                                <input type="submit" class="btn btn-outline-primary">
+                                <input type="submit" class="btn " id="modalButton">
                             </form>
                         </div>
                         <div class="modal-footer">
+                           <div id="modalLogoFooter">
+                               <div id="modalCircle">
+                               <img src="images/tracking.png">
+                           </div>
+                        </div>
+                            <div id="modalFooterFont">
                             Bexar County Road Watch
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,11 +144,12 @@
         <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
                placeholder="Search reports and categories">
     <button type="submit" class="btn " id="UserReportSearchButton">S</button>
+    <div id="card-wrapper">
+        <div class="row">
+
+            <!--    DEFAULT DISPLAY OF CARDS-->
 </form>
 <!--//CARDS WITH REPORTS-->
-<div id="card-wrapper">
-<div class="row">
-<!--    DEFAULT DISPLAY OF CARDS-->
 <th:block th:each="report : ${reports}" th:if="${param.search == null}">
     <div class="card m-auto" id="report-card">
         <img
