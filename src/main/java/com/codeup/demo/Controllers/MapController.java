@@ -146,7 +146,7 @@ public class MapController {
 
             return "redirect:/map";
         }
-        return "redirect:/login";
+        return "redirect:/";
 
     }
 
