@@ -381,6 +381,8 @@ li{
     /*color: #4152D0;*/
     /*background-color: white;*/
     position:relative;
+    /*width: auto;*/
+
 
 
 }
@@ -420,7 +422,7 @@ li{
 }
 .nav-item{
     margin-top: 50px;
-
+    width: auto;
 
 
 }
@@ -518,16 +520,26 @@ li{
 
 
 #UserReportSearchButton{
-    width: 55px;
-    height:35px;
     background-color: #4152D0;
     padding: 0px;
     margin-left: 5px;
     margin-top: 10px;
     color:white;
+    width: 20px;
+    height:40px;
+    font-size: 20px;
 
 }
 
+
+#userReportSearchLogo{
+    width:17px;
+    height:17px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+
+
+}
 #userReportSearch{
     margin-top: 10px;
     margin-left: 20px;
@@ -553,28 +565,101 @@ li{
 /*}*/
 
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 992px) {
 
+body{
+        /*background-repeat: no-repeat;*/
+    }
 
-
-
-#navProfile img{
-        width: 30px;
-        height:30px;
-        position:absolute;
+.nav {
+        margin-left: 640px;
         display: flex;
+        justify-content: center;
+}
 
-        margin-left: 1080px;
-        margin-top: 17px;
+.navCenter {
+        /*display: flex;*/
+        /*justify-content: center;*/
+        background-color: #4152D0;
+        margin-bottom: -30px;
+        height: 105px;
+        width: auto;
+        /*margin-top: 50px;*/
+
+        /*come back to me */
+
     }
 
 
 
+#navCircle {
+        width: 50px;
+        height: 50px;
+        margin-right: -20px;
+        margin-left: -630px;
+        margin-top: 15px;
+        background-color: white;
+        border-radius: 50%;
+}
 
 
+#navHead {
+        margin-left: 95px;
+        margin-top: 30px;
+        position: absolute;
+        font-size: 30px;
+        color: #FF7D4A;
+        font-family: 'Titillium Web', sans-serif;
+
+    }
 
 
+#navLine {
+        border: .5px solid #FF7D4A;
+        color: white;
+        width: 250px;
+        position: absolute;
+        margin-top: 65px;
+        margin-left: 95px;
+
+    }
+
+#navLogo {
+        width: 40px;
+        height: 40px;
+        margin-left: 5px;
+        margin-top: 5px;
+        margin-bottom: -5px;
+}
+
+#navLogout{
+    margin-bottom: -10px;
+}
+
+#navProfile img {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        display: flex;
+        justify-content: flex-end;
+        margin-left: 1610px;
+        margin-top: 17px;
+    }
 
 
+#navTriangle {
+        display: inline-flex;
+        /*justify-content: center;*/
+        /*margin-right: 80px;*/
+        margin-left: -120px;
+        margin-right: 29px;
+        margin-top: 25px;
+        width: 0;
+        height: 0;
+        border-left: 970px solid transparent;
+        border-right: 970px solid transparent;
+        border-top: 50px solid #4152D0;
+
+    }
 
 }
