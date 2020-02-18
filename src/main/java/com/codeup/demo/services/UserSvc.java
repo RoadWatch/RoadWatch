@@ -22,8 +22,7 @@ public class UserSvc {
             User authUser,
             User paramUser
     ){
-        if(authUser.getId() == paramUser.getId()) return true;
-        else return false;
+        return authUser.getId() == paramUser.getId();
     }
 
     //! get current user
