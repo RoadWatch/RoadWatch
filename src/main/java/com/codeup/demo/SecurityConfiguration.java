@@ -35,10 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         ;
     }
-    //    @Override
-//    protected void configure (HttpSecurity http) throws Exception {
-//        http
-//    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -47,14 +44,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .defaultSuccessUrl("/map")
                 .permitAll()
+                .failureUrl("/?error")
                 .and()
+
 //                on logout
                 .logout()
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/")
                 .and()
 //                allows anyone to see home and ads
                 .authorizeRequests()
-                .antMatchers("/", "/map", "user/{id}/edit", "/register", "/endorsement")
+                .antMatchers(
+                        "/",
+                        "/map",
+                        "user/{id}/edit",
+                        "/register",
+                        "/endorsement",
+                        "/report/search")
                 .permitAll()
                 .and()
 //                protected routes
@@ -63,6 +68,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/forum"
                 )
                 .authenticated()
+
+
 
         ;
     }

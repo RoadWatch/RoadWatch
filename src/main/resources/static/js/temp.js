@@ -1,3 +1,4 @@
+//! Just incase the mapbox.js file gets messed up
 $(document).ready(function () {
     let key = document.querySelector("#apiKey").content
     mapboxgl.accessToken = key
@@ -8,8 +9,6 @@ $(document).ready(function () {
         zoom: 9,
         center: [-98.4936, 29.4241]
     })
-
-    
     
     var markerOptions = {
         color: "#038f07",
@@ -23,7 +22,6 @@ $(document).ready(function () {
     var marker = new mapboxgl.Marker(markerOptions)
         .setLngLat([-98.4936, 29.4241])
         .addTo(map)
-    
     
     //!GEO CODE
     const geocode = (search, token) => {
@@ -145,32 +143,6 @@ $(document).ready(function () {
             })
     }
     
-
-});
-
-//////////!! if these button functions are necessary, they need id's
-
-
-//! THIS BUTTON FUNCTION
-// $("button").click(function () {
-//     var userInput = $("input").val();
-//     geocode(userInput, key)
-//         .then(function (result) {
-//             map.flyTo({center: result});
-//         });
-// });
-
-// //! IM NOT SURE WHAT THIS BUTTON FUNCTION IS DOING
-// $("#test").click(function () {
-//     var userInput = $("input").val();
-//     console.log(userInput);
-//     geocode(userInput, key)
-//         .then(function (result) {
-//             marker.setLngLat(result);
-//             map.flyTo({center: result});
-//         });
-// });
-
     $(document).on('click', '#zipcode-button', function (e) {
         let input = $('#zipcode-input')
         flyToFunc(input.val())
@@ -182,4 +154,3 @@ $(document).ready(function () {
     
     
 })
-

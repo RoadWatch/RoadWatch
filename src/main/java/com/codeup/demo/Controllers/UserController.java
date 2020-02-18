@@ -25,17 +25,17 @@ public class UserController {
     }
 
     //! USER PROFILE, get by id
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/profile")
     public String showUserProfile(
-            @PathVariable long id,
             Model model
     ) throws UserException {
-        System.out.println("ID: " + id);
-        User user = userDao.findById(id)
-                .orElseThrow(() -> new UserException());
-        System.out.println(user.getFirstName());
-        model.addAttribute("user", user);
-        return "user/profile";
+        if(userSvc.isUserLoggedIn()){
+            User user = userSvc.getAuthUser();
+            System.out.println(user.getFirstName());
+            model.addAttribute("user", user);
+            return "user/profile";
+        }
+        return "redirect:/register";
     }
 
     //! CREATE USER
@@ -52,7 +52,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     //! EDIT USER PROFILE
@@ -74,7 +74,7 @@ public class UserController {
             userDao.save(user);
             return "redirect:/user/" + user.getId();
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     //! DELETE USER
@@ -86,6 +86,6 @@ public class UserController {
             userDao.deleteById(id);
             return "redirect:/register";
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 }

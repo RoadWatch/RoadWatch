@@ -1,0 +1,32 @@
+#map {
+  position: relative;
+  height: 400px;
+  /*z-index: 1000;*/
+}
+#legend {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 1;
+  background: white;
+  padding: 8px;
+
+}
+#report-card {
+  width: 18rem;
+  margin-bottom: 10px !important;
+}
+#report-card-img {
+  height: 200px;
+}
+#report-card-query {
+  width: 18rem;
+  margin-bottom: 10px !important;
+}
+#report-card-img-query {
+  height: 200px;
+}
+#card-wrapper {
+  height: 840px;
+  overflow: scroll;
+}
