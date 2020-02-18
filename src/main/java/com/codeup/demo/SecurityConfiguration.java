@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 //set login page and redirect
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/")
                 .defaultSuccessUrl("/map")
                 .permitAll()
                 .failureUrl("/?error")
@@ -65,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                protected routes
                 .authorizeRequests()
                 .antMatchers(
-                        "/forum"
+                        "/forum", "/user/profile"
                 )
                 .authenticated()
 
