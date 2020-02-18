@@ -157,12 +157,12 @@ $(document).ready(function () {
 // });
 
 //! IM NOT SURE WHAT THIS BUTTON FUNCTION IS DOING
-// $("button").click(function () {
-//     var userInput = $("input").val();
-//     console.log(userInput);
-//     geocode(userInput, key)
-//         .then(function (result) {
-//             marker.setLngLat(result);
-//             map.flyTo({center: result});
-//         });
-// });
+$("#test").click(function () {
+    var userInput = $("input").val();
+    console.log(userInput);
+    geocode(userInput, key)
+        .then(function (result) {
+            marker.setLngLat(result);
+            map.flyTo({center: result});
+        });
+});
