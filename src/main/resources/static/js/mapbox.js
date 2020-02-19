@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let key = document.querySelector("#apiKey").content
+    let key = document.querySelector("#apiKey").content;
     mapboxgl.accessToken = key;
     
     var map = new mapboxgl.Map({
@@ -73,7 +73,7 @@ $(document).ready(function () {
                         .setPopup(pops)
                         .togglePopup()
                         .addTo(map)
-                })
+                });
         }
         
     };
@@ -103,7 +103,7 @@ $(document).ready(function () {
     const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
-        
+
         request.done(function (reports) {
             let endorsementButtonIds = [];
             userReports = reports;
@@ -132,7 +132,7 @@ $(document).ready(function () {
                             .setLngLat(cords)
                             .setPopup(pops)
                             .togglePopup()
-                            .addTo(map)
+                            .addTo(map);
                         
                         
                     })

@@ -33,7 +33,7 @@ public class UserController {
     ) throws UserException {
         System.out.println("here: "+userSvc.isUserLoggedIn());
         if(userSvc.isUserLoggedIn()){
-            User user = userSvc.getAuthUser();
+            User user = userDao.getOne(userSvc.getAuthUser().getId());
             model.addAttribute("user", user);
             return "user/profile";
         }
