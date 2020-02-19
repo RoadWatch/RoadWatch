@@ -59,6 +59,7 @@ a:active{
     transform: rotateY(180deg);
 }
 
-.about{
-
+.details{
+    font-size: small;
+    width: 300px;
 }
