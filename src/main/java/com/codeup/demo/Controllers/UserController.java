@@ -74,7 +74,7 @@ public class UserController {
             System.out.println(userSvc.getAuthUser().getPassword());
             System.out.println(user.getId());
             userDao.save(user);
-            return "redirect:/user/" + user.getId();
+            return "redirect:/user/profile";
         }
         return "redirect:/";
     }
