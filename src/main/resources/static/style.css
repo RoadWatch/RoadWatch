@@ -2,8 +2,12 @@
 /*    background-image:url("images/matthew-lejune-IpvDhQjrewM-unsplash.jpg");*/
 /*}*/
 
+a{
+    /*cursor:auto;*/
+}
+
 html{
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 body{
@@ -365,6 +369,7 @@ li{
     margin-bottom: 5px;
 
 }
+
 .nav{
     /*display: flex;*/
     /*justify-content: center;*/
@@ -373,20 +378,24 @@ li{
     font-family: 'Ubuntu', sans-serif;
     /*background-color: #4152D0;*/
     font-size: 20px;
+    display: block;
+    /*margin-top: 10px;*/
 
 
 
 }
 
 
-
+.nav a{
+    display: inline-block;
+}
 
 
 #navBar{
     /*color: #4152D0;*/
     /*background-color: white;*/
     position:relative;
-    /*width: auto;*/
+    width: auto;
 
 
 
@@ -427,6 +436,7 @@ li{
 }
 .nav-item{
     margin-top: 50px;
+
     /*width: auto;*/
 
 
@@ -435,10 +445,12 @@ li{
 .nav-link{
     color:white;
     padding: 0px;
-    margin-top: 20px;
+
+    /*margin-top: 20px;*/
 
     /*display: inline-block;*/
     /*justify-content: center;*/
+    /*margin-bottom: -30px;*/
 
 }
 
@@ -455,8 +467,10 @@ li{
 
 #navLinkCenter{
    margin-left: -40px;
-   /*margin-bottom: 20px;*/
-   /* margin-top: 50px;*/
+   margin-bottom: 50px;
+   display: inline-block;
+    margin-top: 20px;
+    /*padding-bottom: 90px;*/
 }
 #navLogin{
     color:white;
