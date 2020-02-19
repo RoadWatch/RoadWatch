@@ -29,10 +29,13 @@ public class UserController {
     public String showUserProfile(
             Model model
     ) throws UserException {
-        User user = userSvc.getAuthUser();
-        System.out.println(user.getFirstName());
-        model.addAttribute("user", user);
-        return "user/profile";
+        System.out.println("here: "+userSvc.isUserLoggedIn());
+        if(userSvc.isUserLoggedIn()){
+            User user = userSvc.getAuthUser();
+            model.addAttribute("user", user);
+            return "user/profile";
+        }
+        else return "redirect:/register";
     }
 
     //! CREATE USER
