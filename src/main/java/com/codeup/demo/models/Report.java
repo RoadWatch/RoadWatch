@@ -57,8 +57,8 @@ public class Report {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "reportCategory",
-            joinColumns = {@JoinColumn(name = "report_id")},
-            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+            joinColumns = {@JoinColumn(name = "category_id")},
+            inverseJoinColumns = {@JoinColumn(name = "report_id")}
     )
     @JsonBackReference
     private List<Category> categories = new ArrayList<>();
