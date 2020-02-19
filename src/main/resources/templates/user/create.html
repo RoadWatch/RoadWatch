@@ -6,6 +6,15 @@
     <title>Register</title>
 
 <body>
+
+<style>
+    input[type=text]{background: transparent;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    border-radius: 0px}
+</style>
+
+
 <nav th:include="partials/navbar :: nav"></nav>
 <div class="container" id="registerContainer">
 <!--    <form th:action="@{/register}" method="post" th:object="${user}" class="text-center">-->
@@ -37,26 +46,32 @@
 <!--    </form>-->
     <form th:action="@{/register}" method="post" th:object="${user}">
         <div class="form-group">
-            <label for="exampleInputEmail1">First Name</label>
+            <label for="exampleInputEmail1" class="registerInputTitle">First Name</label>
             <input type="text" th:field="*{firstName}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
         </div>
         <div class="form-group">
-            <label>Last Name</label>
+            <label class="registerInputTitle">Last Name</label>
             <input type="text" th:field="*{lastName}" class="form-control" placeholder="Enter Last Name">
         </div>
         <div class="form-group">
-            <label>Username</label>
+            <label class="registerInputTitle">Username</label>
             <input type="text" th:field="*{username}" class="form-control" placeholder="Enter Username">
         </div>
         <div class="form-group">
-            <label>Email</label>
-            <input type="email" th:field="*{email}" class="form-control" placeholder="Enter Email">
+            <label class="registerInputTitle">Email</label>
+            <input type="email" th:field="*{email}" class="form-control" placeholder="Enter Email"style="background: transparent;
+                                                               border: none;
+                                                               border-bottom: 1px solid #ffffff;
+                                                               border-radius: 0px">
         </div>
         <div class="form-group">
-            <label>Password</label>
-            <input type="password" th:field="*{password}" class="form-control" placeholder="Enter Password">
+            <label class="registerInputTitle">Password</label>
+            <input type="password" th:field="*{password}" class="form-control" placeholder="Enter Password"style="background: transparent;
+                                                               border: none;
+                                                               border-bottom: 1px solid #ffffff;
+                                                               border-radius: 0px">
         </div>
-        <input type="submit" class="btn btn-info">
+        <input type="submit" class="btn " id="registerButton" placeholder="Register">
     </form>
 <!--    <div class="card" style="background-color: rgba(0,0,0,.1)">-->
 <!--        <div class="card-header">-->
@@ -79,5 +94,8 @@
 <!--        </div>-->
 <!--    </div>-->
 </div>
+
+
+<img src="images/road-sign.png" id="registerRoadSign">
 </body>
 </html>

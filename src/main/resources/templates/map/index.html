@@ -17,6 +17,10 @@
     <div th:replace="partials/header :: head"></div>
 </head>
 <body>
+
+
+
+
 <div>
     <nav th:include="partials/navbar :: nav"></nav>
 </div>
@@ -70,14 +74,20 @@
                                 <div class="form-group">
                                     <label for="query" class="modal-body-font">Location<img src="images/maps-and-flags.png"id="modalLocationLogo"></label>
                                     <input type="text" class="form-control" id="query"
-                                           name="query">
+                                           name="query" style="background: transparent;
+                                                               border: none;
+                                                               border-bottom: 1px solid #ffffff;
+                                                               border-radius: 0px">
                                     <small id="emailHelp" class="form-text ">Address, area with city or
                                         zipcode</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="description" class="modal-body-font">Description<img src="images/edit.png" id= "modalDescribLogo"></label>
                                     <input type="text" class="form-control" id="description"
-                                           name="description">
+                                           name="description" style="background: transparent;
+                                                               border: none;
+                                                               border-bottom: 1px solid #ffffff;
+                                                               border-radius: 0px">
                                     <small id="descriptionHelp" class="form-text ">Brief
                                         description of incident</small>
                                 </div>
