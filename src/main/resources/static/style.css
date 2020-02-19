@@ -9,16 +9,21 @@ html{
 body{
 
     background-color: #D8D1C2;
-    background-image:url("images/matthew-lejune-IpvDhQjrewM-unsplash.jpg");
-    background-position: -760px;
-    background-position-y: 1120%;
-    height: 2959px;
-    background-size: 1900px;
-    /*background-repeat: no-repeat;*/
-    /*margin-top: 150px ;*/
-    /*position: static;*/
-    /*background-attachment: fixed;*/
-    padding-bottom: 300px;
+    /*background-image:url("images/matthew-lejune-IpvDhQjrewM-unsplash.jpg");*/
+    /*background-position: -760px;*/
+    /*background-position-y: 1120%;*/
+    /*height: 2959px;*/
+    /*background-size: 1900px;*/
+    /*!*background-repeat: no-repeat;*!*/
+    /*!*margin-top: 150px ;*!*/
+    /*!*position: static;*!*/
+    /*!*background-attachment: fixed;*!*/
+    /*padding-bottom: 300px;*/
+    background-color: #9ebdcb;
+    background-image: linear-gradient(180deg, #9ebdcb 25%, #fbf0e3 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 
 
 }
@@ -503,21 +508,6 @@ li{
 
 }
 
-#zipcode-button{
-    /*margin-left:;*/
-    width: 20px;
-    height:40px;
-    background-color: #4152D0;
-    color:white;
-    font-size: 20px;
-
-
-}
-
-#zipcode-button-icon{
-    margin-top:-15px;
-}
-
 
 #UserReportSearchButton{
     background-color: #4152D0;
@@ -546,11 +536,55 @@ li{
 
 }
 
+#registerButton{
+    margin-left: 120px;
+    margin-top: 30px;
+    width: 120px;
+    height: 50px;
+    background-color: #FF7D4A;
+    color:white;
+    border-radius:20px;
+    font-family: 'Nanum Gothic', sans-serif;
+    box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 
-
-
-.container{
 }
+
+#registerContainer{
+    margin-top: 60px;
+}
+
+.registerInputTitle{
+    color:white;
+    font-family: 'Nanum Gothic', sans-serif;
+
+}
+
+#registerRoadSign{
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    margin-left: 40px;
+    margin-top: 100px;
+
+}
+
+#zipcode-button{
+    /*margin-left:;*/
+    width: 20px;
+    height:40px;
+    background-color: #4152D0;
+    color:white;
+    font-size: 20px;
+
+
+}
+
+#zipcode-button-icon{
+    margin-top:-15px;
+}
+
+
 
 
 /*#navTriangleShadow{*/
