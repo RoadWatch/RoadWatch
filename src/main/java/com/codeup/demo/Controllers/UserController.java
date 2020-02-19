@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 
@@ -81,11 +83,15 @@ public class UserController {
     @PostMapping("/user/{id}/delete")
     public String deleteUser(
             @PathVariable long id,
-            @ModelAttribute User user) {
+            @ModelAttribute User user,
+            HttpSession session
+            ) {
         if (userSvc.isUserLoggedIn()) {
             userDao.deleteById(id);
+            session.invalidate();
             return "redirect:/register";
         }
+
         return "redirect:/";
     }
 }
