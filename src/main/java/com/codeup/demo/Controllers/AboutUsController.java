@@ -8,6 +8,6 @@ public class AboutUsController {
 
     @GetMapping("/aboutus")
     public String aboutUs(){
-        return "/aboutus";
+        return "user/aboutus";
     }
 }
