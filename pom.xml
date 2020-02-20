@@ -17,9 +17,6 @@
     <properties>
         <java.version>11</java.version>
         <skipTests>true</skipTests>
-        <error-page>
-            <location>/errors</location>
-        </error-page>
     </properties>
 
     <dependencies>
