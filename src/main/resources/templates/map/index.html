@@ -92,16 +92,25 @@
                                     <small id="descriptionHelp" class="form-text ">Brief
                                         description of incident</small>
                                 </div>
+                                
                                 <th:block th:each="c : ${categories}">
                                     <div class="form-check" id="modalCheckBox">
+                                        <th:block th:if="${c.name.equals('Default')}">
                                         <input class="form-check-input" type="checkbox" th:value="${c.name}"
                                                id="defaultCheck1"
                                                th:attrappend="id=${c.id}"
-                                               th:name="primitiveCategories">
-                                        <label class="form-check-label" for="defaultCheck1"
-                                               th:attrappend="for=${c.id}"
-                                               th:text="${c.name}">
-                                        </label>
+                                               th:name="primitiveCategories" checked hidden>
+                                        </th:block>
+                                        <th:block th:if="${!c.name.equals('Default')}">
+                                            <input class="form-check-input" type="checkbox" th:value="${c.name}"
+                                                   id="defaultCheck1"
+                                                   th:attrappend="id=${c.id}"
+                                                   th:name="primitiveCategories">
+                                            <label class="form-check-label" for="defaultCheck1"
+                                                   th:attrappend="for=${c.id}"
+                                                   th:text="${c.name}">
+                                            </label>
+                                        </th:block>
                                     </div>
                                 </th:block>
                                 <br>

@@ -29,7 +29,8 @@ values ('Flooding'),
        ('Downtown'),
        ('Highway'),
        ('Residential'),
-       ('Rural');
+       ('Rural'),
+       ('Default');
 
 select * from categories;
 describe reports;
