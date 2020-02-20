@@ -62,6 +62,7 @@ public class MapController {
         List<Report> activeReports = new ArrayList<>();
         model.addAttribute("categories", categories);
         for (Report report : reports) {
+            System.out.println("report amount: "+ report.getEndorsements().size());
             if(!reportSvc.checkDate(report.getDateEntered())){
                 reportsDao.delete(report);
                 System.out.println("report deleted");

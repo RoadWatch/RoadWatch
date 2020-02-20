@@ -66,7 +66,7 @@
                                 <div class="form-group" id="modalFontForm">
                                     <label for="file" class="modal-body-font">Upload file<img src="images/upload.png"
                                                                                               id="modalUploadLogo"></label>
-                                    <input type="file" class="form-control" id="file"
+                                    <input type="file" class="form-control" id="file" required
                                            name="file">
                                     <small id="fileHelp" class="form-text ">Snap a photo of the incident</small>
                                 </div>
@@ -74,7 +74,7 @@
                                     <label for="query" class="modal-body-font">Location<img
                                             src="images/maps-and-flags.png" id="modalLocationLogo"></label>
                                     <input type="text" class="form-control text-white" id="query"
-                                           name="query" style="background: transparent;
+                                           name="query" required style="background: transparent;
                                                                border: none;
                                                                border-bottom: 1px solid #ffffff;
                                                                border-radius: 0px">
@@ -85,10 +85,10 @@
                                     <label for="description" class="modal-body-font">Description<img
                                             src="images/edit.png" id="modalDescribLogo"></label>
                                     <input type="text" class="form-control text-white" id="description"
-                                           name="description" style="background: transparent;
+                                           name="description"  style="background: transparent;
                                                                border: none;
                                                                border-bottom: 1px solid #ffffff;
-                                                               border-radius: 0px">
+                                                               border-radius: 0px" required>
                                     <small id="descriptionHelp" class="form-text ">Brief
                                         description of incident</small>
                                 </div>
@@ -168,7 +168,7 @@
         <!--    DEFAULT DISPLAY OF CARDS-->
         <!--//CARDS WITH REPORTS-->
         <th:block th:each="report : ${reports}" th:if="${param.search == null}">
-            <div class="card m-auto" id="report-card">
+            <div class="card m-auto report-card" th:id="${report.id}">
                 <img
                         th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
                         class="card-img-top" alt="report_img"
@@ -182,7 +182,7 @@
                     <div class="d-flex align-items-baseline">
                     <p th:text="${report.positiveEndorsementCount} "></p>
                     <i class="far fa-thumbs-up mx-2"></i>
-                        <p th:text="   ${report.positiveEndorsementCount} "></p>
+                        <p th:text="   ${report.negativeEndorsementCount} "></p>
                         <i class="far fa-thumbs-down mx-2"></i>
                 </div>
                     <hr>
