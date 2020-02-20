@@ -92,16 +92,25 @@
                                     <small id="descriptionHelp" class="form-text ">Brief
                                         description of incident</small>
                                 </div>
+                                
                                 <th:block th:each="c : ${categories}">
                                     <div class="form-check" id="modalCheckBox">
+                                        <th:block th:if="${c.name.equals('General')}">
                                         <input class="form-check-input" type="checkbox" th:value="${c.name}"
                                                id="defaultCheck1"
                                                th:attrappend="id=${c.id}"
-                                               th:name="primitiveCategories">
-                                        <label class="form-check-label" for="defaultCheck1"
-                                               th:attrappend="for=${c.id}"
-                                               th:text="${c.name}">
-                                        </label>
+                                               th:name="primitiveCategories" checked hidden>
+                                        </th:block>
+                                        <th:block th:if="${!c.name.equals('General')}">
+                                            <input class="form-check-input" type="checkbox" th:value="${c.name}"
+                                                   id="defaultCheck1"
+                                                   th:attrappend="id=${c.id}"
+                                                   th:name="primitiveCategories">
+                                            <label class="form-check-label" for="defaultCheck1"
+                                                   th:attrappend="for=${c.id}"
+                                                   th:text="${c.name}">
+                                            </label>
+                                        </th:block>
                                     </div>
                                 </th:block>
                                 <br>
@@ -175,11 +184,15 @@
                         id="report-card-img">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+                    <small>
+                        Author: <span th:text="${report.user.username}"></span>
+                    </small>
                     <p class="card-text"
                         th:text="${report.description}"></p>
+                    
+                    <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                     <hr>
                     <small>Endorsements</small>
-                    <div class="d-flex align-items-baseline">
                         <form th:action="@{'/endorsements/'+${report.id}+'/1'}" method="post">
                             <button type="submit"
                             class="btn btn-outline-light text-dark">
@@ -195,6 +208,17 @@
                             </button>
                         </form>
                 </div>
+                    <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.positiveEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.negativeEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                    </div>
+    
                     <hr>
                     <p th:text="${report.dateEntered}"></p>
                     <div class="d-flex justify-content-around">
@@ -215,7 +239,38 @@
                         id="report-card-img-query">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+                    <small>
+                        Author: <span th:text="${report.user.username}"></span>
+                    </small>
                     <p class="card-text" th:text="${report.description}">Some quick example text</p>
+                    <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
+                        <hr>
+                        <small>Endorsements</small>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/1'}" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-light text-dark">
+                                <span th:text=" ${report.positiveEndorsementCount}"></span>
+                                <i class="far fa-thumbs-up mx-2"></i>
+                            </button>
+                        </form>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-light text-dark">
+                                <span th:text=" ${report.negativeEndorsementCount}"></span>
+                                <i class="far fa-thumbs-up mx-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.positiveEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.negativeEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                    </div>
                     <hr>
                     <p th:text="${report.dateEntered}"></p>
                     <div class="d-flex justify-content-around">
