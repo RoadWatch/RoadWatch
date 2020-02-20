@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-      
+
 <head>
     <meta charset="UTF-8">
     <title>index</title>
@@ -10,7 +10,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet"/>
     <meta name="apiKey" th:content="${@environment.getProperty('app.token')}" id="apiKey"/>
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
     <link rel="stylesheet" href="map.css">
@@ -19,27 +19,25 @@
 <body>
 
 
-
-
 <div>
     <nav th:include="partials/navbar :: nav"></nav>
 </div>
 
 <div class="button">
     <div class="row" id="mapBox">
-    <h5 class="m-auto" id="mapHead">Current Conditions</h5>
+        <h5 class="m-auto" id="mapHead">Current Conditions</h5>
     </div>
     <div class="row">
-
-
-    <input type="text" placeholder="Zipcode search" class="form-control col col-7" id="zipcode-input">
-
+        
+        
+        <input type="text" placeholder="Zipcode search" class="form-control col col-7" id="zipcode-input">
+        
         <button type="submit" class="btn btn col"
-            style="margin-right: 5px !important;" id="zipcode-button">
+                style="margin-right: 5px !important;" id="zipcode-button">
             <i class="fas fa-search-location" id="zipcode-button-icon"></i>
         </button>
         
-<!--        // last column-->
+        <!--        // last column-->
         <th:block sec:authorize="!isAuthenticated()">
             <a href="/register" class="btn btn col mapRegisterButton" id="mapRegisterButton">
                 <i class="fas fa-plus"></i>
@@ -50,7 +48,7 @@
             <button type="button" class="btn  col" data-toggle="modal" data-target="#report" id="mapRegisterButton">
                 <i class="fas fa-plus"></i>
             </button>
-        
+            
             <!-- Modal -->
             <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
@@ -66,14 +64,16 @@
                             <form th:action="@{'/report/add'}" method="post"
                                   enctype="multipart/form-data">
                                 <div class="form-group" id="modalFontForm">
-                                    <label for="file" class="modal-body-font">Upload file<img src="images/upload.png" id="modalUploadLogo"></label>
+                                    <label for="file" class="modal-body-font">Upload file<img src="images/upload.png"
+                                                                                              id="modalUploadLogo"></label>
                                     <input type="file" class="form-control" id="file"
                                            name="file">
                                     <small id="fileHelp" class="form-text ">Snap a photo of the incident</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="query" class="modal-body-font">Location<img src="images/maps-and-flags.png"id="modalLocationLogo"></label>
-                                    <input type="text" class="form-control" id="query"
+                                    <label for="query" class="modal-body-font">Location<img
+                                            src="images/maps-and-flags.png" id="modalLocationLogo"></label>
+                                    <input type="text" class="form-control text-white" id="query"
                                            name="query" style="background: transparent;
                                                                border: none;
                                                                border-bottom: 1px solid #ffffff;
@@ -82,8 +82,9 @@
                                         zipcode</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="description" class="modal-body-font">Description<img src="images/edit.png" id= "modalDescribLogo"></label>
-                                    <input type="text" class="form-control" id="description"
+                                    <label for="description" class="modal-body-font">Description<img
+                                            src="images/edit.png" id="modalDescribLogo"></label>
+                                    <input type="text" class="form-control text-white" id="description"
                                            name="description" style="background: transparent;
                                                                border: none;
                                                                border-bottom: 1px solid #ffffff;
@@ -105,7 +106,8 @@
                                 </th:block>
                                 <br>
                                 <div class="form-group" id="modalWater">
-                                    <label for="waterLevel" class="modal-body-font">Water Level <img src="images/tide.png" id="modalWaterLogo"></label>
+                                    <label for="waterLevel" class="modal-body-font">Water Level in Inches<img
+                                            src="images/tide.png" id="modalWaterLogo"></label>
                                     <select class="form-control" id="waterLevel" name="waterLevel">
                                         <option value="0">0</option>
                                         <option value="1">1</option>
@@ -121,20 +123,20 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                           <div id="modalLogoFooter">
-                               <div id="modalCircle">
-                               <img src="images/tracking.png">
-                           </div>
-                        </div>
+                            <div id="modalLogoFooter">
+                                <div id="modalCircle">
+                                    <img src="images/tracking.png">
+                                </div>
+                            </div>
                             <div id="modalFooterFont">
-                            Bexar County Road Watch
+                                Bexar County Road Watch
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </th:block>
-
+    
     </div>
 
 </div>
@@ -148,55 +150,59 @@
 </div>
 
 
-
 <!--//SEARCH FOR CARDS-->
 <form th:action="@{/report/search}" method="post" class="row ">
-        <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
-               placeholder="Search reports and categories">
-    <button type="submit" class="btn btn col" id="UserReportSearchButton"><img src="images/magnifying-glass.png" id="userReportSearchLogo"></button>
-    <div id="card-wrapper">
-        <div class="row">
-
-            <!--    DEFAULT DISPLAY OF CARDS-->
+    <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
+           placeholder="Search reports and categories">
+    <button type="submit" class="btn btn col" id="UserReportSearchButton"><img src="images/magnifying-glass.png"
+                                                                               id="userReportSearchLogo"></button>
 </form>
-<!--//CARDS WITH REPORTS-->
-<th:block th:each="report : ${reports}" th:if="${param.search == null}">
-    <div class="card m-auto" id="report-card">
-        <img
-                th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
-                class="card-img-top" alt="report_img"
-                id="report-card-img">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
-            <p class="card-text" th:text="${report.description}">Some quick example text</p>
-            <div class="d-flex justify-content-around">
-                <th:block th:each="category : ${report.categories}">
-                    <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
-                </th:block>
-            </div>
-        </div>
-    </div>
-</th:block>
-<!--    QUERIED SET OF CARDS-->
-    <th:block th:if="${param.search != null}" th:each="report : ${queriedList}">
-    
-        <div class="card m-auto" id="report-card-query">
-            <img
-                    th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
-                    class="card-img-top" alt="report_img"
-                    id="report-card-img-query">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
-                <p class="card-text" th:text="${report.description}">Some quick example text</p>
-                <div class="d-flex justify-content-around">
-                    <th:block th:each="category : ${report.categories}">
-                        <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
-                    </th:block>
+<div id="card-wrapper">
+    <div class="row">
+        
+        <!--    DEFAULT DISPLAY OF CARDS-->
+        <!--//CARDS WITH REPORTS-->
+        <th:block th:each="report : ${reports}" th:if="${param.search == null}">
+            <div class="card m-auto" id="report-card">
+                <img
+                        th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                        class="card-img-top" alt="report_img"
+                        id="report-card-img">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+                    <p class="card-text"
+                        th:text="${report.description}"></p>
+                    <hr>
+                    <p th:text="${report.dateEntered}"></p>
+                    <div class="d-flex justify-content-around">
+                        <th:block th:each="category : ${report.categories}">
+                            <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
+                        </th:block>
+                    </div>
                 </div>
             </div>
-        </div>
-    </th:block>
-</div>
+        </th:block>
+        <!--    QUERIED SET OF CARDS-->
+        <th:block th:if="${param.search != null}" th:each="report : ${queriedList}">
+            
+            <div class="card m-auto" id="report-card-query">
+                <img
+                        th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                        class="card-img-top" alt="report_img"
+                        id="report-card-img-query">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+                    <!--                <p th:text="report.dateEntered"></p>-->
+                    <p class="card-text" th:text="${report.description}">Some quick example text</p>
+                    <div class="d-flex justify-content-around">
+                        <th:block th:each="category : ${report.categories}">
+                            <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </div>
 </div>
 
 <footer th:include="partials/footer :: footer"
@@ -215,7 +221,10 @@
 <script src="/js/keys.js"></script>
 <script src="/js/mapbox.js"></script>
 <script>
-
+    const changeDate = () => {
+        console.log("DATE: ")
+        return "hi"
+    }
 </script>
 
 </body>
