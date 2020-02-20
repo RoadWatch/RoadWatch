@@ -11,7 +11,7 @@
 <script src="https://kit.fontawesome.com/ca2faa0508.js"></script>
 <nav th:include="partials/navbar :: nav"></nav>
 <div class="container">
-    <h1>Road Watch Chat</h1>
+    <h3>Road Watch Chat</h3>
     <hr>
     <form th:action="@{'/forum/post'}" method="post" th:object="${post}">
         <div class="form-group">
@@ -53,10 +53,6 @@
                     </button>
                       </span>
                 </span>
-                 By:
-                <span th:text="${singlePost.user.username + ' '}"></span>
-                On:
-                <span th:text="${singlePost.date}"></span>
             </small>
             <hr>
             <div class="card-body" th:text="${singlePost.body}">
