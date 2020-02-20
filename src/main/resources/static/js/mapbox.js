@@ -60,7 +60,11 @@ $(document).ready(function () {
                 .then(function (cords) {
                     let pops = new mapboxgl.Popup()
                         .setLngLat(cords)
-                        .setHTML("<em><h6>" + points[i].properties.Name + "<br>" + "<p class='text-center'>(" + points[i].properties.Description + ")</p>" + "</em></h6>")
+                        .setHTML("" +
+                            "<em><h6>" + points[i].properties.Name + "<br>" +
+                            "<p class='text-center'>(" + points[i].properties.Description + ")</p> <br>" +
+                            points[i].properties.date +
+                            "</em></h6>")
                         .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptions)
                         .setLngLat(cords)
@@ -158,11 +162,11 @@ $(document).ready(function () {
     });
     
 
-    for (let i = 0; i < lowWaterPoints[0].features.length; i++) {
+    for (let i = 0; i < 10; i++) {
         let html = "";
         html += `<div class="card m-auto report-card" id="city-${i + 1}">
                 <img
-                        src="https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg"
+                        src="https://www.bexar.org/ImageRepository/Document?documentId=7269"
                         class="card-img-top" alt="report_img"
                         id="report-card-img">
                 <div class="card-body">
