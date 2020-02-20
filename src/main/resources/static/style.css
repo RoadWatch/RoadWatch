@@ -39,7 +39,7 @@ body{
 .aboutList {
     list-style: none;
     padding-left: 0;
-    background-color: rgba(0,0,0,.5);
+    /*background-color: rgba(0,0,0,.5);*/
 }
 .aboutList li {
     position: relative;
@@ -61,7 +61,7 @@ body{
 li{
     margin-left: 30px;
     margin-top: 20px;
-    color: white;
+    color: black;
 }
 
 
@@ -70,12 +70,26 @@ li{
 }
 
 
+
+#card-wrapper{
+    margin-top: 30px;
+}
+
+#cardBody{
+    background-color: #4152D0;
+    color:white;
+}
+
+.cardTitle{
+    color:white;
+}
+
 #cautionBox{
     height: 190px;
     width: 190px;
     background-color:#FCEA1A;
-    transform: rotate(50deg);
-    margin-top: 170px;
+    transform: rotate(49deg);
+    margin-top: 110px;
     margin-left:90px;
     border-radius: 20px;
     opacity: 90%;
@@ -92,7 +106,7 @@ li{
     padding-top: 40px;
     padding-right: 5px;
     padding-left: 5px;
-    margin-right:10px;
+    margin-right:-10px;
 
 
 }
@@ -143,18 +157,24 @@ li{
     color: #FF7D4A;
 }
 
+footer{
+    /*
+    margin-bottom: -50px;
+    */
+}
+
 
 #line1{
-    border: 1px solid white;
-    color: white;
+    border: 1px solid black;
+    color: black;
     width: 300px;
     margin-top: 90px;
 }
 
 #line2{
-    color:white;
+    color:black;
     width: 300px;
-    border: 1px solid white;
+    border: 1px solid black;
 }
 
 
@@ -167,6 +187,7 @@ li{
     padding-top: -20px;
     padding-right: 20px;
     padding-left:20px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
 
 }
 
@@ -219,6 +240,7 @@ li{
     margin-left:50px;
     /*margin-top: 10px;*/
     font-family: 'Ubuntu', sans-serif;
+    box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 
 
 }
@@ -548,18 +570,27 @@ li{
     border-left: 255px solid transparent;
     border-right: 255px solid transparent;
     border-top: 50px solid #4152D0;
+    /*position: relative;*/
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    font-size: 50px;
 
 
+}
+
+#navTriangleShadow{
+    /*position:absolute;*/
+    margin-top: 20px;
 }
 
 
 #UserReportSearchButton{
     background-color: #4152D0;
-    padding: 0px;
+    /*padding: 0px;*/
     margin-left: 5px;
+    margin-right: 20px;
     margin-top: 10px;
     color:white;
-    width: 5px;
+    width: 20px;
     height:40px;
     font-size: 20px;
 
@@ -587,7 +618,7 @@ li{
     height: 50px;
     background-color: #FF7D4A;
     color:white;
-    border-radius:20px;
+    border-radius:5px;
     font-family: 'Nanum Gothic', sans-serif;
     box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 
@@ -614,21 +645,25 @@ li{
 }
 
 #zipcode-button{
-    /*margin-left:;*/
+    margin-left:10px;
     width: 20px;
     height:40px;
     background-color: #4152D0;
     color:white;
     font-size: 20px;
+    margin-bottom: 5px;
 
 
 }
 
 #zipcode-button-icon{
     margin-top:-15px;
+
 }
 
-
+#zipcode-input{
+    margin-left: 20px;
+}
 
 
 /*#navTriangleShadow{*/

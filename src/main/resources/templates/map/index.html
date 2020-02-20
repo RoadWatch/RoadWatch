@@ -168,8 +168,10 @@
 <form th:action="@{/report/search}" method="post" class="row ">
     <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
            placeholder="Search reports and categories">
-    <button type="submit" class="btn btn col" id="UserReportSearchButton"><img src="images/magnifying-glass.png"
-                                                                               id="userReportSearchLogo"></button>
+    <button type="submit" class="btn btn col btn-sml" id="UserReportSearchButton">
+        <img src="images/magnifying-glass.png"
+             id="userReportSearchLogo">
+    </button>
 </form>
 <div id="card-wrapper">
     <div class="row">
@@ -182,7 +184,7 @@
                         th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
                         class="card-img-top" alt="report_img"
                         id="report-card-img">
-                <div class="card-body">
+                <div class="card-body" id="cardBody">
                     <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
                     <p class="card-text"
                         th:text="${report.description}"></p>
