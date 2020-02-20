@@ -38,45 +38,61 @@
             <div class="card-body" th:text="${singlePost.body}">
                 This is some text within a card body.
             </div>
-            <div class="d-flex justify-content-end">
+            <div>
                     <!--            dropdown-->
-                    <div class="dropdown">
-                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
-                                id="dropdownMenuButton"
-                                data-toggle="dropdown"
-                                style="margin: 0 10px">
-                        Leave a comment
-                        </button>
-                        <div class="dropdown-menu">
-                            <form th:action="@{'/forum/comment/'+ ${singlePost.id}}" method="post"
-                            th:object="${comment}">
-                                <small id="commentHelp" class="form-text text-muted">Add to the discussion
-                                </small>
-                                <input type="text" th:field="*{body}"
-                                class="form-control" id="comment">
-                                <button type="submit" class="btn">
-                                    <small>Post</small>
-                                </button>
-                            </form>
-                            <th:block th:each="comment : ${singlePost.comments}">
-                                <div class="dropdown-item">
-                                <small>
-                                    &#9830;
-                                    <span th:text="${comment.body}">Action</span>
-                                </small>
-<!--                                !!!!EDIT COMMENT-->
-<!--                                END COMMENT EDIT MAYBE**-->
-                                <form th:action="@{'/comment/delete/'+ ${comment.id}}" method="post">
-                                    <button type="submit" class="float-right">
-                                        <i class="fas fa-trash fa-xs"></i>
-                                    </button>
-                                </form>
-                                <hr>
+<!--                        //toggle 1 FORM-->
+                <p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                            data-target="#multiCollapseExample1">Leave a comment</button>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                            data-target="#multiCollapseExample2"
+                            th:if="${singlePost.comments.size() > 0}">View Comments</button>
+                </p>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                    <div class="card card-body">
+                                        <form th:action="@{'/forum/comment/'+ ${singlePost.id}}" method="post"
+                                              th:object="${comment}">
+                                            <small id="commentHelp" class="form-text text-muted">Add to the discussion
+                                            </small>
+                                            <input type="text" th:field="*{body}"
+                                                   class="form-control" id="comment">
+                                            <button type="submit" class="btn btn-outline-primary">
+                                                <small>Post</small>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </th:block>
+                            </div>
                         </div>
-                    </div>
-    
+<!--                      END 1  toggle-->
+<!--                        TOGGLEE 2-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                    <div class="card card-body">
+                                        <th:block th:each="comment : ${singlePost.comments}" >
+                                            <div class="dropdown-item">
+                                                <small>
+                                                    &#9830;
+                                                    <span th:text="${comment.body}">Action</span>
+                                                </small>
+                                                <form th:action="@{'/comment/delete/'+ ${comment.id}}" method="post">
+                                                    <button type="submit" class="float-right">
+                                                        <i class="fas fa-trash fa-xs"></i>
+                                                    </button>
+                                                </form>
+                                                <hr>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<!--                        END TOGGLE 2-->
+
 <!--                    //EDIT BUTTON-->
                 <th:block th:if="${singlePost.user.id == userId}" >
                     <button type="button" class="btn btn-outline-secondary btn-sm"          data-toggle="modal"
