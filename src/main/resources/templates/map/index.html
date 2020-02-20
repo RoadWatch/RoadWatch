@@ -186,9 +186,10 @@
                     <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
                     <p class="card-text"
                         th:text="${report.description}"></p>
+                    
+                    <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                     <hr>
                     <small>Endorsements</small>
-                    <div class="d-flex align-items-baseline">
                         <form th:action="@{'/endorsements/'+${report.id}+'/1'}" method="post">
                             <button type="submit"
                             class="btn btn-outline-light text-dark">
@@ -204,6 +205,17 @@
                             </button>
                         </form>
                 </div>
+                    <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.positiveEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.negativeEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                    </div>
+    
                     <hr>
                     <p th:text="${report.dateEntered}"></p>
                     <div class="d-flex justify-content-around">
@@ -225,6 +237,34 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
                     <p class="card-text" th:text="${report.description}">Some quick example text</p>
+                    <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
+                        <hr>
+                        <small>Endorsements</small>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/1'}" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-light text-dark">
+                                <span th:text=" ${report.positiveEndorsementCount}"></span>
+                                <i class="far fa-thumbs-up mx-2"></i>
+                            </button>
+                        </form>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-light text-dark">
+                                <span th:text=" ${report.negativeEndorsementCount}"></span>
+                                <i class="far fa-thumbs-up mx-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.positiveEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.negativeEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                    </div>
                     <hr>
                     <p th:text="${report.dateEntered}"></p>
                     <div class="d-flex justify-content-around">
