@@ -1,6 +1,7 @@
 
 .about{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 .card-img-top{
