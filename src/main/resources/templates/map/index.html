@@ -180,10 +180,20 @@
                     <hr>
                     <small>Endorsements</small>
                     <div class="d-flex align-items-baseline">
-                    <p th:text="${report.positiveEndorsementCount} "></p>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/1'}" method="post">
+                            <button type="submit"
+                            class="btn btn-outline-light text-dark">
+                                <span th:text=" ${report.positiveEndorsementCount}"></span>
                     <i class="far fa-thumbs-up mx-2"></i>
-                        <p th:text="   ${report.negativeEndorsementCount} "></p>
-                        <i class="far fa-thumbs-down mx-2"></i>
+                            </button>
+                        </form>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-light text-dark">
+                                <span th:text=" ${report.negativeEndorsementCount}"></span>
+                                <i class="far fa-thumbs-up mx-2"></i>
+                            </button>
+                        </form>
                 </div>
                     <hr>
                     <p th:text="${report.dateEntered}"></p>
