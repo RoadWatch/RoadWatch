@@ -1,4 +1,4 @@
-$(document).ready(function () {
+// $(document).ready(function () {
     let key = document.querySelector("#apiKey").content;
     mapboxgl.accessToken = key;
     
@@ -84,7 +84,7 @@ $(document).ready(function () {
                     headers: {"X-CSRF-TOKEN": token},
                     type: 'POST',
                     success: function (result) {
-                        console.log("SUCCESS")
+                        console.log("SUCCESS");
                     }
                 })
             })
@@ -94,26 +94,33 @@ $(document).ready(function () {
 
 
 //! USER REPORTS
-    const fetchUserPoints = () => {
+//     const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
-            console.log("REPORT: ", request)
+            console.log("REPORT: ", request);
         request.done(function (reports) {
-            console.log("Done: ", reports)
+            console.log("Done: ", reports);
             let endorsementButtonIds = [];
             userReports = reports;
             for (let i = 0; i < userReports.length && i < 9; i++) {
                 //push buttons with id's into array
                 endorsementButtonIds.push(`endorsement-${userReports[i].id}-1`);
                 endorsementButtonIds.push(`endorsement-${userReports[i].id}-2`);
-                
+                let cats = "";
+                for (let i2 = 0; i2 < userReports[i].jsoncategories.length; i2++){
+                    cats += `<span class="badge badge-pill badge-primary">${userReports[i].jsoncategories[i2]}</span>`;
+                }
                 const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
                 geocode(cord, key)
                     .then(function (cords) {
                         let html = `
             <em><h5>${userReports[i].description}</h5></em>
-            <p>${userReports[i].dateEntered}</p>
+            ` + (userReports[i].waterLevel < 0 ? "<p>" + userReports[i].waterLevel + "</p>" : "") +
+            `<p>${userReports[i].dateEntered}</p>
             <a href="#${userReports[i].id}">View Report</a>
+            <div class="d-flex justify-content-around">
+               ` + cats + `
+            </div>
             <button id="endorsement-${userReports[i].id}-1"
             class="btn btn-outline-primary btn-sm">
             Still happening</button>
@@ -135,11 +142,11 @@ $(document).ready(function () {
                     })
             }
             addClickEventForEndorsementPost(endorsementButtonIds)
-        })
+        });
         request.fail(function (e) {
-            console.log("e; ")
-        })
-    };
+            console.log("e; ");
+        });
+    // };
     
     fetchUserPoints();
     
@@ -156,7 +163,7 @@ $(document).ready(function () {
         flyToFunc(input.val())
     });
 
-});
+// });
 
 
 
