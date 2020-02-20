@@ -29,7 +29,8 @@ values ('Flooding'),
        ('Downtown'),
        ('Highway'),
        ('Residential'),
-       ('Rural');
+       ('Rural'),
+       ('General');
 
 select * from categories;
 describe reports;
@@ -37,4 +38,5 @@ describe reports;
 select * from report_category;
 select * from reports;
 select * from endorsements;
+truncate table reports;
 ##----

@@ -11,6 +11,7 @@ import com.codeup.demo.services.EnviromentSvc;
 import com.codeup.demo.services.GeocodeSvc;
 import com.codeup.demo.services.ReportSvc;
 import com.codeup.demo.services.UserSvc;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import okhttp3.MultipartBody;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -43,32 +44,10 @@ public class MapController {
         this.endorsementsDoa = endorsementsDoa;
     }
 
-    //    public MapController(EnviromentSvc enviromentSvc, Reports reportsDao, GeocodeSvc geocodeSvc, UserSvc userSvc, Categories categoriesDao, ReportSvc reportSvc) {
-//        this.enviromentSvc = enviromentSvc;
-//        this.reportsDao = reportsDao;
-//        this.geocodeSvc = geocodeSvc;
-//        this.userSvc = userSvc;
-//        this.categoriesDao = categoriesDao;
-//        this.reportSvc = reportSvc;
-//    }
-
     //! DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
     @GetMapping("/map/json")
     public @ResponseBody List<Report> mapJSON(){
-        int daysOld = 2; /* expiration day on reports */
-        int downVoteMax = 2; /* amount of times a report has to be down-voted before it is no longer shown */
-        List<Report> all = reportsDao.findAll();
-        List<Report> temp = new ArrayList<>();
-        Date date = new Date();
-        long day = 1000 * 60 * 60 * 24;
-        Date expire = new Date(date.getTime() - (daysOld * day));
-        // Filters reports out of what is shown to users
-        for (int i = 0; i < all.size(); i++) {
-            if (all.get(i).getDateEntered().compareTo(expire) > 0 || all.get(i).getRating() > downVoteMax){
-                temp.add(all.get(i));
-            }
-        }
-        return temp;
+        return reportsDao.findAll();
     }
 
 
@@ -84,17 +63,14 @@ public class MapController {
         List<Report> activeReports = new ArrayList<>();
         model.addAttribute("categories", categories);
         for (Report report : reports) {
-            Date date = new Date();
-            long day = 1000 * 60 * 60 * 24;
-            Date expire = new Date(date.getTime() - (2 * day));
-            if(report.getDateEntered().compareTo(expire) <= 0){
+            System.out.println("report amount: "+ report.getEndorsements().size());
+            if(!reportSvc.checkDate(report.getDateEntered())){
                 reportsDao.delete(report);
                 System.out.println("report deleted");
             }
             else activeReports.add(report);
         }
 
-        System.out.println(queriedList.size());
         model.addAttribute("queriedList", queriedList);
         model.addAttribute("reports", activeReports);
         return "map/index";

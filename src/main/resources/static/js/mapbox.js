@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let key = document.querySelector("#apiKey").content
+    let key = document.querySelector("#apiKey").content;
     mapboxgl.accessToken = key;
     
     var map = new mapboxgl.Map({
@@ -24,13 +24,7 @@ $(document).ready(function () {
         .setLngLat([-98.4936, 29.4241])
         .addTo(map);
     
-    //max lat: (NB)  29.709881
-    //min lat: (pleasanton) 28.964410
-    
-    //max long : (castroville) -98.871470
-    //min long: (seguin) -97.968540
-    
-    // format: minLong, minLat, maxLon, maxLng
+
     //!GEO CODE
     const geocode = (search, token) => {
         let baseUrl = 'https://api.mapbox.com';
@@ -66,14 +60,14 @@ $(document).ready(function () {
                 .then(function (cords) {
                     let pops = new mapboxgl.Popup()
                         .setLngLat(cords)
-                        .setHTML("<em><h2>" + points[i].properties.Name + "</em></h2>")
+                        .setHTML("<em><h6>" + points[i].properties.Name + "<br>" + "<p class='text-center'>(" + points[i].properties.Description + ")</p>" + "</em></h6>")
                         .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptions)
                         .setLngLat(cords)
                         .setPopup(pops)
                         .togglePopup()
                         .addTo(map)
-                })
+                });
         }
         
     };
@@ -103,8 +97,9 @@ $(document).ready(function () {
     const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
-        
+            console.log("REPORT: ", request)
         request.done(function (reports) {
+            console.log("Done: ", reports)
             let endorsementButtonIds = [];
             userReports = reports;
             for (let i = 0; i < userReports.length && i < 9; i++) {
@@ -116,7 +111,9 @@ $(document).ready(function () {
                 geocode(cord, key)
                     .then(function (cords) {
                         let html = `
-            <em><h2>${userReports[i].description}</h2></em>
+            <em><h5>${userReports[i].description}</h5></em>
+            <p>${userReports[i].dateEntered}</p>
+            <a href="#${userReports[i].id}">View Report</a>
             <button id="endorsement-${userReports[i].id}-1"
             class="btn btn-outline-primary btn-sm">
             Still happening</button>
@@ -132,12 +129,15 @@ $(document).ready(function () {
                             .setLngLat(cords)
                             .setPopup(pops)
                             .togglePopup()
-                            .addTo(map)
+                            .addTo(map);
                         
                         
                     })
             }
             addClickEventForEndorsementPost(endorsementButtonIds)
+        })
+        request.fail(function (e) {
+            console.log("e; ")
         })
     };
     
@@ -158,26 +158,5 @@ $(document).ready(function () {
 
 });
 
-//////////!! if these button functions are necessary, they need id's
 
-
-//! THIS BUTTON FUNCTION
-// $("button").click(function () {
-//     var userInput = $("input").val();
-//     geocode(userInput, key)
-//         .then(function (result) {
-//             map.flyTo({center: result});
-//         });
-// });
-
-// //! IM NOT SURE WHAT THIS BUTTON FUNCTION IS DOING
-// $("#test").click(function () {
-//     var userInput = $("input").val();
-//     console.log(userInput);
-//     geocode(userInput, key)
-//         .then(function (result) {
-//             marker.setLngLat(result);
-//             map.flyTo({center: result});
-//         });
-// });
 

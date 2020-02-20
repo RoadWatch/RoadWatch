@@ -50,6 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                on logout
                 .logout()
                 .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
                 .and()
 //                allows anyone to see home and ads
                 .authorizeRequests()

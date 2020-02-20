@@ -2,9 +2,11 @@ package com.codeup.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,10 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     @NotBlank(message = "Body is required")
     private String body;
+
+    @Column(nullable = false)
+    @CreationTimestamp
+    private Date date;
 
     //!I'm not sure we need this
     @Column(nullable = false)
@@ -45,18 +51,19 @@ public class Post {
         this.body = body;
     }
 
-    public Post(Long id, String title, String body, Long user_id) {
+    public Post(Long id, String title, String body, Long user_id, Date date) {
         this.id = id;
         this.user_id = user_id;
         this.title = title;
         this.body = body;
+        this.date = date;
     }
 
-    public Post(String title, String body, User user) {
-        this.user = user;
-        this.user_id = this.user.getId();
+    public Post(String title, String body, Long user_id, Date date) {
+        this.user_id = user_id;
         this.title = title;
         this.body = body;
+        this.date = date;
     }
 
     public Post(Long id, String title, String body, User user) {
@@ -130,5 +137,13 @@ public class Post {
 
     public void setUser_id(Long user_id) {
         this.user_id = user_id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
