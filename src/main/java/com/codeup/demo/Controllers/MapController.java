@@ -11,6 +11,7 @@ import com.codeup.demo.services.EnviromentSvc;
 import com.codeup.demo.services.GeocodeSvc;
 import com.codeup.demo.services.ReportSvc;
 import com.codeup.demo.services.UserSvc;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import okhttp3.MultipartBody;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;

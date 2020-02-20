@@ -50,6 +50,7 @@ public class Report {
     private String filePath;
 
     @OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Endorsement> endorsements = new ArrayList<>();
 
     @ManyToOne
