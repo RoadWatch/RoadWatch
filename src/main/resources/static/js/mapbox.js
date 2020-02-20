@@ -84,6 +84,7 @@ $(document).ready(function () {
                     headers: {"X-CSRF-TOKEN": token},
                     type: 'POST',
                     success: function (result) {
+                        window.location = "/map"
                         console.log("SUCCESS")
                     }
                 })

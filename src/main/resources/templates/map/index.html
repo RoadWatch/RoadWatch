@@ -206,8 +206,7 @@
                             <button type="submit"
                                     class="btn btn-outline-light text-dark">
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-up mx-2"></i>
-                            </button>
+                                <i class="far fa-thumbs-down mx-2"></i>                            </button>
                         </form>
                 </div>
                     <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
@@ -217,8 +216,7 @@
                         </a>
                         <a href="/" class="btn btn-outline-light text-dark">
                             <span th:text=" ${report.negativeEndorsementCount}"></span>
-                            <i class="far fa-thumbs-up mx-2"></i>
-                        </a>
+                            <i class="far fa-thumbs-down mx-2"></i>                        </a>
                     </div>
     
                     <hr>
@@ -259,8 +257,7 @@
                             <button type="submit"
                                     class="btn btn-outline-light text-dark">
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-up mx-2"></i>
-                            </button>
+                                <i class="far fa-thumbs-down mx-2"></i>                            </button>
                         </form>
                     </div>
                     <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
@@ -270,8 +267,7 @@
                         </a>
                         <a href="/" class="btn btn-outline-light text-dark">
                             <span th:text=" ${report.negativeEndorsementCount}"></span>
-                            <i class="far fa-thumbs-up mx-2"></i>
-                        </a>
+                            <i class="far fa-thumbs-down mx-2"></i>                        </a>
                     </div>
                     <hr>
                     <p th:text="${report.dateEntered}"></p>
