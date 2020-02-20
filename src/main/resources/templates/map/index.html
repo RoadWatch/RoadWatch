@@ -103,7 +103,7 @@
                                         </th:block>
                                         <th:block th:if="${!c.name.equals('General')}">
                                             <input class="form-check-input" type="checkbox" th:value="${c.name}"
-                                                   id="defaultCheck1"
+                                                   id="defaultCheck2"
                                                    th:attrappend="id=${c.id}"
                                                    th:name="primitiveCategories">
                                             <label class="form-check-label" for="defaultCheck1"
@@ -172,10 +172,14 @@
                                                                                id="userReportSearchLogo"></button>
 </form>
 <div id="card-wrapper">
-    <div class="row">
+    <div class="row" id="card-row">
         
-        <!--    DEFAULT DISPLAY OF CARDS-->
+        <!--    DEFAULT DISPLAY OF CARDS (EXCEPT ITS NOT RIGHT NOW)-->
         <!--//CARDS WITH REPORTS-->
+<!--        <th:block th:each="report : ${reports}" th:if="${param.search == null}">-->
+<!--            -->
+<!--        </th:block>-->
+
         <th:block th:each="report : ${reports}" th:if="${param.search == null}">
             <div class="card m-auto report-card" th:id="${report.id}">
                 <img
@@ -301,7 +305,7 @@
 <script src="/js/mapbox.js"></script>
 <script>
     const changeDate = () => {
-        console.log("DATE: ")
+        console.log("DATE: ");
         return "hi"
     }
 </script>

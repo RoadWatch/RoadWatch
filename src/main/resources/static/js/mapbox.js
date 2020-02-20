@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
     let key = document.querySelector("#apiKey").content;
     mapboxgl.accessToken = key;
     
@@ -31,7 +31,7 @@
         let endPoint = '/geocoding/v5/mapbox.places/';
         return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json?proximity=-98.4936, 29.4241&' + 'access_token=' + token)
             .then(function (res) {
-                return res.json()
+                return res.json();
                 // to get all the data from the request, comment out the following three lines...
             })
             .then(function (data) {
@@ -94,7 +94,7 @@
 
 
 //! USER REPORTS
-//     const fetchUserPoints = () => {
+    const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
             console.log("REPORT: ", request);
@@ -145,8 +145,8 @@
         });
         request.fail(function (e) {
             console.log("e; ");
-        });
-    // };
+        })
+    };
     
     fetchUserPoints();
     
@@ -163,7 +163,27 @@
         flyToFunc(input.val())
     });
 
-// });
+    for (let i = 0; i < lowWaterPoints[0].features.length; i++) {
+        let html = "";
+        html += `<div class="card m-auto report-card" id="city-${i + 1}">
+                <img
+                        src="https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg"
+                        class="card-img-top" alt="report_img"
+                        id="report-card-img">
+                <div class="card-body">
+                    <h5 class="card-title">${lowWaterPoints[0].features[i].properties.Name}</h5>
+                    <small>
+                        <span>Author: Bexar County</span>
+                    </small>
+                    <p class="card-text">${lowWaterPoints[0].features[i].properties.Description}</p>
+                </div>
+                    <hr>
+                    <p>MM-DD-YYYY</p>
+                </div>`;
+        document.getElementById("card-row").innerHTML += html;
+    }
+
+});
 
 
 
