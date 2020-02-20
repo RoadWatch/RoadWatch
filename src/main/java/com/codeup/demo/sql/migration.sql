@@ -30,7 +30,7 @@ values ('Flooding'),
        ('Highway'),
        ('Residential'),
        ('Rural'),
-       ('Default');
+       ('General');
 
 select * from categories;
 describe reports;
