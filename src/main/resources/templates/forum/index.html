@@ -33,7 +33,9 @@
         <div class="card" style="margin: 0 10px 10px 10px; padding: 10px">
             <small>
                  By:
-                <span th:text="${singlePost.user.username.toUpperCase()}"></span>
+                <span th:text="${singlePost.user.username + ' '}"></span>
+                On:
+                <span th:text="${singlePost.date}"></span>
             </small>
             <div class="card-body" th:text="${singlePost.body}">
                 This is some text within a card body.
