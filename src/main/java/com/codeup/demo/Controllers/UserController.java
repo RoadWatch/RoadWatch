@@ -36,7 +36,9 @@ public class UserController {
         if(userSvc.isUserLoggedIn()){
             User user = userDao.getOne(userSvc.getAuthUser().getId());
             List<Report> reports = user.getReports();
+
             model.addAttribute("user", user);
+            model.addAttribute("reports", reports);
             return "user/profile";
         }
         else return "redirect:/register";
