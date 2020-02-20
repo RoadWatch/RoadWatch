@@ -9,63 +9,130 @@
 
 
 
-<nav th:fragment="nav" id="navBar">
+<!--<nav th:fragment="nav" id="navBar">-->
+
+<!--<div class="container-fluid">-->
 
 
-    <h1 id="navHead">BCRW</h1>
-<!--    <h1 id="navHead2">Bexar County Road Watch</h1>-->
-    <hr id="navLine">
 
-<!--    PROFILE LOGO LINK-->
+<!--&lt;!&ndash;    <h1 id="navHead">BCRW</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;    <hr id="navLine">&ndash;&gt;-->
 
+<!--&lt;!&ndash;    PROFILE LOGO LINK&ndash;&gt;-->
+
+<!--<div id=navProfile><a th:href="@{'/user/profile'}"><img src="images/round-account-button-with-user-inside.png"></a></div>-->
+
+<!--&lt;!&ndash;////////////&ndash;&gt;-->
+
+<!--    <div id="logo">-->
+<!--        <div id="navCircle">-->
+<!--            <img id="navLogo" src="images/tracking.png">-->
+<!--        </div>-->
+<!--        <h1 id="navHead">BCRW</h1>-->
+<!--        <hr id="navLine">-->
+<!--    </div>-->
+<!--    -->
+<!--<div class="navCenter">-->
+
+<!--    <div id="navLinkCenter">-->
+
+<!--      <ul class="nav">-->
+<!--&lt;!&ndash;          <ul class="nav justify-content-end">&ndash;&gt;-->
+<!--          <li class="nav-item">-->
+<!--              <a class="nav-link" href="/">Home</a>-->
+<!--          </li>-->
+
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="/map">Map</a>-->
+<!--        </li>-->
+
+
+
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="/forum">Forum</a>-->
+<!--        </li>-->
+<!--        <th:block sec:authorize="!isAuthenticated()">-->
+<!--            <li class="nav-item">-->
+<!--                <a href="/" class="btn" id="navLogin">Login</a>-->
+<!--            </li>-->
+<!--        </th:block>-->
+<!--        <th:block sec:authorize="isAuthenticated()">-->
+<!--            <li class="nav-item">-->
+<!--                <form th:action="@{/logout}" method="post">-->
+<!--                    <button class="btn" type="submit" id="navLogout">Logout</button>-->
+<!--                </form>-->
+<!--            </li>-->
+<!--        </th:block>-->
+
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">dddddd</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--    </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<nav th:fragment="nav" class="navbar" id="navBar">
+<div class="container-fluid">
     <div id=navProfile><a th:href="@{'/user/profile'}"><img src="images/round-account-button-with-user-inside.png"></a></div>
 
-<!--////////////-->
-    <div class="navCenter">
 
+<!--    <div id="logo">-->
+<!--        <div id="navCircle">-->
+<!--            <img id="navLogo" src="images/tracking.png">-->
+<!--        </div>-->
+<!--        <h1 id="navHead">BCRW</h1>-->
+<!--        <hr id="navLine">-->
+<!--    </div>-->
+
+<!--    <div id="navCircle">-->
+<!--        <img id="navLogo" src="images/tracking.png">-->
+<!--    </div>-->
+
+    <div id="logo">
         <div id="navCircle">
             <img id="navLogo" src="images/tracking.png">
         </div>
+        <h1 id="navHead">BCRW</h1>
+        <hr id="navLine">
+    </div>
 
+    <ul class="nav justify-content-center">
 
-    <div id="navLinkCenter">
+<!--        <div id="logo">-->
+<!--        <div id="navCircle">-->
+<!--            <img id="navLogo" src="images/tracking.png">-->
+<!--        </div>-->
+<!--            <h1 id="navHead">BCRW</h1>-->
+<!--                    <hr id="navLine">-->
+<!--        </div>-->
+<!--        <h1 id="navHead">BCRW</h1>-->
+<!--        <hr id="navLine">-->
 
-      <ul class="nav">
-<!--          <ul class="nav justify-content-end">-->
-          <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-          </li>
-
+        <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="/map">Map</a>
         </li>
-
-
-
         <li class="nav-item">
             <a class="nav-link" href="/forum">Forum</a>
         </li>
-        <th:block sec:authorize="!isAuthenticated()">
-            <li class="nav-item">
-                <a href="/" class="btn" id="navLogin">Login</a>
-            </li>
-        </th:block>
-        <th:block sec:authorize="isAuthenticated()">
-            <li class="nav-item">
-                <form th:action="@{/logout}" method="post">
-                    <button class="btn" type="submit" id="navLogout">Logout</button>
-                </form>
-            </li>
-        </th:block>
-
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">dddddd</a>-->
-<!--        </li>-->
+    <th:block sec:authorize="!isAuthenticated()">
+        <li class="nav-item">
+            <a href="/" class="btn" id="navLogin">Login</a>
+        </li>
+    </th:block>
+    <th:block sec:authorize="isAuthenticated()">
+        <li class="nav-item">
+            <form th:action="@{/logout}" method="post">
+                <button class="btn" type="submit" id="navLogout">Logout</button>
+            </form>
+        </li>
+    </th:block>
     </ul>
-    </div>
-    </div>
-
-
+</div>
 <div id= "navTriangle">
 </div>
 

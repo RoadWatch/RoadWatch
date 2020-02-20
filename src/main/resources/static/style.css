@@ -132,6 +132,12 @@ li{
 
 }
 
+.container-fluid{
+    margin-left: -20px;
+    /*margin-right: auto;*/
+    width:auto;
+    background-color: #4152D0;
+}
 
 .form-text{
     color: #FF7D4A;
@@ -187,7 +193,11 @@ li{
 }
 
 
-
+#logo{
+    margin-top: 10px;
+    margin-left: 20px;
+    position: absolute;
+}
 
 
 #loginSubmit{
@@ -212,6 +222,8 @@ li{
 
 
 }
+
+
 
 
 #map{
@@ -373,13 +385,14 @@ li{
 .nav{
     /*display: flex;*/
     /*justify-content: center;*/
-    height: 100px;
+    height: 135px;
     width: auto;
     font-family: 'Ubuntu', sans-serif;
-    /*background-color: #4152D0;*/
+    background-color: #4152D0;
     font-size: 20px;
-    display: block;
+    /*display: inline-block;*/
     /*margin-top: 10px;*/
+    margin-left: 45px;
 
 
 
@@ -387,14 +400,14 @@ li{
 
 
 .nav a{
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 
 #navBar{
     /*color: #4152D0;*/
     /*background-color: white;*/
-    position:relative;
+    /*position:relative;*/
     width: auto;
 
 
@@ -402,12 +415,13 @@ li{
 }
 
 .navCenter{
-    display: flex;
-    justify-content: center;
+    /*display: flex;*/
+    /*justify-content: center;*/
     background-color: #4152D0;
-    margin-bottom: -30px ;
-    height: 105px;
-    width: auto;
+    margin-left: -20px;
+    /*margin-bottom: -30px ;*/
+    /*height: 120px;*/
+    /*width: auto;*/
     /*margin-top: 50px;*/
 
 /*come back to me */
@@ -418,26 +432,39 @@ li{
 #navCircle{
     width: 50px;
     height:50px;
-    margin-right: -20px;
-    margin-left: -25px;
-    margin-top: 15px;
+    display: flex;
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*margin-right: -20px;*/
+    margin-left: 10px;
+    margin-top: 10px;
+    /*margin-bottom: -20px;*/
     background-color: white;
     border-radius: 50%;
 }
 
+#navContainer{
+    /*display: inline;*/
+    /*width:auto;*/
+    /*width: 200px;*/
+    background-color: #4152D0;
+    margin-left: -20px;
+}
+
 #navHead{
     margin-left: 70px;
-    margin-top: 30px;
-    position:absolute;
+    margin-top: -40px;
+    /*position:absolute;*/
     font-size: 30px;
     color:#FF7D4A;
     font-family: 'Titillium Web', sans-serif;
 
 }
 .nav-item{
-    margin-top: 50px;
-
+    margin-top: 80px;
+    margin-left: 10px;
     /*width: auto;*/
+    /*background-color: #4152D0;*/
 
 
 }
@@ -457,24 +484,24 @@ li{
 #navLine{
     border: .5px solid #FF7D4A;
     color: white;
-    width: 250px;
-    position: absolute;
-    margin-top: 65px;
-    margin-left:75px;
+    width: 220px;
+    /*position: absolute;*/
+    margin-top: -10px;
+    margin-left:70px;
 
 }
 
 
 #navLinkCenter{
-   margin-left: -40px;
-   margin-bottom: 50px;
-   display: inline-block;
-    margin-top: 20px;
+   /*margin-left: -40px;*/
+   /*margin-bottom: 50px;*/
+   /*display: inline-block;*/
+    /*margin-top: 50px;*/
     /*padding-bottom: 90px;*/
 }
 #navLogin{
     color:white;
-    margin-top: 11px;
+    margin-top: -7px;
     padding-left:0px;
     font-size: 20px;
     font-family: 'Ubuntu', sans-serif;
@@ -482,7 +509,7 @@ li{
 
 #navLogout{
     color:white;
-    margin-top: 11px;
+    margin-top: -7px;
     padding-left:0px;
     font-size: 20px;
     font-family: 'Ubuntu', sans-serif;
@@ -491,9 +518,10 @@ li{
 #navLogo{
     width:40px;
     height:40px;
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: -5px;
+    margin:auto;
+    /*margin-left: 5px;*/
+    /*margin-top: 5px;*/
+    /*margin-bottom: -5px;*/
 
 }
 
@@ -504,19 +532,21 @@ li{
     position:absolute;
     display: flex;
     margin-left: 330px;
-    margin-top: 17px;
+    margin-top: 20px;
 }
+
+
 #navTriangle{
     display: inline-flex;
     justify-content: center;
     /*margin-right: 80px;*/
-    margin-left: -50px;
+    margin-left: -70px;
     margin-right: 29px;
-    margin-top: 20px;
+    margin-top: -10px;
     width: 0;
     height: 0;
-    border-left: 240px solid transparent;
-    border-right: 240px solid transparent;
+    border-left: 255px solid transparent;
+    border-right: 255px solid transparent;
     border-top: 50px solid #4152D0;
 
 
