@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.aspectj.lang.annotation.Before;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -57,19 +58,17 @@ public class Report {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "reportCategory",
-            joinColumns = {@JoinColumn(name = "category_id")},
-            inverseJoinColumns = {@JoinColumn(name = "report_id")}
+            joinColumns = {@JoinColumn(name = "report_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
     @JsonBackReference
     private List<Category> categories = new ArrayList<>();
 
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING ,pattern = "mm-dd-yyyy")
-    private Date dateEntered;
+    private String dateEntered;
 
     @Column()
-    @JsonFormat(pattern = "mm-dd-yyyy")
-    private Date dateUpdated;
+    private String dateUpdated;
 
     public Report() {
     }
@@ -80,7 +79,7 @@ public class Report {
     ){
         this.waterInches = waterInches;
         this.description = description;
-        this.dateEntered = new Date();
+        this.dateEntered = formatDate();
     }
 
     public Report(
@@ -98,7 +97,7 @@ public class Report {
         this.latitude = latitude;
         this.description = description;
         this.user = user;
-        this.dateEntered = new Date();
+        this.dateEntered = formatDate();
     }
 
     public Report(
@@ -117,17 +116,25 @@ public class Report {
         this.latitude = latitude;
         this.description = description;
         this.user = user;
-        this.dateEntered = new Date();
+        this.dateEntered = formatDate();
     }
 
     @PrePersist
     public void init(){
-        this.dateEntered = new Date();
+        this.dateEntered = formatDate();
     }
 
     @PreUpdate
     public void onUpdate(){
-        this.dateUpdated = new Date();
+        this.dateUpdated = formatDate();
+    }
+
+    //! FORMAT NEW DATE()
+    private String formatDate(){
+        String[] dateSplit = new Date().toString().split(" ");
+        String formatedDate = String.format("%s %s %s %s",
+                dateSplit[0], dateSplit[1], dateSplit[2], dateSplit[dateSplit.length-1]);
+        return formatedDate;
     }
 
     public long getId() {
@@ -186,20 +193,20 @@ public class Report {
         this.user = user;
     }
 
-    public Date getDateEntered() {
+    public String getDateEntered() {
         return dateEntered;
     }
 
-    public void setDateEntered(Date dateEntered) {
-        this.dateEntered = dateEntered;
+    public void setDateEntered() {
+        this.dateEntered = formatDate();
     }
 
-    public Date getDateUpdated() {
+    public String getDateUpdated() {
         return dateUpdated;
     }
 
-    public void setDateUpdated(Date dateUpdated) {
-        this.dateUpdated = dateUpdated;
+    public void setDateUpdated() {
+        formatDate();
     }
 
     public List<Endorsement> getEndorsements() {

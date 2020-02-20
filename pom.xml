@@ -17,10 +17,20 @@
     <properties>
         <java.version>11</java.version>
         <skipTests>true</skipTests>
+        <error-page>
+            <location>/errors</location>
+        </error-page>
     </properties>
 
     <dependencies>
-<!--        JODA TIME-->
+        <!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-java8time -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+            <version>3.0.4.RELEASE</version>
+        </dependency>
+
+        <!--        JODA TIME-->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>

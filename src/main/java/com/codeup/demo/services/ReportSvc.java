@@ -14,6 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -72,6 +74,81 @@ public class ReportSvc {
         List<Report> qList = new ArrayList<>();
 
         return qList;
+    }
+
+    public boolean checkDate(String date){
+        String[] dateSplit = new Date().toString().split(" ");
+        String formatedDate = String.format("%s %s %s %s",
+                dateSplit[0], dateSplit[1], dateSplit[2], dateSplit[dateSplit.length-1]);
+        String[] comparrisonDateArray = formatedDate.split(" ");
+        String[] reportDateArray = date.split(" ");
+        List<String> months = getMonthsArray();
+        List<String> days = getDateArray();
+        String year = "2020";
+
+        if(!reportDateArray[reportDateArray.length-1].equals(year))
+            return false;
+        if(months.indexOf(comparrisonDateArray[1]) != months.indexOf(reportDateArray[1])) return false;
+
+        int differenceInDays = (days.indexOf(reportDateArray[2]) - days.indexOf(comparrisonDateArray[2]));
+        System.out.println(differenceInDays);
+
+        if((differenceInDays*-1) > 3) return false;
+
+        else return true;
+    }
+
+
+    private List<String> getMonthsArray(){
+        return new ArrayList<>(){{
+            add("Jan");
+            add("Feb");
+            add("Mar");
+            add("Apr");
+            add("May");
+            add("Jun");
+            add("Jul");
+            add("Aug");
+            add("Sep");
+            add("Oct");
+            add("Nov");
+            add("Dec");
+        }};
+    }
+
+    private List<String> getDateArray(){
+        return new ArrayList<String>(){{
+            add("1");
+            add("2");
+            add("3");
+            add("4");
+            add("5");
+            add("6");
+            add("7");
+            add("8");
+            add("9");
+            add("10");
+            add("11");
+            add("12");
+            add("13");
+            add("14");
+            add("15");
+            add("16");
+            add("17");
+            add("18");
+            add("19");
+            add("20");
+            add("21");
+            add("22");
+            add("23");
+            add("24");
+            add("25");
+            add("26");
+            add("27");
+            add("28");
+            add("29");
+            add("30");
+        }};
     }
 
 
