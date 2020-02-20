@@ -1,0 +1,189 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="partials/header :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Road Watch</title>
+</head>
+<body>
+<script src="https://kit.fontawesome.com/ca2faa0508.js"></script>
+<nav th:include="partials/navbar :: nav"></nav>
+<div class="container">
+    <h1>Road Watch Chat</h1>
+    <hr>
+    <form th:action="@{'/forum/post'}" method="post" th:object="${post}">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" th:field="*{title}">
+            <small id="emailHelp" class="form-text text-muted">Name your post</small>
+        </div>
+        <div class="form-group">
+            <label for="body">Body</label>
+            <input type="text" class="form-control" id="body" th:field="*{body}">
+            <small id="bodyFormHelp" class="form-text text-muted">Let us know whats going on...</small>
+        
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <hr>
+    <div th:each="singlePost : ${posts}">
+        <div class="card" style="margin: 0 10px 10px 10px; padding: 10px">
+            <div class="card-title" th:text="${singlePost.title.toUpperCase()}" style="font-weight: 800"></div>
+            <small>
+                By:
+                <span th:text="${singlePost.user.username.toUpperCase()}"></span>
+                <span th:if="${singlePost.user.id == userId}" class="dropdown">
+                    <i class="fas fa-ellipsis-h dropdown-toggle" id="dropdownMenuButton"
+                       data-toggle="dropdown"></i>
+                      <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                   <button type="button" class="btn btn-outline-warning btn-sm"
+                                                           data-toggle="modal"
+                                                           data-target="#myModal"
+                                                           th:attrappend="data-target=${singlePost.id}"
+                                                           style="margin: 0 10px">
+                        Edit
+                    </button>
+                          <!-- Delete trigger modal -->
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                            data-target="#delete" th:attrappend="data-target=${singlePost.id}"
+                            style="margin: 0 10px">
+                        Delete
+                    </button>
+                      </span>
+                </span>
+            </small>
+            <hr>
+            <div class="card-body" th:text="${singlePost.body}">
+                This is some text within a card body.
+            </div>
+            <div>
+                <!--            dropdown-->
+                <!--                        //toggle 1 FORM-->
+                <p>
+                    <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
+                            data-target="#multiCollapseExample1">Leave a comment
+                    </button>
+                    <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
+                            data-target="#multiCollapseExample2"
+                            th:if="${singlePost.comments.size() > 0}">View Comments
+                    </button>
+                </p>
+                
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                            <div class="card card-body">
+                                <form th:action="@{'/forum/comment/'+ ${singlePost.id}}" method="post"
+                                      th:object="${comment}">
+                                    <small id="commentHelp" class="form-text text-muted">Add to the discussion
+                                    </small>
+                                    <input type="text" th:field="*{body}"
+                                           class="form-control" id="comment">
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        <small>Post</small>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                      END 1  toggle-->
+                <!--                        TOGGLEE 2-->
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse" id="multiCollapseExample2">
+                            <div class="card card-body">
+                                <th:block th:each="comment : ${singlePost.comments}">
+                                    <div class="dropdown-item">
+                                        <small>
+                                            &#9830;
+                                            <span th:text="${comment.body}">Action</span>
+                                        </small>
+                                        <form th:action="@{'/comment/delete/'+ ${comment.id}}" method="post">
+                                            <button type="submit" class="float-right">
+                                                <i class="fas fa-trash fa-xs"></i>
+                                            </button>
+                                        </form>
+                                        <hr>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!--EDIT Modal -->
+            <div class="modal fade" id="myModal" role="dialog" th:attrappend="id=${singlePost.id}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{'/forum/post/edit/'+ ${singlePost.id}}" method="post">
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" id="edit-title"
+                                           th:value="${singlePost.title}" th:name="title">
+                                    <small id="titleHelp" class="form-text text-muted">Edit title</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-body">Body</label>
+                                    <input type="text" class="form-control" id="edit-body" th:name="body"
+                                           th:value="${singlePost.body}">
+                                    <small id="bodyHelp" class="form-text text-muted">Edit body</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--           Delete end edit form-->
+            <!--DELETE Modal -->
+            <div class="modal fade" id="delete" tabindex="-1" role="dialog" th:attrappend="id=${singlePost.id}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="username">
+                                <span th:text="${singlePost.user.firstName}"></span>, delete post ?
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <form th:action="@{'/forum/post/delete/'+ ${singlePost.id}}" method="post">
+                                <button type="submit" class="btn btn-secondary mx-2">Yes</button>
+                            </form>
+                            <p>
+                                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">No</button>
+                            </p>
+                        
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--            end-->
+        </div>
+        </th:block>
+    </div>
+    
+    <!--delete modal-->
+
+
+</body>
+</html>
