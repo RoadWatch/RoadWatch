@@ -6,6 +6,7 @@ import com.codeup.demo.exception.ReportException;
 import com.codeup.demo.models.Endorsement;
 import com.codeup.demo.models.Report;
 import com.codeup.demo.models.User;
+import com.codeup.demo.services.EndorsmentSvc;
 import com.codeup.demo.services.UserSvc;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +20,13 @@ import java.util.List;
 @Controller
 public class EndorsmentController {
     private Endorsements endorsementDao;
+    private EndorsmentSvc endorsmentSvc;
     private UserSvc userSvc;
     private Reports reportsDao;
 
-    public EndorsmentController(Endorsements endorsementDao, UserSvc userSvc, Reports reportsDao) {
+    public EndorsmentController(Endorsements endorsementDao, EndorsmentSvc endorsmentSvc, UserSvc userSvc, Reports reportsDao) {
         this.endorsementDao = endorsementDao;
+        this.endorsmentSvc = endorsmentSvc;
         this.userSvc = userSvc;
         this.reportsDao = reportsDao;
     }
@@ -37,6 +40,8 @@ public class EndorsmentController {
             User user = userSvc.getAuthUser();
             Report report = reportsDao.findById(id)
                     .orElseThrow(()-> new ReportException());
+
+            endorsmentSvc.updateEndorsementCount(report, value);
             Endorsement endorsement = new Endorsement(
                     (int)value,
                     user,

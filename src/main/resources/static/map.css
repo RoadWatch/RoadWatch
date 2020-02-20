@@ -6,10 +6,11 @@
 #legend {
   position: absolute;
   top: 0;
-  right: 10px;
+  right: 5px;
   z-index: 1;
   background: white;
   padding: 8px;
+  border-radius: 6px;
 
 }
 #report-card {
@@ -29,4 +30,18 @@
 #card-wrapper {
   height: 840px;
   overflow: scroll;
+}
+
+#legend-dot-1 {
+  height: 20px;
+  width: 10px;
+  background: green;
+  margin-right: 5px;
+}
+#legend-dot-2 {
+  height: 20px;
+  width: 10px;
+  background: blue;
+  margin-right: 5px;
+
 }

@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Before;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -70,6 +71,12 @@ public class Report {
     @Column()
     private String dateUpdated;
 
+    @Column(name = "positive_end")
+    private int positiveEndorsementCount;
+
+    @Column(name = "negative_end")
+    private int negativeEndorsementCount;
+
     public Report() {
     }
     //! This constructor is used for creating a report in the geocode
@@ -80,6 +87,8 @@ public class Report {
         this.waterInches = waterInches;
         this.description = description;
         this.dateEntered = formatDate();
+        this.positiveEndorsementCount = 0;
+        this.negativeEndorsementCount = 0;
     }
 
     public Report(
@@ -98,6 +107,8 @@ public class Report {
         this.description = description;
         this.user = user;
         this.dateEntered = formatDate();
+        this.positiveEndorsementCount = 0;
+        this.negativeEndorsementCount = 0;
     }
 
     public Report(
@@ -117,6 +128,8 @@ public class Report {
         this.description = description;
         this.user = user;
         this.dateEntered = formatDate();
+        this.positiveEndorsementCount = 0;
+        this.negativeEndorsementCount = 0;
     }
 
     @PrePersist
@@ -270,6 +283,34 @@ public class Report {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public void setDateEntered(String dateEntered) {
+        this.dateEntered = dateEntered;
+    }
+
+    public void setDateUpdated(String dateUpdated) {
+        this.dateUpdated = dateUpdated;
+    }
+
+    public int getPositiveEndorsementCount() {
+        return positiveEndorsementCount;
+    }
+
+    public void setPositiveEndorsementCount(int positiveEndorsementCount) {
+        this.positiveEndorsementCount = positiveEndorsementCount;
+    }
+
+    public int getNegativeEndorsementCount() {
+        return negativeEndorsementCount;
+    }
+
+    public void setNegativeEndorsementCount(int negativeEndorsementCount) {
+        this.negativeEndorsementCount = negativeEndorsementCount;
     }
 
     @Override
