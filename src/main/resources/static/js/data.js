@@ -8,7 +8,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 1,
                     "Name": "Mauermann and Comanche Creek",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-20",
+                    "Description": "Flooded last night with 3 in. of water.",
                     "CartID": "LWC_7070216",
                     "GlobalID": "6db52200-28d4-4238-86d0-1524edeece25"
                 },
@@ -21,7 +22,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 2,
                     "Name": "Ledgestone at Mount Joy",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-19",
+                    "Description": "Road closed due to construction through 2020-02-21.",
                     "CartID": "LWC_7070119",
                     "GlobalID": "c7de69ea-a028-4620-9b06-2802838b1947"
                 },
@@ -34,7 +36,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 3,
                     "Name": "Leslie Rd 1850 ft SW of Braun Rd",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-20",
+                    "Description": "Flooded with debris the road.",
                     "CartID": "LWC_7070237",
                     "GlobalID": "afc98057-91b9-488f-b723-76568632b32e"
                 },
@@ -47,7 +50,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 4,
                     "Name": "S Hausman Rd 4700 ft N of Prue Rd",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-20",
+                    "Description": "Fallen power line this morning, road crew still cleaning up debris",
                     "CartID": "LWC_7070242",
                     "GlobalID": "e27e6322-a2ab-44b5-ab25-8de6e8c6723a"
                 },
@@ -60,7 +64,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 5,
                     "Name": "Oak Knoll 500 ft E of E Horseshoe Bend",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-18",
+                    "Description": "Road closed for construction, check back soon for updates",
                     "CartID": "LWC_7070255",
                     "GlobalID": "30112767-3e2b-4532-9b63-8d63a9fa8edf"
                 },
@@ -73,7 +78,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 6,
                     "Name": "Bitters Rd 175 ft W of NE Entrance Rd",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-20",
+                    "Description": "Road flooded due to opened fire hydrant.",
                     "CartID": "LWC_7070173",
                     "GlobalID": "95b8e1e0-b5bd-43a4-a964-bc493f0873b1"
                 },
@@ -86,7 +92,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 7,
                     "Name": "Gibbs Sprawl 800 ft NE of Castle Cross",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-20",
+                    "Description": "Road construction started today and will continue through 2020-02-25",
                     "CartID": "LWC_7070189",
                     "GlobalID": "460ed7be-8666-4857-a033-705318668597"
                 },
@@ -99,7 +106,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 8,
                     "Name": "New Sulphur Springs",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-20",
+                    "Description": "Accident with a deer in the road, traffic will be slow.",
                     "CartID": "LWC_7070230",
                     "GlobalID": "d8584b5d-f241-495d-ad95-5ba27d298c24"
                 },
@@ -112,7 +120,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 9,
                     "Name": "Villamain and Shane Rd at Railroad",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-20",
+                    "Description": "Water running across the road, be cautious.",
                     "CartID": "LWC_7070233",
                     "GlobalID": "8e479a63-3864-4281-86ea-dada455626d0"
                 },
@@ -125,7 +134,8 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 10,
                     "Name": "Briarmall at Briarcrest Dr",
-                    "Description": "Recorded Low Water Crossing",
+                    "Date": "2020-02-20",
+                    "Description": "Road closed due to construction until further notice.",
                     "CartID": "LWC_7070130",
                     "GlobalID": "e24a94d0-5d94-4630-bd8d-01d69232f9f3"
                 },
