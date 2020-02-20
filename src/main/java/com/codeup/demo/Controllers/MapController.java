@@ -47,7 +47,11 @@ public class MapController {
     //! DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
     @GetMapping("/map/json")
     public @ResponseBody List<Report> mapJSON(){
-        return reportsDao.findAll();
+        List<Report> temp = reportsDao.findAll();
+        for (Report rep : temp) {
+            rep.makeJsonCats();
+        }
+        return temp;
     }
 
 

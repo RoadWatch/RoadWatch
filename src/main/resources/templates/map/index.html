@@ -38,11 +38,11 @@
         </button>
         
         <!--        // last column-->
-        <th:block sec:authorize="!isAuthenticated()">
-            <a href="/register" class="btn btn col mapRegisterButton" id="mapRegisterButton">
-                <i class="fas fa-plus"></i>
-            </a>
-        </th:block>
+<!--        <th:block sec:authorize="!isAuthenticated()">-->
+<!--            <a href="/register" class="btn btn col mapRegisterButton" id="mapRegisterButton">-->
+<!--                <i class="fas fa-plus"></i>-->
+<!--            </a>-->
+<!--        </th:block>-->
         <th:block sec:authorize="isAuthenticated()">
             <!-- Button trigger modal -->
             <button type="button" class="btn  col" data-toggle="modal" data-target="#report" id="mapRegisterButton">
@@ -66,7 +66,7 @@
                                 <div class="form-group" id="modalFontForm">
                                     <label for="file" class="modal-body-font">Upload file<img src="images/upload.png"
                                                                                               id="modalUploadLogo"></label>
-                                    <input type="file" class="form-control" id="file" required
+                                    <input type="file" class="form-control" id="file"
                                            name="file">
                                     <small id="fileHelp" class="form-text ">Snap a photo of the incident</small>
                                 </div>
