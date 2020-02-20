@@ -32,7 +32,13 @@ road_user
 tmgWsOiqAjGfSwgEJkRX
 
 
+exit
+
+
 
 
 dserver site build --domain bcrw.host
 
+        <error-page>
+            <location>/errors</location>
+        </error-page>

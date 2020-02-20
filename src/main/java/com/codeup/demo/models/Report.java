@@ -66,6 +66,17 @@ public class Report {
     @JsonBackReference
     private List<Category> categories = new ArrayList<>();
 
+    @Transient
+    private List<String> JSONcategories = new ArrayList<>();
+
+    public void makeJsonCats() {
+        List<String> temp = new ArrayList<>();
+        for (Category rep: this.categories) {
+            temp.add(rep.getName());
+        }
+        this.JSONcategories = temp;
+    }
+
     @Column(nullable = false)
     private String dateEntered;
 
@@ -314,6 +325,14 @@ public class Report {
         this.negativeEndorsementCount = negativeEndorsementCount;
     }
 
+    public List<String> getJSONcategories() {
+        return JSONcategories;
+    }
+
+    public void setJSONcategories(List<String> JSONcategories) {
+        this.JSONcategories = JSONcategories;
+    }
+
     @Override
     public String toString() {
         return "Report{" +
@@ -330,4 +349,6 @@ public class Report {
                 ", dateUpdated=" + dateUpdated +
                 '}';
     }
+
+
 }
