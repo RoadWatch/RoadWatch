@@ -66,7 +66,7 @@ $(document).ready(function () {
                 .then(function (cords) {
                     let pops = new mapboxgl.Popup()
                         .setLngLat(cords)
-                        .setHTML("<em><h2>" + points[i].properties.Name + "</em></h2>")
+                        .setHTML("<em><h2'>" + points[i].properties.Name + "<br>" + "<h5 class='text-center'>" + points[i].properties.Description + "</h5>" + "</em></h2>")
                         .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptions)
                         .setLngLat(cords)
