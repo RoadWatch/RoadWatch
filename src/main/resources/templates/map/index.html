@@ -103,7 +103,7 @@
                                         </th:block>
                                         <th:block th:if="${!c.name.equals('General')}">
                                             <input class="form-check-input" type="checkbox" th:value="${c.name}"
-                                                   id="defaultCheck1"
+                                                   id="defaultCheck2"
                                                    th:attrappend="id=${c.id}"
                                                    th:name="primitiveCategories">
                                             <label class="form-check-label" for="defaultCheck1"
@@ -174,10 +174,14 @@
     </button>
 </form>
 <div id="card-wrapper">
-    <div class="row">
+    <div class="row" id="card-row">
         
-        <!--    DEFAULT DISPLAY OF CARDS-->
+        <!--    DEFAULT DISPLAY OF CARDS (EXCEPT ITS NOT RIGHT NOW)-->
         <!--//CARDS WITH REPORTS-->
+<!--        <th:block th:each="report : ${reports}" th:if="${param.search == null}">-->
+<!--            -->
+<!--        </th:block>-->
+
         <th:block th:each="report : ${reports}" th:if="${param.search == null}">
             <div class="card m-auto report-card" th:id="${report.id}">
                 <img
@@ -206,8 +210,7 @@
                             <button type="submit"
                                     class="btn btn-outline-light text-dark">
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-up mx-2"></i>
-                            </button>
+                                <i class="far fa-thumbs-down mx-2"></i>                            </button>
                         </form>
                 </div>
                     <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
@@ -217,8 +220,7 @@
                         </a>
                         <a href="/" class="btn btn-outline-light text-dark">
                             <span th:text=" ${report.negativeEndorsementCount}"></span>
-                            <i class="far fa-thumbs-up mx-2"></i>
-                        </a>
+                            <i class="far fa-thumbs-down mx-2"></i>                        </a>
                     </div>
     
                     <hr>
@@ -244,6 +246,9 @@
                     <div id="cardAuthor">
                         Author: <span th:text="${report.user.username}"></span>
                     </div>
+                    <small>
+                        Author: <span th:text="${report.user.username}"></span>
+                    </small>
                     <p class="card-text" th:text="${report.description}">Some quick example text</p>
                     <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                         <hr>
@@ -259,8 +264,7 @@
                             <button type="submit"
                                     class="btn btn-outline-light text-dark">
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-up mx-2"></i>
-                            </button>
+                                <i class="far fa-thumbs-down mx-2"></i>                            </button>
                         </form>
                     </div>
                     <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
@@ -270,8 +274,7 @@
                         </a>
                         <a href="/" class="btn btn-outline-light text-dark">
                             <span th:text=" ${report.negativeEndorsementCount}"></span>
-                            <i class="far fa-thumbs-up mx-2"></i>
-                        </a>
+                            <i class="far fa-thumbs-down mx-2"></i>                        </a>
                     </div>
                     <hr>
                     <p th:text="${report.dateEntered}"></p>
@@ -303,7 +306,7 @@
 <script src="/js/mapbox.js"></script>
 <script>
     const changeDate = () => {
-        console.log("DATE: ")
+        console.log("DATE: ");
         return "hi"
     }
 </script>

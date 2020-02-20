@@ -3,6 +3,7 @@ package com.codeup.demo.Controllers;
 import com.codeup.demo.Repos.Users;
 import com.codeup.demo.exception.UserException;
 import com.codeup.demo.models.Post;
+import com.codeup.demo.models.Report;
 import com.codeup.demo.models.User;
 import com.codeup.demo.services.UserSvc;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -31,9 +33,9 @@ public class UserController {
     public String showUserProfile(
             Model model
     ) throws UserException {
-        System.out.println("here: "+userSvc.isUserLoggedIn());
         if(userSvc.isUserLoggedIn()){
             User user = userDao.getOne(userSvc.getAuthUser().getId());
+            List<Report> reports = user.getReports();
             model.addAttribute("user", user);
             return "user/profile";
         }
