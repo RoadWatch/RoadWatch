@@ -53,6 +53,10 @@
                     </button>
                       </span>
                 </span>
+                 By:
+                <span th:text="${singlePost.user.username + ' '}"></span>
+                On:
+                <span th:text="${singlePost.date}"></span>
             </small>
             <hr>
             <div class="card-body" th:text="${singlePost.body}">
