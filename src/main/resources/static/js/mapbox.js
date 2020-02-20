@@ -97,9 +97,9 @@ $(document).ready(function () {
     const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
-
+            console.log("REPORT: ", request)
         request.done(function (reports) {
-            console.log("REPORT: ",reports)
+            console.log("Done: ", reports)
             let endorsementButtonIds = [];
             userReports = reports;
             for (let i = 0; i < userReports.length && i < 9; i++) {
@@ -113,6 +113,7 @@ $(document).ready(function () {
                         let html = `
             <em><h5>${userReports[i].description}</h5></em>
             <p>${userReports[i].dateEntered}</p>
+            <a href="#${userReports[i].id}">View Report</a>
             <button id="endorsement-${userReports[i].id}-1"
             class="btn btn-outline-primary btn-sm">
             Still happening</button>
@@ -134,6 +135,9 @@ $(document).ready(function () {
                     })
             }
             addClickEventForEndorsementPost(endorsementButtonIds)
+        })
+        request.fail(function (e) {
+            console.log("e; ")
         })
     };
     

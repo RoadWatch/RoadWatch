@@ -50,30 +50,14 @@ public class EndorsmentController {
             endorsementDao.save(endorsement);
 
             //! check what endorsments have 3 or more not happening
-            filterReports(id);
+            endorsmentSvc.filterReports(id);
             return "redirect:/map";
 
         }
         return "redirect:/register";
     }
 
-    private void filterReports(long id) throws ReportException {
-        int negativeCount = 0;
-       Report report = reportsDao.findById(id)
-               .orElseThrow(()-> new ReportException());
-       if(report.getEndorsements() != null){
-           List<Endorsement> endorsements = report.getEndorsements();
-           for (Endorsement endorsement : endorsements) {
-               if(endorsement.getValue() == 2) negativeCount +=1 ;
-           }
-       }
-       if(negativeCount >= 3) {
-           reportsDao.delete(report);
-           System.out.println("Report deleted");
-       }
-       else System.out.println("Report still active");
 
-    }
 
 
 
