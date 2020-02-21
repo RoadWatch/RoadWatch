@@ -180,7 +180,6 @@
         <!--//CARDS WITH REPORTS-->
 <!--        <th:block th:each="report : ${reports}" th:if="${param.search == null}">-->
 <!--            -->
-<!--        </th:block>-->
 
         <th:block th:each="report : ${reports}" th:if="${param.search == null}">
             <div class="card m-auto report-card" th:id="${report.id}">
@@ -189,16 +188,23 @@
                         class="card-img-top" alt="report_img"
                         id="report-card-img">
                 <div class="card-body"` id="cardBody">
+
+                 <div id="mapCardUserBox">
+
                     <h5 class="card-title" th:text="${report.query.toUpperCase()}" id="mapCardTitle">Card title</h5>
                     <small id="mapCardAuthorTitle">
                         Author: <span th:text="${report.user.username}"></span>
                     </small>
                     <p class="card-text" id="mapCardDescrp"
                         th:text="${report.description}"></p>
-                    
+
+<!--     MAP ICON IMAGE            -->
+                     <img src="images/danger%20(1).png" id="mapCardIcon">
+
+
                     <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                     <hr>
-                    <small id="mapEndro">Endorsements</small>
+                    <small id="mapCardEndor">Endorsements</small>
                         <form th:action="@{'/endorsements/'+${report.id}+'/1'}" method="post">
                             <button type="submit"
                             class="btn mapCardThumb " id="mapCardThumUpButton">
@@ -210,8 +216,12 @@
                             <button type="submit"
                                     class="btn mapCardThumb" id="mapCardThumbDownButton">
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-down mx-2"></i>                            </button>
+                                <i class="far fa-thumbs-down mx-2"></i>
+                            </button>
                         </form>
+
+                    </div>
+
                 </div>
                     <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
                         <a href="/" class="btn btn-outline-light text-dark">
@@ -231,6 +241,7 @@
                         </th:block>
                     </div>
                 </div>
+
             </div>
         </th:block>
         <!--    QUERIED SET OF CARDS-->
@@ -287,8 +298,9 @@
             </div>
         </th:block>
     </div>
-</div>
 
+
+</div>
 <footer th:include="partials/footer :: footer"
         class="p-3 mb-2 text-white"
         style="background: #4052D0"></footer>
