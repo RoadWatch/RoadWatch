@@ -63,7 +63,8 @@ $(document).ready(function () {
                             "<em><h6>" + points[i].properties.Name + "<br>" +
                             "<p class='text-center'>(" + points[i].properties.Description + ")</p> <br>" +
                             points[i].properties.Date +
-                            "</em></h6>")
+                            "</em></h6>"+
+                            "<a href='#city-"+(i+1)+"'>View report</a>")
                         .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptions)
                         .setLngLat(cords)
@@ -169,9 +170,9 @@ $(document).ready(function () {
 
     for (let i = 0; i < 10; i++) {
         let html = "";
-        html += `<div class="card m-auto report-card" id="city-${i + 1}">
+        html += `<div class="card m-auto report-card" id="city-${i+1}">
                 <img
-                        src="https://www.bexar.org/ImageRepository/Document?documentId=7269"
+                        src="https://search.bexar.org/Content/images/BexarLogo.png"
                         class="card-img-top px-5" alt="report_img"
                         id="report-card-img">
                 <div class="card-body">
