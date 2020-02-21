@@ -121,9 +121,11 @@
         <li class="nav-item">
             <a class="nav-link" href="/forum">Forum</a>
         </li>
+    <th:block sec:authorize="!isAuthenticated()">
         <li class="nav-item">
-            <a href="/aboutus" class="btn" id="navLogin">About Us</a>
+            <a href="/aboutus" class="btn" id="navLogin">About us</a>
         </li>
+    </th:block>
     <th:block sec:authorize="isAuthenticated()">
         <li class="nav-item">
             <form th:action="@{/logout}" method="post">
