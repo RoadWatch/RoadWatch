@@ -172,7 +172,7 @@ $(document).ready(function () {
         html += `<div class="card m-auto report-card" id="city-${i + 1}">
                 <img
                         src="https://www.bexar.org/ImageRepository/Document?documentId=7269"
-                        class="card-img-top" alt="report_img"
+                        class="card-img-top px-5" alt="report_img"
                         id="report-card-img">
                 <div class="card-body">
                     <h5 class="card-title">${lowWaterPoints[0].features[i].properties.Name}</h5>
