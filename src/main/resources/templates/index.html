@@ -36,7 +36,9 @@
             <button type="submit" class="btn loginSubReg" id="loginSubmit" >Login <img id="loginLogo" src ="images/login.png"></button>
     </form>
     <form th:action="@{/register}" method="get" id="Register">
-        <button type="submit" class="btn loginSubReg" id="loginReg"><a href="/register">Register</a></button>
+        <button type="submit" class="btn loginSubReg white-text"
+                id="loginReg">
+            <a href="/register" class="white-text">Register</a></button>
     </form>
     <div class="w-100 d-flex justify-content-center">
     <a href="/map"  class="m-auto">Continue as guest?</a>
