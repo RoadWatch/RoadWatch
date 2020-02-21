@@ -82,7 +82,7 @@ li{
 }
 
 #cardBody{
-    background-color: #4152D0;
+    background-color: #ffffff;
     /*color:white;*/
 }
 
@@ -94,9 +94,9 @@ li{
     font-size: 30px;
 }
 
-.cardTitle{
-    color:white;
-}
+/*.cardTitle{*/
+/*    color:black;*/
+/*}*/
 
 #cautionBox{
     height: 190px;
@@ -281,6 +281,12 @@ footer{
     margin-bottom: 20px;
 }
 
+#mapCardEndor{
+    color:white;
+    font-size: 15px;
+    margin-left: 30px;
+}
+
 
 .mapCardThumb{
     /*margin-left: 70px;*/
@@ -290,31 +296,55 @@ footer{
 #mapCardDescrp{
     border: 1px solid white;
     color:white;
-    width: 250px;
-    height: auto;
+    width: 230px;
+    height: 100px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
-#mapCardTitle{
-    color:white;
+#mapCardIcon{
+    height: 20px;
+    width: 20px;
 }
 
 #mapCardAuthorTitle{
     color:white;
     font-size: 20px;
+    text-align: center;
+    /*margin-top: 20px;*/
+}
+
+#mapCardUserBox{
+    background: rgba(65, 82, 208, 0.80);
+    /*opacity: 60%;*/
+    box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+    /*margin: 0px;*/
+    width: 250px;
+    padding: 10px;
+    font-family: 'Nanum Gothic', sans-serif;
+    border-radius: 10px;
+
+
+}
+
+#mapCardTitle{
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+
 }
 
 
-#mapEndro{
-    color:white;
-    font-size: 15px;
-    margin-left: 30px;
-}
+
 #mapHead{
     font-family: 'Ubuntu', sans-serif;
     color:white;
     font-size: 30px;
     margin-top: 30px;
 }
+
+
 
 #mapRegisterButton{
     margin-right: 25px;
