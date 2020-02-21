@@ -175,17 +175,10 @@
 </form>
 <div id="card-wrapper">
     <div class="row" id="card-row">
-        
-        <!--    DEFAULT DISPLAY OF CARDS (EXCEPT ITS NOT RIGHT NOW)-->
-        <!--//CARDS WITH REPORTS-->
-<!--        <th:block th:each="report : ${reports}" th:if="${param.search == null}">-->
-<!--            -->
-<!--        </th:block>-->
-
         <th:block th:each="report : ${reports}" th:if="${param.search == null}">
             <div class="card m-auto report-card" th:id="${report.id}">
                 <img
-                        th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                        th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
                         class="card-img-top" alt="report_img"
                         id="report-card-img">
                 <div class="card-body"` id="cardBody">
@@ -198,19 +191,12 @@
                     
                     <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                     <hr>
-                    <small>Endorsements</small>
-                        <form th:action="@{'/endorsements/'+${report.id}+'/1'}" method="post">
-                            <button type="submit"
-                            class="btn btn-outline-light text-dark">
-                                <span th:text=" ${report.positiveEndorsementCount}"></span>
-                    <i class="far fa-thumbs-up mx-2"></i>
-                            </button>
-                        </form>
                         <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
                             <button type="submit"
                                     class="btn btn-outline-light text-dark">
+                                Reported cleared:
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-down mx-2"></i>                            </button>
+                                <i class="fas fa-road"></i>                          </button>
                         </form>
                 </div>
                     <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">

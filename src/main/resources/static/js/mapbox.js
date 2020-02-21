@@ -53,14 +53,17 @@ $(document).ready(function () {
     
     const setCityMarkers = () => {
         for (let i = 0; i < points.length - 1 && i < 9; i++) {
-            
             const temp = points[i].geometry.coordinates;
             
             geocode(temp, key)
                 .then(function (cords) {
                     let pops = new mapboxgl.Popup()
                         .setLngLat(cords)
-                        .setHTML("<em><h6>" + points[i].properties.Name + "<br>" + "<p class='text-center'>(" + points[i].properties.Description + ")</p>" + "</em></h6>")
+                        .setHTML("" +
+                            "<em><h6>" + points[i].properties.Name + "<br>" +
+                            "<p class='text-center'>(" + points[i].properties.Description + ")</p> <br>" +
+                            points[i].properties.Date +
+                            "</em></h6>")
                         .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptions)
                         .setLngLat(cords)
@@ -100,7 +103,6 @@ $(document).ready(function () {
         let request = $.ajax({'url': '/map/json'});
         console.log("REPORT: ", request)
         request.done(function (reports) {
-            console.log("Done: ", reports)
             let endorsementButtonIds = [];
             userReports = reports;
             for (let i = 0; i < userReports.length && i < 9; i++) {
@@ -112,16 +114,21 @@ $(document).ready(function () {
                 geocode(cord, key)
                     .then(function (cords) {
                         let html = `
-            <em><h5>${userReports[i].description}</h5></em>
+            <div class="p-3">
+            <h5>${userReports[i].description}</h5>
             <p>${userReports[i].dateEntered}</p>
             <a href="#${userReports[i].id}">View Report</a>
-            <button id="endorsement-${userReports[i].id}-1"
-            class="btn btn-outline-primary btn-sm">
-            Still happening</button>
+            <div class="row">
              <button id="endorsement-${userReports[i].id}-2"
              class="btn btn-outline-primary btn-sm">
-             Incident cleared</button>
+                 Report cleared:
+                 <span th:text=" ${report.negativeEndorsementCount}"></span>
+                 <i class="fas fa-road"></i>
+             </button>
+             </div>
+             </div>
             `;
+                        
                         let pops = new mapboxgl.Popup()
                             .setLngLat(cords)
                             .setHTML(html)
@@ -148,7 +155,10 @@ $(document).ready(function () {
     const flyToFunc = (search) => {
         geocode(search, key)
             .then(function (result) {
-                map.flyTo({center: result})
+                map.flyTo({
+                    center: result,
+                    zoom: 13,
+                })
             })
     };
     
@@ -158,11 +168,11 @@ $(document).ready(function () {
     });
     
 
-    for (let i = 0; i < lowWaterPoints[0].features.length; i++) {
+    for (let i = 0; i < 10; i++) {
         let html = "";
         html += `<div class="card m-auto report-card" id="city-${i + 1}">
                 <img
-                        src="https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg"
+                        src="https://www.bexar.org/ImageRepository/Document?documentId=7269"
                         class="card-img-top" alt="report_img"
                         id="report-card-img">
                 <div class="card-body">
