@@ -12,7 +12,7 @@ $(document).ready(function () {
     
     
     var markerOptions = {
-        color: "#038f07",
+        color: "#FF7D4A",
         draggable: false
     };
     var markerOptionsUser = {

@@ -281,6 +281,34 @@ footer{
     margin-bottom: 20px;
 }
 
+
+.mapCardThumb{
+    /*margin-left: 70px;*/
+}
+
+
+#mapCardDescrp{
+    border: 1px solid white;
+    color:white;
+    width: 250px;
+    height: auto;
+}
+
+#mapCardTitle{
+    color:white;
+}
+
+#mapCardAuthorTitle{
+    color:white;
+    font-size: 20px;
+}
+
+
+#mapEndro{
+    color:white;
+    font-size: 15px;
+    margin-left: 30px;
+}
 #mapHead{
     font-family: 'Ubuntu', sans-serif;
     color:white;
@@ -463,7 +491,7 @@ footer{
     /*display: flex;*/
     /*justify-content: center;*/
     background-color: #4152D0;
-    margin-left: -20px;
+    margin-left: -30px;
     /*margin-bottom: -30px ;*/
     /*height: 120px;*/
     /*width: auto;*/
