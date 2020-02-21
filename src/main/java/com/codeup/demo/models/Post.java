@@ -27,8 +27,7 @@ public class Post {
     private String body;
 
     @Column(nullable = false)
-    @CreationTimestamp
-    private Date date;
+    private String date;
 
     //!I'm not sure we need this
     @Column(nullable = false)
@@ -43,12 +42,15 @@ public class Post {
     @JsonBackReference
     private List<Comment> comments;
 
-    public Post(){}
+    public Post(){
+        this.date = formatDate();
+    }
 
     public Post(String title, String body, Long user_id) {
         this.user_id = user_id;
         this.title = title;
         this.body = body;
+        this.date = formatDate();
     }
 
     public Post(Long id, String title, String body, Long user_id, Date date) {
@@ -56,14 +58,14 @@ public class Post {
         this.user_id = user_id;
         this.title = title;
         this.body = body;
-        this.date = date;
+        this.date = formatDate();
     }
 
     public Post(String title, String body, Long user_id, Date date) {
         this.user_id = user_id;
         this.title = title;
         this.body = body;
-        this.date = date;
+        this.date = formatDate();
     }
 
     public Post(Long id, String title, String body, User user) {
@@ -85,6 +87,14 @@ public class Post {
             return topComments;
         }
         return topComments;
+    }
+
+    //! FORMAT NEW DATE()
+    private String formatDate(){
+        String[] dateSplit = new java.util.Date().toString().split(" ");
+        String formatedDate = String.format("%s %s %s %s",
+                dateSplit[0], dateSplit[1], dateSplit[2], dateSplit[dateSplit.length-1]);
+        return formatedDate;
     }
 
 
@@ -139,11 +149,15 @@ public class Post {
         this.user_id = user_id;
     }
 
-    public Date getDate() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
