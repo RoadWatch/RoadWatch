@@ -2,11 +2,14 @@
 .about{
     display: flex;
     flex-wrap: wrap;
+    width: 100vw;
     justify-content: space-evenly;
+    border: 2px solid yellow;
+
 }
-.card-img-top{
-    width: 100%;
-}
+
+/*Below is the CSS for flip cards just so I don't get rid of it*/
+
 /*.flip-card {*/
 /*    background-color: rgba(65, 137, 210, 0.9);*/
 /*    width: 300px;*/
@@ -51,8 +54,3 @@
 /*    color: white;*/
 /*    transform: rotateY(180deg);*/
 /*}*/
-
-.details{
-    font-size: small;
-    width: 300px;
-}
