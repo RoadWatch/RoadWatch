@@ -6,8 +6,8 @@
     <title>About Us</title>
 </head>
 <body>
+<nav th:include="partials/navbar :: nav"></nav>
 <div class="container-fluid">
-    <nav th:include="partials/navbar :: nav"></nav>
 
     <div class="about text-center">
 
@@ -23,6 +23,47 @@
             </div>
         </div>
 
+        <div class="card" style="width: 20rem;">
+            <img src="images/chrisa.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Christopher Aguirre</h3>
+                <p class="card-text">Software Developer <br>
+                    San Antonio, Texas</p>
+                <a href="https://github.com/christopheraguirre210" target="_blank"><img src="images/github.png" alt="" style="width: 50px;height: 50px;"></a>
+                <a href="https://www.linkedin.com/in/christopher-aguirre/" target="_blank"><img src="images/linkedin.png" alt="" style="width: 50px;height: 50px;"></a>
+                <a href="https://alumni.codeup.com/students/761" target="_blank"><img src="images/codeupsign.png" alt="" style="width: 50px;height: 50px;"></a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 20rem;">
+            <img src="images/melinda.jpeg" class="card-img-top align-center" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Melinda Greene</h3>
+                <p class="card-text">Software Developer <br>
+                    San Antonio, Texas</p>
+                <a href="https://github.com/MelindaGreene" target="_blank"><img src="images/github.png" alt="" style="width: 50px;height: 50px;"></a>
+                <a href="https://www.linkedin.com/in/melindagreene/" target="_blank"><img src="images/linkedin.png" alt="" style="width: 50px;height: 50px;"></a>
+                <a href="https://alumni.codeup.com/students/758" target="_blank"><img src="images/codeupsign.png" alt="" style="width: 50px;height: 50px;"></a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 20rem;">
+            <img src="images/rivergit%20copy.png" class="card-img-top align-center" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">River Robins</h3>
+                <p class="card-text">Software Developer <br>
+                    San Antonio, Texas</p>
+                <a href="https://github.com/RiverRobins" target="_blank"><img src="images/github.png" alt="" style="width: 50px;height: 50px;"></a>
+                <a href="https://www.linkedin.com/in/riverrobins/" target="_blank"><img src="images/linkedin.png" alt="" style="width: 50px;height: 50px;"></a>
+                <a href="https://alumni.codeup.com/students/762" target="_blank"><img src="images/codeupsign.png" alt="" style="width: 50px;height: 50px;"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<!--//FLIP CARDS JUST IN CASE-->
 <!--        <div class="flip-card text-center">-->
 <!--            <div class="flip-card-inner">-->
 <!--                <div class="flip-card-front picture">-->
@@ -39,20 +80,6 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-        <br>
-
-        <div class="card" style="width: 20rem;">
-            <img src="images/chrisa.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="card-title">Christopher Aguirre</h3>
-                <p class="card-text">Software Developer <br>
-                    San Antonio, Texas</p>
-                <a href="https://github.com/christopheraguirre210" target="_blank"><img src="images/github.png" alt="" style="width: 50px;height: 50px;"></a>
-                <a href="https://www.linkedin.com/in/christopher-aguirre/" target="_blank"><img src="images/linkedin.png" alt="" style="width: 50px;height: 50px;"></a>
-                <a href="https://alumni.codeup.com/students/761" target="_blank"><img src="images/codeupsign.png" alt="" style="width: 50px;height: 50px;"></a>
-            </div>
-        </div>
-
 <!--        <div class="flip-card text-center">-->
 <!--            <div class="flip-card-inner">-->
 <!--                <div class="flip-card-front">-->
@@ -68,19 +95,6 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-        <br>
-        <div class="card" style="width: 20rem;">
-            <img src="images/melinda.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="card-title">Melinda Greene</h3>
-                <p class="card-text">Software Developer <br>
-                    San Antonio, Texas</p>
-                <a href="https://github.com/MelindaGreene" target="_blank"><img src="images/github.png" alt="" style="width: 50px;height: 50px;"></a>
-                <a href="https://www.linkedin.com/in/melindagreene/" target="_blank"><img src="images/linkedin.png" alt="" style="width: 50px;height: 50px;"></a>
-                <a href="https://alumni.codeup.com/students/758" target="_blank"><img src="images/codeupsign.png" alt="" style="width: 50px;height: 50px;"></a>
-            </div>
-        </div>
-
 <!--        <div class="flip-card text-center">-->
 <!--            <div class="flip-card-inner">-->
 <!--                <div class="flip-card-front">-->
@@ -96,19 +110,6 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-        <br>
-        <div class="card" style="width: 20rem;">
-            <img src="images/rivergit%20copy.png" class="card-img-top align-center" alt="...">
-            <div class="card-body">
-                <h3 class="card-title">River Robins</h3>
-                <p class="card-text">Software Developer <br>
-                    San Antonio, Texas</p>
-                <a href="https://github.com/RiverRobins" target="_blank"><img src="images/github.png" alt="" style="width: 50px;height: 50px;"></a>
-                <a href="https://www.linkedin.com/in/riverrobins/" target="_blank"><img src="images/linkedin.png" alt="" style="width: 50px;height: 50px;"></a>
-                <a href="https://alumni.codeup.com/students/762" target="_blank"><img src="images/codeupsign.png" alt="" style="width: 50px;height: 50px;"></a>
-            </div>
-        </div>
-
 <!--        <div class="flip-card text-center">-->
 <!--            <div class="flip-card-inner">-->
 <!--                <div class="flip-card-front" id="river">-->
@@ -124,7 +125,3 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
-    </div>
-</div>
-</body>
-</html>
