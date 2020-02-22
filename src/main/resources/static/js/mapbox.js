@@ -6,13 +6,14 @@ $(document).ready(function () {
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         zoom: 9,
-        center: [-98.4936, 29.4241]
+        center: [-98.4936, 29.4241],
+        logoPosition: 'top-left'
     });
     
     
     
     var markerOptions = {
-        color: "#038f07",
+        color: "#FF7D4A",
         draggable: false
     };
     var markerOptionsUser = {
@@ -63,7 +64,8 @@ $(document).ready(function () {
                             "<em><h6>" + points[i].properties.Name + "<br>" +
                             "<p class='text-center'>(" + points[i].properties.Description + ")</p> <br>" +
                             points[i].properties.Date +
-                            "</em></h6>")
+                            "</em></h6>"+
+                            "<a href='#city-"+(i+1)+"'>View report</a>")
                         .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptions)
                         .setLngLat(cords)
@@ -170,10 +172,10 @@ $(document).ready(function () {
 
     for (let i = 0; i < 10; i++) {
         let html = "";
-        html += `<div class="card m-auto report-card" id="city-${i + 1}">
+        html += `<div class="card m-auto report-card" id="city-${i+1}">
                 <img
-                        src="https://www.bexar.org/ImageRepository/Document?documentId=7269"
-                        class="card-img-top" alt="report_img"
+                        src="https://search.bexar.org/Content/images/BexarLogo.png"
+                        class="card-img-top px-5" alt="report_img"
                         id="report-card-img">
                 <div class="card-body">
                     <h5 class="card-title">${lowWaterPoints[0].features[i].properties.Name}</h5>

@@ -85,7 +85,7 @@
                                     <label for="description" class="modal-body-font">Description<img
                                             src="images/edit.png" id="modalDescribLogo"></label>
                                     <input type="text" class="form-control text-white" id="description"
-                                           name="description" style="background: transparent;
+                                           name="description"  style="background: transparent;
                                                                border: none;
                                                                border-bottom: 1px solid #ffffff;
                                                                border-radius: 0px" required>
@@ -175,128 +175,103 @@
 </form>
 <div id="card-wrapper">
     <div class="row" id="card-row">
-        
-        
-        <!--    DEFAULT DISPLAY OF CARDS (EXCEPT ITS NOT RIGHT NOW)-->
-        <!--//CARDS WITH REPORTS-->
-        <!--        <th:block th:each="report : ${reports}" th:if="${param.search == null}">-->
-        <!--            -->
-        
         <th:block th:each="report : ${reports}" th:if="${param.search == null}">
             <div class="card m-auto report-card" th:id="${report.id}">
                 <img
                         th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
-                        class="card-img-top px-5 py-2" alt="report_img"
+                        class="card-img-top" alt="report_img"
                         id="report-card-img">
                 <div class="card-body" id="cardBody">
+                    <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+                    <small>
+                        Author: <span th:text="${report.user.username}"></span>
+                    </small>
+                    <p class="card-text"
+                       th:text="${report.description}"></p>
                     
-                    <div id="mapCardUserBox">
-                        
-                        <h5 class="card-title" th:text="${report.query.toUpperCase()}" id="mapCardTitle">Card title</h5>
-                        <small id="mapCardAuthorTitle">
-                            Author: <span th:text="${report.user.username}"></span>
-                        </small>
-                        <p class="card-text" id="mapCardDescrp"
-                           th:text="${report.description}"></p>
-                        
-                        <!--     MAP ICON IMAGE            -->
-                        <!--                     <img src="images/danger%20(1).png" id="mapCardIcon">-->
-                        
-                        
-                        <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
-                            <hr>
-                            
-                            <hr>
-                            <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
-                                <button type="submit"
-                                        class="btn btn-outline-light text-dark">
-                                    <i class="fas fa-road"></i>
-                                    Reported cleared?
-                                </button>
-                            </form>
-                        </div>
-                        <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
-                            <a href="/" class="btn btn-outline-light text-dark">
-                                <span th:text=" ${report.positiveEndorsementCount}"></span>
-                                <i class="far fa-thumbs-up mx-2"></i>
-                            </a>
-                            <a href="/" class="btn btn-outline-light text-dark">
-                                <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-down mx-2"></i> </a>
-                        </div>
-                        
+                    <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                         <hr>
-                        <p th:text="${report.dateEntered}"></p>
-                        <div class="d-flex justify-content-around">
-                            <th:block th:each="category : ${report.categories}">
-                                <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
-                            </th:block>
-                        </div>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-light text-dark">
+                                Reported cleared:
+                                <span th:text=" ${report.negativeEndorsementCount}"></span>
+                                <i class="fas fa-road"></i>                          </button>
+                        </form>
                     </div>
-                
+                    <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.positiveEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.negativeEndorsementCount}"></span>
+                            <i class="far fa-thumbs-down mx-2"></i>                        </a>
+                    </div>
+                    
+                    <hr>
+                    <p th:text="${report.dateEntered}"></p>
+                    <div class="d-flex justify-content-around">
+                        <th:block th:each="category : ${report.categories}">
+                            <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
+                        </th:block>
+                    </div>
                 </div>
             </div>
         </th:block>
         <!--    QUERIED SET OF CARDS-->
         <th:block th:if="${param.search != null}" th:each="report : ${queriedList}">
-            <div class="card m-auto report-card" th:id="${report.id}">
-                <img
-                        th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
-                        class="card-img-top px-5 py-2" alt="report_img"
-                        id="report-card-img">
-                <div class="card-body" id="cardBody">
             
-                    <div id="mapCardUserBox">
-                
-                        <h5 class="card-title" th:text="${report.query.toUpperCase()}" id="mapCardTitle">Card title</h5>
-                        <small id="mapCardAuthorTitle">
-                            Author: <span th:text="${report.user.username}"></span>
-                        </small>
-                        <p class="card-text" id="mapCardDescrp"
-                           th:text="${report.description}"></p>
-                
-                        <!--     MAP ICON IMAGE            -->
-                        <!--                     <img src="images/danger%20(1).png" id="mapCardIcon">-->
-                
-                
-                        <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
-                            <hr>
-                    
-                            <hr>
-                            <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
-                                <button type="submit"
-                                        class="btn btn-outline-light text-dark">
-                                    <i class="fas fa-road"></i>
-                                    Reported cleared?
-                                </button>
-                            </form>
-                        </div>
-                        <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
-                            <a href="/" class="btn btn-outline-light text-dark">
+            <div class="card m-auto" id="report-card-query">
+                <img
+                        th:src="*{report.filePath != null} ? *{report.filePath} : ('https://www.asphaltplanet.ca/TX/I/410/I410_TX_cl_16_east_w_lg.jpg')"
+                        class="card-img-top" alt="report_img"
+                        id="report-card-img-query">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${report.query.toUpperCase()}">Card title</h5>
+                    <small>
+                        Author: <span th:text="${report.user.username}"></span>
+                    </small>
+                    <p class="card-text" th:text="${report.description}">Some quick example text</p>
+                    <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
+                        <hr>
+                        <small>Endorsements</small>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/1'}" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-light text-dark">
                                 <span th:text=" ${report.positiveEndorsementCount}"></span>
                                 <i class="far fa-thumbs-up mx-2"></i>
-                            </a>
-                            <a href="/" class="btn btn-outline-light text-dark">
+                            </button>
+                        </form>
+                        <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                            <button type="submit"
+                                    class="btn btn-outline-light text-dark">
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-down mx-2"></i> </a>
-                        </div>
-                
-                        <hr>
-                        <p th:text="${report.dateEntered}"></p>
-                        <div class="d-flex justify-content-around">
-                            <th:block th:each="category : ${report.categories}">
-                                <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
-                            </th:block>
-                        </div>
+                                <i class="far fa-thumbs-down mx-2"></i>                            </button>
+                        </form>
                     </div>
-        
+                    <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.positiveEndorsementCount}"></span>
+                            <i class="far fa-thumbs-up mx-2"></i>
+                        </a>
+                        <a href="/" class="btn btn-outline-light text-dark">
+                            <span th:text=" ${report.negativeEndorsementCount}"></span>
+                            <i class="far fa-thumbs-down mx-2"></i>                        </a>
+                    </div>
+                    <hr>
+                    <p th:text="${report.dateEntered}"></p>
+                    <div class="d-flex justify-content-around">
+                        <th:block th:each="category : ${report.categories}">
+                            <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
+                        </th:block>
+                    </div>
                 </div>
             </div>
         </th:block>
     </div>
-
-
 </div>
+
 <footer th:include="partials/footer :: footer"
         class="p-3 mb-2 text-white"
         style="background: #4052D0"></footer>
@@ -314,7 +289,7 @@
 <script src="/js/mapbox.js"></script>
 <script>
     const changeDate = () => {
-        console.log("DATE: ")
+        console.log("DATE: ");
         return "hi"
     }
 </script>
