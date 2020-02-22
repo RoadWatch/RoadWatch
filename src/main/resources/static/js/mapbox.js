@@ -6,7 +6,8 @@ $(document).ready(function () {
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         zoom: 9,
-        center: [-98.4936, 29.4241]
+        center: [-98.4936, 29.4241],
+        logoPosition: 'top-left'
     });
     
     
