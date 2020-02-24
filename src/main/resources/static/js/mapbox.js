@@ -169,26 +169,38 @@ $(document).ready(function () {
         flyToFunc(input.val())
     });
     
-
-    for (let i = 0; i < 10; i++) {
-        let html = "";
-        html += `<div class="card m-auto report-card" id="city-${i+1}">
+    //! SET BEXAR COUNTY CARDS
+    const setBexarCountyCards = () => {
+        for (let i = 0; i < 10; i++) {
+            let html = "";
+            html += `
+<div class="card m-auto report-card county" id="city-${i+1}" >
                 <img
                         src="https://search.bexar.org/Content/images/BexarLogo.png"
                         class="card-img-top px-5" alt="report_img"
                         id="report-card-img">
-                <div class="card-body">
-                    <h5 class="card-title">${lowWaterPoints[0].features[i].properties.Name}</h5>
+                <div class="card-body county-body">
+                <div class="county-inner">
+                                    <h5 class="card-title text-center">${lowWaterPoints[0].features[i].properties.Name}</h5>
                     <small>
+                    <hr>
                         <span>Author: Bexar County</span>
                     </small>
                     <p class="card-text">${lowWaterPoints[0].features[i].properties.Description}</p>
                 </div>
+</div>
+
                     <hr>
-                    <p>MM-DD-YYYY</p>
-                </div>`;
-        document.getElementById("card-row").innerHTML += html;
+                    <p class="ml-2">${lowWaterPoints[0].features[i].properties.Date}</p>
+                </div>
+`;
+            document.getElementById("card-row").innerHTML += html;
+        }
     }
+    setBexarCountyCards()
+    
+
+
 });
 
 

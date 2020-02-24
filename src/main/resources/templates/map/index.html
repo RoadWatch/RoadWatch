@@ -13,8 +13,8 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet"/>
     <meta name="apiKey" th:content="${@environment.getProperty('app.token')}" id="apiKey"/>
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
-    <link rel="stylesheet" href="map.css">
     <div th:replace="partials/header :: head"></div>
+    <link rel="stylesheet" href="map.css">
 </head>
 <body>
 
@@ -36,13 +36,6 @@
                 style="margin-right: 5px !important;" id="zipcode-button">
             <i class="fas fa-search-location" id="zipcode-button-icon"></i>
         </button>
-        
-        <!--        // last column-->
-        <!--        <th:block sec:authorize="!isAuthenticated()">-->
-        <!--            <a href="/register" class="btn btn col mapRegisterButton" id="mapRegisterButton">-->
-        <!--                <i class="fas fa-plus"></i>-->
-        <!--            </a>-->
-        <!--        </th:block>-->
         <th:block sec:authorize="isAuthenticated()">
             <!-- Button trigger modal -->
             <button type="button" class="btn  col" data-toggle="modal" data-target="#report" id="mapRegisterButton">
@@ -175,97 +168,86 @@
 </form>
 <div id="card-wrapper">
     <div class="row" id="card-row">
-        
-        
-        <!--    DEFAULT DISPLAY OF CARDS (EXCEPT ITS NOT RIGHT NOW)-->
-        <!--//CARDS WITH REPORTS-->
-        <!--        <th:block th:each="report : ${reports}" th:if="${param.search == null}">-->
-        <!--            -->
+    
+    
+<!--         DEFAULT DISPLAY OF CARDS -->
         
         <th:block th:each="report : ${reports}" th:if="${param.search == null}">
-            <div class="card m-auto report-card" th:id="${report.id}">
+            <div class="card m-auto user" th:id="${report.id}">
                 <img
                         th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
                         class="card-img-top px-5 py-2" alt="report_img"
                         id="report-card-img">
-                <div class="card-body" id="cardBody">
-                    
-                    <div id="mapCardUserBox">
-                        
-                        <h5 class="card-title" th:text="${report.query.toUpperCase()}" id="mapCardTitle">Card title</h5>
-                        <small id="mapCardAuthorTitle">
-                            Author: <span th:text="${report.user.username}"></span>
-                        </small>
-                        <p class="card-text" id="mapCardDescrp"
-                           th:text="${report.description}"></p>
-                        
-                        <!--     MAP ICON IMAGE            -->
-                        <!--                     <img src="images/danger%20(1).png" id="mapCardIcon">-->
-                        
-                        
-                        <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
-                            <hr>
-                            
-                            <hr>
-                            <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
-                                <button type="submit"
-                                        class="btn btn-outline-light text-dark">
-                                    <i class="fas fa-road"></i>
-                                    Reported cleared?
-                                </button>
-                            </form>
+                        <div class="card-body user-body"
+                                id="card-body">
+                            <div class="user-inner">
+                                <h5 class="card-title text-center" th:text="${report.query.toUpperCase()}" >Card
+                                    title</h5>
+                                <hr>
+                                <small>
+                                    Author: <span th:text="${report.user.username}"></span>
+                                </small>
+                                <p class="card-text"
+                                   th:text="${report.description}"></p>
+                                <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
+                                    <hr>
+        
+                                    <hr>
+                                    <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                                        <button type="submit"
+                                                class="btn btn-outline-light text-light">
+                                            <i class="fas fa-road"></i>
+                                            Reported cleared?
+                                        </button>
+                                    </form>
+                                </div>
+                                <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                                    <a href="/" class="btn btn-outline-light text-dark">
+                                        <span th:text=" ${report.positiveEndorsementCount}"></span>
+                                        <i class="far fa-thumbs-up mx-2"></i>
+                                    </a>
+                                    <a href="/" class="btn btn-outline-light text-dark">
+                                        <span th:text=" ${report.negativeEndorsementCount}"></span>
+                                        <i class="far fa-thumbs-down mx-2"></i> </a>
+                                </div>
+                                <!--                                end inner-->
+                            </div>
+<!--                            end-->
                         </div>
-                        <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
-                            <a href="/" class="btn btn-outline-light text-dark">
-                                <span th:text=" ${report.positiveEndorsementCount}"></span>
-                                <i class="far fa-thumbs-up mx-2"></i>
-                            </a>
-                            <a href="/" class="btn btn-outline-light text-dark">
-                                <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-down mx-2"></i> </a>
-                        </div>
+
+
+
                         
                         <hr>
-                        <p th:text="${report.dateEntered}"></p>
-                        <div class="d-flex justify-content-around">
-                            <th:block th:each="category : ${report.categories}">
-                                <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
-                            </th:block>
-                        </div>
-                    </div>
-                
-                </div>
+                        <p th:text="${report.dateEntered}"
+                            class="ml-2"></p>
             </div>
         </th:block>
         <!--    QUERIED SET OF CARDS-->
         <th:block th:if="${param.search != null}" th:each="report : ${queriedList}">
-            <div class="card m-auto report-card" th:id="${report.id}">
+            <div class="card m-auto user" th:id="${report.id}">
                 <img
                         th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
                         class="card-img-top px-5 py-2" alt="report_img"
                         id="report-card-img">
-                <div class="card-body" id="cardBody">
-            
-                    <div id="mapCardUserBox">
-                
-                        <h5 class="card-title" th:text="${report.query.toUpperCase()}" id="mapCardTitle">Card title</h5>
-                        <small id="mapCardAuthorTitle">
+                <div class="card-body user-body"
+                     id="card-body">
+                    <div class="user-inner">
+                        <h5 class="card-title text-center" th:text="${report.query.toUpperCase()}" >Card
+                            title</h5>
+                        <hr>
+                        <small>
                             Author: <span th:text="${report.user.username}"></span>
                         </small>
-                        <p class="card-text" id="mapCardDescrp"
+                        <p class="card-text"
                            th:text="${report.description}"></p>
-                
-                        <!--     MAP ICON IMAGE            -->
-                        <!--                     <img src="images/danger%20(1).png" id="mapCardIcon">-->
-                
-                
                         <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                             <hr>
                     
                             <hr>
                             <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
                                 <button type="submit"
-                                        class="btn btn-outline-light text-dark">
+                                        class="btn btn-outline-light text-light">
                                     <i class="fas fa-road"></i>
                                     Reported cleared?
                                 </button>
@@ -280,17 +262,17 @@
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
                                 <i class="far fa-thumbs-down mx-2"></i> </a>
                         </div>
-                
-                        <hr>
-                        <p th:text="${report.dateEntered}"></p>
-                        <div class="d-flex justify-content-around">
-                            <th:block th:each="category : ${report.categories}">
-                                <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>
-                            </th:block>
-                        </div>
+                        <!--                                end inner-->
                     </div>
-        
+                    <!--                            end-->
                 </div>
+        
+        
+        
+        
+                <hr>
+                <p th:text="${report.dateEntered}"
+                    class="ml-2"></p>
             </div>
         </th:block>
     </div>
@@ -321,3 +303,11 @@
 
 </body>
 </html>
+
+
+<!--THE CATEGORIES INCASE WE WANT TO ADD THEM IN-->
+<!--<div class="d-flex justify-content-around">-->
+<!--    <th:block th:each="category : ${report.categories}">-->
+<!--        <span class="badge badge-pill badge-primary" th:text="${category.name}">Primary</span>-->
+<!--    </th:block>-->
+<!--</div>-->
