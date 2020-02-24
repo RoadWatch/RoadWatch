@@ -1,0 +1,11 @@
+#wrapper {
+  height: 400px;
+  width: 100vw;
+  background-image: url("imgUs/y-so-serious.png");
+  padding: 5% 25%;
+  margin: 10px;
+}
+#us {
+  width: 100%;
+  height: 100%;
+}
