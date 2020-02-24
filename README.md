@@ -2,7 +2,7 @@
 ## Bexar County Road Watch
 ### A Codeup and CivTech production
 
-### Developers ( Diemos Cohort ):
+### Developers ( Deimos Cohort ):
 * Amber Jones, In/amberlovescats14, GitHub: /amberlovescats14
 * Christopher Aguirre, In/christopher-aguirre210, GitHub: /christopheraguirre210 
 * Melinda Greene, In/melindagreene, GitHub: /MelindaGreene
