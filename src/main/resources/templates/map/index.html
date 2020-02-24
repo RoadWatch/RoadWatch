@@ -192,7 +192,7 @@
 
                  <div id="mapCardUserBox">
 
-                    <h5 class="card-title" th:text="${report.query.toUpperCase()}" id="mapCardTitle">Card title</h5>
+                    <h5 class="card-title" th:text="${report.query.toUpperCase()}"              id="mapCardTitle">Card title</h5>
                     <small id="mapCardAuthorTitle">
                         Author: <span th:text="${report.user.username}"></span>
                     </small>
@@ -217,14 +217,14 @@
 <hr>
                         <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
                             <button type="submit"
-                                    class="btn btn-outline-light text-dark">
+                                    class="btn btn-outline-light text-dark" id="mapCardEndorButton">
                                 Reported cleared:
 
                                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-
-                            </button>
                                 <i class="fas fa-road"></i>
-                            </button>
+<!--                            </button>-->
+<!--&lt;!&ndash;                                <i class="fas fa-road"></i>&ndash;&gt;-->
+<!--                            </button>-->
 
                         </form>
                     </div>

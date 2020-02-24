@@ -8,28 +8,40 @@
     <title>Road Watch</title>
 </head>
 <body>
+
+
+<style>
+    input[type=text]{
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #ffffff;
+        border-radius: 0px}
+</style>
+
 <script src="https://kit.fontawesome.com/ca2faa0508.js"></script>
 <nav th:include="partials/navbar :: nav"></nav>
+
+
 <div class="container">
-    <h3>Road Watch Chat</h3>
+    <h3 id="forumTitle">Road Watch Chat</h3>
     <hr>
     <form th:action="@{'/forum/post'}" method="post" th:object="${post}">
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title" class="forumInputTitles">Title</label>
             <input type="text" class="form-control" id="title" th:field="*{title}">
             <small id="emailHelp" class="form-text text-muted">Name your post</small>
         </div>
         <div class="form-group">
-            <label for="body">Body</label>
+            <label for="body" class="forumInputTitles">Body</label>
             <input type="text" class="form-control" id="body" th:field="*{body}">
             <small id="bodyFormHelp" class="form-text text-muted">Let us know whats going on...</small>
         
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn" id="forumSubmitButton">Submit <img id="forumSubmitButtonIcon" src="images/enter.png"></button>
     </form>
     <hr>
     <div th:each="singlePost : ${posts}">
-        <div class="card" style="margin: 0 10px 10px 10px; padding: 10px">
+        <div class="card" id="forumCardPost">
             <div class="card-title" th:text="${singlePost.title.toUpperCase()}" style="font-weight: 800"></div>
             <small>
                 By:
@@ -37,8 +49,9 @@
                 <span th:if="${singlePost.user.id == userId}" class="dropdown">
                     <i class="fas fa-ellipsis-h dropdown-toggle" id="dropdownMenuButton"
                        data-toggle="dropdown"></i>
-                      <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                   <button type="button" class="btn btn-outline-warning btn-sm"
+                      <span class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="forumDropDown">
+                                                   <button type="button" class="btn  btn-sm forumEditDelete"
+                                                           id="forumEditButton"
                                                            data-toggle="modal"
                                                            data-target="#myModal"
                                                            th:attrappend="data-target=${singlePost.id}"
@@ -46,7 +59,7 @@
                         Edit
                     </button>
                           <!-- Delete trigger modal -->
-                    <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                    <button type="button" class="btn  btn-sm forumEditDelete" id="forumDeleteButton" data-toggle="modal"
                             data-target="#delete" th:attrappend="data-target=${singlePost.id}"
                             style="margin: 0 10px">
                         Delete
@@ -56,17 +69,18 @@
                 <span th:text="${singlePost.date}" class="float-right"></span>
             </small>
             <hr>
-            <div class="card-body" th:text="${singlePost.body}">
+            <div class="card-body" id="forumCardDescrip" th:text="${singlePost.body}">
                 This is some text within a card body.
             </div>
             <div>
                 <!--            dropdown-->
                 <!--                        //toggle 1 FORM-->
                 <p>
-                    <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
-                            data-target="#multiCollapseExample1">Leave a comment
+                    <button class="btn btn-sm forumLeaveCommentButton" type="button" data-toggle="collapse"
+                            data-target="#multiCollapseExample1" >Leave a comment
+                        <img id="forumLeaveCommentIcon" src="images/speech-bubble.png">
                     </button>
-                    <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
+                    <button class="btn  btn-sm forumLeaveCommentButton" type="button" data-toggle="collapse"
                             data-target="#multiCollapseExample2"
                             th:if="${singlePost.comments.size() > 0}">View Comments
                     </button>
@@ -75,15 +89,15 @@
                 <div class="row">
                     <div class="col">
                         <div class="collapse multi-collapse" id="multiCollapseExample1">
-                            <div class="card card-body">
+                            <div class="card card-body" id="forumPostCommentCard">
                                 <form th:action="@{'/forum/comment/'+ ${singlePost.id}}" method="post"
                                       th:object="${comment}">
                                     <small id="commentHelp" class="form-text text-muted">Add to the discussion
                                     </small>
                                     <input type="text" th:field="*{body}"
                                            class="form-control" id="comment">
-                                    <button type="submit" class="btn btn-outline-primary">
-                                        <small>Post</small>
+                                    <button type="submit" class="btn btn forumPostButton">
+                                        <small id="forumPostButton">Post</small>
                                     </button>
                                 </form>
                             </div>
@@ -104,7 +118,7 @@
                                         </small>
                                         <form th:action="@{'/comment/delete/'+ ${comment.id}}" method="post">
                                             <button type="submit" class="float-right">
-                                                <i class="fas fa-trash fa-xs"></i>
+                                                <i class="fas fa-trash fa-xs" id="forumTrashIcon"></i>
                                             </button>
                                         </form>
                                         <hr>
