@@ -76,8 +76,9 @@
 
 <nav th:fragment="nav" class="navbar" id="navBar">
 <div class="container-fluid">
+    <th:block sec:authorize="isAuthenticated()">
     <div id=navProfile><a th:href="@{'/user/profile'}"><img src="/images/round-account-button-with-user-inside.png"></a></div>
-
+    </th:block>
 
 
 <!--    <div id="logo">-->
@@ -96,6 +97,14 @@
         <div id="navCircle">
             <img id="navLogo" src="/images/tracking.png">
         </div>
+
+<!--        <div id="logo1">-->
+<!--            <div id="navCircle1">-->
+<!--                <img id="navLogo1" src="/images/tracking.png">-->
+<!--            </div>-->
+<!--        <div id="navCircle"> -->
+<!--            <img id="navLogo" src="/images/tracking.png"-->
+<!--        </div>-->
         <h1 id="navHead">BCRW</h1>
         <hr id="navLine">
     </div>
@@ -112,9 +121,9 @@
 <!--        <h1 id="navHead">BCRW</h1>-->
 <!--        <hr id="navLine">-->
 
-        <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link active" href="/">Home</a>-->
+<!--        </li>-->
         <li class="nav-item">
             <a class="nav-link" href="/map">Map</a>
         </li>
