@@ -2,10 +2,10 @@
 .about{
     display: flex;
     flex-wrap: wrap;
+    height: 100vh;
     width: 100vw;
     justify-content: space-evenly;
-    border: 2px solid yellow;
-
+    margin-left: 5px;
 }
 
 /*Below is the CSS for flip cards just so I don't get rid of it*/
