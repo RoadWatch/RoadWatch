@@ -67,7 +67,6 @@ public class MapController {
         List<Report> activeReports = new ArrayList<>();
         model.addAttribute("categories", categories);
         for (Report report : reports) {
-            System.out.println("report amount: "+ report.getEndorsements().size());
             if(!reportSvc.checkDate(report.getDateEntered())){
                 reportsDao.delete(report);
                 System.out.println("report deleted");
@@ -76,6 +75,7 @@ public class MapController {
         }
 
         model.addAttribute("queriedList", queriedList);
+        System.out.println("queridLIST: "+queriedList.size());
         model.addAttribute("reports", activeReports);
         return "map/index";
     }
@@ -131,12 +131,14 @@ public class MapController {
     }
 
     //! CARDS SEARCH CONTROLLER
-    @PostMapping("/report/search")
+    @PostMapping("/report/search/{searchQuery}")
     public String searchCards(
-            @RequestParam String searchQuery,
+            @PathVariable String searchQuery,
             Model model
     ){
         this.queriedList.clear();
+        searchQuery = searchQuery.toLowerCase();
+        System.out.println("quer: "+searchQuery);
         List<Report> reports = reportsDao.findAll();
         List<Report> queried = new ArrayList<>();
         for (Report report : reports) {
