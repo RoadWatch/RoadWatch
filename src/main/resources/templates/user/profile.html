@@ -11,6 +11,8 @@
     <div th:include="partials/header :: head"></div>
     <link rel="stylesheet" href="forum.css">
 </head>
+
+
 <body>
 <nav th:include="partials/navbar :: nav"></nav>
 
@@ -31,7 +33,8 @@
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-info profileEditDeleteButton " id="profileEditButton" data-toggle="modal" data-target="#exampleModal">
-            <p>Edit</p>
+            Edit
+            <img src ="/images/edit%20copy.png" id="profileEditIdButton">
         </button>
         <button type="button" class="btn btn-danger profileEditDeleteButton"  id="profileDeleteButton" data-toggle="modal" data-target="#Modal">
             <p>Delete</p>
@@ -53,7 +56,12 @@
                                 <div class="md-form mb-5">
                                     <i class="fas fa-user prefix grey-text"></i>
                                     <input type="text" id="firstName" class="form-control validate"
-                                           th:value="${user.firstName}" th:field="*{firstName}">
+                                           th:value="${user.firstName}" th:field="*{firstName}"
+                                                                                style="background: transparent;
+                                                                                color:white;
+                                                                                border: none;
+                                                                                border-bottom: 1px solid #ffffff;
+                                                                                border-radius: 0px">
                                     <label data-error="wrong" data-success="right" for="firstName">Update first
                                         name</label>
                                 </div>
@@ -61,7 +69,12 @@
                                 <div class="md-form mb-5">
                                     <i class="fas fa-user prefix grey-text"></i>
                                     <input type="text" id="lastName" class="form-control validate"
-                                           th:value="${user.lastName}" th:field="*{lastName}">
+                                           th:value="${user.lastName}" th:field="*{lastName}"
+                                                                                style="background: transparent;
+                                                                                color:white;
+                                                                                border: none;
+                                                                                border-bottom: 1px solid #ffffff;
+                                                                                border-radius: 0px">
                                     <label data-error="wrong" data-success="right" for="lastName">Update last
                                         name</label>
                                 </div>
@@ -69,7 +82,11 @@
                                 <div class="md-form mb-5">
                                     <i class="fas fa-tag prefix grey-text"></i>
                                     <input type="text" id="username" class="form-control validate"
-                                           th:value="${user.username}" th:field="*{username}">
+                                           th:value="${user.username}" th:field="*{username}"style="background: transparent;
+                                                                                color:white;
+                                                                                border: none;
+                                                                                border-bottom: 1px solid #ffffff;
+                                                                                border-radius: 0px">
                                     <label data-error="wrong" data-success="right" for="username">Update
                                         Username</label>
                                 </div>
@@ -77,18 +94,26 @@
                                 <div class="md-form mb-5">
                                     <i class="fas fa-envelope prefix grey-text"></i>
                                     <input type="email" id="email" class="form-control validate"
-                                           th:value="${user.email}" th:field="*{email}">
+                                           th:value="${user.email}" th:field="*{email}"style="background: transparent;
+                                                                                color:white;
+                                                                                border: none;
+                                                                                border-bottom: 1px solid #ffffff;
+                                                                                border-radius: 0px">
                                     <label data-error="wrong" data-success="right" for="email">Update Your email</label>
                                 </div>
 
                                 <div class="md-form mb-5">
                                     <i class="prefix grey-text"></i>
                                     <input type="hidden" id="password" class="form-control validate"
-                                           th:value="${user.getPassword()}" th:field="*{password}">
+                                           th:value="${user.getPassword()}" th:field="*{password}"style="background: transparent;
+                                                                                color:white;
+                                                                                border: none;
+                                                                                border-bottom: 1px solid #ffffff;
+                                                                                border-radius: 0px">
                                     <label data-error="wrong" data-success="right" for="password"></label>
                                 </div>
 
-                                <div class="modal-footer">
+                                <div class="modal-footer" id="profileEditModalFooter">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
@@ -115,7 +140,11 @@
                                 <div class="md-form mb-5">
                                     <i class="fas fa-user prefix grey-text"></i>
                                     <input type="text" id="username" class="form-control validate"
-                                           th:value="${user.username}" th:field="*{username}">
+                                           th:value="${user.username}" th:field="*{username}"style="background: transparent;
+                                                                                color:white;
+                                                                                border: none;
+                                                                                border-bottom: 1px solid #ffffff;
+                                                                                border-radius: 0px">
                                     <label data-error="wrong" data-success="right" for="firstName">Update first
                                         name</label>
                                 </div>

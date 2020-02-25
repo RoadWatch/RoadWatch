@@ -148,22 +148,32 @@
                         <div class="modal-body">
                             <form th:action="@{'/forum/post/edit/'+ ${singlePost.id}}" method="post">
                                 <div class="form-group">
-                                    <label for="title">Title</label>
+                                    <label for="title" style="color:white">Title</label>
                                     <input type="text" class="form-control white-text" id="edit-title"
-                                           th:value="${singlePost.title}" th:name="title">
-                                    <small id="titleHelp" class="form-text text-muted">Edit title</small>
+                                           th:value="${singlePost.title}" th:name="title"
+                                                                                style="background: transparent;
+                                                                                color:white;
+                                                                                border: none;
+                                                                                border-bottom: 1px solid #ffffff;
+                                                                                border-radius: 0px">
+                                    <small id="titleHelp" class="form-text " style="color: white; font-size: 15px">Edit title</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="edit-body">Body</label>
+                                    <label for="edit-body" style="color:white">Body</label>
                                     <input type="text" class="form-control white text" id="edit-body" th:name="body"
-                                           th:value="${singlePost.body}">
-                                    <small id="bodyHelp" class="form-text text-muted">Edit body</small>
+                                           th:value="${singlePost.body}" style="background: transparent;
+                                                                                color:white;
+                                                                                border: none;
+                                                                                border-bottom: 1px solid #ffffff;
+                                                                                border-radius: 0px">
+                                    <small id="bodyHelp" class="form-text " style="color: white; font-size: 15px">Edit body</small>
+
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn " id="ForumEditSubmitButton" style="color:white">Submit</button>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
                         </div>
                     </div>
                 </div>
@@ -183,10 +193,10 @@
                         </div>
                         <div class="modal-body d-flex">
                             <form th:action="@{'/forum/post/delete/'+ ${singlePost.id}}" method="post">
-                                <button type="submit" class="btn btn-secondary mx-2">Yes</button>
+                                <button type="submit" class="btn forumEditDelete"  style="color:white">Yes</button>
                             </form>
                             <p>
-                                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">No</button>
+                                <button type="button" class="btn forumEditDelete" data-dismiss="modal" style="color:white;">No</button>
                             </p>
                         
                         </div>
@@ -202,7 +212,9 @@
     </div>
 </div>
 <!--delete modal-->
-
+<footer th:include="partials/footer :: footer"
+        class="p-3 mb-2 text-white"
+        style="background: #4052D0"></footer>
 
 </body>
 </html>

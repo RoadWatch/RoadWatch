@@ -317,11 +317,18 @@ div footer{
 .forumEditDelete{
     color:white;
     padding-left: 10px;
+    border: solid 1px white;
+    margin-left: 50px;
+
     /*text-align: center;*/
     /*border: white 1px solid;*/
 
 }
 
+
+#forumEditSubmitButton{
+    background-color: #FF7D4A;
+}
 /*#forumEditButton{*/
 /*    margin-right: 20px;*/
 /*}*/
@@ -349,6 +356,12 @@ div footer{
 
 }
 
+.forumInputTitles {
+    font-family: 'Nanum Gothic', sans-serif;
+    color:white;
+}
+
+
 .forumPostButton{
     background-color: #4152D0;
     color:white;
@@ -374,10 +387,6 @@ div footer{
     height: 18px;
 }
 
-.forumInputTitles {
-    font-family: 'Nanum Gothic', sans-serif;
-    color:white;
-}
 
 
 #forumSubmitButton{
@@ -927,6 +936,11 @@ div footer{
     margin-left: 15px;
 }
 
+#profileEditButton img{
+    width: 20px;
+    height: 20px;
+}
+
 #profileDeleteButton{
     margin-left: 190px;
     margin-top: -70px;
@@ -939,6 +953,14 @@ div footer{
     font-size: 20px;
     box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 
+
+}
+
+#profileEditModalFooter{
+    width: 358px;
+    /*width: 100vh*/
+    margin-bottom: -32px;
+    margin-left: -49px;
 
 }
 
