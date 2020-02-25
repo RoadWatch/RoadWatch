@@ -119,9 +119,13 @@ $(document).ready(function () {
                 geocode(cord, key)
                     .then(function (cords) {
                         let html = `
-            <div class="p-3">
-            <h5>${userReports[i].description}</h5>
-            <p>${userReports[i].dateEntered}</p>
+
+            <div id="pop-up-user">
+            <h6 id="property-name-user">${userReports[i].query.toUpperCase()}</h6>
+            <div id="property-d-user">
+            <p>${userReports[i].description}</p>
+            </div>
+            ${userReports[i].dateEntered} <br>
             <a href="#${userReports[i].id}">View Report</a>
              </div>
             `;

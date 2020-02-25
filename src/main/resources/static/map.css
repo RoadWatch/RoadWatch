@@ -40,6 +40,19 @@ html{
 #property-description {
   font-size: 5%;
 }
+/*//user card*/
+#property-name-user {
+  background: blue;
+  color: white;
+  border-radius: 8px;
+  padding: 8px;
+}
+#property-d-user {
+  height: 80px;
+  overflow: scroll;
+  color: black;
+  border: 2px solid black
+}
 #report-card-query {
   width: 18rem;
   margin-bottom: 10px !important;
