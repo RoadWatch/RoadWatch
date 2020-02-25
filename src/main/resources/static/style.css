@@ -45,13 +45,13 @@ body{
     width: 20px;
     height: 20px;
     position: absolute;
-    background-image: url('images/waves (1).png');
+    /*background-image: url('images/waves (1).png');*/
     background-size: cover;
     background-position: center;
     left: 0;
     top: 25%;
     transform: translateY(-50%);
-    margin-left:-10px;
+    margin-left: -20px;
 }
 li{
     margin-left: 30px;
@@ -59,6 +59,11 @@ li{
     color: black;
 }
 
+
+li img{
+    width: 20px;
+    height: 20px;
+}
 .badge{
 
     margin-top: 30px;
@@ -344,6 +349,7 @@ div footer{
     color:black;
     width: 300px;
     border: 1px solid black;
+    margin-bottom: 40px;
 }
 
 
@@ -986,9 +992,12 @@ div footer{
 
 @media screen and (min-width: 992px) {
 
-#aboutList{
-    /*display: flex;*/
-    justify-content: center;
+#about{
+    /*margin-left:*/
+}
+
+.aboutList{
+    margin-left: 40%;
 }
 
 
@@ -1052,7 +1061,7 @@ margin-left: 44%;
 }
 
 #navLogin{
-    font-size: 30px;
+    font-size: 29px;
 }
 
 /*#navLogout{*/
@@ -1060,8 +1069,8 @@ margin-left: 44%;
 /*}*/
 
 #navLogout{
-        margin-bottom: -5px;
-        font-size: 30px;
+        margin-bottom: -4px;
+        font-size: 29px;
     }
 
 #navProfile img{
@@ -1210,6 +1219,6 @@ margin-left: 44%;
 
 
 .profileEditDeleteButton{
-    margin-left: 43%;
+    margin-left: 80px;
 }
 }
