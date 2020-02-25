@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head >
     <meta charset="UTF-8">
     <title>Index</title>
@@ -19,6 +21,7 @@
 <h2 id="mainTitle2">Road Watch</h2>
 </div>
 
+<th:block sec:authorize="!isAuthenticated()">
 <div id="loginBox">
     <form th:action="@{/}" method="post" id="Login">
         <div class="form-group">
@@ -43,9 +46,9 @@
     </form>
     <div class="w-100 d-flex justify-content-center">
     <a href="/map"  class="m-auto">Continue as guest?</a>
-    
     </div>
 </div>
+</th:block>
 
 
 <div id="cautionBox">
