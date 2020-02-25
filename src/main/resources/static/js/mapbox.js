@@ -120,6 +120,17 @@ $(document).ready(function () {
             <h5>${userReports[i].description}</h5>
             <p>${userReports[i].dateEntered}</p>
             <a href="#${userReports[i].id}">View Report</a>
+<<<<<<< HEAD
+=======
+            <div class="row">
+             <button id="endorsement-${userReports[i].id}-2"
+             class="btn btn-outline-primary btn-sm">
+                 Report cleared:
+                 <span th:text="${report.negativeEndorsementCount}"></span>
+                 <i class="fas fa-road"></i>
+             </button>
+             </div>
+>>>>>>> f06a77c44fe1b97ba3c44fd421e1d434259bde9c
              </div>
             `;
                         

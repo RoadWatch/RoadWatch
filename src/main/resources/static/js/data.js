@@ -8,7 +8,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 1,
                     "Name": "Mauermann and Comanche Creek",
-                    "Date": "2020-02-20",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Flooded last night with 3 in. of water.",
                     "CartID": "LWC_7070216",
                     "GlobalID": "6db52200-28d4-4238-86d0-1524edeece25"
@@ -22,7 +22,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 2,
                     "Name": "Ledgestone at Mount Joy",
-                    "Date": "2020-02-19",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Road closed due to construction through 2020-02-21.",
                     "CartID": "LWC_7070119",
                     "GlobalID": "c7de69ea-a028-4620-9b06-2802838b1947"
@@ -36,7 +36,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 3,
                     "Name": "Leslie Rd 1850 ft SW of Braun Rd",
-                    "Date": "2020-02-20",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Flooded with debris the road.",
                     "CartID": "LWC_7070237",
                     "GlobalID": "afc98057-91b9-488f-b723-76568632b32e"
@@ -50,7 +50,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 4,
                     "Name": "S Hausman Rd 4700 ft N of Prue Rd",
-                    "Date": "2020-02-20",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Fallen power line this morning, road crew still cleaning up debris",
                     "CartID": "LWC_7070242",
                     "GlobalID": "e27e6322-a2ab-44b5-ab25-8de6e8c6723a"
@@ -64,7 +64,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 5,
                     "Name": "Oak Knoll 500 ft E of E Horseshoe Bend",
-                    "Date": "2020-02-18",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Road closed for construction, check back soon for updates",
                     "CartID": "LWC_7070255",
                     "GlobalID": "30112767-3e2b-4532-9b63-8d63a9fa8edf"
@@ -78,7 +78,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 6,
                     "Name": "Bitters Rd 175 ft W of NE Entrance Rd",
-                    "Date": "2020-02-20",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Road flooded due to opened fire hydrant.",
                     "CartID": "LWC_7070173",
                     "GlobalID": "95b8e1e0-b5bd-43a4-a964-bc493f0873b1"
@@ -92,7 +92,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 7,
                     "Name": "Gibbs Sprawl 800 ft NE of Castle Cross",
-                    "Date": "2020-02-20",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Road construction started today and will continue through 2020-02-25",
                     "CartID": "LWC_7070189",
                     "GlobalID": "460ed7be-8666-4857-a033-705318668597"
@@ -106,7 +106,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 8,
                     "Name": "New Sulphur Springs",
-                    "Date": "2020-02-20",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Accident with a deer in the road, traffic will be slow.",
                     "CartID": "LWC_7070230",
                     "GlobalID": "d8584b5d-f241-495d-ad95-5ba27d298c24"
@@ -120,7 +120,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 9,
                     "Name": "Villamain and Shane Rd at Railroad",
-                    "Date": "2020-02-20",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Water running across the road, be cautious.",
                     "CartID": "LWC_7070233",
                     "GlobalID": "8e479a63-3864-4281-86ea-dada455626d0"
@@ -134,7 +134,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 10,
                     "Name": "Briarmall at Briarcrest Dr",
-                    "Date": "2020-02-20",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Road closed due to construction until further notice.",
                     "CartID": "LWC_7070130",
                     "GlobalID": "e24a94d0-5d94-4630-bd8d-01d69232f9f3"
@@ -148,6 +148,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 11,
                     "Name": "Jung at Salado Mud Creek Tributary A",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070129",
                     "GlobalID": "30bc7b66-cd67-47ba-a0b3-dadf3c0bf131"
@@ -161,6 +162,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 12,
                     "Name": "Judson Rd at Lookout Rd",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070131",
                     "GlobalID": "c78d0158-4b7a-40b3-9cd6-5e5989b40409"
@@ -174,6 +176,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 13,
                     "Name": "Blakely 200 ft W of Vandiver",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070188",
                     "GlobalID": "ba6b0500-b922-4167-92d8-645403cc09d3"
@@ -187,6 +190,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 14,
                     "Name": "Mission Parkway at San Antonio River",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070213",
                     "GlobalID": "a92a316e-6b97-42b5-ad7d-80491d0b5b3a"
@@ -200,6 +204,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 15,
                     "Name": "George Rd W of NW Military Hwy",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070111",
                     "GlobalID": "64cfed76-9018-4933-9e8f-455c97973107"
@@ -213,6 +218,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 16,
                     "Name": "Cave Ln",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070182",
                     "GlobalID": "526aef5a-8053-44ee-929e-49a41fb1cc6f"
@@ -226,6 +232,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 17,
                     "Name": "Old Corpus Christi S of Henderson Ct",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070226",
                     "GlobalID": "ea84bcc9-0099-475f-967e-b4148a9c6c7d"
@@ -239,6 +246,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 18,
                     "Name": "W Quill Dr at Heather Hill",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070159",
                     "GlobalID": "05b03778-9ea7-4652-966a-85410e79dc2d"
@@ -252,6 +260,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 19,
                     "Name": "North Loop 150 ft SE of W North Loop Rd",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070151",
                     "GlobalID": "a135fb83-55c4-490b-a484-e90957e8a094"
@@ -265,6 +274,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 20,
                     "Name": "Nancy Carole Way 300 ft W of Southton",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070232",
                     "GlobalID": "7194fdd5-cd77-4022-a8b2-a0c7e40ce953"
@@ -278,6 +288,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 21,
                     "Name": "Majestic",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070258",
                     "GlobalID": "dd89e621-5394-4bed-b0d6-f16af08976a2"
@@ -291,6 +302,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 22,
                     "Name": "Nacogdoches Rd at Bulverde",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070176",
                     "GlobalID": "4db56cbb-73bc-4fde-b9e4-726c8c476d5f"
@@ -304,6 +316,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 23,
                     "Name": "Danville and Overbrook",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070161",
                     "GlobalID": "e3e4bdbd-5654-4556-b933-0ab391c0307a"
@@ -317,6 +330,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 24,
                     "Name": "Southwell 200 ft S of Verbena",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070137",
                     "GlobalID": "a5f9d117-98d0-4ccc-85ae-ee0a8d4d4f38"
@@ -330,6 +344,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 25,
                     "Name": "Southton Rd 4700 ft W of IH-37",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070234",
                     "GlobalID": "40061979-78ae-4cfa-ac09-479aa66b2223"
@@ -343,6 +358,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 26,
                     "Name": "Vicar 100 ft E of Perrin Beitel",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070185",
                     "GlobalID": "9a7d23d1-b4be-4b98-986c-5240d2da4223"
@@ -356,6 +372,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 27,
                     "Name": "N Verde Rd at French Creek",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070246",
                     "GlobalID": "5b98eac8-0405-4df2-be64-b0458fe20876"
@@ -369,6 +386,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 28,
                     "Name": "Bulverde Rd at Mud Creek Tributary A",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070123",
                     "GlobalID": "9591a4bf-555a-43f9-a906-1d87c0eb3f71"
@@ -382,6 +400,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 29,
                     "Name": "Rice Rd at Salado Creek",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070249",
                     "GlobalID": "3d2e1c54-1b05-4eb9-99ec-21737a2860ec"
@@ -408,6 +427,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 31,
                     "Name": "Stahl Rd S of Jung",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070126",
                     "GlobalID": "cfcb3c6d-0e74-44b2-96e5-5dd4d0e692d2"
@@ -421,6 +441,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 32,
                     "Name": "Horal Dr at Revlon",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070239",
                     "GlobalID": "79d196a0-2d41-415f-af7d-6bb91c72d9cb"
@@ -434,6 +455,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 33,
                     "Name": "West Ave N of W North Loop Rd",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070148",
                     "GlobalID": "99b6ba88-1815-4c3d-b365-2594f8978688"
@@ -447,6 +469,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 34,
                     "Name": "Hausman Rd 200 ft E of Babcock",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070101",
                     "GlobalID": "715e1827-4561-4c67-b769-8b69be3ed330"
@@ -460,6 +483,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 35,
                     "Name": "Martinique",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070201",
                     "GlobalID": "dbc9369b-5455-428a-b975-9d5114bd6a90"
@@ -473,6 +497,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 36,
                     "Name": "Lockhill 250 ft E of White Bonnet",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070134",
                     "GlobalID": "26d5ed69-b565-4df4-81df-9d8b1e242739"
@@ -486,6 +511,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 37,
                     "Name": "Vance Jackson at Orsinger Rd",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070144",
                     "GlobalID": "a716eb67-8d15-4858-bf72-8c8a09586587"
@@ -499,6 +525,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 38,
                     "Name": "S Verde Rd at French Creek",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070245",
                     "GlobalID": "25629b38-5281-4833-8862-2276e07e55a9"
@@ -512,6 +539,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 39,
                     "Name": "Southton Rd 2000 ft W of IH-37",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070235",
                     "GlobalID": "67adf026-0da4-473d-a56f-d24c1831b502"
@@ -525,6 +553,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 40,
                     "Name": "Leonhardt 500 ft S of Encante",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070179",
                     "GlobalID": "a17bad6f-3a85-4b74-b24e-40fdf7309530"
@@ -538,6 +567,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 41,
                     "Name": "Old Grissom 500 ft E of Culebra",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070157",
                     "GlobalID": "2bb598b7-223e-46bc-bb93-723ea08cf56d"
@@ -551,6 +581,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 42,
                     "Name": "Military and Westbriar",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070198",
                     "GlobalID": "92a9e6d2-b7a6-4b5d-b80b-d4c92beef70d"
@@ -564,6 +595,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 43,
                     "Name": "Harness Lane 480 ft N of Marbach Rd",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070199",
                     "GlobalID": "cf936a93-d7b3-4675-9c2d-93d654946abe"
@@ -577,6 +609,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 44,
                     "Name": "Sleepy Hollow at Sunburst",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070142",
                     "GlobalID": "0ead794a-61c0-4266-8e87-5b33adaa151c"
@@ -590,6 +623,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 45,
                     "Name": "W North Loop Rd 1300 ft E of West Ave",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070150",
                     "GlobalID": "e56e9a6c-a204-4038-9e0b-c9f2e51ddf2a"
@@ -603,6 +637,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 46,
                     "Name": "Elm Creek at Jones Maltsberger",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070122",
                     "GlobalID": "31e969f9-21cb-4ea4-9bfb-d3b163d76982"
@@ -616,6 +651,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 47,
                     "Name": "Braun Rd 1300 ft NE of FM 1604",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070236",
                     "GlobalID": "d73dd98b-c055-4c04-bdb4-17ff4c1f7dc3"
@@ -629,6 +665,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 48,
                     "Name": "Mission Parkway S of Napier",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070212",
                     "GlobalID": "41abe5b8-0ba9-45c7-aacf-13f7132a96d1"
@@ -642,6 +679,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 49,
                     "Name": "Meadow Way 450 ft N of Marbach Rd",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070200",
                     "GlobalID": "7e732303-7278-4568-9985-ebb399e248c4"
@@ -655,6 +693,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 50,
                     "Name": "Westfield",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070203",
                     "GlobalID": "93fb1f1e-e630-46dd-b4c6-547ae4f87199"
@@ -668,6 +707,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 51,
                     "Name": "Copperhill",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070118",
                     "GlobalID": "f218b2c7-5c59-46ce-8f60-e86283544ebf"
@@ -681,6 +721,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 52,
                     "Name": "Ray Ellison 300' N of Medina Base",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070206",
                     "GlobalID": "09a301d4-20b0-44cb-9a41-a0b6911c92b8"
@@ -694,6 +735,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 53,
                     "Name": "WW White at Rosillo Creek",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070227",
                     "GlobalID": "87b2c6ac-1c57-4074-8daa-b37adc3436c9"
@@ -707,6 +749,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 54,
                     "Name": "Nopal N of Fair Ave",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070222",
                     "GlobalID": "92d143a3-22ec-4210-8e2b-e9a37b428ddd"
@@ -720,6 +763,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 55,
                     "Name": "Bitters Rd 2600 ft W of NE Entrance",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070171",
                     "GlobalID": "cd757a77-9842-4347-9163-8ff42a131e3d"
@@ -733,6 +777,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 56,
                     "Name": "Parkway 500 ft E of Callaghan",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070253",
                     "GlobalID": "d7c74aba-e8c1-4634-9edc-fd2db78dca4b"
@@ -746,6 +791,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 57,
                     "Name": "Verbena 1000 ft W of Southwell",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070138",
                     "GlobalID": "2aebdff2-d0e0-4023-9233-3fc5eea3b366"
@@ -759,6 +805,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 58,
                     "Name": "Devine 400 ft N of Dick Friedrich",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070164",
                     "GlobalID": "3cc6038e-5884-4761-8d89-591fe43b8cd6"
@@ -772,6 +819,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 59,
                     "Name": "Weidner S of Leonhardt",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070180",
                     "GlobalID": "390720eb-f6da-473b-ad50-e7223570147f"
@@ -785,6 +833,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 60,
                     "Name": "Petaluma 2900 ft W of Bascum",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070214",
                     "GlobalID": "e061e6c9-880e-4b2c-aae7-c6a13d3241d3"
@@ -798,6 +847,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 61,
                     "Name": "New Sulphur Springs E of Beck",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070231",
                     "GlobalID": "288416ec-6536-4155-a82b-a3fe1a7b53d2"
@@ -811,6 +861,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 62,
                     "Name": "NE Entrance Rd 215 ft N of Bitters",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070174",
                     "GlobalID": "b515f9ff-b627-4641-a5e0-abac116058ee"
@@ -824,6 +875,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 63,
                     "Name": "Prue Rd 1500 ft N of Bandera Rd",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070243",
                     "GlobalID": "9c1198e2-8107-48dc-8ce2-92573ec6330a"
@@ -837,6 +889,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 64,
                     "Name": "Sugar Crest",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070117",
                     "GlobalID": "69d8914a-e00c-4a45-8d5e-0b203bbfb7ef"
@@ -850,6 +903,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 65,
                     "Name": "New Sulphur Springs E of Jasper",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070229",
                     "GlobalID": "597de57f-da3a-44d1-ba55-29b36a6131e0"
@@ -863,6 +917,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 66,
                     "Name": "Arvil",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070196",
                     "GlobalID": "3c5aac75-f7fe-4887-9334-4341f496ee58"
@@ -876,6 +931,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 67,
                     "Name": "S New Braunfels at Koehler Ct",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070223",
                     "GlobalID": "5c8a6547-7cba-4e4a-ab31-8bafedb9a66f"
@@ -889,6 +945,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 68,
                     "Name": "SilverCrest 100 ft NW of Majestic",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070254",
                     "GlobalID": "d3bfeead-4336-4a86-b7ac-912d5176d89f"
@@ -902,6 +959,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 69,
                     "Name": "Tallahasse",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070202",
                     "GlobalID": "d2ac90c0-a966-4961-b8bb-6f848a52ec43"
@@ -915,6 +973,7 @@ let lowWaterPoints = [
                 "properties": {
                     "OBJECTID": 70,
                     "Name": "Stahl Rd N of Bell",
+                    "Date": "Mon Feb 24 2020",
                     "Description": "Recorded Low Water Crossing",
                     "CartID": "LWC_7070125",
                     "GlobalID": "96841928-1729-4691-8f19-0ef5de33fd44"
