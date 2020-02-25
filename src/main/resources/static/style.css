@@ -215,14 +215,81 @@ li img{
     margin: 0 !important;
 }
 
+footer a:hover{
+    color: white;
+}
+footer a{
+    color:white;
 
-
+}
 div footer{
     position: fixed;
     /*margin-bottom: 0;*/
     /*bottom:0;*/
 }
 
+.footerConnectIcons{
+margin-bottom: 10px;
+margin-left: 3px;
+}
+
+.footerConnectIcons img{
+    width: 5px;
+    height: 5px;
+}
+
+footerConnect li{
+    margin-right: 5px;
+}
+.footerConnect {
+    margin-left: 180px;
+    margin-top: -175px;
+    color:white;
+    list-style: none;
+    /*padding-bottom: 10px;*/
+}
+
+.footerConnect li{
+    color:white;
+    margin-left: 5px;
+}
+
+.footerConnect li{
+    padding-bottom: 0px;
+}
+
+
+.footerIcons{
+    margin-right: 5px;
+}
+
+.footerList{
+    list-style: none;
+    color:white;
+    margin-left: -50px;
+}
+
+#footerLogo{
+    position: absolute;
+    margin-left: 130px;
+    margin-top: -120px;
+
+}
+
+#footerNavLogo{
+    width: 40px;
+    heigth: 40px;
+    margin: auto;
+
+}
+
+#footerNavCircle{
+    display: flex;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
 
 #forumCardPost{
     font-family: 'Nanum Gothic', sans-serif;
@@ -1030,6 +1097,30 @@ margin-left: 44%;
 
 }
 
+
+.footerConnect{
+   margin-left: 1300px;
+}
+
+#footerLogo{
+
+    margin-left: 780px;
+}
+
+.footerList{
+    margin-left: 100px;
+}
+#footerNavCircle{
+    width: 100px;
+    height: 100px;
+    /*border-radius: 50%;*/
+}
+
+
+#footerNavLogo{
+    width: 80px;
+    height: 80px;
+}
 #logo{
         margin-left: 200px;
         margin-top: -30px;
