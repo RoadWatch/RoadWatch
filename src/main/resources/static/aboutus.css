@@ -1,3 +1,9 @@
+html{
+    overflow-y:hidden;
+    overflow-x:hidden;
+    /*margin-bottom: 0px;*/
+}
+
 
 .about{
     display: flex;
