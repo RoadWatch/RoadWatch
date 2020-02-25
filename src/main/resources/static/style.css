@@ -259,7 +259,7 @@ div footer{
 /*    margin-left: 20px;*/
 /*}*/
 
-<<<<<<< HEAD
+
 .forumDeleteYesNoButton{
     margin-top: 10px;
     color:white;
@@ -267,16 +267,14 @@ div footer{
     height: 40px;
 }
 
-#forumDropDown{
+#forumDropDown {
     background-color: #4152D0;
     border: none;
-=======
-/*#forumDropDown{*/
-/*    background-color: #4152D0;*/
-/*    border: none;*/
->>>>>>> 22195ab7669ee78efcff1dd70e133f1fa0e9ec3d
+    /*#forumDropDown{*/
+    /*    background-color: #4152D0;*/
+    /*    border: none;*/
 
-/*}*/
+}
 
 .forumPostButton{
     background-color: #4152D0;
