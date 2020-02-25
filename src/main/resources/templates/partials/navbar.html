@@ -8,52 +8,55 @@
 <body>
 
 <nav th:fragment="nav" class="navbar" id="navBar">
-<div class="container-fluid">
-    <th:block sec:authorize="isAuthenticated()">
-    <div id=navProfile><a th:href="@{'/user/profile'}"><img src="/images/round-account-button-with-user-inside.png"></a></div>
-    </th:block>
-
-<a href="/">
-    <div id="logo">
-        <div id="navCircle">
-            <img  src="/images/tracking.png "id="navLogo">
-        </div>
-    </div>
-
-</a>
-        <h1 id="navHead">BCRW</h1>
+    
+    
+    <div class="container-fluid">
+        <th:block sec:authorize="isAuthenticated()">
+            <div id=navProfile>
+                <a th:href="@{'/user/profile'}">
+                    <img src="/images/round-account-button-with-user-inside.png" alt="img">
+                </a>
+            </div>
+        </th:block>
+        
+        <a href="/">
+            <div id="logo">
+                <div id="navCircle">
+                    <img src="/images/tracking.png" id="navLogo" alt="img">
+                </div>
+            </div>
+        
+        </a>
+        
+        <a href="/"><h1 id="navHead">BCRW</h1></a>
+        
         <hr id="navLine">
+        <ul class="nav justify-content-center linkContainer">
+            <li class="nav-item">
+                <a class="nav-link" href="/map">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/forum">Forum</a>
+            </li>
+            <th:block sec:authorize="!isAuthenticated()">
+                <li class="nav-item">
+                    <a href="/">Login</a>
+                </li>
+            </th:block>
+            <th:block sec:authorize="isAuthenticated()">
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="post">
+                        <button class="btn" type="submit" id="navLogout">Logout</button>
+                    </form>
+                </li>
+            </th:block>
+            <li class="nav-item">
+                <a href="/aboutus" class="btn" id="navLogin">About Us</a>
+            </li>
+        </ul>
     </div>
-
-    <ul class="nav justify-content-center linkContainer">
-        <li class="nav-item">
-            <a class="nav-link" href="/map">Map</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/forum">Forum</a>
-        </li>
-    <th:block sec:authorize="!isAuthenticated()">
-        <li class="nav-item">
-            <a href="/aboutus" class="btn" id="navLogin">About Us</a>
-        </li>
-    </th:block>
-    <th:block sec:authorize="isAuthenticated()">
-        <li class="nav-item">
-            <form th:action="@{/logout}" method="post">
-                <button class="btn" type="submit" id="navLogout">Logout</button>
-            </form>
-        </li>
-    </th:block>
-    </ul>
-</div>
-<div id= "navTriangle">
-<!--    <div class="navTriangleShadow"></div>-->
-</div>
-
-
-
+    <div id="navTriangle"></div>
 </nav>
-<!--<div id="navTriangleShadow"> </div>-->
 
 
 <footer th:include="partials/footer :: footer"
