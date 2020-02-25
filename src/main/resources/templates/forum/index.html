@@ -148,24 +148,35 @@
                         <div class="modal-body">
                             <form th:action="@{'/forum/post/edit/'+ ${singlePost.id}}" method="post">
                                 <div class="form-group">
-<<<<<<< HEAD
+
                                     <label for="title" class="editTitleBody">Title</label>
                                     <input type="text" class="form-control" id="edit-title"
-=======
+
                                     <label for="title">Title</label>
                                     <input type="text" class="form-control white-text" id="edit-title"
->>>>>>> 22195ab7669ee78efcff1dd70e133f1fa0e9ec3d
+
+
+                                    <label for="title" class="editTitleBody">Title</label>
+                                    <input type="text" class="form-control" id="edit-title"
+
+
+
                                            th:value="${singlePost.title}" th:name="title">
                                     <small id="titleHelp" class="form-text editTitleBodyCard">Edit title</small>
                                 </div>
                                 <div class="form-group">
-<<<<<<< HEAD
+
                                     <label for="edit-body" class="editTitleBody">Body</label>
                                     <input type="text" class="form-control" id="edit-body" th:name="body"
-=======
+
                                     <label for="edit-body">Body</label>
                                     <input type="text" class="form-control white text" id="edit-body" th:name="body"
->>>>>>> 22195ab7669ee78efcff1dd70e133f1fa0e9ec3d
+
+
+                                    <label for="edit-body" class="editTitleBody">Body</label>
+                                    <input type="text" class="form-control" id="edit-body" th:name="body"
+
+
                                            th:value="${singlePost.body}">
                                     <small id="bodyHelp" class="form-text editTitleBodyCard">Edit body</small>
                                 </div>

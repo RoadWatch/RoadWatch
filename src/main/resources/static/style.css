@@ -210,9 +210,13 @@ li img{
     color: #FF7D4A;
 }
 
+
 .mb-2, .my-2{
     margin: 0 !important;
 }
+
+
+
 div footer{
     position: fixed;
     /*margin-bottom: 0;*/
@@ -270,9 +274,11 @@ div footer{
 #forumDropDown {
     background-color: #4152D0;
     border: none;
+
     /*#forumDropDown{*/
     /*    background-color: #4152D0;*/
     /*    border: none;*/
+
 
 }
 
