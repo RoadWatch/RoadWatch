@@ -10,7 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" th:href="@{style.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,20 +22,28 @@
             display: flex;
             justify-content: space-evenly">
     <div>
-    <ul class="d-flex flex-column justify-content-evenly">
-        <li><a href="/">Home</a></li>
-        <li><a href="/map">Map</a></li>
-        <li><a href="/forum">Forum</a></li>
-        <li><a href="/user/profile">Profile</a></li>
+    <ul class="d-flex flex-column justify-content-evenly footerList" >
+        <li><a href="/"><img src="images/home.png"class="footerIcons">Home</a></li>
+        <li><a href="/map"><img src="images/maps-and-flags.png" class="footerIcons">Map</a></li>
+        <li><a href="/forum"><img src="images/help%20copy.png" class="footerIcons">Forum</a></li>
+        <li><a href="/user/profile"><img src="images/user%20copy.png" class="footerIcons">Profile</a ></li>
     </ul>
     </div>
-    <div>
-    <ul class="d-flex flex-column ">
-        <li>amber</li>
-        <li>Chris</li>
+
+    <div id="footerLogo">
+        <div id="footerNavCircle">
+            <img  src="/images/tracking.png "id="footerNavLogo">
+    </div>
+    </div>
+        <div>
+    <ul class="d-flex flex-column footerConnect ">
+<!--        <li>Connect With Us:</li>-->
+        <li><a href="https://www.linkedin.com/in/jones210amber/"><img src="images/linkedin%20copy.png" class="footerConnectIcons" > Amber</a></li>
+        <li><a href="https://www.linkedin.com/in/christopher-aguirre210/"><img src="images/linkedin%20copy.png" class="footerConnectIcons" > Chris</a></li>
+        <li><a href="https://www.linkedin.com/in/melindagreene/"><img src="images/linkedin%20copy.png" class="footerConnectIcons"  > Melinda</a></li>
+        <li><a href="https://www.linkedin.com/in/riverrobins/"><img src="images/linkedin%20copy.png" class="footerConnectIcons" > River</a></li>
     </ul>
     </div>
 </footer>
-
 </body>
 </html>
