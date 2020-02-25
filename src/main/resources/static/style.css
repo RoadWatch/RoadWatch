@@ -210,10 +210,12 @@ li img{
     color: #FF7D4A;
 }
 
-
+.mb-2, .my-2{
+    margin: 0 !important;
+}
 div footer{
     position: fixed;
-    margin-bottom: 20px;
+    /*margin-bottom: 0;*/
     /*bottom:0;*/
 }
 
