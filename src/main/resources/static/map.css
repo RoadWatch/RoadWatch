@@ -76,7 +76,7 @@ html{
 }
 /*user*/
 .user {
-  width: 18rem;
+  width: 20rem;
   height: 500px !important;
   overflow: scroll;
   margin-bottom: 10px !important;
