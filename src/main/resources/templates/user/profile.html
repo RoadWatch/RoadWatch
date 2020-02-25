@@ -14,8 +14,8 @@
 <div class="container">
 <!--    <nav th:include="partials/navbar :: nav"></nav>-->
 
-    <div class="card text-center">
-        <div class="card-header">
+    <div class="card text-center" id="profileMaincard">
+        <div class="card-header" id="profileCard">
             <h1>Welcome,</h1>
             <h3>Here is <span th:text="${user.getUsername()} + '\'s'"></span> profile information</h3>
         </div>
@@ -27,10 +27,10 @@
 
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-info profileEditDeleteButton " id="profileEditButton" data-toggle="modal" data-target="#exampleModal">
             <p>Edit</p>
         </button>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal">
+        <button type="button" class="btn btn-danger profileEditDeleteButton"  id="profileDeleteButton" data-toggle="modal" data-target="#Modal">
             <p>Delete</p>
         </button>
         <!-- Modal -->

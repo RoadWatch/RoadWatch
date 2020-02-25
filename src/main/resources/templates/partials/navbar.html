@@ -93,12 +93,22 @@
 <!--        <img id="navLogo" src="images/tracking.png">-->
 <!--    </div>-->
 
+<!--    <div id="logo1">-->
+<!--        <div id="navCircle1">-->
+<!--            <img id="navLogo1" src="/images/tracking.png">-->
+<!--        </div>-->
+<!--    </div>-->
+
+
     <div id="logo">
+
         <a th:href="@{/}">
+
         <div id="navCircle">
-            <img id="navLogo" src="/images/tracking.png">
+            <img  src="/images/tracking.png "id="navLogo">
         </div>
         </a>
+
 
 <!--        <div id="logo1">-->
 <!--            <div id="navCircle1">-->
@@ -107,11 +117,12 @@
 <!--        <div id="navCircle"> -->
 <!--            <img id="navLogo" src="/images/tracking.png"-->
 <!--        </div>-->
+
         <h1 id="navHead">BCRW</h1>
         <hr id="navLine">
     </div>
 
-    <ul class="nav justify-content-center">
+    <ul class="nav justify-content-center linkContainer">
 
 <!--        <div id="logo">-->
 <!--        <div id="navCircle">-->
@@ -134,7 +145,7 @@
         </li>
     <th:block sec:authorize="!isAuthenticated()">
         <li class="nav-item">
-            <a href="/aboutus" class="btn" id="navLogin">About us</a>
+            <a href="/aboutus" class="btn" id="navLogin">About Us</a>
         </li>
     </th:block>
     <th:block sec:authorize="isAuthenticated()">
@@ -154,5 +165,10 @@
 
 </nav>
 <!--<div id="navTriangleShadow"> </div>-->
+
+
+<footer th:include="partials/footer :: footer"
+        class="p-3 mb-2 text-white"
+        style="background: #4052D0"></footer>
 </body>
 </html>
