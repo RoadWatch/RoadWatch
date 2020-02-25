@@ -482,7 +482,7 @@ div footer{
 
 
 #logo{
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: 20px;
     position: absolute;
 }
@@ -818,9 +818,9 @@ div footer{
 }
 
 #navHead{
-    margin-left: 70px;
-    margin-top: -40px;
-    /*position:absolute;*/
+    margin-left: 90px;
+    margin-top: 40px;
+    position:absolute;
     font-size: 30px;
     color:#FF7D4A;
     font-family: 'Titillium Web', sans-serif;
@@ -828,7 +828,9 @@ div footer{
 }
 .nav-item{
     margin-top: 80px;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-right: 10px;
+    padding:0px;
     /*width: auto;*/
     /*background-color: #4152D0;*/
 
@@ -853,9 +855,9 @@ div footer{
     border: .5px solid #FF7D4A;
     color: white;
     width: 220px;
-    /*position: absolute;*/
-    margin-top: -10px;
-    margin-left:70px;
+    position: absolute;
+    margin-top: 75px;
+    margin-left:90px;
 
 }
 
@@ -870,7 +872,8 @@ div footer{
 #navLogin{
     color:white;
     margin-top: -6px;
-    padding-left:0px;
+    margin-left: -22px;
+    padding-right:0px;
     font-size: 19px;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -878,6 +881,7 @@ div footer{
 #navLogout{
     color:white;
     margin-top: -6px;
+    /*margin-left: 5px;*/
     padding-left:0px;
     font-size: 19px;
     font-family: 'Ubuntu', sans-serif;
@@ -1153,7 +1157,7 @@ margin-left: 44%;
 
 
 .linkContainer{
-        margin-left: 920px;
+        margin-left: 910px;
         height: 140px;
     }
 
@@ -1271,8 +1275,8 @@ margin-left: 44%;
 
 
 #navHead {
-        margin-left: -15px;
-        margin-top: -55px;
+        margin-left: 200px;
+        margin-top: 40px;
         position: absolute;
         font-size: 50px;
         color: #FF7D4A;
@@ -1299,8 +1303,8 @@ margin-left: 44%;
         color: white;
         width: 550px;
         /*position: absolute;*/
-        margin-top: 10px;
-        margin-left: -15px;
+        margin-top: 100px;
+        margin-left: 200px;
 
     }
 
