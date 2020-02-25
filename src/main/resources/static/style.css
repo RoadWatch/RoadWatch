@@ -317,11 +317,18 @@ div footer{
 .forumEditDelete{
     color:white;
     padding-left: 10px;
+    border: solid 1px white;
+    margin-left: 50px;
+
     /*text-align: center;*/
     /*border: white 1px solid;*/
 
 }
 
+
+#forumEditSubmitButton{
+    background-color: #FF7D4A;
+}
 /*#forumEditButton{*/
 /*    margin-right: 20px;*/
 /*}*/
@@ -349,6 +356,12 @@ div footer{
 
 }
 
+.forumInputTitles {
+    font-family: 'Nanum Gothic', sans-serif;
+    color:white;
+}
+
+
 .forumPostButton{
     background-color: #4152D0;
     color:white;
@@ -374,10 +387,6 @@ div footer{
     height: 18px;
 }
 
-.forumInputTitles {
-    font-family: 'Nanum Gothic', sans-serif;
-    color:white;
-}
 
 
 #forumSubmitButton{
@@ -473,7 +482,7 @@ div footer{
 
 
 #logo{
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: 20px;
     position: absolute;
 }
@@ -809,9 +818,9 @@ div footer{
 }
 
 #navHead{
-    margin-left: 70px;
-    margin-top: -40px;
-    /*position:absolute;*/
+    margin-left: 90px;
+    margin-top: 40px;
+    position:absolute;
     font-size: 30px;
     color:#FF7D4A;
     font-family: 'Titillium Web', sans-serif;
@@ -819,7 +828,9 @@ div footer{
 }
 .nav-item{
     margin-top: 80px;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-right: 10px;
+    padding:0px;
     /*width: auto;*/
     /*background-color: #4152D0;*/
 
@@ -844,9 +855,9 @@ div footer{
     border: .5px solid #FF7D4A;
     color: white;
     width: 220px;
-    /*position: absolute;*/
-    margin-top: -10px;
-    margin-left:70px;
+    position: absolute;
+    margin-top: 75px;
+    margin-left:90px;
 
 }
 
@@ -861,7 +872,8 @@ div footer{
 #navLogin{
     color:white;
     margin-top: -6px;
-    padding-left:0px;
+    margin-left: -22px;
+    padding-right:0px;
     font-size: 19px;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -869,6 +881,7 @@ div footer{
 #navLogout{
     color:white;
     margin-top: -6px;
+    /*margin-left: 5px;*/
     padding-left:0px;
     font-size: 19px;
     font-family: 'Ubuntu', sans-serif;
@@ -927,6 +940,11 @@ div footer{
     margin-left: 15px;
 }
 
+#profileEditButton img{
+    width: 20px;
+    height: 20px;
+}
+
 #profileDeleteButton{
     margin-left: 190px;
     margin-top: -70px;
@@ -939,6 +957,14 @@ div footer{
     font-size: 20px;
     box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 
+
+}
+
+#profileEditModalFooter{
+    width: 358px;
+    /*width: 100vh*/
+    margin-bottom: -32px;
+    margin-left: -49px;
 
 }
 
@@ -1131,7 +1157,7 @@ margin-left: 44%;
 
 
 .linkContainer{
-        margin-left: 920px;
+        margin-left: 910px;
         height: 140px;
     }
 
@@ -1249,8 +1275,8 @@ margin-left: 44%;
 
 
 #navHead {
-        margin-left: -15px;
-        margin-top: -55px;
+        margin-left: 200px;
+        margin-top: 40px;
         position: absolute;
         font-size: 50px;
         color: #FF7D4A;
@@ -1277,8 +1303,8 @@ margin-left: 44%;
         color: white;
         width: 550px;
         /*position: absolute;*/
-        margin-top: 10px;
-        margin-left: -15px;
+        margin-top: 100px;
+        margin-left: 200px;
 
     }
 
