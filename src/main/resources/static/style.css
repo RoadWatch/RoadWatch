@@ -176,11 +176,11 @@ li{
 }
 
 #edit-title{
-    color:black;
+    color:white;
 }
 
 #edit-body{
-    color:black;
+    color:white;
 }
 .form-text{
     color: #FF7D4A;
@@ -222,19 +222,19 @@ footer{
 
 }
 
-#forumEditButton{
-    margin-right: 20px;
-}
+/*#forumEditButton{*/
+/*    margin-right: 20px;*/
+/*}*/
 
-#forumDeleteButton{
-    margin-left: 20px;
-}
+/*#forumDeleteButton{*/
+/*    margin-left: 20px;*/
+/*}*/
 
-#forumDropDown{
-    background-color: #4152D0;
-    border: none;
+/*#forumDropDown{*/
+/*    background-color: #4152D0;*/
+/*    border: none;*/
 
-}
+/*}*/
 
 .forumPostButton{
     background-color: #4152D0;
@@ -251,7 +251,7 @@ footer{
 
 .forumLeaveCommentButton{
     background-color: #4152D0;
-    color:white;
+    color:white !important;
     box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 #B3B3B3;
 
 }

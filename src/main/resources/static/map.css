@@ -87,7 +87,7 @@ html{
 /*  margin-right:0;*/
 /*}*/
 #card-row{
-  width: 100%;
+  width: 100vw
 }
 #report-card-img {
   height: 200px;
