@@ -172,7 +172,6 @@ $(document).ready(function () {
     //! SET BEXAR COUNTY CARDS
 
     const setBexarCountyCards = (lowWaterPoints) => {
-        console.log("hello")
         let html = "";
         if(lowWaterPoints.length > 0){
             for (let i = 0; i < lowWaterPoints.length; i++) {
@@ -219,7 +218,6 @@ $(document).ready(function () {
             //! Filter user reports
             let request = $.ajax({'url': '/map/json'});
             request.done(function (reports) {
-                console.log("success")
                 let queriedUserResults = filterResultForUserData(reports, searchBarVal)
                 setQueriedCountyReports(filteredCountyReports)
                 setQueriedUserReports(queriedUserResults)
@@ -282,7 +280,6 @@ $(document).ready(function () {
         let buttonIds = []
         reports.forEach((report, i) => {
             buttonIds.push(`endorsement-${report.id}-2`)
-            console.log("report: ",report)
             html += `
             <div class="card m-auto user" id="${report.id}">
                 <img
