@@ -111,7 +111,7 @@
                             <form th:action="${'/user/' +  user.id +'/delete'}" th:method="POST" th:object="${user}">
                                 <div class="md-form mb-5">
                                     <i class="fas fa-user prefix grey-text"></i>
-                                    <input type="text" id="username" class="form-control validate"
+                                    <input type="text" id="username-delete" class="form-control validate"
                                            th:value="${user.username}" th:field="*{username}">
                                     <label data-error="wrong" data-success="right" for="firstName">Update first
                                         name</label>

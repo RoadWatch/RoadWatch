@@ -15,12 +15,27 @@
 </head>
 <body>
 
-<div id="pushFooter" ></div>
-<div th:fragment="footer" id="footer">
-    hello
-        <a href="/aboutus" class="text-white"
-        style="float: right">Meet the developers</a>
-</div>
+<!--<div id="pushFooter" ></div>-->
+<footer th:fragment="footer"
+     style="height: 200px !important;
+            width: 100vw;
+            display: flex;
+            justify-content: space-evenly">
+    <div>
+    <ul class="d-flex flex-column justify-content-evenly">
+        <li><a href="/">Home</a></li>
+        <li><a href="/map">Map</a></li>
+        <li><a href="/forum">Forum</a></li>
+        <li><a href="/user/profile">Profile</a></li>
+    </ul>
+    </div>
+    <div>
+    <ul class="d-flex flex-column ">
+        <li>amber</li>
+        <li>Chris</li>
+    </ul>
+    </div>
+</footer>
 
 </body>
 </html>
