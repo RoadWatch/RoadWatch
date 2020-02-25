@@ -1,10 +1,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="partials/header :: head">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <span th:include="partials/header :: head"></span>
+    
     <title>Road Watch</title>
 </head>
 <body>
@@ -79,18 +81,21 @@
                 <!--                        //toggle 1 FORM-->
                 <p>
                     <button class="btn btn-sm text-white forumLeaveCommentButton" type="button" data-toggle="collapse"
-                            data-target="#multiCollapseExample1" >Leave a comment
+                            data-target="#collapse-leaveComment-"
+                            th:attrappend="data-target=${singlePost.id}">Leave a comment
                         <img id="forumLeaveCommentIcon" src="images/speech-bubble.png">
                     </button>
                     <button class="btn  btn-sm forumLeaveCommentButton" type="button" data-toggle="collapse"
-                            data-target="#multiCollapseExample2"
+                            data-target="#collapse-viewComment-"
+                            th:attrappend="data-target=${singlePost.id}"
                             th:if="${singlePost.comments.size() > 0}">View Comments
                     </button>
                 </p>
                 
                 <div class="row">
                     <div class="col">
-                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                        <div class="collapse multi-collapse" id="collapse-leaveComment-"
+                             th:attrappend="id=${singlePost.id}">
                             <div class="card card-body" id="forumPostCommentCard">
                                 <form th:action="@{'/forum/comment/'+ ${singlePost.id}}" method="post"
                                       th:object="${comment}">
@@ -110,7 +115,8 @@
                 <!--                        TOGGLEE 2-->
                 <div class="row">
                     <div class="col">
-                        <div class="collapse multi-collapse" id="multiCollapseExample2">
+                        <div class="collapse multi-collapse" id="collapse-viewComment-"
+                             th:attrappend="id=${singlePost.id}">
                             <div class="card card-body">
                                 <th:block th:each="comment : ${singlePost.comments}">
                                     <div class="dropdown-item">
