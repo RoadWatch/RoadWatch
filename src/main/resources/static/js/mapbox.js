@@ -124,7 +124,7 @@ $(document).ready(function () {
              <button id="endorsement-${userReports[i].id}-2"
              class="btn btn-outline-primary btn-sm">
                  Report cleared:
-                 <span th:text=" ${report.negativeEndorsementCount}"></span>
+                 <span th:text="${report.negativeEndorsementCount}"></span>
                  <i class="fas fa-road"></i>
              </button>
              </div>
