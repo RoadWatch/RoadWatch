@@ -11,13 +11,11 @@ html{
   width: 90%;
 }
 #legend {
-  background-color: rgba(255, 255, 255, 0.2);
-  position: absolute;
-  bottom: 0;
-  left: 5px;
-  z-index: 1;
-  padding: 8px;
-  border-radius: 6px;
+  border: 2px solid white;
+  background-color: #efe9e1;
+  display: flex;
+  justify-content: space-evenly;
+  height:30px;
 }
 .mapboxgl-popup-content{
   padding: 0;
@@ -44,13 +42,13 @@ html{
   height: 20px;
   width: 10px;
   background: #FF7D4A;
-  margin-right: 5px;
+  margin-right: -5px;
 }
 #legend-dot-2 {
   height: 20px;
   width: 10px;
   background: #4152D0;
-  margin-right: 5px;
+  margin-right: -5px;
 
 }
 .county {
