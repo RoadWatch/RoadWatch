@@ -61,12 +61,15 @@ $(document).ready(function () {
                 .then(function (cords) {
                     let pops = new mapboxgl.Popup()
                         .setLngLat(cords)
-                        .setHTML("" +
-                            "<em><h6>" + points[i].properties.Name + "<br>" +
-                            "<p class='text-center'>(" + points[i].properties.Description + ")</p> <br>" +
-                            points[i].properties.Date +
-                            "</em></h6>"+
-                            "<a href='#city-"+(i+1)+"'>View report</a>")
+                        .setHTML("<div id='pop-up'> " +
+                            "<h6 id='property-name'>" + points[i].properties.Name + "</h6>" +
+                            "<div id='property-d'>" +
+                            "<p class='text-center'>" +
+                            "(" + points[i].properties.Description + ")</p>" +
+                            " </div>" +
+                            points[i].properties.Date + "<br>" +
+                            "<a href='#city-"+(i+1)+"'>View report</a>" +
+                            "</div>")
                         .addTo(map);
                     let marker = new mapboxgl.Marker(markerOptions)
                         .setLngLat(cords)
