@@ -148,22 +148,27 @@
                         <div class="modal-body">
                             <form th:action="@{'/forum/post/edit/'+ ${singlePost.id}}" method="post">
                                 <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control white-text" id="edit-title"
+
+                                    <label for="title" class="editTitleBody">Title</label>
+                                    <input type="text" class="form-control" id="edit-title"
+
+
                                            th:value="${singlePost.title}" th:name="title">
-                                    <small id="titleHelp" class="form-text text-muted">Edit title</small>
+                                    <small id="titleHelp" class="form-text editTitleBodyCard">Edit title</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="edit-body">Body</label>
-                                    <input type="text" class="form-control white text" id="edit-body" th:name="body"
+
+                                    <label for="edit-body" class="editTitleBody">Body</label>
+                                    <input type="text" class="form-control" id="edit-body" th:name="body"
+
                                            th:value="${singlePost.body}">
-                                    <small id="bodyHelp" class="form-text text-muted">Edit body</small>
+                                    <small id="bodyHelp" class="form-text editTitleBodyCard">Edit body</small>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn" id="editForumSubmitButton">Submit</button>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn" id="editCloseButton" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -181,12 +186,12 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body d-flex">
+                        <div class="modal-body d-flex ">
                             <form th:action="@{'/forum/post/delete/'+ ${singlePost.id}}" method="post">
-                                <button type="submit" class="btn btn-secondary mx-2">Yes</button>
+                                <button type="submit" class="btn forumDeleteYesNoButton" id="forumYes">Yes</button>
                             </form>
                             <p>
-                                <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">No</button>
+                                <button type="button" class="btn forumDeleteYesNoButton" data-dismiss="modal" id="forumNo">No</button>
                             </p>
                         
                         </div>
@@ -203,6 +208,8 @@
 </div>
 <!--delete modal-->
 
-
+<footer th:include="partials/footer :: footer"
+        class="p-3 mb-2 text-white"
+        style="background: #4052D0"></footer>
 </body>
 </html>
