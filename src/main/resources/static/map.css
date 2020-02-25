@@ -18,12 +18,28 @@ html{
   height:30px;
 }
 .mapboxgl-popup-content{
-  padding: 0;
+  border: 2px solid orangered;
+  padding: 5px;
   height: 200px;
   width: 200px;
   z-index: 100;
+  overflow: scroll;
 }
-
+#property-name {
+  background: orangered;
+  color: white;
+  border-radius: 8px;
+  padding: 8px;
+}
+#property-d {
+  height: 80px;
+  overflow: scroll;
+  color: black;
+  border: 2px solid black
+}
+#property-description {
+  font-size: 5%;
+}
 #report-card-query {
   width: 18rem;
   margin-bottom: 10px !important;
@@ -103,6 +119,8 @@ html{
   color: white !important;
   padding: 8px !important;
 }
+
+
 
 @media screen and (min-width: 768px) {
   #card-wrapper {
