@@ -29,7 +29,7 @@
         </a>
         
         <a href="/"><h1 id="navHead">BCRW</h1></a>
-        
+
         <hr id="navLine">
         <ul class="nav justify-content-center linkContainer">
             <li class="nav-item">
@@ -55,7 +55,34 @@
             </li>
         </ul>
     </div>
-    <div id="navTriangle"></div>
+
+
+    <ul class="nav justify-content-center linkContainer">
+        <li class="nav-item">
+            <a class="nav-link" href="/map">Map</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/forum">Forum</a>
+        </li>
+    <th:block sec:authorize="!isAuthenticated()">
+        <li class="nav-item">
+            <a href="/aboutus" class="btn" id="navLogin">About Us</a>
+        </li>
+    </th:block>
+    <th:block sec:authorize="isAuthenticated()">
+        <li class="nav-item">
+            <form th:action="@{/logout}" method="post">
+                <button class="btn" type="submit" id="navLogout">Logout</button>
+            </form>
+        </li>
+    </th:block>
+    </ul>
+</div>
+<div id= "navTriangle">
+</div>
+
+
+
 </nav>
 
 
