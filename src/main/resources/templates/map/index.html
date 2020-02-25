@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
-    
-    
+
+
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
@@ -17,274 +17,264 @@
     <link rel="stylesheet" href="map.css">
 </head>
 <body>
-
-
 <div>
     <nav th:include="partials/navbar :: nav"></nav>
 </div>
+<div class="container">
+    <div class="button">
+        <div class="row" id="mapBox">
+            <h5 class="m-auto" id="mapHead">Current Conditions</h5>
+        </div>
+        <div class="row">
 
-<div class="button">
-    <div class="row" id="mapBox">
-        <h5 class="m-auto" id="mapHead">Current Conditions</h5>
-    </div>
-    <div class="row">
-        
-        
-        <input type="text" placeholder="Zipcode search" class="form-control col col-7" id="zipcode-input">
-        
-        <button type="submit" class="btn btn col"
-                style="margin-right: 5px !important;" id="zipcode-button">
-            <i class="fas fa-search-location" id="zipcode-button-icon"></i>
-        </button>
-        <th:block sec:authorize="isAuthenticated()">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn  col" data-toggle="modal" data-target="#report" id="mapRegisterButton">
-                <i class="fas fa-plus"></i>
+
+            <input type="text" placeholder="Zipcode search" class="form-control col col-7" id="zipcode-input">
+
+            <button type="submit" class="btn btn col"
+                    style="margin-right: 5px !important;" id="zipcode-button">
+                <i class="fas fa-search-location" id="zipcode-button-icon"></i>
             </button>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Report an incident</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form th:action="@{'/report/add'}" method="post"
-                                  enctype="multipart/form-data">
-                                <div class="form-group" id="modalFontForm">
-                                    <label for="file" class="modal-body-font">Upload file<img src="images/upload.png"
-                                                                                              id="modalUploadLogo"></label>
-                                    <input type="file" class="form-control" id="file"
-                                           name="file">
-                                    <small id="fileHelp" class="form-text ">Snap a photo of the incident</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="query" class="modal-body-font">Location<img
-                                            src="images/maps-and-flags.png" id="modalLocationLogo"></label>
-                                    <input type="text" class="form-control text-white" id="query"
-                                           name="query" required style="background: transparent;
+            <th:block sec:authorize="isAuthenticated()">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn  col" data-toggle="modal" data-target="#report" id="mapRegisterButton">
+                    <i class="fas fa-plus"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Report an incident</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form th:action="@{'/report/add'}" method="post"
+                                      enctype="multipart/form-data">
+                                    <div class="form-group" id="modalFontForm">
+                                        <label for="file" class="modal-body-font">Upload file<img
+                                                src="images/upload.png"
+                                                id="modalUploadLogo"></label>
+                                        <input type="file" class="form-control" id="file"
+                                               name="file">
+                                        <small id="fileHelp" class="form-text ">Snap a photo of the incident</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="query" class="modal-body-font">Location<img
+                                                src="images/maps-and-flags.png" id="modalLocationLogo"></label>
+                                        <input type="text" class="form-control text-white" id="query"
+                                               name="query" required style="background: transparent;
                                                                border: none;
                                                                border-bottom: 1px solid #ffffff;
                                                                border-radius: 0px">
-                                    <small id="emailHelp" class="form-text ">Address, area with city or
-                                        zipcode</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="description" class="modal-body-font">Description<img
-                                            src="images/edit.png" id="modalDescribLogo"></label>
-                                    <input type="text" class="form-control text-white" id="description"
-                                           name="description" style="background: transparent;
+                                        <small id="emailHelp" class="form-text ">Address, area with city or
+                                            zipcode</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description" class="modal-body-font">Description<img
+                                                src="images/edit.png" id="modalDescribLogo"></label>
+                                        <input type="text" class="form-control text-white" id="description"
+                                               name="description" style="background: transparent;
                                                                border: none;
                                                                border-bottom: 1px solid #ffffff;
                                                                border-radius: 0px" required>
-                                    <small id="descriptionHelp" class="form-text ">Brief
-                                        description of incident</small>
-                                </div>
-                                
-                                <th:block th:each="c : ${categories}">
-                                    <div class="form-check" id="modalCheckBox">
-                                        <th:block th:if="${c.name.equals('General')}">
-                                            <input class="form-check-input" type="checkbox" th:value="${c.name}"
-                                                   id="defaultCheck1"
-                                                   th:attrappend="id=${c.id}"
-                                                   th:name="primitiveCategories" checked hidden>
-                                        </th:block>
-                                        <th:block th:if="${!c.name.equals('General')}">
-                                            <input class="form-check-input" type="checkbox" th:value="${c.name}"
-                                                   id="defaultCheck2"
-                                                   th:attrappend="id=${c.id}"
-                                                   th:name="primitiveCategories">
-                                            <label class="form-check-label" for="defaultCheck1"
-                                                   th:attrappend="for=${c.id}"
-                                                   th:text="${c.name}">
-                                            </label>
-                                        </th:block>
+                                        <small id="descriptionHelp" class="form-text ">Brief
+                                            description of incident</small>
                                     </div>
-                                </th:block>
-                                <br>
-                                <div class="form-group" id="modalWater">
-                                    <label for="waterLevel" class="modal-body-font">Water Level in Inches<img
-                                            src="images/tide.png" id="modalWaterLogo"></label>
-                                    <select class="form-control" id="waterLevel" name="waterLevel">
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                    <small id="waterLevelHelp" class="form-text ">If your incident
-                                        includes water please report level</small>
-                                </div>
-                                <input type="submit" class="btn " id="modalButton">
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <div id="modalLogoFooter">
-                                <div id="modalCircle">
-                                    <img src="images/tracking.png">
-                                </div>
+
+                                    <th:block th:each="c : ${categories}">
+                                        <div class="form-check" id="modalCheckBox">
+                                            <th:block th:if="${c.name.equals('General')}">
+                                                <input class="form-check-input" type="checkbox" th:value="${c.name}"
+                                                       id="defaultCheck1"
+                                                       th:attrappend="id=${c.id}"
+                                                       th:name="primitiveCategories" checked hidden>
+                                            </th:block>
+                                            <th:block th:if="${!c.name.equals('General')}">
+                                                <input class="form-check-input" type="checkbox" th:value="${c.name}"
+                                                       id="defaultCheck2"
+                                                       th:attrappend="id=${c.id}"
+                                                       th:name="primitiveCategories">
+                                                <label class="form-check-label" for="defaultCheck1"
+                                                       th:attrappend="for=${c.id}"
+                                                       th:text="${c.name}">
+                                                </label>
+                                            </th:block>
+                                        </div>
+                                    </th:block>
+                                    <br>
+                                    <div class="form-group" id="modalWater">
+                                        <label for="waterLevel" class="modal-body-font">Water Level in Inches<img
+                                                src="images/tide.png" id="modalWaterLogo"></label>
+                                        <select class="form-control" id="waterLevel" name="waterLevel">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <small id="waterLevelHelp" class="form-text ">If your incident
+                                            includes water please report level</small>
+                                    </div>
+                                    <input type="submit" class="btn " id="modalButton">
+                                </form>
                             </div>
-                            <div id="modalFooterFont">
-                                Bexar County Road Watch
+                            <div class="modal-footer">
+                                <div id="modalLogoFooter">
+                                    <div id="modalCircle">
+                                        <img src="images/tracking.png">
+                                    </div>
+                                </div>
+                                <div id="modalFooterFont">
+                                    Bexar County Road Watch
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </th:block>
-    
+            </th:block>
+
+        </div>
+
+    </div>
+    <!--MAPBOX ID-->
+    <div id="map" style="width: 100% !important;">
+    </div>
+    <div id="legend" class="legend text-center">
+        <span id="legend-dot-1"></span>
+        <p>Bexar County Reports</p>
+        <span id="legend-dot-2"></span>
+        <p>User Reports</p>
     </div>
 
-</div>
-<!--MAPBOX ID-->
-<div id="map" style="width: 100vw !important;">
-<!--    <div id="legend" class="legend">-->
-<!--        <div class="d-flex justify-content-start ">-->
 
-<!--        </div>-->
-<!--        <div class="d-flex ">-->
-
-<!--        </div>-->
-<!--    </div>-->
-</div>
-<div id="legend" class="legend text-center">
-    <span id="legend-dot-1"></span>
-    <p>Bexar County Reports</p>
-    <span id="legend-dot-2"></span>
-    <p>User Reports</p>
-</div>
+    <!--//SEARCH FOR CARDS-->
+    <form th:action="@{/report/search}" method="post" class="row ">
+        <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
+               placeholder="Search reports and categories">
+        <button type="submit" class="btn btn col btn-sml" id="UserReportSearchButton">
+            <img src="images/magnifying-glass.png"
+                 id="userReportSearchLogo">
+        </button>
+    </form>
+    <div id="card-wrapper">
+        <div class="row d-flex justify-content-center" id="card-row"
+             th:if="${reports.size() > 0}">
 
 
-<!--//SEARCH FOR CARDS-->
-<form th:action="@{/report/search}" method="post" class="row ">
-    <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
-           placeholder="Search reports and categories">
-    <button type="submit" class="btn btn col btn-sml" id="UserReportSearchButton">
-        <img src="images/magnifying-glass.png"
-             id="userReportSearchLogo">
-    </button>
-</form>
-<div id="card-wrapper" >
-    <div class="row d-flex justify-content-center" id="card-row"
-        th:if="${reports.size() > 0}">
-    
-    
-<!--         DEFAULT DISPLAY OF CARDS -->
-        
-        <th:block th:each="report : ${reports}" th:if="${param.search == null}" >
-            <div class="card m-auto user report-card " th:id="${report.id}">
-                <img
-                        th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
-                        class="card-img-top px-5 py-2" alt="report_img"
-                        id="report-card-img">
-                        <div class="card-body user-body"
-                                id="card-body">
-                            <div class="user-inner">
-                                <h5 class="card-title text-center" th:text="${report.query.toUpperCase()}" >Card
-                                    title</h5>
+            <!--         DEFAULT DISPLAY OF CARDS -->
+
+            <th:block th:each="report : ${reports}" th:if="${param.search == null}">
+                <div class="card m-auto user report-card " th:id="${report.id}">
+                    <img
+                            th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
+                            class="card-img-top px-5 py-2" alt="report_img"
+                            id="report-card-img">
+                    <div class="card-body user-body"
+                         id="card-body">
+                        <div class="user-inner">
+                            <h5 class="card-title text-center" th:text="${report.query.toUpperCase()}">Card
+                                title</h5>
+                            <hr>
+                            <small>
+                                Author: <span th:text="${report.user.username}"></span>
+                            </small>
+                            <p class="card-text"
+                               th:text="${report.description}"></p>
+                            <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                                 <hr>
-                                <small>
-                                    Author: <span th:text="${report.user.username}"></span>
-                                </small>
-                                <p class="card-text"
-                                   th:text="${report.description}"></p>
-                                <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
-                                    <hr>
-        
-                                    <hr>
-                                    <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
-                                        <button type="submit"
-                                                class="btn btn-outline-light text-light">
-                                            <i class="fas fa-road"></i>
-                                            Reported cleared?
-                                        </button>
-                                    </form>
-                                </div>
-                                <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
-                                    <a href="/" class="btn btn-outline-light">
+
+                                <hr>
+                                <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                                    <button type="submit"
+                                            class="btn btn-outline-light text-light">
                                         <i class="fas fa-road"></i>
                                         Reported cleared?
-                                    </a>
-                                </div>
-                                <!--                                end inner-->
+                                    </button>
+                                </form>
                             </div>
-<!--                            end-->
-                        </div>
-
-
-
-                        
-                        <hr>
-                        <p th:text="${report.dateEntered}"
-                            class="ml-2"></p>
-            </div>
-        </th:block>
-        <!--    QUERIED SET OF CARDS-->
-        <th:block th:if="${param.search != null}" th:each="report : ${queriedList}">
-            <div class="card m-auto user" th:id="${report.id}">
-                <img
-                        th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
-                        class="card-img-top px-5 py-2" alt="report_img"
-                        id="report-card-img">
-                <div class="card-body user-body"
-                     id="card-body">
-                    <div class="user-inner">
-                        <h5 class="card-title text-center" th:text="${report.query.toUpperCase()}" >Card
-                            title</h5>
-                        <hr>
-                        <small>
-                            Author: <span th:text="${report.user.username}"></span>
-                        </small>
-                        <p class="card-text"
-                           th:text="${report.description}"></p>
-                        <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
-                            <hr>
-                    
-                            <hr>
-                            <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
-                                <button type="submit"
-                                        class="btn btn-outline-light text-light">
+                            <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                                <a href="/" class="btn btn-outline-light">
                                     <i class="fas fa-road"></i>
                                     Reported cleared?
-                                </button>
-                            </form>
+                                </a>
+                            </div>
+                            <!--                                end inner-->
                         </div>
-                        <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
-                            <a href="/" class="btn btn-outline-light text-dark">
-                                <span th:text=" ${report.positiveEndorsementCount}"></span>
-                                <i class="far fa-thumbs-up mx-2"></i>
-                            </a>
-                            <a href="/" class="btn btn-outline-light text-dark">
-                                <span th:text=" ${report.negativeEndorsementCount}"></span>
-                                <i class="far fa-thumbs-down mx-2"></i> </a>
-                        </div>
-                        <!--                                end inner-->
+                        <!--                            end-->
                     </div>
-                    <!--                            end-->
+
+
+                    <hr>
+                    <p th:text="${report.dateEntered}"
+                       class="ml-2"></p>
                 </div>
-        
-        
-        
-        
-                <hr>
-                <p th:text="${report.dateEntered}"
-                    class="ml-2"></p>
-            </div>
-        </th:block>
+            </th:block>
+            <!--    QUERIED SET OF CARDS-->
+            <th:block th:if="${param.search != null}" th:each="report : ${queriedList}">
+                <div class="card m-auto user" th:id="${report.id}">
+                    <img
+                            th:src="*{report.filePath != null} ? *{report.filePath} : ('https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg')"
+                            class="card-img-top px-5 py-2" alt="report_img"
+                            id="report-card-img">
+                    <div class="card-body user-body"
+                         id="card-body">
+                        <div class="user-inner">
+                            <h5 class="card-title text-center" th:text="${report.query.toUpperCase()}">Card
+                                title</h5>
+                            <hr>
+                            <small>
+                                Author: <span th:text="${report.user.username}"></span>
+                            </small>
+                            <p class="card-text"
+                               th:text="${report.description}"></p>
+                            <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
+                                <hr>
+
+                                <hr>
+                                <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                                    <button type="submit"
+                                            class="btn btn-outline-light text-light">
+                                        <i class="fas fa-road"></i>
+                                        Reported cleared?
+                                    </button>
+                                </form>
+                            </div>
+                            <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
+                                <a href="/" class="btn btn-outline-light text-dark">
+                                    <span th:text=" ${report.positiveEndorsementCount}"></span>
+                                    <i class="far fa-thumbs-up mx-2"></i>
+                                </a>
+                                <a href="/" class="btn btn-outline-light text-dark">
+                                    <span th:text=" ${report.negativeEndorsementCount}"></span>
+                                    <i class="far fa-thumbs-down mx-2"></i> </a>
+                            </div>
+                            <!--                                end inner-->
+                        </div>
+                        <!--                            end-->
+                    </div>
+
+
+                    <hr>
+                    <p th:text="${report.dateEntered}"
+                       class="ml-2"></p>
+                </div>
+            </th:block>
+        </div>
+
+
+        <div id="city-row" class="row"></div>
     </div>
-
-
-<div id="city-row" class="row"></div>
 </div>
 <footer th:include="partials/footer :: footer"
         class="p-3 mb-2 text-white"
-        style="background: #4052D0"></footer>
+        style="background: #4052D0">
+
+</footer>
 
 
 <!--<script src="/js/jquery-2.2.4.js"></script>-->
