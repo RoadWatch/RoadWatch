@@ -211,10 +211,15 @@ li img{
 }
 
 
+.mb-2, .my-2{
+    margin: 0 !important;
+}
+
+
 
 div footer{
     position: fixed;
-    margin-bottom: 20px;
+    /*margin-bottom: 0;*/
     /*bottom:0;*/
 }
 
@@ -266,9 +271,15 @@ div footer{
     height: 40px;
 }
 
-#forumDropDown{
+#forumDropDown {
     background-color: #4152D0;
     border: none;
+
+    /*#forumDropDown{*/
+    /*    background-color: #4152D0;*/
+    /*    border: none;*/
+
+
 }
 
 .forumPostButton{
@@ -659,7 +670,6 @@ div footer{
 
 }
 
-#modal
 
 .nav{
     /*display: flex;*/
@@ -671,7 +681,7 @@ div footer{
     font-size: 20px;
     /*display: inline-block;*/
     /*margin-top: 10px;*/
-    margin-left: 35px;
+    margin-left: 40px;
 
 
 
