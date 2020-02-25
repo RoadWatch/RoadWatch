@@ -42,3 +42,8 @@ dserver site build --domain bcrw.host
         <error-page>
             <location>/errors</location>
         </error-page>
+
+
+0PN8W9quvwpFNi5fiv9O
+
+myserver site build -d example.com

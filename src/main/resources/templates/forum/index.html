@@ -51,7 +51,7 @@
                     <i class="fas fa-ellipsis-h dropdown-toggle" id="dropdownMenuButton"
                        data-toggle="dropdown"></i>
                       <span class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="forumDropDown">
-                                                   <button type="button" class="btn  btn-sm forumEditDelete"
+                                                   <button type="button" class="btn  btn-sm btn-outline-warning"
                                                            id="forumEditButton"
                                                            data-toggle="modal"
                                                            data-target="#myModal"
@@ -60,7 +60,8 @@
                         Edit
                     </button>
                           <!-- Delete trigger modal -->
-                    <button type="button" class="btn  btn-sm forumEditDelete" id="forumDeleteButton" data-toggle="modal"
+                    <button type="button" class="btn  btn-sm btn-outline-danger" id="forumDeleteButton"
+                            data-toggle="modal"
                             data-target="#delete" th:attrappend="data-target=${singlePost.id}"
                             style="margin: 0 10px">
                         Delete
@@ -77,7 +78,7 @@
                 <!--            dropdown-->
                 <!--                        //toggle 1 FORM-->
                 <p>
-                    <button class="btn btn-sm forumLeaveCommentButton" type="button" data-toggle="collapse"
+                    <button class="btn btn-sm text-white forumLeaveCommentButton" type="button" data-toggle="collapse"
                             data-target="#multiCollapseExample1" >Leave a comment
                         <img id="forumLeaveCommentIcon" src="images/speech-bubble.png">
                     </button>
@@ -117,7 +118,9 @@
                                             &#9830;
                                             <span th:text="${comment.body}">Action</span>
                                         </small>
-                                        <form th:action="@{'/comment/delete/'+ ${comment.id}}" method="post">
+                                        <form th:if="${comment.id == userId}"
+                                              th:action="@{'/comment/delete/'+ ${comment.id}}"
+                                              method="post">
                                             <button type="submit" class="float-right">
                                                 <i class="fas fa-trash fa-xs" id="forumTrashIcon"></i>
                                             </button>
@@ -145,14 +148,24 @@
                         <div class="modal-body">
                             <form th:action="@{'/forum/post/edit/'+ ${singlePost.id}}" method="post">
                                 <div class="form-group">
+<<<<<<< HEAD
                                     <label for="title" class="editTitleBody">Title</label>
                                     <input type="text" class="form-control" id="edit-title"
+=======
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control white-text" id="edit-title"
+>>>>>>> 22195ab7669ee78efcff1dd70e133f1fa0e9ec3d
                                            th:value="${singlePost.title}" th:name="title">
                                     <small id="titleHelp" class="form-text editTitleBodyCard">Edit title</small>
                                 </div>
                                 <div class="form-group">
+<<<<<<< HEAD
                                     <label for="edit-body" class="editTitleBody">Body</label>
                                     <input type="text" class="form-control" id="edit-body" th:name="body"
+=======
+                                    <label for="edit-body">Body</label>
+                                    <input type="text" class="form-control white text" id="edit-body" th:name="body"
+>>>>>>> 22195ab7669ee78efcff1dd70e133f1fa0e9ec3d
                                            th:value="${singlePost.body}">
                                     <small id="bodyHelp" class="form-text editTitleBodyCard">Edit body</small>
                                 </div>

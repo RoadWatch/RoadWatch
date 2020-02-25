@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    let points = [];
+    let userPoints = []
     let key = document.querySelector("#apiKey").content;
     mapboxgl.accessToken = key;
     
@@ -41,7 +43,6 @@ $(document).ready(function () {
     };
     
     //! ADD CITY DATA TO ARRAY
-    let points = [];
     const addCityDataToArray = () => {
         for (let i = 0; i < lowWaterPoints[0].features.length - 1; i++) {
             points.push(lowWaterPoints[0].features[i])
@@ -103,7 +104,6 @@ $(document).ready(function () {
     const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
-        console.log("REPORT: ", request)
         request.done(function (reports) {
             let endorsementButtonIds = [];
             userReports = reports;
@@ -120,14 +120,6 @@ $(document).ready(function () {
             <h5>${userReports[i].description}</h5>
             <p>${userReports[i].dateEntered}</p>
             <a href="#${userReports[i].id}">View Report</a>
-            <div class="row">
-             <button id="endorsement-${userReports[i].id}-2"
-             class="btn btn-outline-primary btn-sm">
-                 Report cleared:
-                 <span th:text=" ${report.negativeEndorsementCount}"></span>
-                 <i class="fas fa-road"></i>
-             </button>
-             </div>
              </div>
             `;
                         
@@ -168,11 +160,22 @@ $(document).ready(function () {
         let input = $('#zipcode-input');
         flyToFunc(input.val())
     });
+    //! GET URL PARAMETERS
+    const getUrlVars = () => {
+        let vars = {};
+        let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
     
     //! SET BEXAR COUNTY CARDS
-    const setBexarCountyCards = () => {
-        for (let i = 0; i < 10; i++) {
-            let html = "";
+
+    const setBexarCountyCards = (lowWaterPoints) => {
+        let html = "";
+        if(lowWaterPoints.length > 0){
+            for (let i = 0; i < lowWaterPoints.length; i++) {
+                if(i === 10 ) break;
             html += `
 <div class="card m-auto report-card county" id="city-${i+1}" >
                 <img
@@ -181,25 +184,158 @@ $(document).ready(function () {
                         id="report-card-img">
                 <div class="card-body county-body">
                 <div class="county-inner">
-                                    <h5 class="card-title text-center">${lowWaterPoints[0].features[i].properties.Name}</h5>
+                                    <h5 class="card-title text-center">${lowWaterPoints[i].properties.Name}</h5>
                     <small>
                     <hr>
                         <span>Author: Bexar County</span>
                     </small>
-                    <p class="card-text">${lowWaterPoints[0].features[i].properties.Description}</p>
+                    <p class="card-text">${lowWaterPoints[i].properties.Description}</p>
                 </div>
 </div>
 
                     <hr>
-                    <p class="ml-2">${lowWaterPoints[0].features[i].properties.Date}</p>
+                    <p class="ml-2">${lowWaterPoints[i].properties.Date}</p>
                 </div>
 `;
-            document.getElementById("card-row").innerHTML += html;
+            }
         }
-    }
-    setBexarCountyCards()
-    
+            $('#city-row').html(html);
 
+
+    }
+    setBexarCountyCards(points)
+    
+    const getCardsForSearchBar = () => {
+        $(document).on('click', '#UserReportSearchButton', function (e) {
+            e.preventDefault();
+            let searchBarVal = $('#userReportSearch').val()
+            let firstTenReports = points.slice(0,10)
+            
+            let filteredCountyReports = filterResultForCountyData(firstTenReports, searchBarVal)
+            
+            //! filter county reports
+
+            //! Filter user reports
+            let request = $.ajax({'url': '/map/json'});
+            request.done(function (reports) {
+                let queriedUserResults = filterResultForUserData(reports, searchBarVal)
+                setQueriedCountyReports(filteredCountyReports)
+                setQueriedUserReports(queriedUserResults)
+            })
+        })
+    }
+    //! The county data has different properties than user
+    const filterResultForCountyData = (arr, query) => {
+        let result = []
+        arr.forEach((report, i) => {
+            if(report.properties.Name.toLowerCase().includes(query))
+                result.push(report);
+            else if(report.properties.Description.toLowerCase().includes(query))
+                result.push(report)
+        })
+        return result
+    }
+    
+    const filterResultForUserData = (arr, query) => {
+        let result = []
+        arr.forEach((report, i) => {
+            if(report.query.includes(query))
+                result.push(report)
+            else if(report.description.includes(query))
+                result.push(report)
+        })
+        return result
+    }
+    
+    const setQueriedCountyReports = reports => {
+        let html = ""
+        reports.forEach((report,i) => {
+            html += `
+<div class="card m-auto report-card county" id="city-${report.properties.OBJECTID}" >
+                <img
+                        src="https://search.bexar.org/Content/images/BexarLogo.png"
+                        class="card-img-top px-5" alt="report_img"
+                        id="report-card-img">
+                <div class="card-body county-body">
+                <div class="county-inner">
+                                    <h5 class="card-title text-center">${report.properties.Name}</h5>
+                    <small>
+                    <hr>
+                        <span>Author: Bexar County</span>
+                    </small>
+                    <p class="card-text">${report.properties.Description}</p>
+                </div>
+</div>
+
+                    <hr>
+                    <p class="ml-2">${report.properties.Date}</p>
+                </div>
+`;
+        })
+        $('#city-row').html(html);
+    }
+    
+    const setQueriedUserReports = reports => {
+        let html = ''
+        let buttonIds = []
+        reports.forEach((report, i) => {
+            buttonIds.push(`endorsement-${report.id}-2`)
+            html += `
+            <div class="card m-auto user" id="${report.id}">
+                <img
+                        src="${report.filePath == null ? 'https://pbs.twimg.com/profile_images/1191407906912161801/c1oHDM_9_400x400.jpg' : report.filePath}"
+                        class="card-img-top px-5 py-2" alt="report_img"
+                        id="report-card-img">
+                        <div class="card-body user-body"
+                                id="card-body">
+                            <div class="user-inner">
+                                <h5 class="card-title text-center">
+                                ${report.query.toUpperCase()}
+</h5>
+                                <hr>
+                                <small>
+                                    Author: <span>
+                                    ${report.user.username.toUpperCase()}
+</span>
+                                </small>
+                                <p class="card-text"
+                                >${report.description}</p>
+
+                                        <button type="submit"
+                                                class="btn btn-outline-light text-light"
+                                                id="endorsement-${report.id}-2">
+                                            <i class="fas fa-road"></i>
+                                            Reported cleared?
+                                        </button>
+                                <!--                                end inner-->
+                            </div>
+<!--                            end-->
+                        </div>
+
+
+
+                        
+                        <hr>
+                        <p
+                         class="ml-2"> ${report.dateEntered}</p>
+            </div>
+`
+        })
+        addClickEventForEndorsementPost(buttonIds)
+        $('#card-row').html(html)
+    }
+    
+    // const setClickEventForQueriedEndorsements = arrOfIds => {
+    //     $.each(arrOfIds, function (i) {
+    //         $(document).on('click', `#${arrOfIds[i]}`, function () {
+    //             console.log("click")
+    //             let splitId = arrOfIds[i].split("-")
+    //             console.log(splitId[1])
+    //         })
+    //     })
+    // }
+    getCardsForSearchBar()
+    
 
 });
 
