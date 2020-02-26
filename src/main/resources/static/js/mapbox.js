@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 
 //! USER REPORTS
-    const fetchUserPoints = () => {
+//     const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
         request.done(function (reports) {
@@ -115,17 +115,28 @@ $(document).ready(function () {
                 endorsementButtonIds.push(`endorsement-${userReports[i].id}-1`);
                 endorsementButtonIds.push(`endorsement-${userReports[i].id}-2`);
                 
-                const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
+                const cord = userReports[i].query;//[parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
                 geocode(cord, key)
                     .then(function (cords) {
                         let html = `
-            <div class="p-3">
-            <h5>${userReports[i].description}</h5>
-            <p>${userReports[i].dateEntered}</p>
+
+            <div id="pop-up-user">
+            <h6 id="property-name-user">${userReports[i].query.toUpperCase()}</h6>
+            <div id="property-d-user">
+            <p>${userReports[i].description}</p>
+            </div>
+            ${userReports[i].dateEntered} <br>
             <a href="#${userReports[i].id}">View Report</a>
-             </div>
-            `;
-                        
+            `;          if (parseInt(userReports[i].waterInches) >= 1) {
+                            html += `<div>Water level: ${userReports[i].waterInches}</div>`;
+                        } else {
+                            html += `<div>Water level: N/A</div>`;
+                        }
+                        for (let j = 0; j < userReports[i].jsoncategories.length; j++) {
+                            html += `<span style="margin-left: 5px; margin-right: 5px; color: #101010;">${userReports[i].jsoncategories[j]}</span>`;
+                        }
+                        html += "</div>";
+
                         let pops = new mapboxgl.Popup()
                             .setLngLat(cords)
                             .setHTML(html)
@@ -140,13 +151,13 @@ $(document).ready(function () {
                     })
             }
             addClickEventForEndorsementPost(endorsementButtonIds)
-        })
+        });
         request.fail(function (e) {
             console.log("e; ");
-        })
-    };
+        });
+    // };
     
-    fetchUserPoints();
+    // fetchUserPoints();
     
     //! FLY TO FUNCTION
     const flyToFunc = (search) => {
@@ -170,7 +181,7 @@ $(document).ready(function () {
             vars[key] = value;
         });
         return vars;
-    }
+    };
     
     //! SET BEXAR COUNTY CARDS
 
@@ -205,16 +216,16 @@ $(document).ready(function () {
             $('#city-row').html(html);
 
 
-    }
-    setBexarCountyCards(points)
+    };
+    setBexarCountyCards(points);
     
     const getCardsForSearchBar = () => {
         $(document).on('click', '#UserReportSearchButton', function (e) {
             e.preventDefault();
-            let searchBarVal = $('#userReportSearch').val()
-            let firstTenReports = points.slice(0,10)
+            let searchBarVal = $('#userReportSearch').val();
+            let firstTenReports = points.slice(0,10);
             
-            let filteredCountyReports = filterResultForCountyData(firstTenReports, searchBarVal)
+            let filteredCountyReports = filterResultForCountyData(firstTenReports, searchBarVal);
             
             //! filter county reports
 
@@ -231,9 +242,9 @@ $(document).ready(function () {
     const filterResultForCountyData = (arr, query) => {
         let result = []
         arr.forEach((report, i) => {
-            if(report.properties.Name.toLowerCase().includes(query))
+            if(report.properties.Name.toLowerCase().includes(query.toLowerCase()))
                 result.push(report);
-            else if(report.properties.Description.toLowerCase().includes(query))
+            else if(report.properties.Description.toLowerCase().includes(query.toLowerCase()))
                 result.push(report)
         })
         return result
@@ -242,9 +253,9 @@ $(document).ready(function () {
     const filterResultForUserData = (arr, query) => {
         let result = []
         arr.forEach((report, i) => {
-            if(report.query.includes(query))
+            if(report.query.toLowerCase().includes(query.toLowerCase()))
                 result.push(report)
-            else if(report.description.includes(query))
+            else if(report.description.toLowerCase().includes(query.toLowerCase))
                 result.push(report)
         })
         return result
@@ -327,16 +338,7 @@ $(document).ready(function () {
         addClickEventForEndorsementPost(buttonIds)
         $('#card-row').html(html)
     }
-    
-    // const setClickEventForQueriedEndorsements = arrOfIds => {
-    //     $.each(arrOfIds, function (i) {
-    //         $(document).on('click', `#${arrOfIds[i]}`, function () {
-    //             console.log("click")
-    //             let splitId = arrOfIds[i].split("-")
-    //             console.log(splitId[1])
-    //         })
-    //     })
-    // }
+
     getCardsForSearchBar()
     
 

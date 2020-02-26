@@ -43,8 +43,8 @@ public class EndorsmentSvc {
             }
         }
         if(negativeCount >= 3) {
-            reportsDao.delete(report);
-            System.out.println("Report deleted");
+//            reportsDao.delete(report);
+            System.out.println("Report #" + report.getId() + " invalidated");
         }
         else System.out.println("Report still active");
 

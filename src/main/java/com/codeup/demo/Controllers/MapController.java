@@ -47,10 +47,20 @@ public class MapController {
     //! DO NOT REMOVE!!! We need this for the user-submitted reports to show on the map!
     @GetMapping("/map/json")
     public @ResponseBody List<Report> mapJSON(){
-        List<Report> temp = reportsDao.findAll();
-        for (Report rep : temp) {
-            rep.makeJsonCats();
+        List<Report> all = reportsDao.findAll();
+        List<Report> temp = new ArrayList<>();
+        for (int i = 0; i < all.size(); i++) {
+            if(reportSvc.checkDate(all.get(i).getDateEntered()) && all.get(i).getRating() > -3){
+                all.get(i).makeJsonCats();
+                temp.add(all.get(i));
+            }
         }
+
+
+//        List<Report> temp = reportsDao.findAll();
+//        for (Report rep : temp) {
+//            rep.makeJsonCats();
+//        }
         return temp;
     }
 
@@ -65,18 +75,17 @@ public class MapController {
 
         model.addAttribute("categories", categories);
         List<Report> activeReports = new ArrayList<>();
-        model.addAttribute("categories", categories);
         for (Report report : reports) {
-            if(!reportSvc.checkDate(report.getDateEntered())){
-                reportsDao.delete(report);
-                System.out.println("report deleted");
+            if(reportSvc.checkDate(report.getDateEntered()) && report.getRating() > -3){
+                activeReports.add(report);
             }
-            else activeReports.add(report);
         }
 
         model.addAttribute("queriedList", queriedList);
         System.out.println("queridLIST: "+queriedList.size());
+        Collections.reverse(activeReports);
         model.addAttribute("reports", activeReports);
+
         return "map/index";
     }
 
@@ -112,21 +121,17 @@ public class MapController {
 
             //!test
             report.setQuery(query);
-            report.setLatitude("lattt");
-            report.setLongitude("longg");
-            reportsDao.save(report);
-
-            String token = enviromentSvc.getMapboxKey();
-            geocodeSvc.executeSearch(query, token, user, report);
-
+            System.out.println("filepath: "+ report.getFilePath());
             //! FILE FUNCTION
-            System.out.println("UPLOADED FILE: "+ uploadedFile);
-            reportSvc.saveFile(uploadedFile, report);
-            System.out.println("finished");
+            if (report.getFilePath() == null) {
+                System.out.println("UPLOADED FILE: " + uploadedFile);
+                reportSvc.saveFile(uploadedFile, report);
+            }
 
+            reportsDao.save(report);
             return "redirect:/map";
         }
-        return "redirect:/";
+        return "redirect:/map";
 
     }
 
@@ -156,8 +161,7 @@ public class MapController {
                 queried.add(report);
             }
         }
-//        System.out.println("in post: "+ queried.size());
-//        model.addAttribute("queriedList", queried);
+
 
         return "redirect:/map?search=true";
     }

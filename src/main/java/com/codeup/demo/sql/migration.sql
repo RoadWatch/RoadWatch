@@ -25,6 +25,7 @@ insert into categories (name)
 values ('Flooding'),
        ('Construction'),
        ('Debris'),
+       ('Traffic'),
        ('Animals'),
        ('Downtown'),
        ('Highway'),

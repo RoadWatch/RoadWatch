@@ -1,13 +1,6 @@
 package com.codeup.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.aspectj.lang.annotation.Before;
-import org.joda.time.DateTime;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -32,12 +25,13 @@ public class Report {
     @NotBlank(message = "Description is required")
     private String description;
 
-    @Column(nullable = false, length = 30)
-    @NotBlank(message = "Longitude is required")
+    @Column(length = 30)
+    private String address;
+
+    @Column(length = 30)
     private String longitude;
 
-    @Column(nullable = false, length = 30)
-    @NotBlank(message = "Latitude is required")
+    @Column(length = 30)
     private String latitude;
 
     @Transient
@@ -106,7 +100,7 @@ public class Report {
     public Report(
             int zipcode,
             int waterInches,
-            String longitude,
+            String address, String longitude,
             String latitude,
             String description,
             User user
@@ -114,6 +108,7 @@ public class Report {
 
         this.zipcode = zipcode;
         this.waterInches = waterInches;
+        this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
         this.description = description;
@@ -127,7 +122,7 @@ public class Report {
             long id,
             int zipcode,
             int waterInches,
-            String longitude,
+            String address, String longitude,
             String latitude,
             String description,
             User user
@@ -135,6 +130,7 @@ public class Report {
         this.id = id;
         this.zipcode = zipcode;
         this.waterInches = waterInches;
+        this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
         this.description = description;
@@ -176,6 +172,14 @@ public class Report {
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getWaterInches() {
@@ -260,7 +264,7 @@ public class Report {
         if (this.rating == null){
             return this.makeRating();
         }
-        return this.getRating();
+        return this.rating;
     }
 
     // Sets rating based on endorsements, returns 0 if null or no endorsements are available
@@ -268,7 +272,9 @@ public class Report {
         int rating = 0;
         if ( !(this.endorsements == null || this.endorsements.size() == 0) ) {
             for (int i = 0; i < this.endorsements.size(); i++) {
-                rating += this.endorsements.get(i).getValue();
+                if (this.endorsements.get(i).getValue() == 2){
+                    rating += -1;
+                }
             }
         }
         this.rating = rating;
@@ -335,18 +341,16 @@ public class Report {
 
     @Override
     public String toString() {
-        return "Report{" +
-                "id=" + id +
-                ", zipcode=" + zipcode +
-                ", waterInches=" + waterInches +
-                ", description='" + description + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", endorsements=" + endorsements +
-                ", user=" + user +
-                ", categories=" + categories +
-                ", dateEntered=" + dateEntered +
-                ", dateUpdated=" + dateUpdated +
+        return "\nReport{\n" +
+                "   id=" + id + "\n" +
+                "   zipcode=" + zipcode + "\n" +
+                "   waterInches=" + waterInches + "\n" +
+                "   description='" + description + '\'' + "\n" +
+                "   longitude='" + longitude + '\'' + "\n" +
+                "   latitude='" + latitude + '\'' + "\n" +
+                "   user=" + user.getUsername() + "\n" +
+                "   dateEntered=" + dateEntered + "\n" +
+                "   dateUpdated=" + dateUpdated + "\n" +
                 '}';
     }
 
