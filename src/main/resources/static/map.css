@@ -134,7 +134,9 @@ html{
   padding: 8px !important;
 }
 
-
+button:hover{
+  color: #943134;
+}
 
 @media screen and (min-width: 768px) {
   #card-wrapper {
