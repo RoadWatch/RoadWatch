@@ -196,6 +196,11 @@
                                     </button>
                                 </form>
                             </div>
+                            <div>
+                                <div th:each="categories : ${report.categories}">
+                                    <small th:text="${categories.name}"></small>
+                                </div>
+                            </div>
                             <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
                                 <a href="/" class="btn btn-outline-light">
                                     <i class="fas fa-road"></i>
