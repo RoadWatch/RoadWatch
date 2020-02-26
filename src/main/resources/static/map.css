@@ -1,5 +1,6 @@
 html{
-  width: 100vw;
+  /*width: 100%;*/
+  min-height: 100%;
 }
 /*.container{*/
 /*  margin:0;*/
@@ -67,7 +68,6 @@ html{
   height: 200px;
 }
 #card-wrapper {
-  height: 840px;
   width: 100vw;
 }
 #legend-dot-1 {
