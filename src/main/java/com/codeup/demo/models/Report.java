@@ -272,7 +272,9 @@ public class Report {
         int rating = 0;
         if ( !(this.endorsements == null || this.endorsements.size() == 0) ) {
             for (int i = 0; i < this.endorsements.size(); i++) {
-                rating += this.endorsements.get(i).getValue();
+                if (this.endorsements.get(i).getValue() == 2){
+                    rating += -1;
+                }
             }
         }
         this.rating = rating;

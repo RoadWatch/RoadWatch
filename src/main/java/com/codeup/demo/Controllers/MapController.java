@@ -119,28 +119,17 @@ public class MapController {
 
             //!test
             report.setQuery(query);
-//            report.setLatitude("temp-lat");
-//            report.setLongitude("temp-long");
-//            reportsDao.save(report);
-//            String token = enviromentSvc.getMapboxKey();
-//            geocodeSvc.executeSearch(query, token, user, report);
 
             //! FILE FUNCTION
             if (report.getFilePath() != null) {
                 System.out.println("UPLOADED FILE: " + uploadedFile);
                 reportSvc.saveFile(uploadedFile, report);
             }
-            System.out.println(report.toString());
-//            System.out.println("=======================\n" +
-//                    "Lng: " + report.getLongitude() + "\n" +
-//                    "Lat: " + report.getLatitude() + "\n" +
-//                    "=======================");
-            System.out.println("Saving now...");
-            reportsDao.save(report);
 
+            reportsDao.save(report);
             return "redirect:/map";
         }
-        return "redirect:/";
+        return "redirect:/map";
 
     }
 
