@@ -270,27 +270,27 @@ div footer{
     margin-left: -50px;
 }
 
-#footerLogo{
-    position: absolute;
-    margin-left: 130px;
-    margin-top: -120px;
+/*#footerLogo{*/
+/*    position: absolute;*/
+/*    margin-left: 130px;*/
+/*    margin-top: -120px;*/
 
-}
+/*}*/
 
-#footerNavLogo{
-    width: 40px;
-    heigth: 40px;
-    margin: auto;
+/*#footerNavLogo{*/
+/*    width: 40px;*/
+/*    heigth: 40px;*/
+/*    margin: auto;*/
 
-}
+/*}*/
 
-#footerNavCircle{
-    display: flex;
-    background-color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-}
+/*#footerNavCircle{*/
+/*    display: flex;*/
+/*    background-color: white;*/
+/*    width: 60px;*/
+/*    height: 60px;*/
+/*    border-radius: 50%;*/
+/*}*/
 
 #forumCardPost{
     font-family: 'Nanum Gothic', sans-serif;
@@ -330,13 +330,15 @@ div footer{
 #forumEditSubmitButton{
     background-color: #FF7D4A;
 }
-/*#forumEditButton{*/
-/*    margin-right: 20px;*/
-/*}*/
+#forumEditButton{
+    background-color: #ffc107;
+    color:black;
+}
 
-/*#forumDeleteButton{*/
-/*    margin-left: 20px;*/
-/*}*/
+#forumDeleteButton{
+background-color: #dc3545;
+    color:white;
+}
 
 
 .forumDeleteYesNoButton{
