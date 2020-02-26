@@ -16,15 +16,16 @@
     <h2 class="red"> Invalid Username or Password</h2>
 </div>
 
-<div id="mainTitleContainer">
-<h2 id="mainTitle1">Bexar County</h2>
-<h2 id="mainTitle2">Road Watch</h2>
-</div>
+<!--<div id="mainTitleContainer" >-->
+<h2 id="mainTitle1" class="d-flex justify-content-center">Bexar County</h2>
+<h2 id="mainTitle2" class="d-flex justify-content-center">Road Watch</h2>
+<!--</div>-->
 
 <th:block sec:authorize="!isAuthenticated()">
-<div id="loginBox">
+    <div class=" d-flex justify-content-center">
+<div id="loginBox" >
     <form th:action="@{/}" method="post" id="Login">
-        <div class="form-group">
+        <div class="form-group justify-content-center">
             <label class="loginFont" for="loginInputUser"></label>
 
             <input type="text" class="form-control" id="loginInputUser" placeholder="Username" name="username">
@@ -48,10 +49,11 @@
     <a href="/map"  class="m-auto">Continue as guest?</a>
     </div>
 </div>
+    </div>
 </th:block>
 
-
-<div id="cautionBox">
+<div class="justify-content-center">
+<div id="cautionBox" >
     <div id="cautionBoxLine">
 
 
@@ -65,7 +67,7 @@
         <div id="cautionFont1">
             <h4>&nbsp;&nbsp; Turn &nbsp;</h4>
     </div>
-
+</div>
 
 <!--    <div id="cautionFont2">-->
 <!--            <h4>dont drown </h4>-->
@@ -76,31 +78,30 @@
 
 
 
-<hr  id="line1" >
-
-<div class="about">
-
-<ul class="aboutList">
-    <li>
+<!--<hr  id="line1" class="d-flex justify-content-center " >-->
+<div class="d-flex justify-content-center ">
+<!--<div class="about ">-->
+    <ul class="aboutList ">
+     <li>
       <img src="images/triangle%20(1).png">  Raising awareness for safe driving.
-    </li>
+        </li>
 
-    <li>
+        <li>
         <img src="images/help.png">Communicate with others about road conditions.
-    </li>
+        </li>
 
-    <li>
+        <li>
         <img src="images/maps-and-flags%20copy.png">Provide a map of safe routes.
-    </li>
-</ul>
-
-<hr id="line2">
-
-
-
-
-
+        </li>
+    </ul>
 </div>
+<!--<hr id="line2" class="d-flex justify-content-center ">-->
+
+
+
+
+
+<!--</div>-->
 
 <footer th:include="partials/footer :: footer"
         class="p-3 mb-2 text-white"

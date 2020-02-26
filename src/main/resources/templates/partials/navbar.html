@@ -8,8 +8,8 @@
 <body>
 
 <nav th:fragment="nav" class="navbar" id="navBar">
-    
-    
+
+
     <div class="container-fluid">
         <th:block sec:authorize="isAuthenticated()">
             <div id=navProfile>
@@ -55,7 +55,7 @@
             </li>
         </ul>
     </div>
-    <div id="navTriangle"></div>
+    <div id="navTriangle" class="d-flex justify-content-center"></div>
 </nav>
 
 

@@ -450,7 +450,7 @@ background-color: #dc3545;
 #loginBox{
     border: 2px solid white;
     margin-top: 30px;
-    margin-left: 40px;
+    /*margin-left: 40px;*/
     height: 290px;
     width: 300px;
     padding-top: -20px;
@@ -633,7 +633,7 @@ background-color: #dc3545;
 }
 
 #mainTitle1{
-    margin-left: 60px;
+    /*margin-left: 60px;*/
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 40px;
@@ -644,7 +644,7 @@ background-color: #dc3545;
 }
 
 #mainTitle2{
-    margin-left: 65px;
+    /*margin-left: 65px;*/
     /*margin-top: 20px;*/
     font-size: 40px;
     font-family: 'Muli', sans-serif;
@@ -1220,6 +1220,10 @@ margin-left: 44%;
 
 
 
+#loginBox{
+
+}
+
 .linkContainer{
         margin-left: 910px;
         height: 140px;
@@ -1307,21 +1311,21 @@ margin-left: 44%;
 
 
 #loginBox{
-    margin-left: 700px;
+    /*margin-left: 700px;*/
 }
 
-#mainTitleContainer{
-    margin-left:40%;
-}
-#mainTitle1{
+/*#mainTitleContainer{*/
+/*    margin-left:40%;*/
+/*}*/
+/*#mainTitle1{*/
 
-    text-align: center;
-}
+/*    text-align: center;*/
+/*}*/
 
-#mainTitle2{
-    text-align: center;
-    margin-left: 50px;
-}
+/*#mainTitle2{*/
+/*    text-align: center;*/
+/*    margin-left: 50px;*/
+/*}*/
 .nav {
         margin-left: 640px;
         display: flex;
@@ -1411,7 +1415,7 @@ margin-left: 44%;
 
 
 #navTriangle {
-        display: inline-flex;
+        /*display: inline-flex;*/
         /*justify-content: center;*/
         /*margin-right: 80px;*/
         margin-left: -120px;
