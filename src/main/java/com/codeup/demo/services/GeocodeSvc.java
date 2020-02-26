@@ -70,16 +70,23 @@ public class GeocodeSvc {
         Double lng = coords.get(0);
         Double lat = coords.get(1);
 
+        Report temp = reportsDao.getOne(report.getId());
+
         //update report
-        report.setZipcode(zipcode);
-        report.setLongitude(lng.toString());
-        report.setLatitude(lat.toString());
+        temp.setZipcode(zipcode);
+        temp.setLongitude(lng.toString());
+        temp.setLatitude(lat.toString());
+        reportsDao.save(temp);
+//        System.out.println("=======================\n" +
+//                "Lng: " + report.getLongitude() + "\n" +
+//                "Lat: " + report.getLatitude() + "\n" +
+//                "=======================");
 
         List<Category> categories = report.getCategories();
         for (Category category : categories) {
             System.out.println(category.getName());
         }
-        reportsDao.save(report);
+//        reportsDao.save(report);
     }
 
     private boolean checkIfZipcodeIsDigits(String zipcode){

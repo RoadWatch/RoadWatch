@@ -115,7 +115,7 @@ $(document).ready(function () {
                 endorsementButtonIds.push(`endorsement-${userReports[i].id}-1`);
                 endorsementButtonIds.push(`endorsement-${userReports[i].id}-2`);
                 
-                const cord = [parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
+                const cord = userReports[i].query;//[parseFloat(userReports[i].longitude), parseFloat(userReports[i].latitude)];
                 geocode(cord, key)
                     .then(function (cords) {
                         let html = `
@@ -144,7 +144,7 @@ $(document).ready(function () {
                     })
             }
             addClickEventForEndorsementPost(endorsementButtonIds)
-        })
+        });
         request.fail(function (e) {
             console.log("e; ");
         })
@@ -174,7 +174,7 @@ $(document).ready(function () {
             vars[key] = value;
         });
         return vars;
-    }
+    };
     
     //! SET BEXAR COUNTY CARDS
 
@@ -209,16 +209,16 @@ $(document).ready(function () {
             $('#city-row').html(html);
 
 
-    }
-    setBexarCountyCards(points)
+    };
+    setBexarCountyCards(points);
     
     const getCardsForSearchBar = () => {
         $(document).on('click', '#UserReportSearchButton', function (e) {
             e.preventDefault();
-            let searchBarVal = $('#userReportSearch').val()
-            let firstTenReports = points.slice(0,10)
+            let searchBarVal = $('#userReportSearch').val();
+            let firstTenReports = points.slice(0,10);
             
-            let filteredCountyReports = filterResultForCountyData(firstTenReports, searchBarVal)
+            let filteredCountyReports = filterResultForCountyData(firstTenReports, searchBarVal);
             
             //! filter county reports
 
