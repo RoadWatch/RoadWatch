@@ -83,6 +83,7 @@ public class MapController {
 
         model.addAttribute("queriedList", queriedList);
         System.out.println("queridLIST: "+queriedList.size());
+        Collections.reverse(activeReports);
         model.addAttribute("reports", activeReports);
 
         return "map/index";
