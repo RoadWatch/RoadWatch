@@ -127,9 +127,13 @@ $(document).ready(function () {
             </div>
             ${userReports[i].dateEntered} <br>
             <a href="#${userReports[i].id}">View Report</a>
-             </div>
             `;
-                        
+
+                        for (let j = 0; j < userReports[i].jsoncategories.length; j++) {
+                            html += `<span style="margin-left: 5px; margin-right: 5px; color: #101010;">${userReports[i].jsoncategories[j]}</span>`;
+                        }
+                        html += "</div>";
+
                         let pops = new mapboxgl.Popup()
                             .setLngLat(cords)
                             .setHTML(html)
@@ -147,7 +151,7 @@ $(document).ready(function () {
         });
         request.fail(function (e) {
             console.log("e; ");
-        })
+        });
     };
     
     fetchUserPoints();
@@ -341,7 +345,7 @@ $(document).ready(function () {
     //         })
     //     })
     // }
-    getCardsForSearchBar()
+    getCardsForSearchBar();
     
 
 });
