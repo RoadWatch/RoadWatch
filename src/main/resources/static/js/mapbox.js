@@ -120,7 +120,7 @@ $(document).ready(function () {
                     .then(function (cords) {
                         let html = `
 
-            <div id="pop-up-user">
+            <div class="d-flex flex-wrap" id="pop-up-user">
             <h6 id="property-name-user">${userReports[i].query.toUpperCase()}</h6>
             <div id="property-d-user">
             <p>${userReports[i].description}</p>
@@ -133,7 +133,7 @@ $(document).ready(function () {
                             html += `<div>Water level: N/A</div>`;
                         }
                         for (let j = 0; j < userReports[i].jsoncategories.length; j++) {
-                            html += `<span style="margin-left: 5px; margin-right: 5px; color: #101010;">${userReports[i].jsoncategories[j]}</span>`;
+                            html += `<span class="">${userReports[i].jsoncategories[j]}</span>`;
                         }
                         html += "</div>";
 

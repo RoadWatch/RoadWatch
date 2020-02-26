@@ -196,6 +196,7 @@
                                     </button>
                                 </form>
                             </div>
+                            <p th:if="${report.waterInches > 0}">Water Level: <span th:text="${report.waterInches}"></span> in.</p>
                             <div>
                                 <div th:each="categories : ${report.categories}">
                                     <small th:text="${categories.name}"></small>
@@ -234,7 +235,7 @@
                             <small>
                                 Author: <span th:text="${report.user.username}"></span>
                             </small>
-                            <p class="card-text"
+                            <p class="card-text d-flex"
                                th:text="${report.description}"></p>
                             <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
                                 <hr>
