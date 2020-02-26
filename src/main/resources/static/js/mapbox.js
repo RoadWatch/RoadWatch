@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
     let points = [];
     let userPoints = []
     let key = document.querySelector("#apiKey").content;
@@ -338,10 +338,8 @@
         addClickEventForEndorsementPost(buttonIds)
         $('#card-row').html(html)
     }
-<<<<<<< HEAD
 
     getCardsForSearchBar()
-=======
     
     // const setClickEventForQueriedEndorsements = arrOfIds => {
     //     $.each(arrOfIds, function (i) {
@@ -353,10 +351,9 @@
     //     })
     // }
     getCardsForSearchBar();
->>>>>>> a019f33210b5f0676a0ceab84549a6a4fc232d5d
     
 
-// });
+});
 
 
 
