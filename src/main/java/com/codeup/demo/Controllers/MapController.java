@@ -119,9 +119,9 @@ public class MapController {
 
             //!test
             report.setQuery(query);
-
+            System.out.println("filepath: "+ report.getFilePath());
             //! FILE FUNCTION
-            if (report.getFilePath() != null) {
+            if (report.getFilePath() == null) {
                 System.out.println("UPLOADED FILE: " + uploadedFile);
                 reportSvc.saveFile(uploadedFile, report);
             }
@@ -159,8 +159,7 @@ public class MapController {
                 queried.add(report);
             }
         }
-//        System.out.println("in post: "+ queried.size());
-//        model.addAttribute("queriedList", queried);
+
 
         return "redirect:/map?search=true";
     }
