@@ -57,11 +57,11 @@ public class Report {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "reportCategory",
-            joinColumns = {@JoinColumn(name = "report_id")},
-            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+            joinColumns = {@JoinColumn(name = "category_id")},
+            inverseJoinColumns = {@JoinColumn(name = "report_id")}
     )
     @JsonBackReference
     private List<Category> categories = new ArrayList<>();

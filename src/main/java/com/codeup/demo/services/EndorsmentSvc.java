@@ -33,20 +33,15 @@ public class EndorsmentSvc {
 
 
     public void filterReports(long id) throws ReportException {
-        int negativeCount = 0;
         Report report = reportsDao.findById(id)
                 .orElseThrow(()-> new ReportException());
-        if(report.getEndorsements() != null){
-            List<Endorsement> endorsements = report.getEndorsements();
-            for (Endorsement endorsement : endorsements) {
-                if(endorsement.getValue() == 2) negativeCount +=1 ;
-            }
-        }
-        if(negativeCount >= 3) {
+        if(report.getEndorsements().size() >= 3) {
             reportsDao.delete(report);
-            System.out.println("Report deleted");
+            System.out.println("Report deleted"+ report.getQuery());
         }
-        else System.out.println("Report still active");
-
     }
+
+
+
+
 }

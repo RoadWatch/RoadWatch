@@ -18,7 +18,7 @@ public class Category {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
+    @ManyToMany(mappedBy = "categories")
     @JsonManagedReference
     private List<Report> reports = new ArrayList<>();
 

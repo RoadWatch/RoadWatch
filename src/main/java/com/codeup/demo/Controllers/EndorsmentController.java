@@ -36,6 +36,7 @@ public class EndorsmentController {
             @PathVariable long id,
             @PathVariable int value
     ) throws ReportException {
+        System.out.println("clicked");
         if(userSvc.isUserLoggedIn()){
             User user = userSvc.getAuthUser();
             Report report = reportsDao.findById(id)

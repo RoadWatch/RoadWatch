@@ -75,7 +75,6 @@ public class MapController {
         }
 
         model.addAttribute("queriedList", queriedList);
-        System.out.println("queridLIST: "+queriedList.size());
         model.addAttribute("reports", activeReports);
         return "map/index";
     }
@@ -120,7 +119,6 @@ public class MapController {
             geocodeSvc.executeSearch(query, token, user, report);
 
             //! FILE FUNCTION
-            System.out.println("UPLOADED FILE: "+ uploadedFile);
             reportSvc.saveFile(uploadedFile, report);
             System.out.println("finished");
 
@@ -138,7 +136,6 @@ public class MapController {
     ){
         this.queriedList.clear();
         searchQuery = searchQuery.toLowerCase();
-        System.out.println("quer: "+searchQuery);
         List<Report> reports = reportsDao.findAll();
         List<Report> queried = new ArrayList<>();
         for (Report report : reports) {
@@ -156,8 +153,6 @@ public class MapController {
                 queried.add(report);
             }
         }
-//        System.out.println("in post: "+ queried.size());
-//        model.addAttribute("queriedList", queried);
 
         return "redirect:/map?search=true";
     }
