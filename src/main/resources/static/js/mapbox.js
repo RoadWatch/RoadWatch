@@ -341,17 +341,6 @@ $(document).ready(function () {
 
     getCardsForSearchBar()
     
-    // const setClickEventForQueriedEndorsements = arrOfIds => {
-    //     $.each(arrOfIds, function (i) {
-    //         $(document).on('click', `#${arrOfIds[i]}`, function () {
-    //             console.log("click")
-    //             let splitId = arrOfIds[i].split("-")
-    //             console.log(splitId[1])
-    //         })
-    //     })
-    // }
-    getCardsForSearchBar();
-    
 
 });
 
