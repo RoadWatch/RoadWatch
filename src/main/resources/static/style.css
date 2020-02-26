@@ -34,8 +34,10 @@ body{
 }
 
 .aboutList {
+    justify-content: center;
     list-style: none;
     padding-left: 0;
+    margin-top: 30px;
     /*background-color: rgba(0,0,0,.5);*/
 }
 .aboutList li {
@@ -53,10 +55,10 @@ body{
     left: 0;
     top: 25%;
     transform: translateY(-50%);
-    margin-left: -20px;
+    /*margin-left: -20px;*/
 }
 li{
-    margin-left: 30px;
+    /*margin-left: 30px;*/
     margin-top: 20px;
     color: black;
 }
@@ -268,7 +270,7 @@ div footer{
 .footerList{
     list-style: none;
     color:white;
-    margin-left: -50px;
+    /*margin-left: -50px;*/
 }
 
 /*#footerLogo{*/
@@ -757,6 +759,9 @@ background-color: #dc3545;
     margin-bottom: 3rem!important;
 }
 
+.mb-5, .my-5{
+    margin-bottom: 3rem!important;
+}
 
 .nav{
     /*display: flex;*/
@@ -977,8 +982,9 @@ background-color: #dc3545;
 }
 
 #profileDeleteButton{
-    margin-left: 190px;
-    margin-top: -70px;
+    /*margin-left: 190px;*/
+    /*margin-top: -70px;*/
+    margin-left: 15px;
 }
 
 #profileDeleteButton img{
@@ -1014,7 +1020,12 @@ background-color: #dc3545;
     margin-left: -49px;
 
 }
+#profileDeleteModalFooter{
+    width: 100%;
+    /*margin-top: 70px;*/
+    /*margin-right: 200px;*/
 
+}
 
 .profileInputEditForm{
     font-family: 'Titillium Web', sans-serif;
@@ -1166,7 +1177,7 @@ background-color: #dc3545;
 }
 
 .aboutList{
-    margin-left: 40%;
+    /*margin-left: 40%;*/
 }
 
 
@@ -1199,7 +1210,7 @@ margin-left: 44%;
 }
 
 .footerList{
-    margin-left: 100px;
+    /*margin-left: 100px;*/
 }
 #footerNavCircle{
     width: 100px;
@@ -1436,6 +1447,17 @@ margin-left: 44%;
     margin-left: 80px;
 }
 
+    #profileEditModalFooter{
+        width: 500px;
+        /*width: 100vh*/
+        margin-bottom: -32px;
+        margin-left: -49px;
+
+    }
 
 
+    #profileDeleteModalFooter{
+        width: 480px;
+        margin-right: -100px;
+    }
 }
