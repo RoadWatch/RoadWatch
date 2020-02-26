@@ -23,10 +23,10 @@
             <h3>Here is <span th:text="${user.getUsername()} + '\'s'"></span> profile information</h3>
         </div>
 
-        <p>First Name:<span th:text="${user.getFirstName()}"></span></p><br>
-        <p>Last Name:<span th:text="${user.getLastName()}"></span></p><br>
-        <p>Username:<span th:text="${user.getUsername()}"></span></p><br>
-        <p>Email:<span th:text="${user.getEmail()}"></span></p>
+        <p class="profileMainCardText">First Name:<span th:text="${user.getFirstName()}"> </span></p><br>
+        <p class="profileMainCardText">Last Name:<span th:text="${user.getLastName()}"> </span></p><br>
+        <p class="profileMainCardText">Username:<span th:text="${user.getUsername()}"> </span></p><br>
+        <p class="profileMainCardText">Email:<span th:text="${user.getEmail()}"> </span></p>
 
 
         <!-- Button trigger modal -->
@@ -35,7 +35,8 @@
             <img src ="/images/edit%20copy.png" id="profileEditIdButton">
         </button>
         <button type="button" class="btn btn-danger profileEditDeleteButton"  id="profileDeleteButton" data-toggle="modal" data-target="#Modal">
-            <p>Delete</p>
+            Delete
+            <img src="/images/delete.png">
         </button>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -52,56 +53,57 @@
                         <div class="modal-body mx-3">
                             <form th:action="${'/user/' +  user.id +'/edit'}" th:method="POST" th:object="${user}">
                                 <div class="md-form mb-5">
-                                    <i class="fas fa-user prefix grey-text"></i>
-                                    <input type="text" id="firstName" class="form-control validate"
+<!--                                    <i class="fas fa-user prefix grey-text"></i>-->
+                                    <input type="text" id="firstName" class="form-control validate     font-family: 'Titillium Web', sans-serif;
+"
                                            th:value="${user.firstName}" th:field="*{firstName}"
                                                                                 style="background: transparent;
                                                                                 color:white;
                                                                                 border: none;
                                                                                 border-bottom: 1px solid #ffffff;
                                                                                 border-radius: 0px">
-                                    <label data-error="wrong" data-success="right" for="firstName">Update first
+                                    <label data-error="wrong" data-success="right" for="firstName" class="profileEditTitles">Update first
                                         name</label>
                                 </div>
 
                                 <div class="md-form mb-5">
-                                    <i class="fas fa-user prefix grey-text"></i>
-                                    <input type="text" id="lastName" class="form-control validate"
+<!--                                    <i class="fas fa-user prefix grey-text"></i>-->
+                                    <input type="text" id="lastName" class="form-control validate profileInputEditForm"
                                            th:value="${user.lastName}" th:field="*{lastName}"
                                                                                 style="background: transparent;
                                                                                 color:white;
                                                                                 border: none;
                                                                                 border-bottom: 1px solid #ffffff;
                                                                                 border-radius: 0px">
-                                    <label data-error="wrong" data-success="right" for="lastName">Update last
+                                    <label data-error="wrong" data-success="right" for="lastName" class="profileEditTitles">Update last
                                         name</label>
                                 </div>
 
                                 <div class="md-form mb-5">
-                                    <i class="fas fa-tag prefix grey-text"></i>
-                                    <input type="text" id="username" class="form-control validate"
+<!--                                    <i class="fas fa-tag prefix grey-text"></i>-->
+                                    <input type="text" id="username" class="form-control validate profileInputEditForm"
                                            th:value="${user.username}" th:field="*{username}"style="background: transparent;
                                                                                 color:white;
                                                                                 border: none;
                                                                                 border-bottom: 1px solid #ffffff;
                                                                                 border-radius: 0px">
-                                    <label data-error="wrong" data-success="right" for="username">Update
+                                    <label data-error="wrong" data-success="right" for="username" class="profileEditTitles">Update
                                         Username</label>
                                 </div>
 
                                 <div class="md-form mb-5">
-                                    <i class="fas fa-envelope prefix grey-text"></i>
-                                    <input type="email" id="email" class="form-control validate"
+<!--                                    <i class="fas fa-envelope prefix grey-text"></i>-->
+                                    <input type="email" id="email" class="form-control validate profileInputEditForm"
                                            th:value="${user.email}" th:field="*{email}"style="background: transparent;
                                                                                 color:white;
                                                                                 border: none;
                                                                                 border-bottom: 1px solid #ffffff;
                                                                                 border-radius: 0px">
-                                    <label data-error="wrong" data-success="right" for="email">Update Your email</label>
+                                    <label data-error="wrong" data-success="right" for="email" class="profileEditTitles">Update Your email</label>
                                 </div>
 
                                 <div class="md-form mb-5">
-                                    <i class="prefix grey-text"></i>
+<!--                                    <i class="prefix grey-text"></i>-->
                                     <input type="hidden" id="password" class="form-control validate"
                                            th:value="${user.getPassword()}" th:field="*{password}"style="background: transparent;
                                                                                 color:white;
@@ -161,7 +163,7 @@
 </div>
 
 <hr>
-
+<!--<div class="col-sm-6">-->
 <th:block th:each="report : ${reports}">
     <div class="card m-auto user" th:id="${report.id}">
         <img
@@ -205,7 +207,7 @@
             <!--                            end-->
         </div>
         
-        
+
         
         
         <hr>

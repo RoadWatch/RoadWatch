@@ -1,8 +1,9 @@
 
 
 html{
-    /*margin:0px;*/
+    margin:0px;
     overflow-x:hidden;
+    /*overflow-y:hidden;*/
 }
 
 body{
@@ -734,6 +735,8 @@ div footer{
 }
 
 
+
+
 #modalWater{
     margin-top:-20px ;
 }
@@ -744,6 +747,11 @@ div footer{
     margin-left: 5px;
     margin-bottom: 5px;
 
+}
+
+
+.mb-5, .my-5 {
+    margin-bottom: 3rem!important;
 }
 
 
@@ -830,7 +838,7 @@ div footer{
     margin-top: 80px;
     margin-left: 5px;
     margin-right: 10px;
-    padding:0px;
+    /*padding:0px;*/
     /*width: auto;*/
     /*background-color: #4152D0;*/
 
@@ -876,6 +884,26 @@ div footer{
     padding-right:0px;
     font-size: 19px;
     font-family: 'Ubuntu', sans-serif;
+    /*font-style: ;*/
+}
+#navLogin a:hover{
+    color:white;
+    text-decoration: none;
+}
+
+#navLogin1{
+    margin-left: -5px;
+    /*margin-right: 10px;*/
+}
+
+#navLogin1 a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+
+#navLogin1 a{
+    color:white;
 }
 
 #navLogout{
@@ -949,6 +977,15 @@ div footer{
     margin-left: 190px;
     margin-top: -70px;
 }
+
+#profileDeleteButton img{
+    width: 20px;;
+    height: 20px
+  }
+
+/*#profileDeleteButton*/
+
+
 .profileEditDeleteButton{
     margin-bottom: 10px;
     width: 140px;
@@ -956,6 +993,13 @@ div footer{
     margin-left: 27%;
     font-size: 20px;
     box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+
+
+}
+
+.profileEditTitles{
+    color:white;
+    font-family: 'Titillium Web', sans-serif;
 
 
 }
@@ -968,12 +1012,26 @@ div footer{
 
 }
 
+
+.profileInputEditForm{
+    font-family: 'Titillium Web', sans-serif;
+
+}
 #profileMaincard{
     margin-top: 50px;
     margin-bottom: 30px;
-
+    background-color: #4152D0 ;
+    border: solid white 1px;
+    border-bottom: 0 none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
 }
 
+.profileMainCardText{
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+
+}
 #navTriangleShadow{
     /*position:absolute;*/
     margin-top: 20px;
@@ -1022,7 +1080,10 @@ div footer{
     padding: 10px;
 }
 
-
+#report-card-img{
+    width: 300px;
+    height: 230px;
+}
 
 #registerButton{
     /*margin-left: 120px;*/
@@ -1185,14 +1246,37 @@ margin-left: 44%;
 }
 
 #navbar{
-    margin-left:20px;
+    margin-left:10px;
     /*overflow: auto;*/
 }
 
-#navLogin{
-    font-size: 29px;
+
+
+#navLogin1 a:hover{
+    text-decoration: none;
+    color: white;
 }
 
+#navLogin1{
+    margin-left: 10px;
+}
+#navLogin1 a{
+    color:white;
+}
+#navLogin{
+    font-size: 29px;
+    /*margin-left: -5px;*/
+    /*margin-top: 30px;*/
+}
+
+#navLogin a:hover{
+    color:white;
+    text-decoration: none;
+}
+
+#navLogin a{
+    color: white;
+}
 /*#navLogout{*/
 /*    margin-top: -8px;*/
 /*}*/
@@ -1201,6 +1285,10 @@ margin-left: 44%;
         margin-bottom: -4px;
         font-size: 29px;
     }
+
+#navLogout a:hover{
+    color:white;
+}
 
 #navProfile img{
     /*margin-bottom: -100px;*/
@@ -1285,18 +1373,8 @@ margin-left: 44%;
     }
 
 .nav-item{
-
-
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*font-size: 30px;*/
-        /*margin-top: 80px;*/
-        /*margin-left: 10px;*/
-        /*width: auto;*/
-        /*background-color: #4152D0;*/
-
-
-    }
+  margin-left: 10px;
+}
 
 #navLine {
         border: 1px solid #FF7D4A;
