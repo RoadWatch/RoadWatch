@@ -235,9 +235,9 @@ $(document).ready(function () {
     const filterResultForCountyData = (arr, query) => {
         let result = []
         arr.forEach((report, i) => {
-            if(report.properties.Name.toLowerCase().includes(query))
+            if(report.properties.Name.toLowerCase().includes(query.toLowerCase()))
                 result.push(report);
-            else if(report.properties.Description.toLowerCase().includes(query))
+            else if(report.properties.Description.toLowerCase().includes(query.toLowerCase()))
                 result.push(report)
         })
         return result
@@ -246,9 +246,9 @@ $(document).ready(function () {
     const filterResultForUserData = (arr, query) => {
         let result = []
         arr.forEach((report, i) => {
-            if(report.query.includes(query))
+            if(report.query.toLowerCase().includes(query.toLowerCase()))
                 result.push(report)
-            else if(report.description.includes(query))
+            else if(report.description.toLowerCase().includes(query.toLowerCase))
                 result.push(report)
         })
         return result
@@ -331,16 +331,7 @@ $(document).ready(function () {
         addClickEventForEndorsementPost(buttonIds)
         $('#card-row').html(html)
     }
-    
-    // const setClickEventForQueriedEndorsements = arrOfIds => {
-    //     $.each(arrOfIds, function (i) {
-    //         $(document).on('click', `#${arrOfIds[i]}`, function () {
-    //             console.log("click")
-    //             let splitId = arrOfIds[i].split("-")
-    //             console.log(splitId[1])
-    //         })
-    //     })
-    // }
+
     getCardsForSearchBar()
     
 
