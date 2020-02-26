@@ -1,4 +1,4 @@
-$(document).ready(function () {
+// $(document).ready(function () {
     let points = [];
     let userPoints = []
     let key = document.querySelector("#apiKey").content;
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 
 //! USER REPORTS
-    const fetchUserPoints = () => {
+//     const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
         request.done(function (reports) {
@@ -127,9 +127,16 @@ $(document).ready(function () {
             </div>
             ${userReports[i].dateEntered} <br>
             <a href="#${userReports[i].id}">View Report</a>
-             </div>
-            `;
-                        
+            `;          if (parseInt(userReports[i].waterInches) >= 1) {
+                            html += `<div>Water level: ${userReports[i].waterInches}</div>`;
+                        } else {
+                            html += `<div>Water level: N/A</div>`;
+                        }
+                        for (let j = 0; j < userReports[i].jsoncategories.length; j++) {
+                            html += `<span style="margin-left: 5px; margin-right: 5px; color: #101010;">${userReports[i].jsoncategories[j]}</span>`;
+                        }
+                        html += "</div>";
+
                         let pops = new mapboxgl.Popup()
                             .setLngLat(cords)
                             .setHTML(html)
@@ -147,10 +154,10 @@ $(document).ready(function () {
         });
         request.fail(function (e) {
             console.log("e; ");
-        })
-    };
+        });
+    // };
     
-    fetchUserPoints();
+    // fetchUserPoints();
     
     //! FLY TO FUNCTION
     const flyToFunc = (search) => {
@@ -331,11 +338,25 @@ $(document).ready(function () {
         addClickEventForEndorsementPost(buttonIds)
         $('#card-row').html(html)
     }
+<<<<<<< HEAD
 
     getCardsForSearchBar()
+=======
+    
+    // const setClickEventForQueriedEndorsements = arrOfIds => {
+    //     $.each(arrOfIds, function (i) {
+    //         $(document).on('click', `#${arrOfIds[i]}`, function () {
+    //             console.log("click")
+    //             let splitId = arrOfIds[i].split("-")
+    //             console.log(splitId[1])
+    //         })
+    //     })
+    // }
+    getCardsForSearchBar();
+>>>>>>> a019f33210b5f0676a0ceab84549a6a4fc232d5d
     
 
-});
+// });
 
 
 

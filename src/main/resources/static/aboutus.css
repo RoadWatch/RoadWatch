@@ -1,6 +1,5 @@
 html{
-    overflow-y:hidden;
-    overflow-x:hidden;
+    /*overflow-x:hidden;*/
     /*margin-bottom: 0px;*/
 }
 
@@ -12,6 +11,14 @@ html{
     width: 100vw;
     justify-content: space-evenly;
     margin-left: 5px;
+}
+@media screen and (min-width: 992px) {
+
+html{
+    overflow-y:hidden;
+    overflow-x:hidden;
+
+}
 }
 
 /*Below is the CSS for flip cards just so I don't get rid of it*/

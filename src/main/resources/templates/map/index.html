@@ -190,11 +190,16 @@
                                 <hr>
                                 <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
                                     <button type="submit"
-                                            class="btn btn-outline-light text-light">
+                                            class="btn btn-outline-light">
                                         <i class="fas fa-road"></i>
                                         Reported cleared?
                                     </button>
                                 </form>
+                            </div>
+                            <div>
+                                <div th:each="categories : ${report.categories}">
+                                    <small th:text="${categories.name}"></small>
+                                </div>
                             </div>
                             <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
                                 <a href="/" class="btn btn-outline-light">
