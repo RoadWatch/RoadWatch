@@ -67,7 +67,7 @@ $(document).ready(function () {
                             "<p class='text-center'>" +
                             "(" + points[i].properties.Description + ")</p>" +
                             " </div>" +
-                            points[i].properties.Date + "<br>" +
+                            points[i].properties.Date  + "<br>" +
                             "<a href='#city-"+(i+1)+"'>View report</a>" +
                             "</div>")
                         .addTo(map);
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 
 //! USER REPORTS
-//     const fetchUserPoints = () => {
+    const fetchUserPoints = () => {
         let userReports;
         let request = $.ajax({'url': '/map/json'});
         request.done(function (reports) {
@@ -126,15 +126,18 @@ $(document).ready(function () {
             <p>${userReports[i].description}</p>
             </div>
             ${userReports[i].dateEntered} <br>
-            <a href="#${userReports[i].id}">View Report</a>
-            `;          if (parseInt(userReports[i].waterInches) >= 1) {
-                            html += `<div>Water level: ${userReports[i].waterInches}</div>`;
+            <a href="#${userReports[i].id}" style="margin-left: 20px">View Report</a> <br>
+            `;
+
+                        if (parseInt(userReports[i].waterInches) >= 1) {
+                            html += `<div class="water-level">Water level: ${userReports[i].waterInches}</div>`;
                         } else {
-                            html += `<div>Water level: N/A</div>`;
+                            html += `<div class="water-level">Water level: N/A</div>`;
                         }
                         for (let j = 0; j < userReports[i].jsoncategories.length; j++) {
-                            html += `<span class="">${userReports[i].jsoncategories[j]}</span>`;
+                            html += `<span class="pills">${userReports[i].jsoncategories[j]}</span>`;
                         }
+
                         html += "</div>";
 
                         let pops = new mapboxgl.Popup()
@@ -155,9 +158,9 @@ $(document).ready(function () {
         request.fail(function (e) {
             console.log("e; ");
         });
-    // };
+    };
     
-    // fetchUserPoints();
+    fetchUserPoints();
     
     //! FLY TO FUNCTION
     const flyToFunc = (search) => {
@@ -312,15 +315,33 @@ $(document).ready(function () {
                                     ${report.user.username.toUpperCase()}
 </span>
                                 </small>
-                                <p class="card-text"
-                                >${report.description}</p>
+                                <p class="card-text report-description"
+                                >${report.description}</p> <hr>`
+                                if(report.waterInches == 0 ){
+                                    html +=
+                                        `<div class="water-level-html">
+                                            Water Level: N/A </div>`
+                                }else {
+                                    html +=
+                                        `<div class="water-level-html">
+                                            Water Level: ${report.waterInches}". </div>`
+                                }
+                                html += `<div  id="card-pill-wrapper">`
+            for (let j = 0; j < report.jsoncategories.length; j++) {
+                html += `<span class="card-pill">${report.jsoncategories[i]}</span>`;
+            }
+            html += `</div>`
+                                
 
-                                        <button type="submit"
-                                                class="btn btn-outline-light text-light"
+                                   html+=     `
+                                            <div class="d-flex justify-content-center">
+                                            <button type="submit"
+                                                class="btn btn-outline-light text-light downvote-button m-auto"
                                                 id="endorsement-${report.id}-2">
                                             <i class="fas fa-road"></i>
                                             Reported cleared?
                                         </button>
+                                        </div>
                                 <!--                                end inner-->
                             </div>
 <!--                            end-->

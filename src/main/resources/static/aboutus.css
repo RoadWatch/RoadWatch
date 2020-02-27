@@ -12,6 +12,13 @@ html{
     justify-content: space-evenly;
     margin-left: 5px;
 }
+#about-us-title {
+    margin-top: 10vh;
+    padding: 3%;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-weight: 800;
+}
 @media screen and (min-width: 992px) {
 
 html{
@@ -19,6 +26,9 @@ html{
     overflow-x:hidden;
 
 }
+
+
+
 }
 
 /*Below is the CSS for flip cards just so I don't get rid of it*/

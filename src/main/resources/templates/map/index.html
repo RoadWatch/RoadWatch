@@ -151,7 +151,7 @@
     </div>
 
 
-    <!--//SEARCH FOR CARDS-->
+    <!--//SEARCH BAR FOR CARDS-->
     <form th:action="@{/report/search}" method="post" class="row ">
         <input type="text" class="form-control col-9" id="userReportSearch" name="searchQuery"
                placeholder="Search reports and categories">
@@ -182,28 +182,34 @@
                             <small>
                                 Author: <span th:text="${report.user.username}"></span>
                             </small>
-                            <p class="card-text"
-                               th:text="${report.description}"></p>
-                            <div sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
-                                <hr>
-
-                                <hr>
-                                <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post">
+                            <p th:text="${report.description}"
+                                class="report-description"></p>
+                            <hr>
+                            <div th:if="${report.waterInches > 0}" class="water-level-html">
+                                Water Level:
+                                <span th:text="${report.waterInches}"></span> in.
+                            </div>
+                            <div th:if="${report.waterInches == 0}" class="water-level-html">
+                                Water Level: N/A
+                            </div>
+                            
+                                <div  id="card-pill-wrapper">
+                                    <th:block th:each="categories : ${report.categories}">
+                                    <span th:text="${categories.name}" class="card-pill"></span>
+                                    </th:block>
+                                </div>
+                            <th:block sec:authorize="${isAuthenticated()}" class="d-flex align-items-baseline">
+                                <form th:action="@{'/endorsements/'+${report.id}+'/2'}" method="post" class="report-form">
                                     <button type="submit"
-                                            class="btn btn-outline-light">
+                                            class="btn btn-outline-light downvote-button">
                                         <i class="fas fa-road"></i>
                                         Reported cleared?
                                     </button>
                                 </form>
-                            </div>
-                            <p th:if="${report.waterInches > 0}">Water Level: <span th:text="${report.waterInches}"></span> in.</p>
-                            <div>
-                                <div th:each="categories : ${report.categories}">
-                                    <small th:text="${categories.name}"></small>
-                                </div>
-                            </div>
-                            <div sec:authorize="${!isAuthenticated()}" class="d-flex align-items-baseline">
-                                <a href="/" class="btn btn-outline-light">
+                            </th:block>
+                            <div sec:authorize="${!isAuthenticated()}"
+                                class="d-flex justify-content-center">
+                                <a href="/" class="btn btn-outline-light downvote-button" >
                                     <i class="fas fa-road"></i>
                                     Reported cleared?
                                 </a>
